@@ -68,9 +68,9 @@ class categoryAction extends MY_Controller
                 );
                 $advbool =   $this->categorymodel->insertCategory($inData);
                 if ($advbool) {
-                    msg('添加成功！', base_url('index.php/categoryaction/index/'.$type), 2, 2000);
+                    msg('添加成功！', base_url('categoryaction/index/'.$type), 2, 2000);
                 } else {
-                    msg('添加失败！', base_url('index.php/categoryaction/index/'.$type), 2, 2000);
+                    msg('添加失败！', base_url('categoryaction/index/'.$type), 2, 2000);
                 }
             }
         }
@@ -127,9 +127,9 @@ class categoryAction extends MY_Controller
             $advbool =  $this->categorymodel->updateCategory($inData, $catId);
             $this->load->view('category/categoryadd', $type);
             if ($advbool) {
-                msg('修改成功！', base_url('index.php/categoryaction/index/'.$type), 2, 2000);
+                msg('修改成功！', base_url('categoryaction/index/'.$type), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/categoryaction/index/'.$type), 2, 2000);
+                msg('修改失败！', base_url('categoryaction/index/'.$type), 2, 2000);
             }
         }
         /*页面信息*/

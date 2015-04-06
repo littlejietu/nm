@@ -140,7 +140,7 @@
                             <tr>
                                 <td>商品相册：</td>
                                 <td>
-                                    <a href="<?php echo base_url('index.php/sourceaction/goodsPhoto/'.$goodsInfo->goods_id) ?>">添加/更改 商品相册</a>
+                                    <a href="<?php echo base_url('sourceaction/goodsPhoto/'.$goodsInfo->goods_id) ?>">添加/更改 商品相册</a>
                                 </td>
                             </tr>
                         <?php }?>
@@ -221,7 +221,7 @@
                         <tr>
                             <td>商品相册：</td>
                             <td>
-                                <a href="<?php echo base_url('index.php/sourceaction/goodsPhoto/'.$goodsInfo->goods_id.'/'.$v->goods_sku_id) ?>">添加/更改 属性相册</a>
+                                <a href="<?php echo base_url('sourceaction/goodsPhoto/'.$goodsInfo->goods_id.'/'.$v->goods_sku_id) ?>">添加/更改 属性相册</a>
                             </td>
                         </tr>
                                     <?php */?>

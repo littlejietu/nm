@@ -1,6 +1,6 @@
 <?php include_once("right_head.php") ?>
 <div class="common">
-    <form action="<?php echo base_url('index.php/goodsreviewaction/index')?>" method="post">
+    <form action="<?php echo base_url('goodsreviewaction/index')?>" method="post">
         商品货号：&nbsp;&nbsp;<input name="goods_sn">&nbsp;&nbsp;<button type="submit">提交</button><br><br>
     </form>
     <table class="listTab" cellpadding="0" cellspacing="0" bordercolor="#e4e4e4" border="1">

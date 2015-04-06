@@ -38,3 +38,23 @@ $config['myconfig']['tb_api']                           = array(
     'appkey'        => '23072006',
     'secretkey'     => '4c2ef2ef893a01f6a929155f25bf6f93',
 );
+
+//角色
+$config['myconfig']['user_level_admin']                      = array(
+    0 => '普通会员',
+    1 => '超级管理员',
+    2 => '普通管理员',
+    3 => '渠道商',
+    4 => '代理',
+);
+
+$config['myconfig']['user_level']                      = array(
+    //10 => '个人会员',
+    11 => '模特',
+    12 => '摄影',
+    13 => '化妆',
+    //20 => '单位会员',
+    21 => '机构',
+);
+
+

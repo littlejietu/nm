@@ -16,7 +16,7 @@ class taobaoapiAction extends MY_Controller {
         $secretKey = $myConfig['myconfig']['tb_api']['secretkey'];
         $appKey    = $myConfig['myconfig']['tb_api']['appkey'];
         if(!isset($this->session->userdata('is_back'))){
-            $url                = 'https://oauth.taobao.com/authorize?response_type=token&client_id='.$appKey.'&redirect_uri='.base_url().'index.php/taobaosessionkeybackaction.php';
+            $url                = 'https://oauth.taobao.com/authorize?response_type=token&client_id='.$appKey.'&redirect_uri='.base_url().'taobaosessionkeybackaction.php';
             header($url);
         }
 

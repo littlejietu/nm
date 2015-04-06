@@ -32,7 +32,7 @@ class indexAction extends MY_Controller {
         $pageArr        = array(
             'page'          => $page,
             'total'         => $noticeNum,
-            'url'           => '/index.php/indexaction/indexpage/',
+            'url'           => 'indexaction/indexpage/',
             'perPage'       => $perPage,
             'maxSize'       => $page,
             'isFirst'       => 1,

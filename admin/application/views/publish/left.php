@@ -10,7 +10,7 @@
 					if($va->sys_partid == $v->sys_id && $va->is_show){
 				?>
                 <li>
-					<a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('<?php echo base_url()?>index.php/<?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a>
+					<a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('<?php echo base_url()?><?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a>
                 </li>
                  <?php }}?>
             </ul>
@@ -25,7 +25,7 @@
             foreach($leftList['stepSecond'] as $ka => $va){
                 if($va->sys_partid == $v->sys_id){
         ?>
-        <li><a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('/index.php/<?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a></li>
+        <li><a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('<?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a></li>
         <?php }}?>
     </ul>
     <?php }?>

@@ -1,6 +1,6 @@
 <?php include_once("right_head.php") ?>
 <div class="common">
-    <div class="goodsTitle"><a href="<?php echo base_url('index.php/sourceaction/addGoods') ?>"><b>添加图片</b></a></div>
+    <div class="goodsTitle"><a href="<?php echo base_url('sourceaction/addGoods') ?>"><b>添加图片</b></a></div>
         <div class="goodsList">
             <table class="listTab">
                 <tr>
@@ -27,8 +27,8 @@
                         <td><?php echo $value->brand_name; ?></td>
                         <td><?php echo $value->channel_name; ?></td>
                         <td>
-                            <a href="<?php echo base_url('index.php/sourceaction/goodsPhoto/' . $value->goods_id) ?>">商品相册</a>|
-                            <a href="<?php echo base_url('index.php/sourceaction/addGoods/' . $value->goods_id) ?>">编辑</a>|
+                            <a href="<?php echo base_url('sourceaction/goodsPhoto/' . $value->goods_id) ?>">商品相册</a>|
+                            <a href="<?php echo base_url('sourceaction/addGoods/' . $value->goods_id) ?>">编辑</a>|
                             <a style="cursor: pointer"
                                onclick="javascript:if(confirm('确认删除？')){delGoods(this,<?php echo $value->goods_id ?>,'<?php echo base_url() ?>');}">删除</a>
                         </td>

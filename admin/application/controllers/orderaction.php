@@ -81,7 +81,7 @@ class orderAction extends MY_Controller {
         $pageArr        = array(
             'page'          => $page,
             'total'         => $orderNum,
-            'url'           => base_url().'/index.php/orderaction/orderList/',
+            'url'           => base_url().'orderaction/orderList/',
             'perPage'       => $perPage,
             'maxSize'       => 5,
             'isFirst'       => 1,
@@ -191,7 +191,7 @@ class orderAction extends MY_Controller {
             $userInfo               = $this->UserModel->getUserInfoByUserId($userId);
             //查询无此用户
             if(empty($userInfo)){
-                msg('用户不存在！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('用户不存在！',base_url('sourceaction/index/goods'),2,2000);
             }
             $userBalance            = $userInfo->user_money;
 
@@ -199,7 +199,7 @@ class orderAction extends MY_Controller {
             $goodInfo               = $this->SourceModel->getGoodsInfo($goodsId);
             //查询无此商品
             if(empty($goodInfo)){
-                msg('商品已下架！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('商品已下架！',base_url('sourceaction/index/goods'),2,2000);
             }
 
             //查询商品分类信息
@@ -209,14 +209,14 @@ class orderAction extends MY_Controller {
             $goodsSku               = $this->SourceModel->getSkuFromSkuId($goods_sku_id);
             //查询无此商品属性 或此属性已无库存
             if(empty($goodsSku[0]) or ($goodsSku[0]->sku_number == 0)){
-                msg('此商品已无库存！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('此商品已无库存！',base_url('sourceaction/index/goods'),2,2000);
             }
             $goodInfo->goodsSku     = $goodsSku[0];
 
             //判断商品库存是否足够
             $skuNumber              = $goodInfo->goodsSku->sku_number-$goodsNum;
             if($skuNumber < 0){//库存不足
-                msg('库存不足！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('库存不足！',base_url('sourceaction/index/goods'),2,2000);
             }
             $skuNumberLock          = $goodInfo->goodsSku->sku_number_lock+$goodsNum;
 
@@ -250,7 +250,7 @@ class orderAction extends MY_Controller {
             /*取商家地址*/
             $companyInfo            = $this->SourceModel->getChannelInfo($userId);
             if(empty($companyInfo)){//该用户不是商家
-                //msg('您没有权限！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                //msg('您没有权限！',base_url('sourceaction/index/goods'),2,2000);
                 $companyInfo->channel_address = 33;//默认发货地址为杭州
             }
             $startProvince          = $this->SourceModel->getProvinceInfo($companyInfo->channel_address);
@@ -336,16 +336,16 @@ class orderAction extends MY_Controller {
 
                 //2qi 记录日志
 
-                msg('下单成功！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('下单成功！',base_url('orderaction/orderList'),2,2000);
 
             }elseif($payment == 1){//余额支付 并且余额不足
                 //存入订单表
                 $this->OrderModel->addOrder($sqlInfo);
-                msg('余额不足！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('余额不足！',base_url('orderaction/orderList'),2,2000);
             }else{//未支付
                 //存入订单表
                 $this->OrderModel->addOrder($sqlInfo);
-                msg('下单成功！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('下单成功！',base_url('orderaction/orderList'),2,2000);
             }
 
         }
@@ -371,16 +371,16 @@ class orderAction extends MY_Controller {
             $userInfo               = $this->UserModel->getUserInfoByUserId($userId);
             //查询无此用户
             if(empty($userInfo)){
-                msg('用户不存在！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('用户不存在！',base_url('sourceaction/index/goods'),2,2000);
             }
             $userBalance            = $userInfo->user_money;
 
             /*取订单金额*/
             $orderInfo              = $this->OrderModel->getOrderInfo($orderId);
             if(empty($orderInfo)){
-                msg('订单不存在！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('订单不存在！',base_url('orderaction/orderList'),2,2000);
             }elseif($orderInfo->order_type > 0 && $orderInfo->order_type < 10){
-                msg('订单已支付 请不要重新支付！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('订单已支付 请不要重新支付！',base_url('orderaction/orderList'),2,2000);
             }
             switch($orderInfo->order_type){
                 case 0://订单未支付
@@ -393,7 +393,7 @@ class orderAction extends MY_Controller {
                     $orderPrice             = $orderInfo->order_price + $orderInfo->order_difference;
                 break;
                 default:
-                    msg('订单已支付 请不要重新支付！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                    msg('订单已支付 请不要重新支付！',base_url('sourceaction/index/goods'),2,2000);
             }
 
             /*取商品详细信息*/
@@ -403,13 +403,13 @@ class orderAction extends MY_Controller {
                 $goodInfo[$key]         = $this->SourceModel->getGoodsInfo($value->goods_id);
                 //查询无此商品
                 if(empty($goodInfo)){
-                    msg('商品已下架！',base_url('index.php/orderaction/orderList'),2,2000);
+                    msg('商品已下架！',base_url('orderaction/orderList'),2,2000);
                 }
                 /*取商品属性*/
                 $goodsSku               = $this->SourceModel->getSkuFromSkuId($value->goods_sku_id);
                 //查询无此商品属性 或此属性已无库存
                 if(empty($goodsSku[0]) or ($goodsSku[0]->sku_number == 0)){
-                    msg('商品已无库存！',base_url('index.php/orderaction/orderList'),2,2000);
+                    msg('商品已无库存！',base_url('orderaction/orderList'),2,2000);
                 }
                 $goodInfo[$key]->goodsSku     = $goodsSku[0];
 
@@ -418,7 +418,7 @@ class orderAction extends MY_Controller {
                 $skuNumber              = $goodsSku[0]->sku_number-$goodsNum;
 
                 if($skuNumber < 0){//库存不足
-                    msg('库存不足！',base_url('index.php/orderaction/orderList'),2,2000);
+                    msg('库存不足！',base_url('orderaction/orderList'),2,2000);
                 }
                 $goodInfo[$key]->skuNumberLock          = $goodsSku[0]->sku_number_lock+$goodsNum;
             }
@@ -460,10 +460,10 @@ class orderAction extends MY_Controller {
 
                 //2qi 记录日志
 
-                msg('支付成功！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('支付成功！',base_url('orderaction/orderList'),2,2000);
 
             }elseif($payment == 1){//余额支付 并且余额不足
-                msg('余额不足！',base_url('index.php/orderaction/orderList'),2,2000);
+                msg('余额不足！',base_url('orderaction/orderList'),2,2000);
             }else{//其他支付方式
                 //2qi
             }
@@ -481,7 +481,7 @@ class orderAction extends MY_Controller {
         /*取订单详细信息*/
         $orderInfo              = $this->OrderModel->getOrderInfo($orderId);
         if(empty($orderInfo)){
-            msg('订单不存在！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('订单不存在！',base_url('orderaction/orderList'),2,2000);
         }
         $orderType              = ($orderInfo->order_type > 9)?$orderInfo->order_type:(($orderInfo->order_type > 0)?10:11);//订单状态如果大于9 则不变，否则氛围已支付和未支付两种情况
 
@@ -512,7 +512,7 @@ class orderAction extends MY_Controller {
 
             //2qi 记录日志
 
-            msg('配送成功！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('配送成功！',base_url('orderaction/orderList'),2,2000);
         }
     }
 
@@ -564,7 +564,7 @@ class orderAction extends MY_Controller {
 
             //2qi 记录日志
 
-            msg('操作成功！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('操作成功！',base_url('orderaction/orderList'),2,2000);
         }
     }
 
@@ -581,11 +581,11 @@ class orderAction extends MY_Controller {
         /*查询退款金额是否大于订单金额*/
         $orderInfo              = $this->OrderModel->getOrderInfo($orderId);
         if(empty($orderInfo)){
-            msg('订单不存在！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('订单不存在！',base_url('orderaction/orderList'),2,2000);
         }
         $orderMoney             = $orderInfo->order_price + $orderInfo->order_difference;
         if($exitMoney > $orderMoney){//退款金额大于订单总金额
-            msg('退款金额不能大于订单金额！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('退款金额不能大于订单金额！',base_url('orderaction/orderList'),2,2000);
         }
 
         /*更新订单表数据*/
@@ -607,7 +607,7 @@ class orderAction extends MY_Controller {
             $userInfo               = $this->UserModel->getUserInfoByUserId($userId);
             //查询无此用户
             if(empty($userInfo)){
-                msg('用户不存在！',base_url('index.php/sourceaction/index/goods'),2,2000);
+                msg('用户不存在！',base_url('sourceaction/index/goods'),2,2000);
             }
             $userBalance            = $userInfo->user_money;
 
@@ -617,7 +617,7 @@ class orderAction extends MY_Controller {
 
             //2qi 记录日志
 
-            msg('退款成功！',base_url('index.php/orderaction/orderList'),2,2000);
+            msg('退款成功！',base_url('orderaction/orderList'),2,2000);
         }
     }
 

@@ -18,7 +18,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $activityNum,
-            'url' => base_url() . 'index.php/activityaction/index/', //路径
+            'url' => base_url() . 'activityaction/index/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -63,9 +63,9 @@ class activityAction extends MY_Controller
 
             $acti_id = $this->activitymodel->addActivity($inData);
             if (!empty($acti_id)) {
-                msg('添加成功！', base_url('index.php/activityaction/editActivity/' . $acti_id), 2, 2000);
+                msg('添加成功！', base_url('activityaction/editActivity/' . $acti_id), 2, 2000);
             } else {
-                msg('添加失败！', base_url('index.php/activityaction/addActivity/'), 2, 2000);
+                msg('添加失败！', base_url('activityaction/addActivity/'), 2, 2000);
             }
         }
         $this->load->view('activity/addactivity');
@@ -96,9 +96,9 @@ class activityAction extends MY_Controller
             $advbool = $this->activitymodel->editActivity($inData);
 
             if ($advbool) {
-                msg('修改成功！', base_url('index.php/activityaction/editActivity/' . $acti_id), 2, 2000);
+                msg('修改成功！', base_url('activityaction/editActivity/' . $acti_id), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/activityaction/editActivity/' . $acti_id), 2, 2000);
+                msg('修改失败！', base_url('activityaction/editActivity/' . $acti_id), 2, 2000);
             }
         }
 
@@ -125,9 +125,9 @@ class activityAction extends MY_Controller
         if (!empty($acti_id)) {
             $boolActiv = $this->activitymodel->deleteActivity($acti_id);
             if ($boolActiv) {
-                msg('删除成功！', base_url('index.php/activityaction/index/'), 2, 2000);
+                msg('删除成功！', base_url('activityaction/index/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/activityaction/index/'), 2, 2000);
+                msg('删除失败！', base_url('activityaction/index/'), 2, 2000);
             }
         }
     }
@@ -145,7 +145,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $redbagruleNum,
-            'url' => base_url() . 'index.php/activityaction/indexRedbagrule/', //路径
+            'url' => base_url() . 'activityaction/indexRedbagrule/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -212,9 +212,9 @@ class activityAction extends MY_Controller
 
             $rbr_id = $this->activitymodel->addRedbagrule($inData);
             if (!empty($rbr_id)) {
-                msg('添加成功！', base_url('index.php/activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
+                msg('添加成功！', base_url('activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
             } else {
-                msg('添加失败！', base_url('index.php/activityaction/addRedbagrule/'), 2, 2000);
+                msg('添加失败！', base_url('activityaction/addRedbagrule/'), 2, 2000);
             }
         }
         $data = array(
@@ -270,9 +270,9 @@ class activityAction extends MY_Controller
             $advbool = $this->activitymodel->editRedbagrule($inData);
 
             if ($advbool) {
-                msg('修改成功！', base_url('index.php/activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
+                msg('修改成功！', base_url('activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
+                msg('修改失败！', base_url('activityaction/editRedbagrule/' . $rbr_id), 2, 2000);
             }
         }
 
@@ -301,9 +301,9 @@ class activityAction extends MY_Controller
         if (!empty($rbr_id)) {
             $boolActiv = $this->activitymodel->deleteRedbagrule($rbr_id);
             if ($boolActiv) {
-                msg('删除成功！', base_url('index.php/activityaction/indexRedbagrule/'), 2, 2000);
+                msg('删除成功！', base_url('activityaction/indexRedbagrule/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/activityaction/indexRedbagrule/'), 2, 2000);
+                msg('删除失败！', base_url('activityaction/indexRedbagrule/'), 2, 2000);
             }
         }
     }
@@ -320,7 +320,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $userNum,
-            'url' => base_url() . 'index.php/activityaction/indexRedbaggift/' . $type . '/' . $rbr_id . '/', //路径
+            'url' => base_url() . 'activityaction/indexRedbaggift/' . $type . '/' . $rbr_id . '/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -504,7 +504,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $redbaggiftNum,
-            'url' => base_url() . 'index.php/activityaction/indexRedbaggiftList/', //路径
+            'url' => base_url() . 'activityaction/indexRedbaggiftList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -548,9 +548,9 @@ class activityAction extends MY_Controller
         if (!empty($acti_redp_id)) {
             $boolRedbaggift = $this->activitymodel->deleteRedaggift($acti_redp_id);
             if ($boolRedbaggift) {
-                msg('删除成功！', base_url('index.php/activityaction/indexRedbaggiftList/'), 2, 2000);
+                msg('删除成功！', base_url('activityaction/indexRedbaggiftList/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/activityaction/indexRedbaggiftList/'), 2, 2000);
+                msg('删除失败！', base_url('activityaction/indexRedbaggiftList/'), 2, 2000);
             }
         }
     }
@@ -571,7 +571,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $discountcoderuleNum,
-            'url' => base_url() . 'index.php/activityaction/indexDiscountCodeRule/', //路径
+            'url' => base_url() . 'activityaction/indexDiscountCodeRule/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -641,9 +641,9 @@ class activityAction extends MY_Controller
 
             $dc_id = $this->activitymodel->addDiscountCodeRule($inData);
             if (!empty($dc_id)) {
-                msg('添加成功！', base_url('index.php/activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
+                msg('添加成功！', base_url('activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
             } else {
-                msg('添加失败！', base_url('index.php/activityaction/addDiscountCodeRule/'), 2, 2000);
+                msg('添加失败！', base_url('activityaction/addDiscountCodeRule/'), 2, 2000);
             }
         }
 
@@ -704,9 +704,9 @@ class activityAction extends MY_Controller
             $dcrbool = $this->activitymodel->editDiscountCodeRule($inData);
 
             if ($dcrbool) {
-                msg('修改成功！', base_url('index.php/activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
+                msg('修改成功！', base_url('activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
+                msg('修改失败！', base_url('activityaction/editDiscountCodeRule/' . $dc_id), 2, 2000);
             }
         }
 
@@ -734,9 +734,9 @@ class activityAction extends MY_Controller
         if (!empty($rbr_id)) {
             $boolActiv = $this->activitymodel->deleteDiscountCodeRule($rbr_id);
             if ($boolActiv) {
-                msg('删除成功！', base_url('index.php/activityaction/indexDiscountCodeRuleList/'), 2, 2000);
+                msg('删除成功！', base_url('activityaction/indexDiscountCodeRuleList/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/activityaction/indexDiscountCodeRuleList/'), 2, 2000);
+                msg('删除失败！', base_url('activityaction/indexDiscountCodeRuleList/'), 2, 2000);
             }
         }
     }
@@ -753,7 +753,7 @@ class activityAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $adcNum,
-            'url' => base_url() . 'index.php/activityaction/indexAdcList/', //路径
+            'url' => base_url() . 'activityaction/indexAdcList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -798,9 +798,9 @@ class activityAction extends MY_Controller
         if (!empty($adc_id)) {
             $booladct = $this->activitymodel->deleteActivityDiscountCodes($adc_id);
             if ($booladct) {
-                msg('删除成功！', base_url('index.php/activityaction/indexAdcList/'), 2, 2000);
+                msg('删除成功！', base_url('activityaction/indexAdcList/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/activityaction/indexAdcList/'), 2, 2000);
+                msg('删除失败！', base_url('activityaction/indexAdcList/'), 2, 2000);
             }
         }
     }

@@ -2,7 +2,7 @@
 <div class="common">
     <div>
         <?php if (empty($isSearch)) { //不是搜索信息?>
-            <!--            <div class="goodsTitle"><a href="--><?php //echo base_url('index.php/sourceaction/addGoods') ?><!--" class="topBtn"><b>添加商品</b></a>-->
+            <!--            <div class="goodsTitle"><a href="--><?php //echo base_url('sourceaction/addGoods') ?><!--" class="topBtn"><b>添加商品</b></a>-->
             <!--            </div>-->
 
             <?php /*?><table style="margin:20px 0 30px 0;">
@@ -34,7 +34,7 @@
             <?php */
             ?>
         <?php } else { //是搜索信息?>
-           <!-- <form action="<?php /*echo base_url('index.php/sourceaction/index/goods') */?>">
+           <!-- <form action="<?php /*echo base_url('sourceaction/index/goods') */?>">
                 <span>请输入货号：</span>
                 <input name="search" must="ture"><span class="tips"></span>
                 <button type="submit" onclick="return subForm()">查询</button>
@@ -117,9 +117,9 @@
                         <td><?php echo $value->is_on_sale; ?></td>
                         <td><?php echo $value->is_delete; ?></td>
                         <td>
-                            <a href="<?php echo base_url('index.php/sourceaction/addgoodsphoto/' . $value->goods_id . '/' . $value->goods_name) ?>">添加产品图</a>
+                            <a href="<?php echo base_url('sourceaction/addgoodsphoto/' . $value->goods_id . '/' . $value->goods_name) ?>">添加产品图</a>
                             <span class="caozuo_line">|</span>
-                            <a href="<?php echo base_url('index.php/sourceaction/addGoods/' . $value->goods_id) ?>">编辑</a>
+                            <a href="<?php echo base_url('sourceaction/addGoods/' . $value->goods_id) ?>">编辑</a>
                             <span class="caozuo_line">|</span>
                             <a style="cursor: pointer"
                                onclick="javascript:if(confirm('确认删除？')){delGoods(this,<?php echo $value->goods_id ?>,'<?php echo base_url() ?>');}">删除</a>

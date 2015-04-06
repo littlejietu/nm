@@ -21,38 +21,9 @@
             <td><?php echo $value->user_real_name?></td>
             <td><?php echo $value->user_tel?></td>
             <td><?php echo $value->user_email?></td>
-            <td><?php
-                switch($value->user_level){
-                    case 0:
-                        echo '网站制作者';
-                        break;
-                    case 1:
-                        echo '超级管理员';
-                        break;
-                    case 2:
-                        echo '网站管理员';
-                        break;
-                    case 3:
-                        echo '渠道商';
-                        break;
-                    case 4:
-                        echo '代理1';
-                        break;
-                    case 5:
-                        echo '代理2';
-                        break;
-                    case 6:
-                        echo '代理3';
-                        break;
-                    case 7:
-                        echo '代理4';
-                        break;
-                    case 8:
-                        echo '代理5';
-                        break;
-                    default:
-                        echo '代理';
-                }
+            <td><?php 
+                    $arrUserLevel = $this->config->config['myconfig']['user_level_admin'];
+                    echo $arrUserLevel[$value->user_level];
             ?></td>
             <td><?php echo $value->user_power?></td>
             <td><a onclick="javascript:changeLock(this,'<?php echo $value->user_id?>');" value="<?php echo ($value->is_lock)?'0':'1';?>"><?php echo ($value->is_lock)?'是':'否';?></a> </td>

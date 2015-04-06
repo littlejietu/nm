@@ -1,4 +1,4 @@
-<?php include_once("right_head.php")?>
+<?php include_once("right_head.php");?>
 <div class="common">
 <form action="<?php echo base_url();?>index.php/ucenteraction/<?php echo (empty($userInfo))?'addUser/':('editUser/'.$userInfo->user_id)?>"  method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <input type="hidden" name="act" value="<?php echo (empty($userInfo))?'add':('edit')?>" size="20" />
@@ -69,6 +69,16 @@
         <tr>
             <td>手机：</td>
             <td><input name="user_tel" value="<?php echo empty($userInfo)?'':$userInfo->user_tel;?>"  type="text"  class="normalText" /></td>
+        </tr>
+        <tr>
+            <td>角色：</td>
+            <td><select name="userstep">
+                <?php $arrUserLevel = $this->config->config['myconfig']['user_level'];
+                foreach ($arrUserLevel as $key => $value) {?>
+                    <option value="<?=$key?>"<?php if(!empty($userInfo) && $userInfo->user_level==$key) echo ' selected';?>><?=$value?></option>
+                <?php }?>
+                
+                </select></td>
         </tr>
         <tr>
             <td>地区：</td>

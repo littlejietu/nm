@@ -50,7 +50,7 @@ class adminAction extends MY_Controller {
             foreach($sqlArr as $v){
                 mysql_query($v);
             }
-            redirect(base_url('index.php/adminaction/sqlBat'));
+            redirect(base_url('adminaction/sqlBat'));
         }
     }
 }

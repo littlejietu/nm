@@ -21,6 +21,7 @@ class ucenterAction extends MY_Controller {
             $userRealName       = $this->input->get_post('user_real_name');
             $userSex            = $this->input->get_post('user_sex');
             $userTel            = $this->input->get_post('user_tel');
+            $userLevel          = $this->input->get_post('userstep');
             $userProvince       = $this->input->get_post('user_province');
             $userCity           = $this->input->get_post('user_city');
             $userArea           = $this->input->get_post('user_area');
@@ -31,7 +32,7 @@ class ucenterAction extends MY_Controller {
 
             /*判断密码与确认密码是否一致*/
             if($userPassword != $cUserPassword){
-                msg('两次输入密码不一致！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('两次输入密码不一致！', base_url('ucenteraction/addUser/'), 2, 2000);
             }elseif(!empty($userPassword)){
                 $userPassword       = self::setMd5($userPassword);
             }
@@ -49,7 +50,7 @@ class ucenterAction extends MY_Controller {
                 $userNameInfo       = $this->ucentermodel->getUserInfoFromUserName($userName);
             }
             if(!empty($userNameInfo) && $userNameInfo->user_id != $userId){
-                msg('用户名已存在！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('用户名已存在！', base_url('ucenteraction/addUser/'), 2, 2000);
             }
 
             /*查询用户邮箱是否重复*/
@@ -57,8 +58,10 @@ class ucenterAction extends MY_Controller {
                 $userEmailInfo      = $this->ucentermodel->getUserInfoFromUserEmail($userMail);
             }
             if(!empty($userEmailInfo) && $userEmailInfo->user_id != $userId){
-                msg('用户邮箱已存在！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('用户邮箱已存在！', base_url('ucenteraction/addUser/'), 2, 2000);
             }
+            $userLevel = empty($userLevel)?0:$userLevel;
+            $userLevel = $userLevel<10 ? 11:$userLevel; //11:模特
 
             /*保存信息*/
             $sqlInfo            = array(
@@ -68,6 +71,7 @@ class ucenterAction extends MY_Controller {
                 'user_nikename'     => $userNikename,
                 'user_integral'     => 0,
                 'user_tel'          => $userTel,
+                'user_level'        => $userLevel,
                 'user_sex'          => $userSex,
                 'user_image'        => $user_image,
                 'user_province'     => $userProvince,
@@ -82,7 +86,7 @@ class ucenterAction extends MY_Controller {
             }
 
             $this->ucentermodel->updateUser($sqlInfo,$userId);
-            msg('用户编辑成功！', base_url('index.php/useraction/indexuserlist/'), 2, 2000);
+            msg('用户编辑成功！', base_url('useraction/indexuserlist/'), 2, 2000);
         }
 
         /*根据ID取会员详细信息*/
@@ -108,6 +112,7 @@ class ucenterAction extends MY_Controller {
             $userRealName       = $this->input->get_post('user_real_name');
             $userSex            = $this->input->get_post('user_sex');
             $userTel            = $this->input->get_post('user_tel');
+            $userLevel          = $this->input->get_post('userstep');
             $userProvince       = $this->input->get_post('user_province');
             $userCity           = $this->input->get_post('user_city');
             $userArea           = $this->input->get_post('user_area');
@@ -118,7 +123,7 @@ class ucenterAction extends MY_Controller {
 
             /*判断密码与确认密码是否一致*/
             if($userPassword != $cUserPassword){
-                msg('两次输入密码不一致！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('两次输入密码不一致！', base_url('ucenteraction/addUser/'), 2, 2000);
             }elseif(!empty($userPassword)){
                 $userPassword       = self::setMd5($userPassword);
             }
@@ -136,7 +141,7 @@ class ucenterAction extends MY_Controller {
                 $userInfo           = $this->ucentermodel->getUserInfoFromUserName($userName);
             }
             if(!empty($userInfo)){
-                msg('用户名已存在！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('用户名已存在！', base_url('ucenteraction/addUser/'), 2, 2000);
             }
 
             /*查询用户邮箱是否重复*/
@@ -144,8 +149,10 @@ class ucenterAction extends MY_Controller {
                 $userEmailInfo      = $this->ucentermodel->getUserInfoFromUserEmail($userMail);
             }
             if(!empty($userEmailInfo)){
-                msg('用户邮箱已存在！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+                msg('用户邮箱已存在！', base_url('ucenteraction/addUser/'), 2, 2000);
             }
+            $userLevel = empty($userLevel)?0:$userLevel;
+            $userLevel = $userLevel<10 ? 11:$userLevel; //11:模特
 
             /*保存信息*/
             $sqlInfo            = array(
@@ -155,6 +162,7 @@ class ucenterAction extends MY_Controller {
                 'user_nikename'     => $userNikename,
                 'user_integral'     => 0,
                 'user_tel'          => $userTel,
+                'user_level'        => $userLevel,
                 'user_sex'          => $userSex,
                 'user_image'        => $user_image,
                 'user_province'     => $userProvince,
@@ -169,7 +177,7 @@ class ucenterAction extends MY_Controller {
             }
 
             $this->ucentermodel->insertUser($sqlInfo);
-            msg('用户添加成功！', base_url('index.php/ucenteraction/addUser/'), 2, 2000);
+            msg('用户添加成功！', base_url('ucenteraction/addUser/'), 2, 2000);
         }
 
         $this->load->view('ucenter/adduser');

@@ -14,7 +14,7 @@
             </ul>
 
             <div class="tabchild"  <?php if($searchWhere['searchType'] == ''){?>style="display:block;"<?php }?>><!--全部订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -37,7 +37,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] === '0'){?>style="display:block;"<?php }?>><!--未付款订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="0" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -60,7 +60,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '1'){?>style="display:block;"<?php }?>><!--已付款未配送订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="1" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -83,7 +83,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '2'){?>style="display:block;"<?php }?>><!--已发货订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="2" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -105,7 +105,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '3'){?>style="display:block;"<?php }?>><!--已收货订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="3" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -127,7 +127,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '4'){?>style="display:block;"<?php }?>><!--售后订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="4" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -149,7 +149,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '8'){?>style="display:block;"<?php }?>><!--售后完成订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="8" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -171,7 +171,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == '9'){?>style="display:block;"<?php }?>><!--取消订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="9" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -193,7 +193,7 @@
                 </form>
             </div>
             <div class="tabchild"  <?php if($searchWhere['searchType'] == 'threeMonthAgo'){?>style="display:block;"<?php }?>><!--三个月之前订单-->
-                <form action="<?php echo base_url('index.php/orderaction/orderList')?>">
+                <form action="<?php echo base_url('orderaction/orderList')?>">
                     <input name="searchType" value="threeMonthAgo" type="hidden">
                     <table class="goodsTable">
                         <tr>
@@ -235,7 +235,7 @@
                 <?php foreach((array)$orderList as $value){?>
                     <tr height="30">
                         <td><?php echo $value->order_id;?></td>
-                        <td><a href="<?php echo base_url('index.php/orderaction/orderDetail/'.$value->order_id)?>"><?php echo $value->order_sn;?></a></td>
+                        <td><a href="<?php echo base_url('orderaction/orderDetail/'.$value->order_id)?>"><?php echo $value->order_sn;?></a></td>
                         <td><?php echo $value->userNikeName;?></td>
 
                         <td><?php echo $value->shipping_price;?></td>

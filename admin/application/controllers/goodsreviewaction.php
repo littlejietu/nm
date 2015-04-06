@@ -24,7 +24,7 @@ class goodsReviewAction extends MY_Controller
         $pageArr                = array(
             'page'                  => $page,
             'total'                 => $goodsNum,
-            'url'                   => '/index.php/sourceaction/goods/',
+            'url'                   => 'sourceaction/goods/',
             'perPage'               => $perPage,
             'maxSize'               => 5,
             'isFirst'               => 1,

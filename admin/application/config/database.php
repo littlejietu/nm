@@ -8,7 +8,7 @@ $active_record = TRUE;
 //$db['default']['password'] = '6Dv7AjaNLXLeCmMM';
 //$db['default']['database'] = 'yc';
 
-$db['default']['hostname'] = '192.168.111.8';
+$db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'leer';

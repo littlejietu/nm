@@ -81,9 +81,9 @@ class sourceAction extends MY_Controller
                 }
                 $boolbrand = $this->SourceModel->addBrand($valueArr);
                 if ($boolbrand > 0) {
-                    msg('添加成功！', base_url('index.php/sourceaction/brand/' . $type), 2, 2000);
+                    msg('添加成功！', base_url('sourceaction/brand/' . $type), 2, 2000);
                 } else {
-                    msg('添加失败！', base_url('index.php/sourceaction/brand/' . $type), 2, 2000);
+                    msg('添加失败！', base_url('sourceaction/brand/' . $type), 2, 2000);
                 }
             } else {
                 $data = array(
@@ -128,12 +128,12 @@ class sourceAction extends MY_Controller
                 /*存入数据库*/
                 $boolbrand = $this->SourceModel->updateBrand($inData);
                 if ($boolbrand > 0) {
-                    msg('修改成功！', base_url('index.php/sourceaction/brand/' . $type), 2, 2000);
+                    msg('修改成功！', base_url('sourceaction/brand/' . $type), 2, 2000);
                 } else {
-                    msg('修改失败！', base_url('index.php/sourceaction/brand/' . $type), 2, 2000);
+                    msg('修改失败！', base_url('sourceaction/brand/' . $type), 2, 2000);
                 }
             } else {
-                msg('品牌名不能为空！', base_url('index.php/sourceaction/brand/' . $type), 2, 2000);
+                msg('品牌名不能为空！', base_url('sourceaction/brand/' . $type), 2, 2000);
             }
         }
 
@@ -449,7 +449,7 @@ class sourceAction extends MY_Controller
                     'error' => $upload['error'],
                 );
             }
-            msg('导入成功！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+            msg('导入成功！', base_url('sourceaction/index/goods'), 2, 2000);
             exit;
         } elseif ($act == 'add') { //直接添加商品
             //商品数组
@@ -571,7 +571,7 @@ class sourceAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $goodsNum,
-            'url' => base_url() . '/index.php/sourceaction/goods/',
+            'url' => base_url() . 'sourceaction/goods/',
             'perPage' => $perPage,
             'maxSize' => 5,
             'isFirst' => 1,
@@ -706,7 +706,7 @@ class sourceAction extends MY_Controller
         $outDateGoodsList = $this->SourceModel->getGoodsListOutOfDate($outDate);
         //无过期商品
         if (empty($outDateGoodsList)) {
-            msg('过期商品已清理完毕！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+            msg('过期商品已清理完毕！', base_url('sourceaction/index/goods'), 2, 2000);
         }
 
         foreach ($outDateGoodsList as $value) {
@@ -730,7 +730,7 @@ class sourceAction extends MY_Controller
                 }
             }
         }
-        msg('过期商品已清理完毕！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+        msg('过期商品已清理完毕！', base_url('sourceaction/index/goods'), 2, 2000);
     }
 
     /*添加、编辑商品页面*/
@@ -840,21 +840,21 @@ class sourceAction extends MY_Controller
     public function goodsPhoto($goodsId, $goodsSkuId = '')
     {
         if (empty($goodsId)) { //商品ID为空
-            msg('参数错误！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+            msg('参数错误！', base_url('sourceaction/index/goods'), 2, 2000);
         }
         $this->L('SourceModel');
 
         /*查询商品是否存在*/
         $goodsInfo = $this->SourceModel->getGoodsInfo($goodsId);
         if (empty($goodsInfo)) { //商品不存在
-            msg('参数错误！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+            msg('参数错误！', base_url('sourceaction/index/goods'), 2, 2000);
         }
 
         /*取商品属性*/
         if (!empty($goodsSkuId)) {
             $goodsSkuList = $this->SourceModel->getSkuFromSkuId($goodsSkuId);
             if (empty($goodsSkuList)) { //商品属性不存在
-                msg('参数错误！', base_url('index.php/sourceaction/index/goods'), 2, 2000);
+                msg('参数错误！', base_url('sourceaction/index/goods'), 2, 2000);
             }
         }
 
@@ -1027,9 +1027,9 @@ class sourceAction extends MY_Controller
                 //图片不为空进行添加
                 $insertId = $this->SourceModel->addgoodsphoto($inData);
                 if ($insertId) {
-                    msg('添加成功！', base_url('index.php/sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
+                    msg('添加成功！', base_url('sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
                 } else {
-                    msg('添加失败！', base_url('index.php/sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
+                    msg('添加失败！', base_url('sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
                 }
             } else {
                 $err = '上传图片不能为空!';
@@ -1077,9 +1077,9 @@ class sourceAction extends MY_Controller
             //图片不为空进行添加
             $insertId = $this->SourceModel->editgoodsphoto($inData);
             if ($insertId) {
-                msg('修改成功！', base_url('index.php/sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
+                msg('修改成功！', base_url('sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
+                msg('修改失败！', base_url('sourceaction/addGoodsPhoto/' . $goodsid . '/' . $goodsname), 2, 2000);
             }
         }
 
@@ -1257,7 +1257,7 @@ class sourceAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $goodsSaleNum,
-            'url' => base_url() . 'index.php/sourceaction/goodsSaleListIndex/', //路径
+            'url' => base_url() . 'sourceaction/goodsSaleListIndex/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页

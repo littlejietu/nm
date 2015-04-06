@@ -17,7 +17,7 @@ class advspacsAction extends MY_Controller
         $pageArr = array(
             'page'      => $page,
             'total  '   => $advspacesNum,
-            'url'       => base_url() . 'index.php/advspacsaction/indexAdvSpaces/', //路径
+            'url'       => base_url() . 'advspacsaction/indexAdvSpaces/', //路径
             'perPage'   => $perPage, //每页显示多少条数据
             'maxSize'   => 5, //分页显示多长
             'isFirst'   => 1, //是否显示首页尾页
@@ -61,9 +61,9 @@ class advspacsAction extends MY_Controller
             );
             $advSpacesId = $this->advspacesmodel->addAdvSpaces($inData);
             if (!empty($advSpacesId)) {
-                msg('添加成功！', base_url('index.php/advspacsaction/editAdvSpaces/' . $advSpacesId), 2, 2000);
+                msg('添加成功！', base_url('advspacsaction/editAdvSpaces/' . $advSpacesId), 2, 2000);
             } else {
-                msg('添加失败！', base_url('index.php/advspacsaction/addAdvSpaces/'), 2, 2000);
+                msg('添加失败！', base_url('advspacsaction/addAdvSpaces/'), 2, 2000);
             }
         }
 
@@ -96,9 +96,9 @@ class advspacsAction extends MY_Controller
             );
             $advbool = $this->advspacesmodel->editAdvSpaces($inData);
             if ($advbool) {
-                msg('修改成功！', base_url('index.php/advspacsaction/editAdvSpaces/' . $adv_spaces_id), 2, 2000);
+                msg('修改成功！', base_url('advspacsaction/editAdvSpaces/' . $adv_spaces_id), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/advspacsaction/addAdvSpaces/' . $adv_spaces_id), 2, 2000);
+                msg('修改失败！', base_url('advspacsaction/addAdvSpaces/' . $adv_spaces_id), 2, 2000);
             }
         }
 
@@ -126,9 +126,9 @@ class advspacsAction extends MY_Controller
         if (!empty($advSpacesId)) {
             $advSpaces = $this->advspacesmodel->deleteAdvSpaces($advSpacesId);
             if ($advSpaces) {
-                msg('删除成功！', base_url('index.php/advspacsaction/index/'), 2, 2000);
+                msg('删除成功！', base_url('advspacsaction/index/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/advspacsaction/index/'), 2, 2000);
+                msg('删除失败！', base_url('advspacsaction/index/'), 2, 2000);
             }
         }
     }
@@ -145,7 +145,7 @@ class advspacsAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $advertiserNum,
-            'url' => base_url() . 'index.php/advspacsaction/indexAdvertiser/', //路径
+            'url' => base_url() . 'advspacsaction/indexAdvertiser/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -225,9 +225,9 @@ class advspacsAction extends MY_Controller
 
             $adv_id = $this->advspacesmodel->addAdvertiser($inData);
             if (!empty($adv_id)) {
-                msg('添加成功！', base_url('index.php/advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
+                msg('添加成功！', base_url('advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
             } else {
-                msg('添加失败！', base_url('index.php/advspacsaction/addAdvertiser/'), 2, 2000);
+                msg('添加失败！', base_url('advspacsaction/addAdvertiser/'), 2, 2000);
             }
         }
 
@@ -301,9 +301,9 @@ class advspacsAction extends MY_Controller
 
             $advbool = $this->advspacesmodel->editAdvertiser($inData);
             if ($advbool) {
-                msg('修改成功！', base_url('index.php/advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
+                msg('修改成功！', base_url('advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
             } else {
-                msg('修改失败！', base_url('index.php/advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
+                msg('修改失败！', base_url('advspacsaction/editAdvertiser/' . $adv_id), 2, 2000);
             }
         }
 
@@ -332,9 +332,9 @@ class advspacsAction extends MY_Controller
         if (!empty($advSpacesId)) {
             $advSpaces = $this->advspacesmodel->deleteAdvertiser($advSpacesId);
             if ($advSpaces) {
-                msg('删除成功！', base_url('index.php/advspacsaction/index/'), 2, 2000);
+                msg('删除成功！', base_url('advspacsaction/index/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/advspacsaction/index/'), 2, 2000);
+                msg('删除失败！', base_url('advspacsaction/index/'), 2, 2000);
             }
         }
     }

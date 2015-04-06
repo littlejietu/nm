@@ -61,7 +61,7 @@
                     <?php echo $value->is_rmd == 1 ? '是' : '否' ?>
                 </td>
                 <td>
-                    <a href="<?php echo base_url('index.php/sourceaction/editBrand/' . $value->brand_id . '/' . $value->brand_type) ?>">编辑</a>
+                    <a href="<?php echo base_url('sourceaction/editBrand/' . $value->brand_id . '/' . $value->brand_type) ?>">编辑</a>
                     |
                     <a href="javascript:;"
                        onclick="javascript:if(confirm('确认删除？')){delBrand(this,<?php echo $value->brand_id ?>,'<?php echo base_url() ?>');}">删除</a>

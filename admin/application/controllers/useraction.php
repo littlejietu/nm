@@ -61,7 +61,7 @@ class userAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $userNum,
-            'url' => base_url() . 'index.php/useraction/indexuserlist/', //路径
+            'url' => base_url() . 'useraction/indexuserlist/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -328,7 +328,7 @@ class userAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $collectNum,
-            'url' => base_url() . 'index.php/useraction/getCollectList/', //路径
+            'url' => base_url() . 'useraction/getCollectList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -372,7 +372,7 @@ class userAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $collectNum,
-            'url' => base_url() . '/index.php/useraction/getCollectionArticleList/',
+            'url' => base_url() . 'useraction/getCollectionArticleList/',
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -411,9 +411,9 @@ class userAction extends MY_Controller
         if (!empty($ct_id)) {
             $boolCt = $this->usermodel->deleteCollect($ct_id);
             if ($boolCt) {
-                msg('删除成功！', base_url('index.php/system/myCollectionArticle/'), 2, 2000);
+                msg('删除成功！', base_url('system/myCollectionArticle/'), 2, 2000);
             } else {
-                msg('删除失败！', base_url('index.php/system/myCollectionArticle/'), 2, 2000);
+                msg('删除失败！', base_url('system/myCollectionArticle/'), 2, 2000);
             }
         }
     }

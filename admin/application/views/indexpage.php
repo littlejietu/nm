@@ -18,7 +18,7 @@
                 <?php foreach((array)$noticeList as $v) {?>
                 <tr>
                         <td width="139" height="25" align="center"><?php echo date('Y-m-d H:i:s',$v->last_update)?></td>
-                        <td align="left" class="con_title"><a href="<?php echo base_url('index.php/articleaction/detail/'.$v->art_id);?>"><?php echo $v->art_title?></a><span>【重要】</span><strong><?php echo ($v->is_read)?'已':'未';?>读</strong></td>
+                        <td align="left" class="con_title"><a href="<?php echo base_url('articleaction/detail/'.$v->art_id);?>"><?php echo $v->art_title?></a><span>【重要】</span><strong><?php echo ($v->is_read)?'已':'未';?>读</strong></td>
                 </tr>
                 <?php }?>
                 <tr>

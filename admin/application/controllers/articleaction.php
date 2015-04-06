@@ -21,7 +21,7 @@ class articleAction extends MY_Controller {
         $pageArr        = array(
             'page'          => $page,
             'total'         => $artNum,
-            'url'           => base_url().'index.php/articleaction/index/',
+            'url'           => base_url().'articleaction/index/',
             'perPage'       => $perPage,
             'maxSize'       => 5,
             'isFirst'       => 1,
@@ -178,7 +178,7 @@ class articleAction extends MY_Controller {
         $pageArr = array(
             'page' => $page,
             'total' => $friendlyLinksNum,
-            'url' => base_url() . 'index.php/articleaction/FriendlyLinksList/', //路径
+            'url' => base_url() . 'articleaction/FriendlyLinksList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -228,11 +228,11 @@ class articleAction extends MY_Controller {
               $boolflid =  $this->articlemodel->addFriendlyLinks($inData);
             if($boolflid)
             {
-                msg('添加成功！', base_url('index.php/articleaction/FriendlyLinksList/'), 2, 2000);
+                msg('添加成功！', base_url('articleaction/FriendlyLinksList/'), 2, 2000);
             }
             else
             {
-                msg('添加失败！', base_url('index.php/articleaction/FriendlyLinksList/'), 2, 2000);
+                msg('添加失败！', base_url('articleaction/FriendlyLinksList/'), 2, 2000);
             }
         }
 
@@ -242,11 +242,11 @@ class articleAction extends MY_Controller {
             $boolflid =  $this->articlemodel->updateFriendlyLinks($flid,$inData);
             if($boolflid)
             {
-                msg('修改成功！', base_url('index.php/articleaction/FriendlyLinksList/'), 2, 2000);
+                msg('修改成功！', base_url('articleaction/FriendlyLinksList/'), 2, 2000);
             }
             else
             {
-                msg('修改失败！', base_url('index.php/articleaction/FriendlyLinksList/'), 2, 2000);
+                msg('修改失败！', base_url('articleaction/FriendlyLinksList/'), 2, 2000);
             }
         }
 
@@ -293,7 +293,7 @@ class articleAction extends MY_Controller {
         $pageArr = array(
             'page' => $page,
             'total' => $shopManageNum,
-            'url' => base_url() . 'index.php/articleaction/ShopManageList/', //路径
+            'url' => base_url() . 'articleaction/ShopManageList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -342,11 +342,11 @@ class articleAction extends MY_Controller {
             $boolflid =  $this->articlemodel->addShopManage($inData);
             if($boolflid)
             {
-                msg('添加成功！', base_url('index.php/articleaction/ShopManageList/'), 2, 2000);
+                msg('添加成功！', base_url('articleaction/ShopManageList/'), 2, 2000);
             }
             else
             {
-                msg('添加失败！', base_url('index.php/articleaction/ShopManageList/'), 2, 2000);
+                msg('添加失败！', base_url('articleaction/ShopManageList/'), 2, 2000);
             }
         }
 
@@ -356,11 +356,11 @@ class articleAction extends MY_Controller {
             $boolflid =  $this->articlemodel->updateShopManage($smid,$inData);
             if($boolflid)
             {
-                msg('修改成功！', base_url('index.php/articleaction/ShopManageList/'), 2, 2000);
+                msg('修改成功！', base_url('articleaction/ShopManageList/'), 2, 2000);
             }
             else
             {
-                msg('修改失败！', base_url('index.php/articleaction/ShopManageList/'), 2, 2000);
+                msg('修改失败！', base_url('articleaction/ShopManageList/'), 2, 2000);
             }
         }
 
@@ -407,7 +407,7 @@ class articleAction extends MY_Controller {
         $pageArr = array(
             'page' => $page,
             'total' => $subscribeEmailNum,
-            'url' => base_url() . 'index.php/articleaction/SubscribeEmailList/', //路径
+            'url' => base_url() . 'articleaction/SubscribeEmailList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
@@ -452,11 +452,11 @@ class articleAction extends MY_Controller {
             $boolflid =  $this->articlemodel->addSubscribeEmail($inData);
             if($boolflid)
             {
-                msg('添加成功！', base_url('index.php/articleaction/SubscribeEmailList/'), 2, 2000);
+                msg('添加成功！', base_url('articleaction/SubscribeEmailList/'), 2, 2000);
             }
             else
             {
-                msg('添加失败！', base_url('index.php/articleaction/SubscribeEmailList/'), 2, 2000);
+                msg('添加失败！', base_url('articleaction/SubscribeEmailList/'), 2, 2000);
             }
         }
 
@@ -466,11 +466,11 @@ class articleAction extends MY_Controller {
             $boolflid =  $this->articlemodel->updateSubscribeEmail($seid,$inData);
             if($boolflid)
             {
-                msg('修改成功！', base_url('index.php/articleaction/SubscribeEmailList/'), 2, 2000);
+                msg('修改成功！', base_url('articleaction/SubscribeEmailList/'), 2, 2000);
             }
             else
             {
-                msg('修改失败！', base_url('index.php/articleaction/SubscribeEmailList/'), 2, 2000);
+                msg('修改失败！', base_url('articleaction/SubscribeEmailList/'), 2, 2000);
             }
         }
 
