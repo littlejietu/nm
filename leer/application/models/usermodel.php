@@ -171,7 +171,7 @@ class UserModel extends MY_Model
                 'is_lock',
                 'is_lock',
             ),
-            'table' => 'user',
+            'table' => 'user_old',
             'where' => array(
                 'user_name = "' . $userName . '"'
             )
@@ -185,7 +185,7 @@ class UserModel extends MY_Model
     {
         $sqlInfo = array(
             'fields' => $sqlDate,
-            'table' => 'user',
+            'table' => 'user_old',
         );
         $insertId = $this->CoreInsert($sqlInfo);
         return $insertId;
@@ -198,7 +198,7 @@ class UserModel extends MY_Model
             'fields' => array(
                 '*',
             ),
-            'table' => 'user',
+            'table' => 'user_old',
             'where' => array(
                 'user_id = "' . $userId . '"',
                 'is_lock = 0'
@@ -214,7 +214,7 @@ class UserModel extends MY_Model
     {
         $sqlInfo = array(
             'fields' => $userSqlInfo,
-            'table' => 'user',
+            'table' => 'user_old',
             'where' => array(
                 'user_id = "' . $userId . '"',
             ),
@@ -358,7 +358,7 @@ class UserModel extends MY_Model
                 'last_ip' => $filter['userIp'],
                 'user_login_num' => ($filter['user_login_num'] + 1),
             ),
-            'table' => 'user',
+            'table' => 'user_old',
             'where' => array(
                 'user_id  = "' . $filter['userId'] . '"',
             ),

@@ -5,7 +5,6 @@ $route['admin.html'] = "indexaction";
 $route['login.html'] = "useraction/login";
 $route['404_override'] = '';
 
+$route['register'] = "user/register/index";
 
 
-/* End of file routes.php */
-/* Location: ./application/config/routes.php */
