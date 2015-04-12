@@ -68,6 +68,24 @@ function _get_key_val($val, $flag=FALSE)
 	}
 }
 
+function _get_cfg_path($key)
+{
+	$CI     =& get_instance();
+	$arrCfgpath = $CI->config->item('cfg_path');
+	if(!empty($arrCfgpath[$key]))
+		return $arrCfgpath[$key];
+	else
+		return '';
+}
+
+
+
+
+
+
+
+
+
 //缓存--begin
 if(!function_exists('cache_read')){
     function _cache_read($file, $dir = '', $mode = '') {

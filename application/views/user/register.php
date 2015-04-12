@@ -1,24 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?php //include("include/title.php");?>
-<link href="css/base.css" type="text/css" rel="stylesheet" />
-<link href="css/common.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<!--[if IE 6]>
-<script src="js/DDPngMin.js"></script>
-<script>DD_belatedPNG.fix('*');
-</script>
-<![endif]-->
-</head>
 
-<body>
-<?php //include("include/header.php");
+<?php include_once(VIEWPATH."public/header.php");?>
 
-print_r($aa);die;
-
-?>
 <div class="mainbody" id="mainbody">
     <div id="register" class="container mrgB30">
         <div class="reg_title">注册会员</div>
@@ -52,10 +34,10 @@ print_r($aa);die;
             <!--reg-left-->
             <div class="reg-right fr">
             	<div class="reg_top">
-                	<a href="register.php" class="reg_tel curr"><i></i>手机注册</a>
-                    <a href="register2.php" class="reg_mail"><i></i>邮箱注册</a>
+                	<a href="javascript:void(0);" id="xt_reg1" class="reg_tel curr"><i></i>手机注册</a>
+                    <a href="javascript:void(0);" id="xt_reg2" class="reg_mail"><i></i>邮箱注册</a>
                 </div>
-                <ul class="reg_con">
+                <ul class="reg_con xt_reg1_rgn">
                 	<li class="reg-sort">
 						<p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">经纪公司</label></p>
                         <p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">模特</label></p>
@@ -71,6 +53,20 @@ print_r($aa);die;
                     <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
+                <ul class="reg_con xthide xt_reg2_rgn">
+                    <li class="reg-sort">
+                        <p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">经纪公司</label></p>
+                        <p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">模特</label></p>
+                        <p><input type="radio" name="sort" value="" id="sort_3"/><label for="sort_3">企业</label></p>
+                    </li>
+                    <li class="reg-email">
+                        <input name="" placeholder="邮箱" value="邮箱" type="text" class="text2" id="email"/>
+                        <span class="ok"></span><span class="no">手机/邮箱不能为空</span>
+                    </li>
+                    <li class="reg-pwd"><input name="" placeholder="密码" value="密码" type="text" class="text2" id="pwd"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
+                    <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
+                    <li><input type="submit" class="but" value="注 册"/></li>
+                </ul>
                 <div class="iban_bot reg_bot">
                 	<span>您还可以用以下方式直接登录：</span>
                     <a class="iban_bota sina" href="#">微博</a><a class="iban_qq" href="#">QQ</a>
@@ -81,16 +77,31 @@ print_r($aa);die;
         </div>
     </div>
 </div>
-<?php include("include/footer.php");?>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/select.js"></script>
-<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.sly.js"></script>
-<script type="text/javascript" src="js/sly.js"></script>
+
+<?php include_once(VIEWPATH."public/footer.php");?>
+
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>select.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
 <script>
 $(function(){
-	$('.reg-left input').customInput();
+    $('.reg-left input').customInput();
 });
+
+$().ready(function() {
+    $('#xt_reg1').bind('click',function(){
+        $('.xt_reg1_rgn').css('display','');
+        $('.xt_reg1_rgn').css('display','none');
+    });
+    $('#xt_reg2').bind('click',function(){
+        $('.xt_reg1_rgn').css('display','none');
+        $('.xt_reg1_rgn').css('display','');
+    });
+});
+
 </script>
 </body>
 </html>

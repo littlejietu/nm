@@ -104,7 +104,7 @@ $autoload['helper'] = array('url','form','common');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('xt');
 
 
 /*

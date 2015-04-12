@@ -27,7 +27,6 @@ class Register extends CI_Controller {
 
             );
 
-
         $this->load->view('user/register', $data);
     }
     
