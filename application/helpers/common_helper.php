@@ -68,24 +68,6 @@ function _get_key_val($val, $flag=FALSE)
 	}
 }
 
-function _get_param($val, $is_id=FALSE)
-{
-	if($is_id)
-	{
-		if(!empty($val))
-			return _get_key_val($val);
-		else
-			return 0;
-	}
-	else
-	{
-		if(!empty($val))
-			return $val;
-		else
-			return '';
-	}
-}
-
 //缓存--begin
 if(!function_exists('cache_read')){
     function _cache_read($file, $dir = '', $mode = '') {
