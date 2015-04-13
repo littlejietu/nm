@@ -1,3 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Author" content="杭州乐邦科技有限公司,GXW">
+<meta name="Keywords" content="牛模网"/>
+<meta name="Description" content="牛模网"/>
+<title>会员注册-牛模网</title>
+<link rel="shortcut icon" href="<?php echo _get_cfg_path('images')?>mdicon.ico">
+<link rel="Bookmark" href="<?php echo _get_cfg_path('images')?>mdicon.ico">
+<link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
+<!--[if IE 6]>
+<script src="<?php echo _get_cfg_path('js')?>DD_belatedPNG.js" type="text/javascript" ></script>
+<script>DD_belatedPNG.fix('a,img');</script>
+<![endif]-->
+</head>
+<body>
 
 <?php include_once(VIEWPATH."public/header.php");?>
 

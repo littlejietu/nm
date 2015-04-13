@@ -56,3 +56,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['reg'] = "user/register/index";
 $route['reg/(:any)'] = "user/register/$1";
+$route['admin.html'] = "indexaction";
+$route['admin/login.html'] = "admin/useraction/login";
