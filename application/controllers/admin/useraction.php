@@ -9,11 +9,11 @@ class userAction extends MY_Controller
 
     public function index()
     {
-        $this->L('admin/system/usermodel');
+        $this->load->model('admin/UserModel');
         $user_level = $this->session->userdata('user_level');
-        $userList = $this->usermodel->getUser($user_level);
+        $userList = $this->UserModel->getUser($user_level);
         /*用户权限改为文字显示*/
-        $powerList = $this->usermodel->getPowerList(); //全部权限列表
+        $powerList = $this->UserModel->getPowerList(); //全部权限列表
         //全部权限列表转换成一维数组
         $powerArr = array();
         foreach ($powerList as $value) {
@@ -67,7 +67,7 @@ class userAction extends MY_Controller
      */
     public function ajaxLogin()
     {
-        $this->L('UserModel');
+        $this->load->model('admin/UserModel');
 
         $userName = $_POST['username']; //过滤特殊字符和html标签
         $password = self::setMd5($_POST['password']);
@@ -121,7 +121,7 @@ class userAction extends MY_Controller
     public function addUser($action = '', $userId = '')
     {
 
-        $this->L('admin/UserModel');
+        $this->load->model('admin/UserModel');
         $action = (empty($_POST['action'])) ? $action : $_POST['action'];
         $userId = (empty($_POST['userId'])) ? $userId : $_POST['userId'];
         if ($action == 'edit') {
@@ -222,7 +222,7 @@ class userAction extends MY_Controller
     {
 
         $userId = $_POST['userId'];
-        $this->load->model('UserModel');
+        $this->load->model('admin/UserModel');
         $this->UserModel->deleteAdmin($userId);
         echo json_encode('success');
         return;
@@ -231,8 +231,8 @@ class userAction extends MY_Controller
     /*分配权限*/
     public function givePower($userId)
     {
-        $this->L('UserModel');
-        $this->L('IndexModel');
+        $this->load->model('admin/UserModel');
+        $this->load->model('IndexModel');
         //保存分配的权限
         $act = empty($_POST['act']) ? '' : $_POST['act'];
         if ($act == 'save') {
@@ -288,7 +288,7 @@ class userAction extends MY_Controller
      */
     public function getCollectList($page = 1)
     {
-        $this->L('usermodel');
+        $this->load->model('admin/usermodel');
         $page = ($page > 0) ? $page : 1;
         $where[] = 'type = 1'; //组装 查询条件
         $collectNum = $this->usermodel->getCollectNum($where);
@@ -331,7 +331,7 @@ class userAction extends MY_Controller
      */
     public function  getCollectionArticleList($page = 1)
     {
-        $this->L('usermodel');
+        $this->load->model('admin/usermodel');
         $page = ($page > 0) ? $page : 1;
         $where[] = 'type =2'; //组装 查询条件
         $collectNum = $this->usermodel->getCollectNum($where);
@@ -373,7 +373,7 @@ class userAction extends MY_Controller
      * */
     public function deleteCollect()
     {
-        $this->L('usermodel');
+        $this->load->model('admin/usermodel');
         $ct_id = $this->input->get_post('id');
         //判断接受ID是否有值
         if (!empty($ct_id)) {
