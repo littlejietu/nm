@@ -12,6 +12,7 @@ class Aa extends CI_Controller {
     //默认执行index
 	public function index()
 	{
+		//
 		$list = $this->Aa_model->get_list();
 
 		$result = array(
@@ -25,7 +26,7 @@ class Aa extends CI_Controller {
 	{
 		//需要修改
 		// $id	= _get_key_val($this->input->get('id'), TRUE);
-		// $result = array();
+		 $result = array();
 
 		// if(!empty($id))
 		// {
