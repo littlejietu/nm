@@ -100,6 +100,8 @@ class IndexModel extends MY_Model {
             'where'     => array(),
             'order'     => array('sequence asc','sys_id asc'),
         );
+        if(empty($userPower))
+            $userPower = '1';
         $power = ($userLevel==0)?'':'sys_id in ('.$userPower.')';
 
         $sqlInfo['where']   = array('sys_step = 0',$power);
