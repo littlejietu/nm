@@ -10,23 +10,11 @@
 					if($va->sys_partid == $v->sys_id && $va->is_show){
 				?>
                 <li>
-					<a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('<?php echo base_url()?>index.php/<?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a>
+					<a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('<?php echo base_url() . $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a>
                 </li>
                  <?php }}?>
             </ul>
         </div>
     <?php }}?>
+    <a onclick='javascript:loadRight("/admin/aa")'>aa管理</a>
 </div>
-<!--<div class="left">
-    <?php foreach((array)$leftList['stepFirst'] as $k => $v){?>
-    <p onclick="javascript:showOrHidden(this);"><?php echo $v->sys_name?></p>
-    <ul>
-        <?php
-            foreach($leftList['stepSecond'] as $ka => $va){
-                if($va->sys_partid == $v->sys_id){
-        ?>
-        <li><a <?php if(!empty($va->sys_link)){?>onclick="javascript:loadRight('/index.php/<?php echo $va->sys_link?>');"<?php }?>><?php echo $va->sys_name?></a></li>
-        <?php }}?>
-    </ul>
-    <?php }?>
-</div>-->

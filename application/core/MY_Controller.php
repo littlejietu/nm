@@ -15,10 +15,10 @@ class MY_Controller extends CI_Controller {
 
         //验证登录
         $this->checkLogin();
-        $userId         = empty($this->session->userdata['admin_id'])?'':$this->session->userdata['admin_id'];
+        $userId         = $this->session->userdata('admin_id');
         if($userId){
             /*取左侧数据*/
-            $this->L('indexmodel');
+            $this->load->model('admin/indexmodel');
             $sessionLevel   = $this->session->userdata['user_level'];
             $sessionPower   = $this->session->userdata['user_power'];
             $data['systemList']   = $this->indexmodel->getLeft($sessionLevel,$sessionPower);
@@ -36,7 +36,7 @@ class MY_Controller extends CI_Controller {
         $isAjaxLogin    = strpos('anything'.uri_string(),'useraction/ajaxLogin');//ajax提交登录信息时不验证是否登录
 
         if($isLoginHtml == False && $sqlBat == False && $isAjaxLogin == False && $isAjaxGetCode == False && $this->session->userdata ( 'admin_id' ) == ''){
-            redirect('login.html');
+            redirect(base_url('/admin/login.html'));
         }
     }
 
@@ -51,7 +51,7 @@ class MY_Controller extends CI_Controller {
             'word' => $randStr,
             'img_path' => './upload/captcha/',
             'img_url' => base_url('upload/captcha').'/',
-            'img_width' => 80,
+            'img_width' => 78,
             'img_height' => 40,
             'expiration' => 7200
         );
@@ -142,5 +142,8 @@ class MY_Controller extends CI_Controller {
         }
         return $categoryList;
     }
+
+
+
 
 }

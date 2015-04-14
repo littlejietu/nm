@@ -3,16 +3,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>乐儿-商城管理系统</title>
-    <link href="<?php echo base_url();?>resources/backstage/css/base.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url();?>resources/backstage/css/common.css" rel="stylesheet" type="text/css" />
-    <script language="javascript" src="<?php echo base_url();?>resources/backstage/js/jquery-1.8.0.min.js"></script>
-	<script language="javascript" src="<?php echo base_url();?>resources/backstage/js/main.js"></script>
-	<script language="javascript" src="<?php echo base_url();?>resources/backstage/js/user.js"></script>
-	<script language="javascript" src="<?php echo base_url();?>resources/backstage/js/ajax.js"></script>
-    <script language="javascript" src="<?php echo base_url();?>resources/backstage/js/source.js"></script>
-    <script language="javascript" src="<?php echo base_url();?>resources/backstage/js/common.js"></script>
+    <link href="<?php echo _get_cfg_path('admin_css')?>base.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo _get_cfg_path('admin_css')?>common.css" rel="stylesheet" type="text/css" />
+    <script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>jquery-1.8.0.min.js"></script>
+	<script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>main.js"></script>
+	<script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>user.js"></script>
+	<script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>ajax.js"></script>
+    <script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>source.js"></script>
+    <script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>common.js"></script>
     <!--[if IE 6]>
-    <script src="<?php echo base_url();?>resources/backstage/js/iepng.js" type="text/javascript"></script>
+    <script src="<?php echo _get_cfg_path('admin_js')?>iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input,a,span');
     </script>
@@ -27,7 +27,7 @@
     </div>
     <div class="nav">
         <ul>
-            <li><a class="on" href="/index.php">首页</a></li>
+            <li><a class="on" href="/">首页</a></li>
             <li><a href="javascript:logout('<?php echo base_url();?>');">退出</a></li>
         </ul>
     </div>
