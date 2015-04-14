@@ -1,4 +1,4 @@
-<?php include_once("right_head.php")?>
+<?php include_once("right_head.php");?>
 <div class="common">
     <div class="goodsTitle">
         <a href="<?php echo base_url();?>index.php/useraction/index" class="topBtn">返回列表</a>

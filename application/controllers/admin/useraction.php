@@ -72,7 +72,7 @@ class userAction extends MY_Controller
         $userName = $_POST['username']; //过滤特殊字符和html标签
         $password = self::setMd5($_POST['password']);
         $code = self::setMd5(strtolower($_POST['code']));
-        $loginCode = empty($this->session->userdata['login_code']) ? '' : $this->session->userdata['login_code'];
+        $loginCode = $this->session->userdata('login_code');
 
         if ($code != $loginCode && $code != '') { //验证码错误
             echo 'code_error';
@@ -296,7 +296,7 @@ class userAction extends MY_Controller
         $pageArr = array(
             'page' => $page,
             'total' => $collectNum,
-            'url' => base_url() . 'index.php/useraction/getCollectList/', //路径
+            'url' => base_url() . 'useraction/getCollectList/', //路径
             'perPage' => $perPage, //每页显示多少条数据
             'maxSize' => 5, //分页显示多长
             'isFirst' => 1, //是否显示首页尾页
