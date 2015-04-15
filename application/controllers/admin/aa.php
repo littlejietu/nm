@@ -12,11 +12,28 @@ class Aa extends CI_Controller {
     //默认执行index
 	public function index()
 	{
-		$list = $this->Aa_model->get_list();
+		$page     = _get_page();
+		$pagesize = 10;
+		$arrParam = array();
+		$arrWhere = array();
+
+		$list = $this->Aa_model->fetch_page($page, $pagesize, $arrWhere);
+		
+
+		
+		$pagecfg = array();
+		$pagecfg['base_url']     = _create_url('admin/aa', $arrParam);
+		$pagecfg['total_rows']   = $list['count'];
+		$pagecfg['cur_page'] = $page;
+		$pagecfg['per_page'] = $pagesize;
+		//$this->load->library('pagination');
+		$this->pagination->initialize($pagecfg);
+		$list['pages'] = $this->pagination->create_links();
 
 		$result = array(
 			'list' => $list,
 			);
+
 
 		$this->load->view('admin/aa',$result);
 	}
@@ -74,7 +91,8 @@ class Aa extends CI_Controller {
 
   				$this->Aa_model->insert($data);
 
-				echo '成功,<a href="/admin/aa">返回列表页</a>';
+				//echo '成功,<a href="/admin/aa">返回列表页</a>';
+				redirect('/admin/aa');
 				exit;
   			}
 			

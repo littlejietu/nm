@@ -50,7 +50,7 @@ body{ background: none;}
 /*资源管理end*/
 
 /*新加元素 start*/
-.addTable{padding:20px 0 0 0;color:#333;margin:0 0 0 30px;}
+.addTable{padding:20px 0 0 0;color:#333;margin:0 0 0 30px; font-size: 12px}
 .addTable tr{height:40px;}
 .listTab{padding:20px 0 0 0;text-align:center;width:100%;}
 .listTab a{color:#c8113d;}

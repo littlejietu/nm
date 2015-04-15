@@ -78,7 +78,30 @@ function _get_cfg_path($key)
 		return '';
 }
 
+function _create_url($base_url, $params=array())
+{
+	if (substr($base_url, 0, 7) !='http://')$base_url = base_url($base_url);
+	return $base_url._array_to_url($params);
+}
 
+function _array_to_url($params=array())
+{
+	$url = array();
+	if ($params)
+	foreach($params as $k=>$v)
+	{
+		if (strlen($v)==0)continue;
+		$url[] = $k.'='.urlencode($v);
+	}
+	return $url ? '?'.join('&',$url):'';
+}
+
+function _get_page($name='page')
+{
+	$CI =& get_instance();
+	$page = (int)$CI->input->get($name);
+	return max($page,1);
+}
 
 
 
