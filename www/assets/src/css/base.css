@@ -111,4 +111,4 @@ transition: all 0.2s ease-in-out;}
 /* Top end */
 
 .xthide{display: none;}
-.xtshow{display: inline-block;}
+.xtshow{display: block;}

@@ -71,7 +71,7 @@
                     <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
-                <ul class="reg_con xthide xt_reg2_rgn">
+                <ul class="reg_con xthide xt_reg2_rgn ">
                     <li class="reg-sort">
                         <p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">经纪公司</label></p>
                         <p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">模特</label></p>
@@ -104,22 +104,6 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
-<script>
-$(function(){
-    $('.reg-left input').customInput();
-});
-
-$().ready(function() {
-    $('#xt_reg1').bind('click',function(){
-        $('.xt_reg1_rgn').css('display','');
-        $('.xt_reg1_rgn').css('display','none');
-    });
-    $('#xt_reg2').bind('click',function(){
-        $('.xt_reg1_rgn').css('display','none');
-        $('.xt_reg1_rgn').css('display','');
-    });
-});
-
-</script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 </body>
 </html>
