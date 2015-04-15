@@ -104,6 +104,7 @@ input[type="text"].addText{width:300px;}
 
 /*提示框 start*/
 .error{ position:fixed; background:#eee; width:300px; height:60px; left:50%; top:200px; margin:0 0px 0px -150px; line-height:60px; text-align:center; color:#999;  border:1px solid #ccc;}
+.valid_error{ background:#eee; width:500px; height:30px; line-height:30px; text-align:center; color:#999;  border:1px solid #ccc;}
 #tipsPop{width:270px;background:#fff;-moz-border-radius: 8px;/* Gecko browsers */-webkit-border-radius: 8px;   /* Webkit browsers */border-radius:8px;position:fixed;top:50%;left:50%;margin:-100px 0 0 -135px;z-index:222;}
 .tipsPop_main{padding:20px 25px;color:#000000;}
 .tipsPop_title{text-align:center;font-size:18px;padding:0 0 10px 0;}
