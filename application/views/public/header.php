@@ -10,7 +10,7 @@
 </div>
 <div class="header">
     <div class="container clearfix">
-       <div class="fl logo"><a href="index.php" title="返回首页"><img alt="牛模网logo" src="<?php echo _get_cfg_path('images')?>logo.png" height="30"/></a></div>
+       <div class="fl logo"><a href="/admin" title="返回首页"><img alt="牛模网logo" src="<?php echo _get_cfg_path('images')?>logo.png" height="30"/></a></div>
        <div class="fr nav">
           <ul class="clearfix">
              <li>

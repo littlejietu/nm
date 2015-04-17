@@ -232,7 +232,7 @@ class userAction extends MY_Controller
     public function givePower($userId)
     {
         $this->load->model('admin/UserModel');
-        $this->load->model('IndexModel');
+        $this->load->model('admin/IndexModel');
         //保存分配的权限
         $act = empty($_POST['act']) ? '' : $_POST['act'];
         if ($act == 'save') {
