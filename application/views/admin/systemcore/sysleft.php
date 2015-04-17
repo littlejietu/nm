@@ -1,7 +1,7 @@
 <?php include_once("right_head.php");?>
 <div class="common">
     <?php if( $userLevel < 1){?>
-    <div class="goodsTitle"><a href="<?php echo base_url()?>indexaction/addLeft" class="topBtn">添加栏目</a></div>
+    <div class="goodsTitle"><a href="<?php echo base_url()?>admin/indexaction/addLeft" class="topBtn">添加栏目</a></div>
     <?php }?>
     <table class="listTab" cellpadding="0" cellspacing="0" bordercolor="#e4e4e4" border="1">
        <tr height="39" style="font-size:13px;">

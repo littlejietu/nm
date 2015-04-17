@@ -16,5 +16,4 @@
             </ul>
         </div>
     <?php }}?>
-    <a onclick='javascript:loadRight("/admin/aa")'>aa管理</a>
 </div>
