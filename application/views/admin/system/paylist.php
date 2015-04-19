@@ -1,7 +1,7 @@
-<?php include_once("right_head.php")?>
+<?php include_once("right_head.php");?>
 <div class="common">
     <table class="listTab" cellpadding="0" cellspacing="0" bordercolor="#e4e4e4" border="1">
-        <form action="<?php echo base_url('index.php/payaction/index')?>" method="post">
+        <form action="<?php echo base_url('admin/payaction/index')?>" method="post">
             <input type="hidden" name="act" value="edit">
         <tr height="39" style="font-size:13px;">
             <td width="5%">收款方式</td>
