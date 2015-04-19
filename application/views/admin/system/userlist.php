@@ -1,4 +1,4 @@
-<?php include_once("right_head.php")?>
+<?php include_once("right_head.php");?>
 <div class="common">
     <div class="goodsTitle">
         <a href="addUser" class="topBtn">添加</a>
@@ -58,9 +58,9 @@
             <td><a onclick="javascript:changeLock(this,'<?php echo $value->user_id?>');" value="<?php echo ($value->is_lock)?'0':'1';?>"><?php echo ($value->is_lock)?'是':'否';?></a> </td>
             <td><?php echo date('Y-m-d H:i',$value->last_login_time)?></td>
             <td>
-                <a href="<?php echo base_url();?>index.php/useraction/addUser/edit/<?php echo $value->user_id?>">编辑</a><span class="caozuo_line">|</span>
+                <a href="<?php echo base_url();?>admin/useraction/addUser/edit/<?php echo $value->user_id?>">编辑</a><span class="caozuo_line">|</span>
                 <a onclick="javascript:if(confirm('确认删除？')){delAdmin(<?php echo $value->user_id?>);}">删除</a><span class="caozuo_line">|</span>
-                <a href="<?php echo base_url();?>index.php/useraction/givePower/<?php echo $value->user_id?>">分配权限</a>
+                <a href="<?php echo base_url();?>admin/useraction/givePower/<?php echo $value->user_id?>">分配权限</a>
             </td>
         </tr>
         <?php }?>

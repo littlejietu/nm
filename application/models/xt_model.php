@@ -38,15 +38,39 @@ class XT_Model extends CI_Model {
 	{
 		return $this->db->query($sql);
 	}
-	
+
+	public function get_info_by_id($id, $fields='*')
+	{
+		$result = $this->db->select($fields)
+					->from($this->mTable)
+					->where('id', $id)
+					->get()
+					->row_array();
+		return $result;
+	}
+
 	public function insert($data)
+	{
+		$sql = $this->db->insert_string($this->mTable, $data);
+		$sql = 'INSERT IGNORE '.ltrim($sql,'INSERT');
+
+		$update = array();
+		foreach($data as $key=>$val)
+		{
+			$update[] = $key.'='.$this->db->escape($val);
+		}
+		$sql .= ' ON duplicate KEY UPDATE '.join(',', $update);
+
+		return $this->db->query($sql);
+	}
+	
+	public function insert_string($data)
 	{
 		$sql = $this->db->insert_string($this->mTable, $data);
 		$this->db->query($sql);
 		$id =  $this->db->insert_id();
 		return $id;
 	}
-	
 
 	public function insert_ignore($data)
 	{
@@ -66,12 +90,22 @@ class XT_Model extends CI_Model {
 		
 		return $this->db->insert_id();
 	}
+
+	public function get_count($where)
+	{
+		$result = $this->db->select('COUNT(1) AS count', FALSE)
+					->from($this->mTable)
+					->where($where)
+					->get()
+					->row_array();
+		return (int)$result['count'];
+	}
 	
-	public function count($where)
+	public function count($arrWhere)
 	{
 		$this->db->select('COUNT(1) AS count', FALSE)
 					->from($this->mTable);
-		foreach($where as $key=>$val)
+		foreach($arrWhere as $key=>$val)
 		{	
 			if (is_array($val))
 			{

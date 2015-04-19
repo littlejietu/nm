@@ -1,7 +1,7 @@
-<?php include_once("right_head.php")?>
+<?php include_once("right_head.php");?>
 <div class="common">
     <div class="ban">
-        <a href="<?php echo base_url();?>index.php/useraction/index">返回列表</a>
+        <a href="<?php echo base_url();?>admin/useraction/index">返回列表</a>
     </div>
         <table class="listTab">
             <tr>
@@ -43,9 +43,9 @@
                 <td><a onclick="javascript:changeLock(this,'<?php echo $userInfo->user_id?>');" value="<?php echo ($userInfo->is_lock)?'0':'1';?>"><?php echo ($userInfo->is_lock)?'是':'否';?></a> </td>
                 <td><?php echo date('Y-m-d H:i',$userInfo->last_login_time)?></td>
                 <td>
-                    <a href="<?php echo base_url();?>index.php/useraction/addUser/edit/<?php echo $userInfo->user_id?>">编辑</a>
+                    <a href="<?php echo base_url();?>admin/useraction/addUser/edit/<?php echo $userInfo->user_id?>">编辑</a>
                     <a onclick="javascript:if(confirm('确认删除？')){delAdmin(<?php echo $userInfo->user_id?>);}">删除</a>
-                    <a href="<?php echo base_url();?>index.php/useraction/givePower/<?php echo $userInfo->user_id?>">分配权限</a>
+                    <a href="<?php echo base_url();?>admin/useraction/givePower/<?php echo $userInfo->user_id?>">分配权限</a>
                 </td>
             </tr>
         </table>
