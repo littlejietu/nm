@@ -119,9 +119,9 @@ class Activity extends CI_Controller {
 					'addtime'=>time(),
 					'display'=>$this->input->post('display'),
 					'status'=>$this->input->post('status'),
-					'op_userid'=>$this->input->post('op_userid'),
-					'op_username'=>$this->input->post('op_username'),
-					'op_time'=>$this->input->post('op_time'),
+					'op_userid'=>0,
+					'op_username'=>0,
+					'op_time'=>$this->time(),
 				);
 
   				$id	= _get_key_val($this->input->get('id'), TRUE);
