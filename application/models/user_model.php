@@ -3,14 +3,17 @@
 class User_model extends XT_Model {
 
 	protected $mTable = 'user';
+	protected $tb_userdetail = 'user_detail';
+	protected $tb_usermemo = 'user_memo';
 
-	public function insert($data)
+	public function get_info_by_id($id, $fields='*')
 	{
-		$sql = $this->db->insert_string($this->mTable, $data);
-		$this->db->query($sql);
-		$id =  $this->db->insert_id();
-		return $id;
+		$aUser = $this->get_by_id($id, $fields);
+		$aUserDetail = $this->get_by_where("userid=$id",'*',$this->tb_userdetail);
+		$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
+		return array_merge($aUser, $aUserDetail, $aUserMemo);
 	}
+
 
 	public function get_user_by_username($username, $fields='*')
 	{
@@ -42,17 +45,7 @@ class User_model extends XT_Model {
 		return $db_temp;
 	}
 
-	/**
-	*根据条件查询
-	*/
-	public function get_info_by_where($where, $fields='*'){
-		$result = $this->db->select($fields)
-		->from($this->mTable)
-		->where($where,NULL,FALSE)
-		->get()
-		->row_array();
-		return $result;
-	}
+	
 
 	public function login_update($id, $last_datetime, $last_ip)
 	{
@@ -82,21 +75,13 @@ class User_model extends XT_Model {
 	/**
 	*通过用户表id更新
 	*/
-	public function update_by_id($id, $data){
+	public function update_info_by_id($id, $data, $data_detail=array(), $data_memo=array()){
 		$where = array('id'=> $id);
-		$sql = $this->db->update_string($this->mTable, $data, $where);
-		return $this->db->query($sql);
-	}
-
-	public function get_user_by_id($id, $fields='*')
-	{
-		$db_temp = $this->db->select($fields)
-		->from($this->mTable)
-		->where('id', $id)
-		->get()
-		->row_array();
-
-		return $db_temp;
+		if(!empty($data_detail))
+			$this->update_by_where("userid=$id", $data_detail, $this->tb_userdetail);
+		if(!empty($data_memo))
+			$this->update_by_where("userid=$id", $data_memo, $this->tb_usermemo);
+		return $this->update_by_id($id, $data);
 	}
 
 	public function get_user_by_ids($id, $fields = "*")

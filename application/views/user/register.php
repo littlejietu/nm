@@ -23,7 +23,7 @@
     <div id="register" class="container mrgB30">
         <div class="reg_title">注册会员</div>
         <div class="register">
-            <form name="reg-form" action="/reg/save" method="post">
+            
             <div class="reg-left">
                 <div id="reg-vertical" class="reg-scrollbox clearfix">
                     <div class="reg-slyWrap example2" style="float:right;">
@@ -50,6 +50,7 @@
                 </div>
             </div>
             <!--reg-left-->
+            <form name="signupForm" action="/reg/save" method="post">
             <div class="reg-right fr">
             	<div class="reg_top">
                 	<a href="javascript:void(0);" id="xt_reg1" class="reg_tel curr"><i></i>手机注册</a>
@@ -57,9 +58,9 @@
                 </div>
                 <ul class="reg_con">
                 	<li class="reg-sort">
-						<p><input type="radio" name="usertype" value="2" id="sort_1"/><label for="sort_1">经纪公司</label></p>
-                        <p><input type="radio" name="usertype" value="1" id="sort_2"/><label for="sort_2">模特</label></p>
-                        <p><input type="radio" name="usertype" value="3" id="sort_3"/><label for="sort_3">企业</label></p>
+                        <?php foreach ($usertype as $key => $value): ?>
+						  <p><input type="radio" name="usertype" value="<?php echo $key;?>" id="sort_<?php echo $key;?>"/><label for="sort_<?php echo $key;?>"><?php echo $value;?></label></p>
+                        <?php endforeach;?>
                     </li>
                 </ul>
                 <ul class="reg_con xt_reg1_rgn">
@@ -101,6 +102,8 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
+
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 </body>
 </html>
