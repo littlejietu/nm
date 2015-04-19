@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Activity extends CI_Controller {
+class Comment extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('Activity_model');
+        $this->load->model('Comment_model');
     }
 	
     //默认执行index
@@ -17,13 +17,13 @@ class Activity extends CI_Controller {
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere);
+		$list = $this->Comment_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
 		
 
 		//分页
 		$pagecfg = array();
-		$pagecfg['base_url']     = _create_url('admin/activity', $arrParam);
+		$pagecfg['base_url']     = _create_url('admin/comment', $arrParam);
 		$pagecfg['total_rows']   = $list['count'];
 		$pagecfg['cur_page'] = $page;
 		$pagecfg['per_page'] = $pagesize;
@@ -36,7 +36,7 @@ class Activity extends CI_Controller {
 			);
 
 
-		$this->load->view('admin/activity',$result);
+		$this->load->view('admin/comment',$result);
 	}
 
 	public function add()
@@ -47,14 +47,14 @@ class Activity extends CI_Controller {
 
 		if(!empty($id))
 		{
-			$info = $this->Activity_model->get_info_by_id($id);
+			$info = $this->Comment_model->get_info_by_id($id);
 			$result = array(
 				'info'=>$info,
 				);
 		}
 		
 
-		$this->load->view('admin/activity_add', $result);
+		$this->load->view('admin/comment_add', $result);
 	}
 
 	public function save()
@@ -64,34 +64,34 @@ class Activity extends CI_Controller {
 		{
 			//验证规则
 			$config = array(
-               array(
-                     'field'   => 'title', 
-                     'label'   => '活动名称', 
-                     'rules'   => 'trim|required'
-                  ),
                 array(
-                     'field'   => 'type', 
-                     'label'   => '活动类型', 
-                     'rules'   => 'trim|required'
-                  ),
-               array(
-                     'field'   => 'img', 
-                     'label'   => '活动图片', 
+                     'field'   => 'figure', 
+                     'label'   => '身材样貌', 
                      'rules'   => 'trim|required'
                   ),  
                 array(
-                     'field'   => 'begtime', 
-                     'label'   => '开始时间', 
+                     'field'   => 'skill', 
+                     'label'   => '专业技能', 
                      'rules'   => 'trim|required'
                   ),  
-                 array(
-                     'field'   => 'endtime', 
-                     'label'   => '结束时间', 
+                array(
+                     'field'   => 'efficiency', 
+                     'label'   => '工作效率', 
                      'rules'   => 'trim|required'
                   ),  
-                  array(
-                     'field'   => 'place', 
-                     'label'   => '地点', 
+                array(
+                     'field'   => 'attitude', 
+                     'label'   => '服务态度', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'memo', 
+                     'label'   => '评价内容', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'good', 
+                     'label'   => '是否精华', 
                      'rules'   => 'trim|required'
                   ),  
                 array(
@@ -106,32 +106,28 @@ class Activity extends CI_Controller {
 			if ($this->form_validation->run() === TRUE)
   			{
   				$data = array(
-					'title'=>$this->input->post('title'),
-					'type'=>$this->input->post('type'),
-					'img'=>$this->input->post('img'),
-					'intro'=>$this->input->post('intro'),
-					'begtime'=>$this->input->post('begtime'),
-					'endtime'=>$this->input->post('endtime'),
-					'place'=>$this->input->post('place'),
-					'address'=>$this->input->post('address'),
-					'innumfake'=>$this->input->post('innumfake'),
-					'innum'=>$this->input->post('innum'),
+					'figure'=>$this->input->post('figure'),
+					'skill'=>$this->input->post('skill'),
+					'efficiency'=>$this->input->post('efficiency'),
+					'attitude'=>$this->input->post('attitude'),
+					'memo'=>$this->input->post('memo'),
+					'good'=>$this->input->post('good'),
 					'addtime'=>time(),
 					'display'=>$this->input->post('display'),
 					'status'=>$this->input->post('status'),
 					'op_userid'=>0,
 					'op_username'=>0,
-					'op_time'=>$this->time(),
+					'op_time'=>time(),
 				);
 
   				$id	= _get_key_val($this->input->get('id'), TRUE);
   				if($id)
   					$data['id'] = $id;
 
-  				$this->Activity_model->insert($data);
+  				$this->Comment_model->insert($data);
 
 				//echo '成功,<a href="/admin/aa">返回列表页</a>';
-				redirect(base_url('/admin/activity'));
+				redirect(base_url('/admin/comment'));
 				exit;
   			}
   			else
@@ -141,12 +137,12 @@ class Activity extends CI_Controller {
 
 				if(!empty($id))
 				{
-					$info = $this->Activity_model->get_info_by_id($id);
+					$info = $this->Comment_model->get_info_by_id($id);
 					$result = array(
 						'info'=>$info,
 						);
 				}
-  				$this->load->view('admin/activity_add',$result);
+  				$this->load->view('admin/comment_add',$result);
   				//redirect('/admin/link/add?id='.$this->input->get('id'));
   			}
 			
@@ -160,8 +156,8 @@ class Activity extends CI_Controller {
 		$id	= _get_key_val($this->input->get('id'), TRUE);
 		$page = _get_page();
 
-		$this->Activity_model->delete_by_id($id);
-		redirect( base_url('/admin/activity?page='.$page) );
+		$this->Comment_model->delete_by_id($id);
+		redirect( base_url('/admin/comment?page='.$page) );
 
 	}
 }
