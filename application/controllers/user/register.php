@@ -38,6 +38,76 @@ class Register extends CI_Controller {
             exit;
         }
     }
+
+    public function save()
+    {
+        
+        if ($this->input->is_post())
+        {
+            $version = $this->input->post('version');
+            
+            
+
+
+
+        }
+    }
+
+    public function reg_by_phone(){
+        $res = array('code'=>0,'message'=>'');
+        //验证规则
+        $config = array(
+            array(
+                 'field'   => 'usertype', 
+                 'label'   => '用户类型', 
+                 'rules'   => 'trim|required'
+              ),
+            array(
+                 'field'   => 'phone', 
+                 'label'   => '手机号', 
+                 'rules'   => 'trim|required'
+              ),
+            array(
+                 'field'   => 'code', 
+                 'label'   => '验证码', 
+                 'rules'   => 'trim|required'
+              ),  
+            array(
+                 'field'   => 'password', 
+                 'label'   => '密码', 
+                 'rules'   => 'trim|required'
+              ),
+        );
+
+        $this->form_validation->set_rules($config);
+
+        if ($this->form_validation->run() === TRUE)
+        {
+            $data = array(
+                'usertype'=>$this->input->post('usertype'),
+                'username'=>$this->input->post('phone'),
+                'password'=>$this->input->post('password'),
+            );
+
+            $data_detail = array(
+                );
+            $data_memo = array(
+                );
+            //保存数据库
+            //$this->User_model->update_info_by_id($id, $data, $data_detail, $data_memo);
+
+            //echo '成功,<a href="/admin/aa">返回列表页</a>';
+            $res['code'] = 200;
+            
+        }
+        
+        echo json_encode($res);
+        exit;
+    }
+
+
+
+
     public function success()
     {
         $this->check_360();

@@ -1,6 +1,6 @@
 <html>
 <body>
-<form id="signupForm" method="get" action="">
+<form id="afrm" method="get" action="">
     <p>
         <label for="firstname">Firstname</label>
         <input id="firstname" name="firstname" />
@@ -23,7 +23,13 @@
 </form>
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>select.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 
 </body>

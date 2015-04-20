@@ -1,7 +1,7 @@
 
 $().ready(function() {
 
-    //$('.reg-left input').customInput();
+    $('.reg-left input').customInput();
 
     $('#xt_reg1').bind('click',function(){
         $('.xt_reg1_rgn').css('display','block');
@@ -17,22 +17,11 @@ $().ready(function() {
         $(this).addClass('curr');
     });
 
-
-     $("#signupForm").validate({
-        rules: {
-            usertype : "required"
-        },
-        submitHandler:function(form){
-            alert("submitted");   
-            form.submit();
-        }    
-    });
-
     //验证--begin
     $("#afrm").validate({
         rules: {
             usertype : "required",
-            contact_name : "required",
+            phone : "required",
             service_type : 'required',
             service_introduce : 'required',
             phone_cr:{
@@ -57,7 +46,7 @@ $().ready(function() {
         },
         messages: {
            usertype: '<span class="no"></span>',
-           contact_name: '<i class="icoErr16"></i>请输入您的真实姓名',
+           phone: '<span class="no"></span>',
            service_type : '<i class="icoErr16"></i>请选择服务类型',
            service_introduce : '<i class="icoErr16"></i>请输入服务范围',
            phone_cr : '<i class="icoErr16"></i>',
@@ -67,11 +56,17 @@ $().ready(function() {
            fax_qh : '<i class="icoErr16"></i>',
            fax : '<i class="icoErr16"></i>',
         },
-
-        errorClass:"no",
+        //errorClass:"no",
         errorElement:"em",
+        //errorPlacement: function (error, element) {
+            // if (element.attr('name')=='usertype') {
+            //     $('#usertype-error').show();
+            // } else {
+            //     error.insertAfter(element);
+            // }
+        //},
         submitHandler:function(form){
-            alert("submitted");   
+            //alert("submitted");   
             //form.submit();
             var options = { dataType:'json',
                 success: function(res) {
