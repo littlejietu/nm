@@ -22,11 +22,9 @@ class Register extends CI_Controller {
         // }
         
 
-         $data = array(
-            'aa'=>array(1=>'aba',2=>'ac'),
-
-            );
-
+        $data = array(
+            'usertype'=> $this->config->item('usertype'),
+        );
         $this->load->view('user/register', $data);
     }
     

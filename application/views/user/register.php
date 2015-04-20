@@ -23,7 +23,7 @@
     <div id="register" class="container mrgB30">
         <div class="reg_title">注册会员</div>
         <div class="register">
-            <form name="reg-form">
+            
             <div class="reg-left">
                 <div id="reg-vertical" class="reg-scrollbox clearfix">
                     <div class="reg-slyWrap example2" style="float:right;">
@@ -50,17 +50,20 @@
                 </div>
             </div>
             <!--reg-left-->
+            <form name="signupForm" action="/reg/save" method="post">
             <div class="reg-right fr">
             	<div class="reg_top">
                 	<a href="javascript:void(0);" id="xt_reg1" class="reg_tel curr"><i></i>手机注册</a>
                     <a href="javascript:void(0);" id="xt_reg2" class="reg_mail"><i></i>邮箱注册</a>
                 </div>
-                <ul class="reg_con xt_reg1_rgn">
+                <ul class="reg_con">
                 	<li class="reg-sort">
-						<p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">经纪公司</label></p>
-                        <p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">模特</label></p>
-                        <p><input type="radio" name="sort" value="" id="sort_3"/><label for="sort_3">企业</label></p>
+                        <?php foreach ($usertype as $key => $value): ?>
+						  <p><input type="radio" name="usertype" value="<?php echo $key;?>" id="sort_<?php echo $key;?>"/><label for="sort_<?php echo $key;?>"><?php echo $value;?></label></p>
+                        <?php endforeach;?>
                     </li>
+                </ul>
+                <ul class="reg_con xt_reg1_rgn">
                     <li class="reg-user">
                         <input name="" placeholder="手机" value="手机" type="text" class="text2" id="user"/>
                         <input name="" type="button" class="ru_but but" value="绑定手机"/>
@@ -71,12 +74,7 @@
                     <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
-                <ul class="reg_con xthide xt_reg2_rgn ">
-                    <li class="reg-sort">
-                        <p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">经纪公司</label></p>
-                        <p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">模特</label></p>
-                        <p><input type="radio" name="sort" value="" id="sort_3"/><label for="sort_3">企业</label></p>
-                    </li>
+                <ul class="reg_con xthide xt_reg2_rgn">
                     <li class="reg-email">
                         <input name="" placeholder="邮箱" value="邮箱" type="text" class="text2" id="email"/>
                         <span class="ok"></span><span class="no">手机/邮箱不能为空</span>
@@ -104,6 +102,8 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
+
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 </body>
 </html>

@@ -13,3 +13,9 @@ $config['cfg_path'] = array(
 	'admin_js'=>'/assets/admin/js/',
 	'admin_images'=>'/assets/admin/image/',
 );
+
+$config['usertype'] = array(
+	1 => '经纪公司',
+	2 => '模特',
+	3 => '企业',
+);

@@ -39,13 +39,27 @@ class XT_Model extends CI_Model {
 		return $this->db->query($sql);
 	}
 
-	public function get_info_by_id($id, $fields='*')
+	public function get_by_id($id, $fields='*', $tb = '')
 	{
+		$tb = empty($tb) ? $this->mTable : $tb;
 		$result = $this->db->select($fields)
-					->from($this->mTable)
+					->from($tb)
 					->where('id', $id)
 					->get()
 					->row_array();
+		return $result;
+	}
+
+	/**
+	*根据条件查询
+	*/
+	public function get_by_where($where, $fields='*', $tb = ''){
+		$tb = empty($tb) ? $this->mTable : $tb;
+		$result = $this->db->select($fields)
+		->from($tb)
+		->where($where,NULL,FALSE)
+		->get()
+		->row_array();
 		return $result;
 	}
 
@@ -134,15 +148,17 @@ class XT_Model extends CI_Model {
 		return $this->db->where($where)->delete($this->mTable);
 	}
 	
-	public function update_by_id($id, $data)
+	public function update_by_id($id, $data, $tb='')
 	{
+		$tb = empty($tb) ? $this->mTable : $tb;
 		$where = array($this->mPkId=> $id);
-		$sql = $this->db->update_string($this->mTable, $data, $where);
+		$sql = $this->db->update_string($tb, $data, $where);
 		return $this->db->query($sql);
 	}
 	
-	public function update_by_where($where, $data)
+	public function update_by_where($where, $data, $tb='')
 	{
+		$tb = empty($tb) ? $this->mTable : $tb;
 		if (!$where)return false;
 		foreach($where as $key=>$val)
 		{	
@@ -155,7 +171,7 @@ class XT_Model extends CI_Model {
 				$this->db->where($key, $val);
 			}
 		}
-		return $this->db->update($this->mTable, $data);
+		return $this->db->update($tb, $data);
 	}
 	
 	/**
