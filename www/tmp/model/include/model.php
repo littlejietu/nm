@@ -13,6 +13,7 @@
         <div class="fl info_wrap">
         	<div class="clearfix">
             	<div class="namebox fl"><span>杭州乐玛摄影</span></div>
+                <div class="contact attention fl"><a href="##" class="atte_cur"><i class="qq atte"></i>未关注</a></div>
             	<div class="contact fl"><a href="##"><i class="qq"></i>联系我</a></div>
             	<div class="tips piccon fl"><a href="##" rel="牛模网签约经纪公司" class="preview"></a></div>
             </div>

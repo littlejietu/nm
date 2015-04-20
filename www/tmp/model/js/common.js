@@ -91,6 +91,7 @@ function filt(a){
 	$(a).addClass('licur').siblings().removeClass('licur');
 	$(a).siblings('input').val($(a).attr('name'));
 }	
+
 	
 /* login */	
 jQuery.fn.customInput = function(){
@@ -182,6 +183,25 @@ function(e){
 	e.stopPropagation();
 	$(this).toggleClass("spred");
 });
+
+$(".letter").find("li:lt(3)").addClass("intro");
+
+
+/* 评论管理-回复 */
+$(function(){
+	$(".t_review>.operat").click(function(){
+		if($(this).siblings(".reply").is(":visible"))
+		{
+			$(this).siblings(".reply").slideToggle(200).slideUp("slow");
+		}
+		else
+		{
+			$(".t_review>.operat").siblings(".reply").filter(":visible").slideToggle(200).slideUp("slow");
+			$(this).siblings(".reply").slideToggle(200).slideDown("slow");
+		}
+	})
+})
+
 
 /* 上传头像 */
 function previewImage(file) 

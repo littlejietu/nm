@@ -280,7 +280,7 @@
 .apprtop{height:40px;padding-top:3px;}
 .a_rev{padding-left:62px;margin-right:20px;}
 .a_rev span{float:left;display:inline-block;width:62px;height:16px;line-height:16px;margin-left:-62px;}
-.fabiao h3{font-weight:bold;font-size:14px;color:#333;padding-bottom:8px;}
+.fabiao h3{/*font-weight:bold;*/font-size:14px;color:#333;padding-bottom:8px;}
 .fabiao h3 i{margin-left:10px;}
 .fabiao .texta{padding:10px;width:955px;border:1px solid #CDCDCD;resize: none;min-height:80px;}
 /* star */
@@ -309,6 +309,18 @@
 .star_on i.star_3{width:68px;}
 .star_on i.star_4{width:92px;}
 .star_on i.star_5{width:116px;}
+
+.op_rate{height:15px;padding-left:66px;margin-right:15px;}
+.op_rate span{display:inline-block;width:66px;height:15px;line-height:15px;margin-left:-66px;}
+.op_rate a,.op_rate a.licur i{background:url(../images/pf_xing.png) repeat-x;}
+.op_rate a{display:block;float:left;height:15px;width:15px;font-size:0;position:relative;background-position:0 0;margin-right:9px;}
+.op_rate a.licur i{position:absolute;height:15px;top:0;background-position:-1px -32px;}
+.op_rate a i.one_rate{width:15px;left:0;}
+.op_rate a i.two_rate{width:42px;left:-24px;}
+.op_rate a i.three_rate{width:66px;left:-48px;}
+.op_rate a i.four_rate{width:90px;left:-72px;}
+.op_rate a i.five_rate{width:112px;left:-96px;}
+
 /* personal */
 .personal{padding:15px;background:#fff;min-height:500px;-moz-box-shadow:0 1px 2px #e0e0e0;-webkit-box-shadow:0 1px 2px #e0e0e0;box-shadow:0 1px 2px #e0e0e0;}
 .personal .title{padding-left:12px;border-left:3px solid #e2235b;background:#f6eef1;height:28px;line-height:28px;font-size:13px;font-weight:600;}
@@ -322,9 +334,8 @@
 .flpet{width:550px;overflow:hidden;}
 .p_video{width:400px;margin-top:20px;}
 
-
 /* 会员中心 member */
-.member{background:#fff;-moz-box-shadow:0 1px 2px #e0e0e0;-webkit-box-shadow:0 1px 2px #e0e0e0;box-shadow:0 1px 2px #e0e0e0;position:relative;min-height:660px;}
+.member{background:#fff;-moz-box-shadow:0 1px 2px #e0e0e0;-webkit-box-shadow:0 1px 2px #e0e0e0;box-shadow:0 1px 2px #e0e0e0;position:relative;min-height:760px;}
 .uc_menu{width:200px;padding:20px 0;background:#eee;border-right:1px solid #d2d2d2;border-left:1px solid #e2e2e2;position:absolute;left:0;top:0;bottom:0;}
 .menu_head{padding-bottom:20px;text-align:center;}
 .menu_head a.m_himg{display:block;width:100px;height:100px;margin:0 auto;position:relative;}
@@ -476,10 +487,6 @@
 .price span{display:inline-block;float:left;margin:0 20px 15px 0;}
 .price span label{padding-left:5px;}
 .profile .txt_price{width:100px;}
-
-
-
-
 /* payment */
 .pay_title{text-align:center;font-size:24px;margin:30px 0;background:url(../images/pay_title.jpg) no-repeat center center;}
 #subOrder{background:#fff;border-top:2px solid #000;border-bottom:1px solid #dbdbdb;margin-bottom:60px;}
@@ -621,3 +628,30 @@ body.resize{-webkit-transition:padding 0.3s ease;-moz-transition:padding 0.3s ea
 .foobot p.fb_wibo a.f_wb:hover{background-position:-2px -54px;}
 .foobot p.fb_wibo a.f_qq:hover{background-position:-31px -54px;}
 /* footer end */
+
+/* 2015.4.16 */
+.attention a{background:#000;}
+.contact a i.atte{background-position:-226px -266px;}
+.contact a.atte_cur{background:#e2235b;}
+.contact a.atte_cur i.atte{background-position:-188px -297px;}
+.t_sosu .sele_ta{width:auto;}
+.sele_ta a{display:inline-block;margin-right:15px;}
+.sele_ta a:hover{color:#e2235b;}
+.letter li{border-bottom:1px dashed #b2b2b2;height:40px;}
+.letter li a{display:inline-block;line-height:40px;padding-left:30px;}
+.letter li a i{display:inline-block;float:left;width:22px;height:20px;margin:9px 0 0 -30px;background-position:-128px -290px;}
+.letter li a:hover{color:#e2235b;}
+.letter li.intro a i{background-position:-156px -291px;}
+.ordapp .texta{width:824px;}
+.scor_star{padding:15px 0;}
+.ordapp .but{background:#000;border:none;}
+.operat{padding-top:20px;}
+.tran_tab .t_review a{padding-left:23px;line-height:22px;}
+.tran_tab a.t_delete i{background-position:-155px -262px;float:left;width:23px;margin-left:-23px;}
+.tran_tab li.t_review{border-bottom:1px solid #ececec;}
+.reply{padding:15px 0 20px;border-top:1px dashed #e0e0e0;display:none;}
+.reply .texta{width:824px;background:#f6f6f6;}
+.reply .but{background:#e2235b;border:none;}
+.reply .but_2{margin-left:12px;background:#c7c7c7;}
+.tran_tab a.t_editor{padding-left:10px;margin-top:20px;}
+

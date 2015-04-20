@@ -23,12 +23,13 @@
                         <div class="aut_bti clearfix">
                         	<h3 class="fl">我的订单</h3>
                             <div class="fr t_sosu">
-                            	<span class="fl">请选择：</span>
+                            	<!--<span class="fl">请选择：</span>
                                 <select name="" class="txt sele fl">
                                     <option>不限状态</option>
                                     <option>景色取点</option>
                                     <option>人物广告</option>
-                                </select>
+                                </select>-->
+                                <p class="fl sele sele_ta"><a href="##">代付款</a><a href="##">已完成</a><a href="##">待完成</a></p>
                                 <input name="" type="text" class="txt fl" placeholder="请输入关键词"/>
                                 <input name="" class="but fr" type="button" value="搜 索"/>
                             </div>
@@ -43,14 +44,23 @@
                               <th width="80">订单状态</th>
                               <th width="110">操作</th>
                             </tr>
-                            <?php for($i=0;$i<10;$i++){?>
+                            <?php for($i=0;$i<6;$i++){?>
                             <tr>
                               <td><a href="orderdeta.php">2021027727</a></td>
                               <td><div class="t_cont">拍摄内容：内衣   场景：外景   拍摄方式：普通</div></td>
                               <td>￥98.00</td>
                               <td>2015-10-25</td>
                               <td>2015-10-25</td>
-                              <td>待付款</td>
+                              <td><a href="#">待付款</a></td>
+                              <td><a class="t_delete" href="##">拒绝</a><a class="t_delete" href="##">编辑</a><a class="t_delete" href="##">删除</a></td>
+                            </tr>
+                            <tr>
+                              <td><a href="orderdeta.php">2021027727</a></td>
+                              <td><div class="t_cont">拍摄内容：内衣   场景：外景   拍摄方式：普通</div></td>
+                              <td>￥98.00</td>
+                              <td>2015-10-25</td>
+                              <td>2015-10-25</td>
+                              <td><a href="orderapp.php">待评价</a></td>
                               <td><a class="t_delete" href="##">拒绝</a><a class="t_delete" href="##">编辑</a><a class="t_delete" href="##">删除</a></td>
                             </tr>
                             <?php }?>
