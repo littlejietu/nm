@@ -12,6 +12,15 @@ class User_model extends XT_Model {
 		$aUserDetail = $this->get_by_where("userid=$id",'*',$this->tb_userdetail);
 		$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
 		return array_merge($aUser, $aUserDetail, $aUserMemo);
+		/*$rs = $this->db->select($fields)
+		->from($this->mTable.' a')
+		->join($this->tb_userdetail.' b','a.id=b.userid','left')
+		->join($this->tb_usermemo.' c','a.id=c.userid','left')
+		->where("a.id=$id")
+		->get()->row_array();
+		print_r($rs);die;
+		return $rs;
+		*/
 	}
 
 

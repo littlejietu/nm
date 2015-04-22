@@ -28,11 +28,11 @@
 	            <td>腰围</td>
 	            <td>臀围</td>
 
-	            <td>时间</td>
+	           <!-- 	<td>时间</td> 
 	            <td>显示</td>
 	            <td>最后操作人</td>
 	            <td>最后操作时间</td>
-	            <td>操作</td>
+	            <td>操作</td> -->
 	        </tr>
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
@@ -49,10 +49,10 @@
 				<td><?php echo $a['waist'];?></td>
 				<td><?php echo $a['hips'];?></td>
 
-				<td><?php echo date('Y-m-d H:i:s',$a['addtime']);?></td>
+				<!-- <td><?php echo date('Y-m-d H:i:s',$a['addtime']);?></td>
 				<td><?php if($a['display']==1) echo '显示'; else if($a['display']==2) echo '不显示';  else echo '';?></td>
 				<td><?php echo $a['op_username'];?></td>
-				<td><?php echo $a['op_time'];?></td>
+				<td><?php echo $a['op_time'];?></td> -->
 				<td class="con_title">
 					<a href="/admin/user/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/user/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>

@@ -12,12 +12,13 @@ class User extends CI_Controller {
     //默认执行index
 	public function index()
 	{
+		$dbprefix = $this->User_model->db->dbprefix;
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
-
-		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere);
+		$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid)';
+		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere, '*','a.id', $tb);
 		//echo $this->db->last_query();die;
 		
 
@@ -111,23 +112,33 @@ class User extends CI_Controller {
 			if ($this->form_validation->run() === TRUE)
   			{
   				$data = array(
-					'figure'=>$this->input->post('figure'),
-					'skill'=>$this->input->post('skill'),
-					'efficiency'=>$this->input->post('efficiency'),
-					'attitude'=>$this->input->post('attitude'),
-					'memo'=>$this->input->post('memo'),
-					'good'=>$this->input->post('good'),
-					'addtime'=>time(),
-					'display'=>$this->input->post('display'),
-					'status'=>$this->input->post('status'),
-					'op_userid'=>0,
-					'op_username'=>0,
-					'op_time'=>time(),
+					'username'=>$this->input->post('username'),
+					'nickname'=>$this->input->post('nickname'),
+					'usertype'=>$this->input->post('usertype'),
+					'password'=>$this->input->post('password'),
+					'userlogo'=>$this->input->post('userlogo'),
+					'realname'=>$this->input->post('realname'),					
+					'photo'=>$this->input->post('photo'),					
+					'sex'=>$this->input->post('sex'),
+					'city'=>$this->input->post('city'),					
 				);
 
 				$data_detail = array(
+					'height'=>$this->input->post('height'),
+					'weight'=>$this->input->post('weight'),
+					'bust'=>$this->input->post('bust'),
+					'waist'=>$this->input->post('waist'),
+					'hips'=>$this->input->post('hips'),
+					'shoes'=>$this->input->post('shoes'),
+					'cup'=>$this->input->post('cup'),
 					);
 				$data_memo = array(
+					'brand'=>$this->input->post('brand'),
+					'brandtype'=>$this->input->post('brandtype'),
+					'awards'=>$this->input->post('awards'),
+					'fee'=>$this->input->post('fee'),
+					'servicetime'=>$this->input->post('servicetime'),
+					'takenote'=>$this->input->post('takenote'),					
 					);
 
   				$id	= _get_key_val($this->input->get('id'), TRUE);
