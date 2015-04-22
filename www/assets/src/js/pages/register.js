@@ -1,7 +1,7 @@
 
 $().ready(function() {
 
-    $('.reg-left input').customInput();
+    //$('.reg-left input').customInput();
 
     $('#xt_reg1').bind('click',function(){
         $('.xt_reg1_rgn').css('display','block');
@@ -17,57 +17,62 @@ $().ready(function() {
         $(this).addClass('curr');
     });
 
+
+    //  $("#signupForm").validate({
+    //     rules: {
+    //         usertype : "required"
+    //     },
+    //     submitHandler:function(form){
+    //         alert("submitted");   
+    //         form.submit();
+    //     }    
+    // });
+
     //验证--begin
     $("#afrm").validate({
         rules: {
             usertype : "required",
-            phone : "required",
-            service_type : 'required',
-            service_introduce : 'required',
-            phone_cr:{
-                digits:true
+            phone : {required:true,
+                remote:{//验证用户名是否存在
+                    type:"POST",
+                    dataType: "json",
+                    url:"/reg/formcheck",
+                    data:{
+                        'mobile':function(){return $("#phone").val();},
+                        'type':'mobile',
+                        'remote':0
+                    }
+                } 
             },
-            phone_qh:{
-                digits:true
-            },
-            phone:{
-                digits:true
-            },
-            fax_cr:{
-                digits:true
-            },
-            fax_qh:{
-                digits:true
-            },
-            fax:{
-                digits:true
-            }
+            code_phone : 'required',
+            password_phone : { required: true, minlength: 6},
+            repassword_phone: { required: true, equalTo: "#password_phone" }
           
         },
         messages: {
-           usertype: '<span class="no"></span>',
-           phone: '<span class="no"></span>',
-           service_type : '<i class="icoErr16"></i>请选择服务类型',
-           service_introduce : '<i class="icoErr16"></i>请输入服务范围',
-           phone_cr : '<i class="icoErr16"></i>',
-           phone_qh : '<i class="icoErr16"></i>',
-           fax : '<i class="icoErr16"></i>',
-           fax_cr : '<i class="icoErr16"></i>',
-           fax_qh : '<i class="icoErr16"></i>',
-           fax : '<i class="icoErr16"></i>',
+           usertype: '',
+           phone: {required:'<span class="no" style="display: inline;">手机/邮箱不能为空</span>',remote:'<span class="no" style="display: inline;">该手机号码已被注册，请更换其他号码并重新提交</span>'},
+           code_phone : '<span class="no" style="display: inline;">请填写验证码</span>',
+           password_phone : { required: '<span class="no" style="display: inline;">请输入密码</span>', minlength: '<span class="no" style="display: inline;">密码不能小于6个字符</span>' },
+           repassword_phone :{required: "请输入确认密码",  equalTo: '<span class="no" style="display: inline;">两次输入密码不一致</span>'}
         },
+
         //errorClass:"no",
         errorElement:"em",
-        //errorPlacement: function (error, element) {
-            // if (element.attr('name')=='usertype') {
-            //     $('#usertype-error').show();
-            // } else {
-            //     error.insertAfter(element);
-            // }
-        //},
+        errorPlacement: function(error, element) { //指定错误信息位置 
+            var arrELE = ['manage_funds','years_profit[]'];
+
+            if (element.is(':radio') || element.is(':checkbox') || $.inArray(element.attr('name'), arrELE)>-1 ) { //如果是radio或checkbox 
+                var eid = element.attr('name'); //获取元素的name属性 
+                error.appendTo(element.parent().parent()); //将错误信息添加当前元素的父结点后面 
+            }
+            else
+            {
+                error.insertAfter(element);
+            }
+        },
         submitHandler:function(form){
-            //alert("submitted");   
-            //form.submit();
+
             var options = { dataType:'json',
                 success: function(res) {
                     if(res.code ==200){
