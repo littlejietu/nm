@@ -1,7 +1,7 @@
 
 $().ready(function() {
 
-    //$('.reg-left input').customInput();
+    $('.reg-left input').customInput();
 
     $('#xt_reg1').bind('click',function(){
         $('.xt_reg1_rgn').css('display','block');
