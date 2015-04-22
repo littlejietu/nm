@@ -50,7 +50,7 @@
                 </div>
             </div>
             <!--reg-left-->
-            <form name="signupForm" action="/reg/save" method="post">
+            <form id="afrm" action="/reg/save" method="post">
             <div class="reg-right fr">
             	<div class="reg_top">
                 	<a href="javascript:void(0);" id="xt_reg1" class="reg_tel curr"><i></i>手机注册</a>
@@ -65,22 +65,22 @@
                 </ul>
                 <ul class="reg_con xt_reg1_rgn">
                     <li class="reg-user">
-                        <input name="" placeholder="手机" value="手机" type="text" class="text2" id="user"/>
-                        <input name="" type="button" class="ru_but but" value="绑定手机"/>
+                        <input name="phone" placeholder="手机" type="text" class="text2" id="phone"/>
+                        <!--<input name="" type="button" class="ru_but but" value="绑定手机"/>-->
                         <span class="ok"></span><span class="no">手机/邮箱不能为空</span>
                     </li>
-                    <li class="reg-code"><input name="" placeholder="验证码"  value="" type="text" class="text2"/><span class="code_time">60s后可重新发送</span></li>
-                    <li class="reg-pwd"><input name="" placeholder="密码" value="密码" type="text" class="text2" id="pwd"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
-                    <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
+                    <li class="reg-code"><input name="code_phone" placeholder="验证码"  value="" type="text" class="text2"/><span class="code_time">60s后可重新发送</span></li>
+                    <li class="reg-pwd"><input name="password_phone" placeholder="密码" type="password" class="text2" id="password_phone"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
+                    <li class="reg-pwd1"><input name="repassword_phone"  placeholder="确定密码" type="password" class="text2" id="repassword_phone"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
                 <ul class="reg_con xthide xt_reg2_rgn">
                     <li class="reg-email">
-                        <input name="" placeholder="邮箱" value="邮箱" type="text" class="text2" id="email"/>
+                        <input name="email" placeholder="邮箱" value="邮箱" type="text" class="text2" id="email"/>
                         <span class="ok"></span><span class="no">手机/邮箱不能为空</span>
                     </li>
-                    <li class="reg-pwd"><input name="" placeholder="密码" value="密码" type="text" class="text2" id="pwd"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
-                    <li class="reg-pwd1"><input name=""  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
+                    <li class="reg-pwd"><input name="password_email" placeholder="密码" value="密码" type="text" class="text2" id="pwd"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
+                    <li class="reg-pwd1"><input name="repassword_email"  placeholder="确定密码" value="确定密码" type="text" class="text2" id="pwd1"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
                 <div class="iban_bot reg_bot">
@@ -89,6 +89,7 @@
                 </div>
             </div>
             <!--reg-right-->
+            <input type="hidden" name="version" value="phone" />
             </form>
         </div>
     </div>
@@ -98,11 +99,11 @@
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>select.js"></script>
+
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
-
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 </body>
