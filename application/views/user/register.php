@@ -65,13 +65,13 @@
                 </ul>
                 <ul class="reg_con xt_reg1_rgn">
                     <li class="reg-user">
-                        <input name="phone" placeholder="手机" type="text" class="text2" id="phone"/>
+                        <input name="phone" placeholder="手机" type="text" class="text2" id="phone" value="13512341234"/>
                         <!--<input name="" type="button" class="ru_but but" value="绑定手机"/>-->
                         <span class="ok"></span><span class="no">手机/邮箱不能为空</span>
                     </li>
-                    <li class="reg-code"><input name="code_phone" placeholder="验证码"  value="" type="text" class="text2"/><span class="code_time">60s后可重新发送</span></li>
-                    <li class="reg-pwd"><input name="password_phone" placeholder="密码" type="password" class="text2" id="password_phone"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
-                    <li class="reg-pwd1"><input name="repassword_phone"  placeholder="确定密码" type="password" class="text2" id="repassword_phone"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
+                    <li class="reg-code"><input name="code_phone" placeholder="验证码"  value="111" type="text" class="text2"/><input type="button" id="getCode" class="code_time" value=" 获取验证码 "></li>
+                    <li class="reg-pwd"><input name="password_phone" placeholder="密码" value="111111" type="password" class="text2" id="password_phone"/><span class="ok"></span><span class="no">登录密码不能少于 6 个字符</span></li>
+                    <li class="reg-pwd1"><input name="repassword_phone"  placeholder="确定密码" value="111111" type="password" class="text2" id="repassword_phone"/><span class="ok"></span><span class="no">两次密码不相同</span></li>
                     <li><input type="submit" class="but" value="注 册"/></li>
                 </ul>
                 <ul class="reg_con xthide xt_reg2_rgn">
@@ -97,7 +97,7 @@
 
 <?php include_once(VIEWPATH."public/footer.php");?>
 
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.easing-1.3.min.js"></script>
@@ -105,6 +105,7 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>sly.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
+
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/register.js"></script>
 </body>
 </html>
