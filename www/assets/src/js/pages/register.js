@@ -17,6 +17,28 @@ $().ready(function() {
         $(this).addClass('curr');
     });
 
+    var wait=60;
+    function time(o) {
+        if (wait == 0) {
+            o.removeAttribute("disabled");            
+            o.value=" 获取验证码 ";
+            wait = 60;
+        } else { // www.jbxue.com
+            o.setAttribute("disabled", true);
+            o.value=" 重新发送(" + wait + ") ";
+            wait--;
+            setTimeout(function() {
+                time(o)
+            },
+            1000)
+        }
+    }
+    document.getElementById("getCode").onclick=function(){time(this);}
+
+
+
+
+
 
     //  $("#signupForm").validate({
     //     rules: {
@@ -54,7 +76,7 @@ $().ready(function() {
            phone: {required:'<span class="no" style="display: inline;">手机/邮箱不能为空</span>',remote:'<span class="no" style="display: inline;">该手机号码已被注册，请更换其他号码并重新提交</span>'},
            code_phone : '<span class="no" style="display: inline;">请填写验证码</span>',
            password_phone : { required: '<span class="no" style="display: inline;">请输入密码</span>', minlength: '<span class="no" style="display: inline;">密码不能小于6个字符</span>' },
-           repassword_phone :{required: "请输入确认密码",  equalTo: '<span class="no" style="display: inline;">两次输入密码不一致</span>'}
+           repassword_phone :{required: '<span class="no" style="display: inline;">请输入确认密码</span>',  equalTo: '<span class="no" style="display: inline;">两次输入密码不一致</span>'}
         },
 
         //errorClass:"no",

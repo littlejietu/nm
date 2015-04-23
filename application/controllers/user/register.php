@@ -41,17 +41,195 @@ class Register extends CI_Controller {
 
     public function save()
     {
-        
+        $res = array('code'=>0,'data'=>array());
         if ($this->input->is_post())
         {
+            $this->callback = true;
             $version = $this->input->post('version');
-            
-            
+            switch($version)
+            {
+                default://默认注册页
+                    list($config, $data_main) = $this->phone_config();
+                    break;
+            }
 
+            $this->form_validation->set_rules($config);
+            if ($res['code'] == 0  && $this->form_validation->run() === true)
+            {
+                $data_init = array(
+                        'addtime'=>time(),
+                        'status'=>1,
+                        'lastip'=>_ip_long(),
+                    );
+                $userid = $this->User_model->insert_string( array_merge($data_main,$data_init) );
 
+                $data_detail = array(
+                        'userid'=>$userid,
+                    );
+                $data_memo = array(
+                        'userid'=>$userid,
+                    );
+
+                $this->db->insert($data_detail, 'user_detail');
+                $this->db->insert($data_memo, 'user_detail');
+                $res['code'] = 200;
+            }
+            else
+            {
+                $res['data']['messages'] = $this->form_validation->getErrors();
+            }
 
         }
+
+        json_encode($res);exit;
     }
+
+    private function phone_config()
+    {
+        $config = array(
+            array(
+                'field'=>'password',
+                'label'=>'密码',
+                'rules'=>'trim|required|min_length[6]|max_length[20]',
+            ),
+            array(
+                'field'=>'phone',
+                'label'=>'手机号码',
+                'rules'=>'trim|required',
+            ),
+            array(
+                'field'=>'code_phone',
+                'label'=>'手机校验码',
+                'rules'=>'trim|required',
+            ),
+        );
+        $plaintext = $this->input->post('password');
+        $this->load->library('des');
+        $passwd_plaintext = ':'.$this->des->encrypt($plaintext);
+        $data_main = array(
+            'password'=>md5($plaintext),
+            'password_plaintext'=>$passwd_plaintext,
+            'phone'=>$this->input->post('phone'),
+            'username'=>$this->input->post('phone'),
+        );
+
+        return array($config, $data_main);
+    }
+
+
+    public function formcheck()
+    {
+        $res = array('code'=>200,'data'=>array());
+        $type = $this->input->post('type');
+
+        switch($type)
+        {
+            case 'username':
+
+                $username  = $this->input->post('username');
+                if (is_numeric($username) && strlen($username) ==11)
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '为避免与手机号重复，不能用11位数字作为用户名';
+                }
+
+                if ($res['code'] ==200 && $this->User_model->user_username_check($username))
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '用户名 已被注册';
+                    $username = substr($username, 0, 8);
+                    $usernames = array();
+                    $year = date('Y');
+                    while(true)
+                    {
+                        if (!$this->User_model->user_username_check($username.$year))
+                        {
+                            $usernames[] = $username.$year;
+                        }
+                        $year++;
+                        if (count($usernames)>=4)break;
+                    }
+                    $res['data']['usernames'] = $usernames;
+                }
+
+                break;
+            case 'email':
+                $email  = $this->input->post('email');
+                if (!$email || !$this->form_validation->valid_email($email))
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '请输入您的常用邮箱地址';
+                }
+                if ($res['code'] ==200 && $this->User_model->user_email_check($email))
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '邮箱地址 已被注册';
+                }
+                if ($res['code'] ==200 && M('user_contact')->count(array('email'=>$email)) )
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '邮箱地址 已被注册';
+                }
+                break;
+            case 'mobile':
+                $mobile  = $this->input->post('mobile');
+                if (!$mobile || !is_mobile($mobile))
+                {
+                    $res['code'] = 201;
+                    $res['data']['error'] = '会员注册完全免费，请输入真实的手机号码';
+                }
+                if ($res['code'] ==200 && $this->User_model->user_mobile_check($mobile))
+                {
+                    $res['code'] = 202;
+                    $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
+                }
+                if ($res['code'] ==200 && M('user_contact')->count(array('mobile'=>$mobile)) )
+                {
+                    $res['code'] = 202;
+                    $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
+                }
+                break;
+
+            case 'mobile_code':
+            case 'mobilecode':
+                $this->callback = true;
+                $mobilecode  = $this->input->post($type);
+                $mobile  = $this->input->post('mobile');
+                if (!($mobilecode && strlen($mobilecode)==6 && $mobile && is_mobile($mobile) && $this->mobile_code_check($mobilecode) ) )
+                {
+                    $res['code'] = 201;
+                    $res['data']['error']      = '您输入的验证码不正确';
+                }
+                else
+                {
+                    $res['code'] ==200;
+                    $res['data']['authcode'] = urlencode(encrypt($mobile.'|'.$mobilecode));
+                    $res['data']['mobile']      = $mobile;
+                }
+                break;
+            case 'logincheck':
+                $res['data']['error']      = '您输入的密码不正确';
+                $mobile  = $this->input->post('mobile');
+                $pwd  = $this->input->post('pwd');
+                if ($mobile && $pwd && is_mobile($mobile))
+                {
+                    $user_info = $this->User_model->get_user_by_mobile($mobile, 'id,username,passwd,status');
+                    if ($user_info['status'] && md5($pwd) == $user_info['passwd'])
+                    {
+                        $res['code'] = 200;
+                        $data = array(
+                        'trjcn_loginID'=>$user_info['id'],
+                        'trjcn_loginName'=>$user_info['username'],
+                        );
+                        $this->session->set_userdata($data);
+                    }
+                }
+                break;
+
+        }
+        $this->view->json($res);
+    }
+
 
     public function reg_by_phone(){
         $res = array('code'=>0,'message'=>'');
