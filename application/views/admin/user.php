@@ -31,29 +31,31 @@
 	           <!-- 	<td>时间</td> 
 	            <td>显示</td>
 	            <td>最后操作人</td>
-	            <td>最后操作时间</td>
-	            <td>操作</td> -->
+	            <td>最后操作时间</td> -->
+	            <td>操作</td> 
 	        </tr>
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
 				<td height="30"><?php echo $a['username'];?></td>
 				<td><?php echo $a['nickname'];?></td>
-				<td><?php echo $a['usertype'];?></td>
+				<td><?php if($a['usertype']==1) echo '模特';
+				 else if($a['usertype']==2) echo '经纪公司';  
+				 else if($a['usertype']==3) echo '企业';  else echo '';?></td>
+			
 				<td><?php echo $a['realname'];?></td>
 				<td><?php echo $a['photo'];?></td>
-				<td><?php echo $a['sex'];?></td>
+				<td><?php if($a['sex']==1) echo '男'; else if($a['sex']==2) echo '女';  else echo '';?></td>
 				<td><?php echo $a['city'];?></td>
 				<td><?php echo $a['height'];?></td>
 				<td><?php echo $a['weight'];?></td>
 				<td><?php echo $a['bust'];?></td>
 				<td><?php echo $a['waist'];?></td>
-				<td><?php echo $a['hips'];?></td>
-
+				<td><?php echo $a['hips'];?></td>								
 				<!-- <td><?php echo date('Y-m-d H:i:s',$a['addtime']);?></td>
 				<td><?php if($a['display']==1) echo '显示'; else if($a['display']==2) echo '不显示';  else echo '';?></td>
 				<td><?php echo $a['op_username'];?></td>
 				<td><?php echo $a['op_time'];?></td> -->
-				<td class="con_title">
+				<td class="con_title"> 
 					<a href="/admin/user/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/user/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
 				</td>

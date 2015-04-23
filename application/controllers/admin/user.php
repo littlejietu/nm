@@ -138,7 +138,11 @@ class User extends CI_Controller {
 					'awards'=>$this->input->post('awards'),
 					'fee'=>$this->input->post('fee'),
 					'servicetime'=>$this->input->post('servicetime'),
-					'takenote'=>$this->input->post('takenote'),					
+					'takenote'=>$this->input->post('takenote'),
+					'planeshot'=>$this->input->post('planeshot'),
+					'tactivity'=>$this->input->post('tactivity'),
+					'telead'=>$this->input->post('telead'),
+					'magazine'=>$this->input->post('magazine'),					
 					);
 
   				$id	= _get_key_val($this->input->get('id'), TRUE);
