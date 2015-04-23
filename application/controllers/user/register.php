@@ -70,32 +70,37 @@ class Register extends CI_Controller {
                         'userid'=>$userid,
                     );
 
-                $this->db->insert($data_detail, 'user_detail');
-                $this->db->insert($data_memo, 'user_detail');
+                $this->User_model->insert($data_detail, 'user_detail');
+                $this->User_model->insert($data_memo, 'user_memo');
                 $res['code'] = 200;
             }
             else
             {
-                $res['data']['messages'] = $this->form_validation->getErrors();
+                $res['data']['error_messages'] = $this->form_validation->getErrors();
             }
 
         }
 
-        json_encode($res);exit;
+        echo json_encode($res);exit;
     }
 
     private function phone_config()
     {
         $config = array(
             array(
-                'field'=>'password',
+                'field'=>'usertype',
+                'label'=>'用户类型',
+                'rules'=>'trim|required',
+            ),
+            array(
+                'field'=>'password_phone',
                 'label'=>'密码',
                 'rules'=>'trim|required|min_length[6]|max_length[20]',
             ),
             array(
                 'field'=>'phone',
                 'label'=>'手机号码',
-                'rules'=>'trim|required',
+                'rules'=>'trim|required|valid_mobile|exist_user_mobile',
             ),
             array(
                 'field'=>'code_phone',
@@ -103,12 +108,12 @@ class Register extends CI_Controller {
                 'rules'=>'trim|required',
             ),
         );
-        $plaintext = $this->input->post('password');
+        $plaintext = $this->input->post('password_phone');
         $this->load->library('des');
         $passwd_plaintext = ':'.$this->des->encrypt($plaintext);
         $data_main = array(
             'password'=>md5($plaintext),
-            'password_plaintext'=>$passwd_plaintext,
+            //'password_plaintext'=>$passwd_plaintext,
             'phone'=>$this->input->post('phone'),
             'username'=>$this->input->post('phone'),
         );
@@ -121,6 +126,7 @@ class Register extends CI_Controller {
     {
         $res = array('code'=>200,'data'=>array());
         $type = $this->input->post('type');
+        $is_remote = empty($this->input->post('is_remote'))?0:(int)$this->input->post('is_remote');
 
         switch($type)
         {
@@ -183,7 +189,7 @@ class Register extends CI_Controller {
                     $res['code'] = 202;
                     $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
                 }
-                if ($res['code'] ==200 && M('user_contact')->count(array('mobile'=>$mobile)) )
+                if ($res['code'] ==200 && $this->User_model->count(array('phone'=>$mobile)) )
                 {
                     $res['code'] = 202;
                     $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
@@ -227,61 +233,16 @@ class Register extends CI_Controller {
                 break;
 
         }
-        $this->view->json($res);
-    }
 
-
-    public function reg_by_phone(){
-        $res = array('code'=>0,'message'=>'');
-        //验证规则
-        $config = array(
-            array(
-                 'field'   => 'usertype', 
-                 'label'   => '用户类型', 
-                 'rules'   => 'trim|required'
-              ),
-            array(
-                 'field'   => 'phone', 
-                 'label'   => '手机号', 
-                 'rules'   => 'trim|required'
-              ),
-            array(
-                 'field'   => 'code', 
-                 'label'   => '验证码', 
-                 'rules'   => 'trim|required'
-              ),  
-            array(
-                 'field'   => 'password', 
-                 'label'   => '密码', 
-                 'rules'   => 'trim|required'
-              ),
-        );
-
-        $this->form_validation->set_rules($config);
-
-        if ($this->form_validation->run() === TRUE)
+        if($is_remote == 1)
         {
-            $data = array(
-                'usertype'=>$this->input->post('usertype'),
-                'username'=>$this->input->post('phone'),
-                'password'=>$this->input->post('password'),
-            );
-
-            $data_detail = array(
-                );
-            $data_memo = array(
-                );
-            //保存数据库
-            //$this->User_model->update_info_by_id($id, $data, $data_detail, $data_memo);
-
-            //echo '成功,<a href="/admin/aa">返回列表页</a>';
-            $res['code'] = 200;
-            
+            if($res['code']==200) echo "true"; else echo "false";
         }
-        
-        echo json_encode($res);
+        else
+            echo json_encode($res);
         exit;
     }
+
 
 
 

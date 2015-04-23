@@ -335,7 +335,7 @@ class MY_Form_validation extends CI_Form_validation
     function exist_user_mobile($val)
     {
     	$CI =& get_instance();
-		if ($val && $CI->User_model->count(array('mobile'=>$val)) == 0 && M('user_contact')->count(array('mobile'=>$val)) == 0)
+		if ($val && $CI->User_model->count(array('username'=>$val)) == 0 && $CI->User_model->count(array('phone'=>$val)) == 0)
 		{
 			return TRUE;
 		}

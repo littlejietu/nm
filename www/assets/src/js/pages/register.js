@@ -54,7 +54,7 @@ $().ready(function() {
     $("#afrm").validate({
         rules: {
             usertype : "required",
-            phone : {required:true,
+            phone : {required:true, minlength: 11,maxlength:11,
                 remote:{//验证用户名是否存在
                     type:"POST",
                     dataType: "json",
@@ -62,7 +62,7 @@ $().ready(function() {
                     data:{
                         'mobile':function(){return $("#phone").val();},
                         'type':'mobile',
-                        'remote':0
+                        'is_remote':1
                     }
                 } 
             },
@@ -73,8 +73,8 @@ $().ready(function() {
         },
         messages: {
            usertype: '',
-           phone: {required:'<span class="no" style="display: inline;">手机/邮箱不能为空</span>',remote:'<span class="no" style="display: inline;">该手机号码已被注册，请更换其他号码并重新提交</span>'},
-           code_phone : '<span class="no" style="display: inline;">请填写验证码</span>',
+           phone: {required:'<span class="no" style="display: inline;">手机不能为空</span>',minlength:'<span class="no" style="display: inline;">请正确填写手机号</span>',maxlength:'<span class="no" style="display: inline;">请正确填写手机号</span>',remote:'<span class="no" style="display: inline;">该手机号码已被注册 或 非手机号，请正确填写</span>'},
+           code_phone : '<span class="no" style="display: block;width:10px"></span>',
            password_phone : { required: '<span class="no" style="display: inline;">请输入密码</span>', minlength: '<span class="no" style="display: inline;">密码不能小于6个字符</span>' },
            repassword_phone :{required: '<span class="no" style="display: inline;">请输入确认密码</span>',  equalTo: '<span class="no" style="display: inline;">两次输入密码不一致</span>'}
         },
@@ -98,26 +98,31 @@ $().ready(function() {
             var options = { dataType:'json',
                 success: function(res) {
                     if(res.code ==200){
+                        
+/*
                         var win = dialog({
                             title: '系统提示',
                             width: '200px',
                             fixed: true,
                             cancel: true,
-                            content: '修改成功',
+                            content: '注册成功',
                             cancelValue: '确定'
                             //onclose : function(){window.location.href='/manage/account.html';}
                         });
                         win.showModal();
+                        */
                     }
                     else
                     {
                         var msg = '';
                         $.each(res.data.error_messages,function(n,value) {  
          
-                            msg +=value+'<br />';
+                            msg +=value+'\n';
                        
-                        });  
+                        });
 
+                        alert(msg);
+/*
                         var win = dialog({
                             title: '系统提示',
                             width: '200px',
@@ -127,6 +132,7 @@ $().ready(function() {
                             cancelValue: '确定'
                         });
                         win.showModal();
+                        */
                     }
                 }
 
