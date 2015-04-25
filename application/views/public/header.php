@@ -1,6 +1,6 @@
 <div class="head_top">
 	<div class="container">
-    	<p class="fl htop_fl">Hi,~<a href="login.php">[<i>请登录</i>]</a> <a href="register.php">[<i>免费注册</i>]</a></p>   
+    	<p class="fl htop_fl">Hi,~<a href="/user/login">[<i>请登录</i>]</a> <a href="/reg">[<i>免费注册</i>]</a></p>   
         <div class="fr htop_fr">
             <a class="h_sche" href="schedule.php"><i></i>档期管理</a>
             <a class="h_orde" href="order.php">我的订单(<i>5</i>)</a>

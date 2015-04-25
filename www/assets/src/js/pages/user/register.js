@@ -3,6 +3,13 @@ $().ready(function() {
 
     $('.reg-left input').customInput();
 
+    
+
+
+});
+
+
+
     $('#xt_reg1').bind('click',function(){
         $('.xt_reg1_rgn').css('display','block');
         $('.xt_reg2_rgn').css('display','none');
@@ -117,18 +124,7 @@ $().ready(function() {
                 success: function(res) {
                     if(res.code ==200){
                         
-/*
-                        var win = dialog({
-                            title: '系统提示',
-                            width: '200px',
-                            fixed: true,
-                            cancel: true,
-                            content: '注册成功',
-                            cancelValue: '确定'
-                            //onclose : function(){window.location.href='/manage/account.html';}
-                        });
-                        win.showModal();
-                        */
+                        window.location.href='/user/login';
                     }
                     else
                     {
@@ -159,6 +155,3 @@ $().ready(function() {
         }
     });
     //验证--end
-
-
-});

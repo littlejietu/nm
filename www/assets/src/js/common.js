@@ -150,24 +150,6 @@ function center(){
 	})
 }window.onload=center;
 
-//login表单提交
-function formC(){
-	var num=0;
-	var name=document.getElementById('name');
-	var password=document.getElementById('password');
-	if(name.value==''){
-		//alert('账号不能为空')
-		document.getElementById('prompt').innerHTML='账号不能为空';
-		$('#prompt').css("display","block");
-		return false;
-	}
-	if(password.value==''){
-		//alert('密码不能为空');
-		document.getElementById('prompt').innerHTML='密码不能为空';
-		$('#prompt').css("display","block");
-		return false;
-	}
-}
 
 /* 会员中心 */
 function helpClose(a){

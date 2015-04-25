@@ -110,5 +110,53 @@ transition: all 0.2s ease-in-out;}
 #share a#totop:hover{background-position:-134px -1px;}
 /* Top end */
 
+
+
+
+/*common*/
 .xthide{display: none;}
 .xtshow{display: block;}
+.xtleft,
+.xtright { _display: inline; /* for IE6 */ }
+.xtleft { float: left; }
+.xtright { float: right; }
+
+/* 内填充 */
+.xtpt-5 { padding-top: 5px !important; }
+.xtpr-5 { padding-right: 5px !important; }
+.xtpb-5 { padding-bottom: 5px !important; }
+.xtpl-5 { padding-left: 5px !important; }
+.xtpt-10 { padding-top: 10px !important; }
+.xtpr-10 { padding-right: 10px !important; }
+.xtpb-10 { padding-bottom: 10px !important; }
+.xtpl-10 { padding-left: 10px !important; }
+.xtp-10 { padding: 10px !important; }
+.xtpt-15 { padding-top: 15px !important; }
+.xtpr-15 { padding-right: 15px !important; }
+.xtpb-15 { padding-bottom: 15px !important; }
+.xtpl-15 { padding-left: 15px !important; }
+.xtpt-20 { padding-top: 20px !important; }
+.xtpr-20 { padding-right: 20px !important; }
+.xtpb-20 { padding-bottom: 20px !important; }
+.xtpl-20 { padding-left: 20px !important; }
+.xtpt-25 { padding-top: 25px !important; }
+/* 外边距 */
+.xtmt-5 { margin-top: 5px !important; }
+.xtmr-5 { margin-right: 5px !important; }
+.xtmb-5 { margin-bottom: 5px !important; }
+.xtml-5 { margin-left: 5px !important; }
+.xtmt-10 { margin-top: 10px !important; }
+.xtmr-10 { margin-right: 10px !important; }
+.xtmb-10 { margin-bottom: 10px !important; }
+.xtml-10 { margin-left: 10px !important; }
+.xtmt-15 { margin-top: 15px !important; }
+.xtmr-15 { margin-right: 15px !important; }
+.xtmb-15 { margin-bottom: 15px !important; }
+.xtml-15 { margin-left: 15px !important; }
+.xtmt-20 { margin-top: 20px !important; }
+.xtmr-20 { margin-right: 20px !important; }
+.xtmb-20 { margin-bottom: 20px !important; }
+.xtml-20 { margin-left: 20px !important; }
+.xtml-35 { margin-left: 35px !important; }
+.xtml-50 { margin-left: 50px !important; }
+.xtmr-150 { margin-right: 150px !important; }
