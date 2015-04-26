@@ -79,7 +79,7 @@ class Register extends CI_Controller {
                 $res['data']['error_messages'] = $this->form_validation->getErrors();
             }
 
-        }
+        }//-if ($this->input->is_post())
 
         $this->view->json($res);
     }
@@ -114,7 +114,7 @@ class Register extends CI_Controller {
         $data_main = array(
             'password'=>md5($plaintext),
             //'password_plaintext'=>$passwd_plaintext,
-            'phone'=>$this->input->post('mobile'),
+            'mobile'=>$this->input->post('mobile'),
             'username'=>$this->input->post('mobile'),
         );
 

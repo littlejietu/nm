@@ -17,60 +17,16 @@
 
 <body class="resize">
 <!--header-->
-<div class="header">
-    <div class="container clearfix">
-       <div class="fl logo"><a href="/admin" title="返回首页"><img alt="牛模网logo" src="<?php echo _get_cfg_path('images')?>logo.png" height="30"/></a></div>
-       <div class="fr nav">
-          <ul class="clearfix">
-             <li>
-                <a class="" href="models.php">
-                    <p>
-                        <span class="navimg"><img alt="模特" src="<?php echo _get_cfg_path('images')?>nav_1.jpg" height="16"/></span>
-                        <span class="navzi">模特</span>
-                    </p>
-                </a>
-             </li>
-             <li>
-                 <a class="" href="institutions.php">
-                    <p>
-                         <span class="navimg"><img alt="机构" src="<?php echo _get_cfg_path('images')?>nav_2.jpg" height="16"/></span>
-                         <span class="navzi">机构</span>
-                     </p>
-                 </a>
-             </li>
-             <li>
-                 <a class="" href="notlce.php">
-                    <p>
-                        <span class="navimg"><img alt="通告" src="<?php echo _get_cfg_path('images')?>nav_3.jpg" height="16"/></span>
-                        <span class="navzi">通告</span>
-                    </p>
-                 </a>
-             </li>
-             <li>
-                <a class="" href="news.php">
-                    <p>
-                        <span class="navimg"><img alt="新闻" src="<?php echo _get_cfg_path('images')?>nav_4.jpg" height="16"/></span>
-                        <span class="navzi">新闻</span>
-                    </p>
-                </a>
-             </li>
-             <li class="nav_search">
-                <a href="##" title="搜索"><img alt="搜索" src="<?php echo _get_cfg_path('images')?>nsos.jpg" height="20"/></a>
-             </li>
-          </ul>
-       </div>
-    </div>
-    <div class="header_bg"></div>
-</div>
+<?php include_once(VIEWPATH."public/header_menu.php");?>
 <div id="slideBox" class="ibanner">
     <div class="iban">
         <h3>登录账号</h3>
         <div class="fl iban_form">
-            <form>
+            <form action="" method="post">
                 <ul>
                     <li>
                         <img src="<?php echo _get_cfg_path('images')?>iban_formimg1.jpg" />
-                        <input id="name" name="name" type="text" placeholder="用户名"/>
+                        <input id="name" name="username" type="text" placeholder="用户名"/>
                         <img src="<?php echo _get_cfg_path('images')?>iban_formtt.jpg" />
                     </li>
                     <li>
@@ -79,7 +35,7 @@
                         <img src="<?php echo _get_cfg_path('images')?>iban_formtt.jpg" /></li>
                     <li>
                         <img src="<?php echo _get_cfg_path('images')?>iban_formimg3.jpg" />
-                        <input class="iban_foin" name="code" id="code" type="text" placeholder="验证码"/>
+                        <input class="iban_foin" name="login_code" id="code" type="text" placeholder="验证码"/>
                         <img class="mrgR10" src="<?php echo _get_cfg_path('images')?>iban_formtt.jpg" />
                         <img class="xtml-15" id="yzimg" src="/util/captcha?<?php echo rand(10000,9999);?>" onclick="this.src='/util/captcha?'+Math.random()" alt="验证码" >
                     </li>

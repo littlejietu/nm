@@ -43,7 +43,7 @@
 				 else if($a['usertype']==3) echo '企业';  else echo '';?></td>
 			
 				<td><?php echo $a['realname'];?></td>
-				<td><?php echo $a['photo'];?></td>
+				<td><?php echo $a['mobile'];?></td>
 				<td><?php if($a['sex']==1) echo '男'; else if($a['sex']==2) echo '女';  else echo '';?></td>
 				<td><?php echo $a['city'];?></td>
 				<td><?php echo $a['height'];?></td>

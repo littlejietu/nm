@@ -62,7 +62,7 @@ class User_base_service extends MY_Service{
 			'nickname'=>isset($login_user['nicknamenickname'])?$login_user['nickname']:'',
 			'realname'=>isset($login_user['realname'])?$login_user['realname']:'',
 			'sex'=>isset($login_user['sex'])?$login_user['sex']:'',
-			'phone'=>isset($login_user['phone'])?$login_user['phone']:'',
+			'mobile'=>isset($login_user['mobile'])?$login_user['mobile']:'',
 		);
 		
 	}

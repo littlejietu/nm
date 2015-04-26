@@ -12,11 +12,14 @@ class Login extends CI_Controller {
 
     public function index()
     {
-        // if ($this->loginUser['id'])
-        // {
-        //     redirect('/m/index');
-        // }
+        if ($this->input->is_post())
+        {
+            $this->load->service('user_service');
+            $res = $this->user_service->login();
+            $this->view->json($res);
+        }
         
         $this->load->view('user/login');
     }
+
 }

@@ -107,7 +107,7 @@ class User_model extends XT_Model {
 	{
 		$db_temp = $this->db->select('count(1) as num ',false)
 		->from($this->mTable)
-		->where('phone', $val)
+		->where('mobile', $val)
 		->get()
 		->row_array();
 		return $db_temp['num'];

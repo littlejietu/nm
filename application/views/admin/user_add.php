@@ -49,7 +49,7 @@
 		        </tr>
 		        <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 手机；</td>
-		            <td align="left" class="padL10"><input type="text" name="photo" value="<?php if( !empty($info['photo']) ) echo $info['photo']; ?>" /></td>
+		            <td align="left" class="padL10"><input type="text" name="mobile" value="<?php if( !empty($info['mobile']) ) echo $info['photo']; ?>" /></td>
 		        </tr>
 		        <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 性别；</td>

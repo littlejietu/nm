@@ -118,7 +118,7 @@ class User extends CI_Controller {
 					'password'=>$this->input->post('password'),
 					'userlogo'=>$this->input->post('userlogo'),
 					'realname'=>$this->input->post('realname'),					
-					'photo'=>$this->input->post('photo'),					
+					'mobile'=>$this->input->post('mobile'),					
 					'sex'=>$this->input->post('sex'),
 					'city'=>$this->input->post('city'),					
 				);

@@ -2,10 +2,6 @@
 $().ready(function() {
 
     $('.reg-left input').customInput();
-
-    
-
-
 });
 
 

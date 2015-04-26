@@ -78,7 +78,7 @@ class Check extends CI_Controller {
                     $res['code'] = 202;
                     $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
                 }
-                if ($res['code'] ==200 && $this->User_model->count(array('phone'=>$mobile)) )
+                if ($res['code'] ==200 && $this->User_model->count(array('mobile'=>$mobile)) )
                 {
                     $res['code'] = 202;
                     $res['data']['error'] = '该手机号码已被注册，请更换其他号码并重新提交';
