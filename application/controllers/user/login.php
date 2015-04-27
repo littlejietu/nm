@@ -16,7 +16,17 @@ class Login extends CI_Controller {
         {
             redirect('/m/index');
         }
-        
+
+        $forword_url = $this->input->get('forword_url');
+        if (!$forword_url && !empty($_SERVER['HTTP_REFERER']) )
+        {
+            $forword_url = $this->input->filter($_SERVER['HTTP_REFERER']);
+        }
+        $result = array(
+            'forword_url'=>$forword_url,
+            'random'=>rand(0,999999),
+        );
+
         if ($this->input->is_post())
         {
             $res = $this->login();
@@ -169,5 +179,15 @@ class Login extends CI_Controller {
 
         $this->form_validation->set_message('user_login_check', '帐号或密码错误，请重新输入');
         return false;
+    }
+
+    public function out(){
+        $data = array('xt_loginID'=>0);
+        $this->session->set_userdata($data);
+        $this->input->set_cookie('loginUser', '',-1, XT_DOMAIN);
+        $this->input->set_cookie('loginCode', '',-1, XT_DOMAIN);
+        $this->input->set_cookie('is_next_initial', 0, -1, XT_DOMAIN);
+        $this->input->set_cookie('cartNum', 0, 0, XT_DOMAIN);
+        setcookie('PHPSESSID', '', -1, '/', XT_DOMAIN);
     }
 }

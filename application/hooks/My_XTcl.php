@@ -12,10 +12,10 @@ class My_XTcl{
 		
 		$is_manage = FALSE;
 		//个人中心验证是否登录
-		// if (XT_WWW=='user' || $CI->uri->uri_string && preg_match('~^m\/*~',$CI->uri->uri_string))
-		// {
+		if ($CI->uri->uri_string && preg_match('~^m\/*~',$CI->uri->uri_string))		//XT_WWW=='user' || 
+		{
 			$is_manage = true;
-		// }
+		}
 
 		$xt_loginID = 0;
 		$xt_loginUser =$CI->input->cookie('loginUser');
@@ -136,10 +136,9 @@ class My_XTcl{
 			}
 			exit;
 		}
-		
 
 		//个人中心验证是否登录
-		if ($is_manage && !$CI->loginUser['id'])
+		if ($is_manage && !$CI->loginID)
 		{
 			if ($CI->input->get('facebox')=='facebox')
 			{
@@ -156,7 +155,7 @@ class My_XTcl{
 				exit;
 			}else
 			{
-				$QUERY_STRING =  $_SERVER['QUERY_STRING'];
+				$QUERY_STRING =  $_SERVER['QUERY_STRING'];echo $QUERY_STRING;die;
 				$SCRIPT_URL =  '/'.$CI->uri->uri_string;
 				$url  = $base_url.'user/login?forword_url='.urlencode($SCRIPT_URL.($QUERY_STRING ? '?' : '').$QUERY_STRING);
 				header('location:'. $url );
@@ -165,7 +164,7 @@ class My_XTcl{
 
 	
 		}
-		if($CI->loginUser['id'])
+		if($CI->loginID)
 		{
 			//获取 会员未读消息数统计
 			// $CI->load->service('users/user_statistics_service');

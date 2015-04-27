@@ -23,6 +23,7 @@
         <h3>登录账号</h3>
         <div class="fl iban_form">
             <form id="xtform" action="" method="post">
+                <input type="hidden" id="forword_url" value="{$result.forword_url}">
                 <ul>
                     <li>
                         <img src="<?php echo _get_cfg_path('images')?>iban_formimg1.jpg" />
