@@ -1,7 +1,7 @@
 <div class="fl uc_menu">
     <div class="menu_head">
         <a class="m_himg" href="##">
-            <img src="images/head.jpg"/>
+            <img src="<?php echo _get_cfg_path('images')?>head.jpg"/>
             <div class="head_bj"></div>
         </a>
         <h3 class="m_name"><a href="member.php">范萌</a></h3>

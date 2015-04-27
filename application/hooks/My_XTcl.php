@@ -117,7 +117,7 @@ class My_XTcl{
 
 		}
 		
-		if (isset($CI->check_login) && !$CI->loginUser['id'])
+		if (isset($CI->check_login) && !$CI->loginID)
 		{
 			if ($CI->input->is_ajax_request())
 			{
@@ -138,7 +138,7 @@ class My_XTcl{
 		}
 
 		//个人中心验证是否登录
-		if ($is_manage && !$CI->loginID)
+		if ($is_manage && $is_manage && !$CI->loginID)
 		{
 			if ($CI->input->get('facebox')=='facebox')
 			{
@@ -170,7 +170,6 @@ class My_XTcl{
 			// $CI->load->service('users/user_statistics_service');
 			// $CI->statistics=$CI->user_statistics_service->get($CI->loginUser['id']);
 		}
-		
 		
 		$CI->base_url    =    $base_url;
 		//$CI->site_id = 0;

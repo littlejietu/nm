@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>资料-个人中心-牛模网</title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -43,7 +44,7 @@
                                 <td width="86">头  像</td>
                                 <td colspan="3">
                                     <div id="previews" class="drsMoveHandle">
-                                   	    <img id="imghead" border=0 src='images/imghead.jpg'>
+                                   	    <img id="imghead" border=0 src='<?php echo _get_cfg_path('images')?>imghead.jpg'>
                                     </div>
                                     <div class="f_note">
                                         <p>尺寸：90×90像数<br />仅支持JPEG，上传图片大小不能超过1M。</p>
@@ -56,18 +57,18 @@
                               </tr>
                               <tr>
                                 <td width="86">真实姓名</td>
-                                <td><input name="" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
+                                <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
                                 <td>身 高</td>
                                 <td><input name="" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/><?php //echo form_error('height');?></td>
                               </tr>
                               <tr>
                                 <td>性别</td>
                                 <td class="reg-sort">
-                                	<p><input type="radio" name="sort" value="" id="sort_1"/><label for="sort_1">男</label></p>
-                        			<p><input type="radio" name="sort" value="" id="sort_2"/><label for="sort_2">女</label></p>
+                                	<p><input type="radio" name="sex" value="1" <?php if($o['sex']==1) echo 'checked';?> id="sort_1"/><label for="sort_1">男</label></p>
+                        			<p><input type="radio" name="sex" value="2" <?php if($o['sex']==2) echo 'checked';?> id="sort_2"/><label for="sort_2">女</label></p>
                                 </td>
                                 <td>体重</td>
-                                <td><input name="" type="text" class="txt" placeholder="请输入体重"/></td>
+                                <td><input name="weight" type="text" class="txt" value="<?=$o['weight']?>" placeholder="请输入体重"/></td>
                               </tr>
                               <tr>
                                 <td>所在城市</td>
@@ -131,7 +132,7 @@
                             <div class="u_recom">
                             	<ul class="clearfix">
                                 	<?php for($i=0;$i<6;$i++){?>
-                                	<li><a href="##"><img src="images/h_1.jpg"/></a></li>
+                                	<li><a href="##"><img src="<?php echo _get_cfg_path('images')?>h_1.jpg"/></a></li>
                                     <?php }?>
                                 </ul>
                             </div>
@@ -146,8 +147,8 @@
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
 </body>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 </html>
