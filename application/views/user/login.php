@@ -22,7 +22,7 @@
     <div class="iban">
         <h3>登录账号</h3>
         <div class="fl iban_form">
-            <form action="" method="post">
+            <form id="xtform" action="" method="post">
                 <ul>
                     <li>
                         <img src="<?php echo _get_cfg_path('images')?>iban_formimg1.jpg" />
@@ -82,6 +82,7 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/user/login.js"></script>
 
 </body>

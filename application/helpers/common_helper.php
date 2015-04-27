@@ -105,6 +105,23 @@ function _get_page($name='page')
 
 
 
+function XTM($model)
+{
+	$model = ucfirst($model).'_model';
+	$CI =& get_instance();
+	$CI->load->model($model);
+	return $CI->$model;
+}
+
+
+function XTT($table)
+{
+	$model = 'XT_model';
+	$CI =& get_instance();
+	$CI->load->model($model);
+	return $CI->$model->set_table(strtolower($table));
+}
+
 
 
 

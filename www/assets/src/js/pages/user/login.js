@@ -46,3 +46,30 @@ function formC(){
     }
 }
 
+
+$('#xtform').submit(function()
+{
+    var options = { dataType:'json',
+        success: function(res) {
+            if(res.code ==200){
+                window.location.reload();
+            }
+            else
+            {
+                var msg = '';
+                $.each(res.data.error_messages,function(n,value) {  
+
+                    msg +=value+'\n';
+               
+                });  
+                
+                if(msg!='')
+                    alert(msg);
+            }
+        }
+
+    };
+    $('#xtform').ajaxSubmit(options);
+    return false;
+});
+

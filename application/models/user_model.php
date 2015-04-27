@@ -59,7 +59,7 @@ class User_model extends XT_Model {
 	public function login_update($id, $last_datetime, $last_ip)
 	{
 		$this->db->set('lastlogintime', $last_datetime, FALSE);
-		//$this->db->set('last_ip', $last_ip, FALSE);
+		$this->db->set('lastip', $last_ip, FALSE);
 		//$this->db->set('login_num', 'login_num+1', FALSE);
 		//$this->db->set('security_code', $this->security_code);
 		$this->db->where('id', $id);

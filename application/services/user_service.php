@@ -139,7 +139,7 @@ class User_service
 				$this->ci->input->set_cookie('loginCode', $this->ci->security_code, $expire, TRJ_DOMAIN);
 				$this->ci->user_model->login_update($user_info['id'], $this->ci->timestamp, ip_long());
 				$this->ci->loginUser = $user_info;
-				$this->add_user_log('login');
+				//$this->add_user_log('login');
 	
 				if ($this->ci->loginUser['initial'])
 				{
@@ -168,12 +168,12 @@ class User_service
 	public function user_login_check()
 	{
 		$username = trim($_POST['username']);
-		$fields   = 'id,username,usertype,nickname,mobile,passwd,status,mobile_true,email_true,initial';
+		$fields   = 'id,username,usertype,nickname,mobile,password,status,validmobile,validemail,initial';
 		$this->ci->load->helper('email');
 		if (valid_email($username))
 		{
 			$user_info = $this->ci->user_model->fetch_row(array('email'=>$username), $fields);
-			if ($user_info && $user_info['email_true']==0)
+			if ($user_info && $user_info['validemail']==0)
 			{
 				$this->ci->form_validation->set_message('user_login_check', '该邮箱尚未完成验证，无法登录.');
 				return false;
@@ -182,7 +182,7 @@ class User_service
 		elseif (is_mobile($username))
 		{
 			$user_info = $this->ci->user_model->fetch_row(array('mobile'=>$username), $fields);
-			if ($user_info && $user_info['mobile_true']==0)
+			if ($user_info && $user_info['validmobile']==0)
 			{
 				$this->ci->form_validation->set_message('user_login_check', '该手机号码尚未验证，无法登录.');
 				return false;
@@ -221,7 +221,7 @@ class User_service
 
 			$this->ci->loginUser = $user_info;
 
-			$this->add_user_log('login');
+			//$this->add_user_log('login');
 
 			if ($this->ci->loginUser['initial'])
 			{

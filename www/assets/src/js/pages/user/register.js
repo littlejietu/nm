@@ -57,20 +57,6 @@ $().ready(function() {
     });
 
 
-
-
-
-
-    //  $("#signupForm").validate({
-    //     rules: {
-    //         usertype : "required"
-    //     },
-    //     submitHandler:function(form){
-    //         alert("submitted");   
-    //         form.submit();
-    //     }    
-    // });
-
     //验证--begin
     $("#afrm").validate({
         rules: {
