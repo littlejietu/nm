@@ -76,7 +76,7 @@ button,.button{border:1px solid #a3a3a3;cursor:pointer;font-family: "Microsoft Y
 .wrap .more,.lk_outer p,.lk_outer a.more,.ne_title li a em,.bti a.more{text-transform:uppercase;}
 .index_link .picimg a:hover img,.mode_title a:hover img,.ne_con li a.picimg:hover img{-moz-transform:scale(1.1);-webkit-transform:scale(1.1);-o-transform:scale(1.1);transform:scale(1.1);-moz-transition:all 1s ease 0s;-webkit-transition:all 1s ease 0s;-o-transition:all 1s ease 0s;transition:all 1s ease 0s;}
 .samp{background-color:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);}
-.status,.iban_form li.iban_forin input,.aut_tab .but,.poptab .but,.mw_upload a.addto,.reg_con .but,.reply .but{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.status,.iban_form li.iban_forin input,.aut_tab .but,.poptab .but,.mw_upload a.addto,.reg_con .but,.reply .but,.compl_con .but{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
 /* public end */
 
 /* public start */

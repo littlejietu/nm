@@ -6,6 +6,7 @@
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo _get_cfg_path('lib')?>uploadify/uploadify.css" type="text/css" rel="stylesheet" />
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG.js" type="text/javascript" ></script>
 <script>DD_belatedPNG.fix('a,img');</script>
@@ -21,7 +22,7 @@
             	<?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
                 	<div class="fl um_uitop">
-                    <form method="post" action="">
+                    <form method="post" action="" id="xtform">
                    	  <div class="authent">
                    	    <div class="aut_bti">个人资料</div>
                           <?php echo validation_errors('<div class="error">', '</div>');?>
@@ -35,7 +36,8 @@
                                   <?php if(!empty($o['nickname'])) 
                                           echo $o['nickname']; 
                                         else
-                                          echo '<input name="nickname" type="text" class="txt" placeholder="请输入昵称"/>'
+                                          echo '<input name="nickname" type="text" class="txt" placeholder="请输入昵称"/>';
+
                                   ?>
                                   <?php //echo form_error('nickname');?>
                                   </td>
@@ -44,13 +46,14 @@
                                 <td width="86">头  像</td>
                                 <td colspan="3">
                                     <div id="previews" class="drsMoveHandle">
-                                   	    <img id="imghead" border=0 src='<?php echo _get_cfg_path('images')?>imghead.jpg'>
+                                   	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.$o['userlogo'] : _get_cfg_path('images').'imghead.jpg';?>'>
                                     </div>
                                     <div class="f_note">
-                                        <p>尺寸：90×90像数<br />仅支持JPEG，上传图片大小不能超过1M。</p>
+                                        <p>尺寸：90×90像数</p>
+                                        <input type="hidden"  name="userlogo" id="userlogo" value="<?=$o['userlogo']?>">
+                                        <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
                                         <div class="file_but">
-                                            <input class="inp_btn" type="button" name="" value="选择照片" />
-                                            <input type="file" class="inp_file" name="file" onchange="previewImage(this)"/>
+                                            <input id="userlogo_upload" name="userlogo_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
                                     </div>
                                 </td>
@@ -58,8 +61,8 @@
                               <tr>
                                 <td width="86">真实姓名</td>
                                 <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
-                                <td>身 高</td>
-                                <td><input name="" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/><?php //echo form_error('height');?></td>
+                                <td>身高</td>
+                                <td><input name="height" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/> cm<?php //echo form_error('height');?></td>
                               </tr>
                               <tr>
                                 <td>性别</td>
@@ -68,46 +71,46 @@
                         			<p><input type="radio" name="sex" value="2" <?php if($o['sex']==2) echo 'checked';?> id="sort_2"/><label for="sort_2">女</label></p>
                                 </td>
                                 <td>体重</td>
-                                <td><input name="weight" type="text" class="txt" value="<?=$o['weight']?>" placeholder="请输入体重"/></td>
+                                <td><input name="weight" type="text" class="txt" value="<?=$o['weight']?>" placeholder="请输入体重"/> Kg</td>
                               </tr>
                               <tr>
                                 <td>所在城市</td>
-                                <td><input name="" type="text" class="txt" placeholder="请输入你所在城市"/></td>
+                                <td><input name="city" type="text" class="txt" value="<?=$o['city']?>" placeholder="请输入你所在城市"/></td>
                                 <td>三围</td>
-                                <td><input name="" type="text" class="txt" placeholder="请输入你的三围"/></td>
+                                <td><input name="BWH" type="text" class="txt" value="<?=$o['bust'].'-'.$o['waist'].'-'.$o['hips']?>" placeholder="请输入你的三围"/>以-组合</td>
                               </tr>
                               <tr>
                                 <td>罩杯</td>
-                                <td><input name="" type="text" class="txt" placeholder="请输入你的罩杯"/></td>
+                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/></td>
                                 <td>鞋码</td>
-                                <td><input name="" type="text" class="txt" placeholder="请输入你的鞋码"/></td>
+                                <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/></td>
                               </tr>
                                <tr>
                                	  <td colspan="4">个人经历</td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>拍摄品牌</font></p></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>品牌类型</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>获得奖项</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="awards" cols="" rows=""><?=$o['awards']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>模特费</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder=""  name="fee" cols="" rows=""><?=$o['fee']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>服务时间</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder=""  name="servicetime" cols="" rows=""><?=$o['servicetime']?></textarea></td>
                               </tr>
                               <tr style="border-bottom:none;">
                                 <td width="86" valign="top"><font>禁拍说明</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="" name="" cols="" rows=""></textarea></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="" name="takenote" cols="" rows=""><?=$o['takenote']?></textarea></td>
                               </tr>
                               <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
@@ -151,4 +154,44 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
+<script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<?php $timestamp = $this->timestamp;?>
+$(function() {
+    $('#userlogo_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'userlogo',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择照片',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#userlogo').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#userlogo').val(imgpath);
+          $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_userlogo').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+});
+</script>
 </html>

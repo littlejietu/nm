@@ -655,3 +655,23 @@ body.resize{-webkit-transition:padding 0.3s ease;-moz-transition:padding 0.3s ea
 .reply .but_2{margin-left:12px;background:#c7c7c7;}
 .tran_tab a.t_editor{padding-left:10px;margin-top:20px;}
 
+/* 2015.4.30 */
+.complaint{width:460px;height:250px;margin:-125px 0 0 -230px;}
+.compl_top{background:#f3f3f3;height:35px;line-height:35px;border-bottom:1px solid #e3e3e3;padding:0 15px;}
+.compl_top span{font-size:14px;font-weight:500;color:#333;}
+.compl_top a.close{font-size:26px;font-weight:600;color:#888;}
+.compl_con{padding:20px 35px;}
+.compl_con .text{width:300px;height:90px;}
+.compl_con .but{background:#e2235b;color:#fff;border:none;font-size:14px;}
+.addcust{height:290px;margin-top:-145px;}
+.addcust .txt{width:300px;}
+.inst_arti ul{width:103%;}
+.inst_arti li,.inst_arti li a img{width:190px;height:248px;}
+
+
+
+
+
+
+
+

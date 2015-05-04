@@ -66,6 +66,14 @@ class Check extends CI_Controller {
                     $res['data']['error'] = '邮箱地址 已被注册';
                 }
                 break;
+            case 'nickname':
+                $nickname  = $this->input->post('nickname');
+                if ($res['code'] ==200 && $this->User_model->user_nickname_check($nickname))
+                {
+                    $res['code'] = 202;
+                    $res['data']['error'] = '该昵称已被注册，请更换其他昵称并重新提交';
+                }
+                break;
             case 'mobile':
                 $mobile  = $this->input->post('mobile');
                 if (!$mobile || !is_mobile($mobile))

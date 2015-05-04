@@ -544,6 +544,8 @@ progid:DXImageTransform.Microsoft.Shadow(color=#cccccc,direction=270,strength=3)
 .ok{background:url(../images/ok.png) left center no-repeat;}
 .no{background:url(../images/no.png) left center no-repeat;}
 .reg-user .ru_but{height:25px !important;line-height:25px !important;width:70px !important;font-size:12px !important;margin-left:10px;margin-top:2px;float:left;}
+.xt_ok{background:url(../images/ok.png) left center no-repeat;padding-left:30px;}
+.xt_no{background:url(../images/no.png) left center no-repeat;padding-left:30px;}
 /* register end */
 
 /* login start */

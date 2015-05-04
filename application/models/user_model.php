@@ -31,6 +31,18 @@ class User_model extends XT_Model {
 		->where('username', $username)
 		->get()
 		->row_array();
+		echo $this->db->last_query();
+		die;
+		return $db_temp;
+	}
+
+	public function get_user_by_nickname($nickname, $fields='*')
+	{
+		$db_temp = $this->db->select($fields)
+		->from($this->mTable)
+		->where('nickname', $username)
+		->get()
+		->row_array();
 		return $db_temp;
 	}
 
@@ -87,9 +99,9 @@ class User_model extends XT_Model {
 	public function update_info_by_id($id, $data, $data_detail=array(), $data_memo=array()){
 		$where = array('id'=> $id);
 		if(!empty($data_detail))
-			$this->update_by_where("userid=$id", $data_detail, $this->tb_userdetail);
+			$this->update_by_where(array('userid'=>$id), $data_detail, $this->tb_userdetail);
 		if(!empty($data_memo))
-			$this->update_by_where("userid=$id", $data_memo, $this->tb_usermemo);
+			$this->update_by_where(array('userid'=>$id), $data_memo, $this->tb_usermemo);
 		return $this->update_by_id($id, $data);
 	}
 
@@ -101,6 +113,16 @@ class User_model extends XT_Model {
 		->get()
 		->result_array();
 		return $db_temp;
+	}
+
+	public function user_nickname_check($val)
+	{
+		$db_temp = $this->db->select('count(1) as num ',false)
+		->from($this->mTable)
+		->where('nickname', $val)
+		->get()
+		->row_array();
+		return $db_temp['num'];
 	}
 
 	public function user_mobile_check($val)

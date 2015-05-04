@@ -129,6 +129,7 @@ class Login extends CI_Controller {
         {
             $user_info = $this->user_model->get_user_by_username($username, $fields);
         }
+
         if ($user_info && $user_info['status'] && $user_info['password'] == md5($_POST['password']))
         {
             $data = array(

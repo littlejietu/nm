@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Info extends CI_Controller {
+class Price extends CI_Controller {
 
 	public function __construct()
     {
@@ -105,8 +105,11 @@ class Info extends CI_Controller {
 		$o = $this->User_model->get_info_by_id($userid);
 		$result = array(
 			'o' => $o,
+			'workitem'=> $this->config->item('workitem'),
+			'workscene'=> $this->config->item('workscene'),
+			'worktime'=> $this->config->item('worktime'),
 			);
-		$this->load->view('m/info',$result);
+		$this->load->view('m/price',$result);
 	}
 
 }

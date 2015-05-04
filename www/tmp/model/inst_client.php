@@ -15,7 +15,7 @@
 <div class="mainbody" id="mainbody">
     <div class="container mrgB30">
         <div class="member clearfix">
-            <?php include("include/uc_menu.php")?>
+            <?php include("include/uc_menu_inst.php")?>
             <div class="fr uc_content">
             	<?php include("include/notice.php")?>
                 <div class="clearfix uitopg">
