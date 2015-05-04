@@ -166,15 +166,20 @@ class XT_Model extends CI_Model {
 	{
 		$tb = empty($tb) ? $this->mTable : $tb;
 		if (!$where)return false;
-		foreach($where as $key=>$val)
-		{	
-			if (is_array($val))
-			{
-				$this->db->where_in($key, $val);
-			}
-			else
-			{
-				$this->db->where($key, $val);
+		if(!is_array($where))
+			$this->db->where($where);
+		else
+		{
+			foreach($where as $key=>$val)
+			{	
+				if (is_array($val))
+				{
+					$this->db->where_in($key, $val);
+				}
+				else
+				{
+					$this->db->where($key, $val);
+				}
 			}
 		}
 		return $this->db->update($tb, $data);
@@ -195,9 +200,9 @@ class XT_Model extends CI_Model {
 		$this->db->update($this->mTable);
 	}
 
-	public function get_list($where, $fields='*', $order_by='', $tb = '')
+	public function get_list($where=array(), $fields='*', $order_by='')
 	{
-		return $this->fetch_row($where, $fields, $order_by, $tb);
+		return $this->fetch_rows($where, $fields, $order_by);
 	}
 	
 	public function fetch_row($where, $fields='*', $order_by='', $tb = '')
@@ -228,18 +233,23 @@ class XT_Model extends CI_Model {
 	{
 		$tb = empty($tb) ? $this->mTable : $tb;
 		$this->db->select($fields)->from($tb);
-		foreach($where as $key=>$val)
-		{	
-			if (is_array($val))
-			{
-				$this->db->where_in($key, $val);
-			}
-			else
-			{
-				$this->db->where($key, $val);
+		if(!is_array($where))
+			$this->db->where($where);
+		else
+		{
+			foreach($where as $key=>$val)
+			{	
+				if (is_array($val))
+				{
+					$this->db->where_in($key, $val);
+				}
+				else
+				{
+					$this->db->where($key, $val);
+				}
 			}
 		}
-		
+
 		if ($order_by)
 		{
 			$this->db->order_by($order_by);

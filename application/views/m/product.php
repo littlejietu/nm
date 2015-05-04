@@ -38,7 +38,7 @@
                                 <td colspan="3" valign="top" class="price">
                                   <?php foreach ($workscene as $key => $v): ?>
                                     <span><input type="radio" name="scene" value="<?=$key?>" id="scene<?=$key?>" _text="<?=$v?>"><label for="scene<?=$key?>"><?=$v?></label></span>
-                                  <?php endforeach;?> 
+                                  <?php endforeach;?>
                                 </td>
                               </tr>
                               <tr>
@@ -57,24 +57,41 @@
                                     <input name="btnReset" id="XT-Reset" type="button" class="but but_reset" value="重置">
                                 </td>
                               </tr>
+                              <tr><td colspan="4"><?php echo validation_errors('<div class="valid_error">', '</div>');?></td></tr>
+                            </tbody>
+                            </table>
+                            <form action="" method="post">
+                            <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0">
+                             <tbody> 
                               <tr style="border-bottom:none;">
                                 <td colspan="4" id="priceList">
-
+                                  <?php
+                                    if(!empty($list))
+                                    {
+                                     foreach ($list as $key => $a): ?>
+                                      <div class="itemer">
+                                        <?php echo _is_empty($workitem[$a['item']]).' + '._is_empty($workscene[$a['scene']]).' + '._is_empty($worktime[$a['time']]);?>
+                                        <input name="code[]" type="hidden" value="<?=$a['item'].'_'.$a['scene'].'_'.$a['time'];?>">
+                                        <span class="xtright">¥ <input name="price[]" type="text" class="txt txt_price" value="<?=$a['price']?>" ></span>
+                                      </div>
+                                    <?php endforeach;
+                                    }?>
+                                </td>
+                              </tr>
+                              <tr style="border-bottom:none;">
+                                <td width="86">&nbsp;</td>
+                                <td colspan="3">
+                                    <input name="btn" id="XT-Submit" type="submit" class="xthide <?php echo !empty($list)?'but':''; ?>" value="提交">
                                 </td>
                               </tr>
                               <div id="priceitem" class="xthide">
                                   <div class="itemer">
-                                    {{item_work}}<input name="code" type="hidden" value="{{item_code}}">
-                                    <span class="xtright">¥ <input name="price" type="text" class="txt txt_price" value="150.00" ></span>
+                                    {{item_work}}<input name="code[]" type="hidden" value="{{item_code}}">
+                                    <span class="xtright">¥ <input name="price[]" type="text" class="txt txt_price" value="150.00" ></span>
                                   </div>
                               </div>
-                              <tr style="border-bottom:none;">
-                                <td>&nbsp;</td>
-                                <td colspan="3">
-                                    <input name="btn" id="XT-Submit" type="button" class="xthide" value="提交">
-                                </td>
-                              </tr>
                           </tbody></table>
+                          </form>
                         </div>
                     </div>
                     <div class="fr um_wind">
@@ -111,5 +128,5 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/price.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/product.js"></script>
 </html>

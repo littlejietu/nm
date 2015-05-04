@@ -103,6 +103,14 @@ function _get_page($name='page')
 	return max($page,1);
 }
 
+function _is_empty($val)
+{
+	if(empty($val))
+		return '';
+	else
+		return $val;
+}
+
 
 
 function XTM($model)
