@@ -165,7 +165,7 @@ function(e){
 	$(this).toggleClass("spred");
 });
 
-/* 上传头像 */
+/* 上传头像
 function previewImage(file) 
 { 
 	var MAXWIDTH = 100; 
@@ -200,3 +200,4 @@ function previewImage(file)
 		div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;margin-left:"+rect.left+"px;"+sFilter+src+"\"'></div>";
 	} 
 }
+ */

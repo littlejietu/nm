@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Price extends CI_Controller {
+class Product extends CI_Controller {
 
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model');
+        $this->load->model('Product_model');
     }
 	
 
@@ -102,14 +102,14 @@ class Price extends CI_Controller {
 
 		}//-is_post()
 
-		$o = $this->User_model->get_info_by_id($userid);
+		$o = $this->Product_model->get_list('userid=$userid and status=1', '*','addtime');
 		$result = array(
 			'o' => $o,
 			'workitem'=> $this->config->item('workitem'),
 			'workscene'=> $this->config->item('workscene'),
 			'worktime'=> $this->config->item('worktime'),
 			);
-		$this->load->view('m/price',$result);
+		$this->load->view('m/product',$result);
 	}
 
 }

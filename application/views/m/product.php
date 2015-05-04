@@ -29,7 +29,7 @@
                                 <td width="86" valign="top"><font>工作内容：</font></td>
                                 <td colspan="3" valign="top" class="price">
                                   <?php foreach ($workitem as $key => $v): ?>
-                                    <span><input type="checkbox" name="item" value="<?=$key?>" id="item<?=$key?>"><label for="item<?=$key?>"><?=$v?></label></span>
+                                    <span><input type="checkbox" name="item" value="<?=$key?>" id="item<?=$key?>" _text="<?=$v?>"><label for="item<?=$key?>"><?=$v?></label></span>
                                   <?php endforeach;?> 
                                 </td>
                               </tr>
@@ -37,7 +37,7 @@
                                 <td width="86" valign="top"><font>工作场景：</font></td>
                                 <td colspan="3" valign="top" class="price">
                                   <?php foreach ($workscene as $key => $v): ?>
-                                    <span><input type="radio" name="scene" value="<?=$key?>" id="time<?=$key?>"><label for="time<?=$key?>"><?=$v?></label></span>
+                                    <span><input type="radio" name="scene" value="<?=$key?>" id="scene<?=$key?>" _text="<?=$v?>"><label for="scene<?=$key?>"><?=$v?></label></span>
                                   <?php endforeach;?> 
                                 </td>
                               </tr>
@@ -45,20 +45,34 @@
                                 <td width="86">计价方式：</td>
                                 <td colspan="3" class="price">
                                   <?php foreach ($worktime as $key => $v): ?>
-                                    <span><input type="radio" name="time" value="<?=$key?>" id="time<?=$key?>"><label for="time<?=$key?>"><?=$v?></label></span>
+                                    <span><input type="radio" name="time" value="<?=$key?>" id="time<?=$key?>" _text="<?=$v?>"><label for="time<?=$key?>"><?=$v?></label></span>
                                   <?php endforeach;?> 
                                 </td>
                               </tr>
                               <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
                                 <td colspan="3">
+                                    <div id="alertmsg" class="main_color xtmb-10"></div>
                                     <input name="btn" id="XT-Add" type="button" class="but" value="添加">
-                                    <input name="" type="button" class="but but_reset" value="重置">
+                                    <input name="btnReset" id="XT-Reset" type="button" class="but but_reset" value="重置">
                                 </td>
                               </tr>
-                              <tr>
-                                <td colspan="2">服装拍摄 + 外景 + 天 </td>
-                                <td colspan="2" align="right"><input name="" type="text" class="txt txt_price" value="¥ 150.00"></td>
+                              <tr style="border-bottom:none;">
+                                <td colspan="4" id="priceList">
+
+                                </td>
+                              </tr>
+                              <div id="priceitem" class="xthide">
+                                  <div class="itemer">
+                                    {{item_work}}<input name="code" type="hidden" value="{{item_code}}">
+                                    <span class="xtright">¥ <input name="price" type="text" class="txt txt_price" value="150.00" ></span>
+                                  </div>
+                              </div>
+                              <tr style="border-bottom:none;">
+                                <td>&nbsp;</td>
+                                <td colspan="3">
+                                    <input name="btn" id="XT-Submit" type="button" class="xthide" value="提交">
+                                </td>
                               </tr>
                           </tbody></table>
                         </div>
@@ -97,44 +111,5 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
-<script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-<?php $timestamp = $this->timestamp;?>
-$(function() {
-    $('#userlogo_upload').uploadify({
-      'formData'     : {
-        'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
-        'type' : 'userlogo',
-        'uid' : <?php echo $this->loginID;?>
-      },
-      'auto':true,
-      //'buttonClass':'inp_btn',
-      'fileSizeLimit' : '1024KB',
-      'buttonText':'选择照片',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
-      //'buttonImage' : '{$js_url}uploadify/button.png',
-      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
-      'onUploadSuccess' : function(file, data, response) {
-        if (!data){
-         alert('上传失败');
-         return;
-        }
-        data = data.split('|');
-        if (data[0] == 100){
-          $('#userlogo').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
-        }else if(data[0] == 200 && data[1]!=''){
-          var imgpath=data[1];
-          $('#userlogo').val(imgpath);
-          $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_userlogo').attr('src','/'+imgpath);
-        }
-      }
-
-    });
-});
-</script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/price.js"></script>
 </html>

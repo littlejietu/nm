@@ -194,6 +194,11 @@ class XT_Model extends CI_Model {
 		}
 		$this->db->update($this->mTable);
 	}
+
+	public function get_list($where, $fields='*', $order_by='', $tb = '')
+	{
+		return $this->fetch_row($where, $fields, $order_by, $tb);
+	}
 	
 	public function fetch_row($where, $fields='*', $order_by='', $tb = '')
 	{

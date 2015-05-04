@@ -47,22 +47,29 @@ class Login extends CI_Controller {
         $this->load->model('login_log_model');
         $res['error_num'] = $this->login_log_model->count(array('ip'=>$iplong));
         $login_code = $this->input->post('login_code');
+
+        if (!$login_code)
+        {
+            $res['code'] = 201;
+            $res['data']['error_messages']['result'] = '请输入验证码';
+            return $res;
+        }
+        $this->load->helper('captcha');
+
+        if (!check_captcha($login_code))
+        {
+            $res['code'] = 201;
+            $res['data']['error_messages']['result'] = '验证码输入不正确';
+            return $res;
+        }
+
         if ($res['error_num'] >=10)
         {
-            $this->load->helper('captcha');
-            if (!$login_code)
-            {
-                $res['code'] = 201;
-                $res['data']['error_messages']['result'] = '请输入验证码';
-                return $res;
-            }
-            elseif (!check_captcha($login_code))
-            {
-                $res['code'] = 201;
-                $res['data']['error_messages']['result'] = '验证码输入不正确';
-                return $res;
-            }
+            $res['code'] = 201;
+            $res['data']['error_messages']['result'] = '输入密码超过10次，您忘记密码了，可以找回~';
+            return $res;
         }
+        
 
         $config = array(
             array(
@@ -190,5 +197,7 @@ class Login extends CI_Controller {
         $this->input->set_cookie('is_next_initial', 0, -1, XT_DOMAIN);
         $this->input->set_cookie('cartNum', 0, 0, XT_DOMAIN);
         setcookie('PHPSESSID', '', -1, '/', XT_DOMAIN);
+
+        header('location:'.base_url('user/login') );
     }
 }

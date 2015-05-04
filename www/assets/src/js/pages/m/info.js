@@ -44,8 +44,7 @@ $(function() {
             }
         },
         submitHandler:function(){
-
-            $("#xtform").submit();
+            return true;
         }
     });
     //验证--end

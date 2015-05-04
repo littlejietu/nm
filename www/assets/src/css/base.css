@@ -59,11 +59,14 @@ select {width:100%;}
 .footer{width:100%;display:inline-block;}
 /*footer*/
 
+/*itemer*/
+.itemer{width:100%;display:inline-block;}
+
 button,.button{border:1px solid #a3a3a3;cursor:pointer;font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;font-weight: normal;line-height: normal;text-decoration:none;text-align:center;display: inline-block;color:#333;/* @else */-webkit-appearance: none;}
 
 .newcon{height:72px;overflow:hidden;}
 .newcon,.newcon p,.newcon span,.newcon strong,.introdcon,.introdcon p,.introdcon span,.introdcon strong{font-size:13px !important;line-height:24px !important;color:#666 !important;}
-.fat_link ul li a i,.fot_login a,.foobot p.fb_wibo a,#share a#totop,.contact a i.qq,.tips a,.d_reser i.res_b,.poptit .close,.f_prompt,.ibanner .prev,.ibanner .next,.iban_bot a,.p_bti i,.menu_box li a i,.help_notice .not_ico,.help_notice .close,.beye a,.uwh_title span i,.aut_tab .inp_btn,.back a,.control_bar span,.htop_fr a.h_sche i,.htop_fr a.h_drop,.aut_bti a.addto i,.mwk_hover span,.reg_top a i{background:url(../images/look.png) no-repeat;}
+.fat_link ul li a i,.fot_login a,.foobot p.fb_wibo a,#share a#totop,.contact a i.qq,.tips a,.d_reser i.res_b,.poptit .close,.f_prompt,.ibanner .prev,.ibanner .next,.iban_bot a,.p_bti i,.menu_box li a i,.help_notice .not_ico,.help_notice .close,.beye a,.uwh_title span i,.aut_tab .inp_btn,.back a,.control_bar span,.htop_fr a.h_sche i,.htop_fr a.h_drop,.aut_bti a.addto i,.mwk_hover span,.reg_top a i,.letter li a i,.tran_tab a.t_delete i{background:url(../images/look.png) no-repeat;}
 
 .mrgB30{margin-bottom:30px;}
 
@@ -76,7 +79,7 @@ button,.button{border:1px solid #a3a3a3;cursor:pointer;font-family: "Microsoft Y
 .wrap .more,.lk_outer p,.lk_outer a.more,.ne_title li a em,.bti a.more{text-transform:uppercase;}
 .index_link .picimg a:hover img,.mode_title a:hover img,.ne_con li a.picimg:hover img{-moz-transform:scale(1.1);-webkit-transform:scale(1.1);-o-transform:scale(1.1);transform:scale(1.1);-moz-transition:all 1s ease 0s;-webkit-transition:all 1s ease 0s;-o-transition:all 1s ease 0s;transition:all 1s ease 0s;}
 .samp{background-color:rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);}
-.status,.iban_form li.iban_forin input,.aut_tab .but,.poptab .but,.mw_upload a.addto,.reg_con .but{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.status,.iban_form li.iban_forin input,.aut_tab .but,.poptab .but,.mw_upload a.addto,.reg_con .but,.reply .but,.compl_con .but{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
 /* public end */
 
 /* public start */

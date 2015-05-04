@@ -52,7 +52,7 @@ $('#xtform').submit(function()
     var options = { dataType:'json',
         success: function(res) {
             if(res.code ==200){
-                window.location.reload();
+                window.location.href='/m/';
             }
             else
             {

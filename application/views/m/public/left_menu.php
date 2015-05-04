@@ -11,7 +11,7 @@
         <ul>
             <li class=""><a href="interactive.php">互动总览<i></i></a></li>
             <li class="current"><a href="/m/info">个人资料<i></i></a></li>
-            <li class=""><a href="/m/price">服务价格<i></i></a></li>
+            <li class=""><a href="/m/product">服务价格<i></i></a></li>
             <li><a href="authent.php">我的认证<i></i></a></li>
             <li><a href="mworks.php">作品管理<i></i></a></li>
             <li><a href="order.php">交易管理<span class="o_mete">8</span><i></i></a></li>
