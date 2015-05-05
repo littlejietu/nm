@@ -9,7 +9,7 @@
     </div>
     <div class="menu_box">
         <ul>
-            <li class=""><a href="interactive.php">互动总览<i></i></a></li>
+            <li class=""><a href="interactive.php"><?php echo strtolower(get_called_class());?>互动总览<i></i></a></li>
             <li class="current"><a href="/m/info">个人资料<i></i></a></li>
             <li class=""><a href="/m/product">服务价格<i></i></a></li>
             <li><a href="authent.php">我的认证<i></i></a></li>

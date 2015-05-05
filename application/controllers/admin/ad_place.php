@@ -29,7 +29,7 @@ class Ad_place extends CI_Controller {
 		$pagecfg['per_page'] = $pagesize;
 		//$this->load->library('pagination');
 		$this->pagination->initialize($pagecfg);
-		$list['pages'] = $this->pagination->create_ad_places();
+		$list['pages'] = $this->pagination->create_links();
 
 		$result = array(
 			'list' => $list,

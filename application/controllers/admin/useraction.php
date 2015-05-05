@@ -36,8 +36,9 @@ class userAction extends MY_Controller
     /*登录页面*/
     public function login()
     {
+        /*
         //phpinfo();
-        $code = $this->verify_image();
+        //$code = $this->verify_image();
         $loginCodeSession = array(
             'login_code' => self::setMd5(strtolower($code['word'])),
         );
@@ -46,22 +47,23 @@ class userAction extends MY_Controller
         $data = array(
             'code' => $code,
         );
-        $this->load->view('admin/login', $data);
+        */
+        $this->load->view('admin/login');
     }
 
     /**
      * ajax获取验证码
-     */
+     
     public function ajaxGetVerify()
     {
-        $code = $this->verify_image();
+        //$code = $this->verify_image();
         $loginCodeSession = array(
             'login_code' => self::setMd5(strtolower($code['word'])),
         );
         $this->session->set_userdata($loginCodeSession);
-        echo $code['image'];
+        //echo $code['image'];
     }
-
+*/
     /**
      * ajax登录
      */
@@ -75,8 +77,8 @@ class userAction extends MY_Controller
         $loginCode = $this->session->userdata('login_code');
 
         if ($code != $loginCode && $code != '') { //验证码错误
-            echo 'code_error';
-            exit;
+            //echo 'code_error';
+            //exit;
         }
 
         $userInfo = $this->UserModel->getAdminUserInfoByUserName($userName);

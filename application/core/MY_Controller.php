@@ -42,7 +42,7 @@ class MY_Controller extends CI_Controller {
 
     /**
      * 生成验证码
-     */
+     
     public function verify_image() {
         $this->load->helper('captcha');
         $allStr = 'QWERTYUIOPLKJHGFDSAZXCVBNM';
@@ -63,6 +63,8 @@ class MY_Controller extends CI_Controller {
         $cap = create_captcha($vals);
         return $cap;
     }
+    
+    */
 
     /**
      * MD5加密

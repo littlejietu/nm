@@ -55,7 +55,9 @@ document.onkeydown=function(event){
                             <input class="code" type="text" id="loginCode" placeholder="验证码" style="width:85px;"/>
                             
                         </p>
-                        <div id="codeimg" class="codeimg fl" onClick="javascript:ajaxGetVerify('<?php echo base_url()?>');"><?php echo $code['image'];?></div><span id="error_code"></span>
+                        <div id="codeimg" class="codeimg fl" onClick="javascript:;"><!--ajaxGetVerify('<?php echo base_url()?>')-->
+
+                        <?php //echo $code['image'];?></div><span id="error_code"></span>
     
                         <div class="but fl" onClick="javascript:ajaxLogin('<?php echo base_url()?>');">登&nbsp;录</div>
                 </div>
