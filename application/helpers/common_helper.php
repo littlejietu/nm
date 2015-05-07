@@ -26,6 +26,12 @@ if ( ! function_exists('ip_long') ){
 	}
 }
 
+function _current_url(){//获取当前URL
+	$url = $_SERVER['PHP_SELF']; 
+	$filename= substr( $url , strrpos($url , '/')+1 );
+	return $filename;
+}
+
 
 function _get_db($group='xt')
 {

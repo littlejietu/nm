@@ -1,10 +1,10 @@
 <div class="header">
     <div class="container clearfix">
-       <div class="fl logo"><a href="/admin" title="返回首页"><img alt="牛模网logo" src="<?php echo _get_cfg_path('images')?>logo.png" height="30"/></a></div>
+       <div class="fl logo"><a href="/" title="返回首页"><img alt="牛模网logo" src="<?php echo _get_cfg_path('images')?>logo.png" height="30"/></a></div>
        <div class="fr nav">
           <ul class="clearfix">
              <li>
-                <a class="" href="models.php">
+                <a class="" href="/n/models.php">
                     <p>
                         <span class="navimg"><img alt="模特" src="<?php echo _get_cfg_path('images')?>nav_1.jpg" height="16"/></span>
                         <span class="navzi">模特</span>
@@ -12,7 +12,7 @@
                 </a>
              </li>
              <li>
-                 <a class="" href="institutions.php">
+                 <a class="" href="/n/institutions.php">
                     <p>
                          <span class="navimg"><img alt="机构" src="<?php echo _get_cfg_path('images')?>nav_2.jpg" height="16"/></span>
                          <span class="navzi">机构</span>
@@ -20,7 +20,7 @@
                  </a>
              </li>
              <li>
-                 <a class="" href="notlce.php">
+                 <a class="" href="/n/notlce.php">
                     <p>
                         <span class="navimg"><img alt="通告" src="<?php echo _get_cfg_path('images')?>nav_3.jpg" height="16"/></span>
                         <span class="navzi">通告</span>
@@ -28,7 +28,7 @@
                  </a>
              </li>
              <li>
-                <a class="" href="news.php">
+                <a class="" href="#">
                     <p>
                         <span class="navimg"><img alt="新闻" src="<?php echo _get_cfg_path('images')?>nav_4.jpg" height="16"/></span>
                         <span class="navzi">新闻</span>
