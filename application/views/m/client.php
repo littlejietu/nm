@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>评论管理-个人中心-牛模网</title>
+<title>客户管理-个人中心-牛模网</title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -22,41 +22,39 @@
             	<?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
                     <div class="transa">
-                        <div class="aut_bti">评论管理</div>
+                        <div class="aut_bti clearfix">
+                          <h3 class="fl">客户管理1</h3>
+              <a class="fr addto" href="javascript:;" onclick="alertWin(this)"><i></i>添加客户</a>
+                        </div>
                         <table class="tran_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tbody><tr>
-                              <th>留言</th>
-                              <th width="180">操作</th>
+                            <tr>
+                              <th width="250">联系人</th>
+                              <th width="110">联系方式</th>
+                              <th>备注</th>
+                              <th width="120">操作</th>
                             </tr>
-                        </tbody></table>
-                        <ul class="tran_tab">
-                        <?php foreach ($list['rows'] as $key => $a): ?>
-                                                    <li class="clearfix t_review">
-                              <div class="em_rit fl">
-                                   <div class="apprtop">
-
-                                       <div class="fl a_rev"><span>身材尺寸：</span><?//=$a['figure'];?><p class="star_on"><i class="star_5">5</i></p></div>
-                                       <div class="fl a_rev"><span>专业技能：</span><?//=$a['skill'];?><p class="star_on"><i class="star_4">5</i></p></div>
-                                       <div class="fl a_rev"><span>工作效率：</span><?//=$a['efficiency'];?><p class="star_on"><i class="star_3">5</i></p></div>
-                                       <div class="fl a_rev" style="margin-right:0;"><span>服务态度：</span><?//=$a['attitude'];?><p class="star_on"><i class="star_2">5</i></p></div>
-                                   </div>
-
-                                   <div class="apprcon"><?=$a['memo'];?></div>
-                                   <div class="clearfix">
-                                        <span class="fl"><?php echo $a['nickname'];?></span><em class="fr"><?php echo date('Y-m-d H:i:s',$a['addtime']);?></em>       
-                                   </div>
-                                </div>
-                                <div class="fl operat"><a class="t_delete" href="javascript:;"><i></i>回复</a></div>
-                                <a class="t_editor fr" href="javascript:;" onclick="alertWin(this)"><i></i>投诉</a>
-                                <div style="clear:both"></div>
-                                <div class="fabiao reply">
-                                  <textarea id="starcontent" name="content" cols="" class="texta" placeholder="谢谢哦，下次有机会继续合作哦~~"></textarea>
-                                    <br><br>
-                                    <input name="" type="submit" class="but" value="创建"><input name="" type="submit" class="but but_2" value="取消">
-                                </div>
-                            </li>
+                            <?php foreach ($list['rows'] as $key => $a): ?>
+                            <tr>
+                              <td><?php echo $a['linkman'];?></td>
+                              <td><?php echo $a['contact'];?></td>
+                              <td><?php echo $a['memo'];?></div></td>
+                              <td class="operat">
+                                <a class="t_delete" href="/admin/client/del?id=<?php echo _get_key_val($a['id']);?>"><i></i>删除</a>
+                                <a class="t_editor" href="/admin/client/add?id=<?php echo _get_key_val($a['id']);?>"><i></i>编辑</a>
+                              </td>
+                            </tr>
                             <?php endforeach;?>
-                            </ul>
+                           
+                        </table>
+                        <table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
+                        <tr>
+                                <td colspan="2" height="32" align="right">
+                                    <div class="page">
+                                      <?=$list['pages']?>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?php include("include/title.php")?>
+<?php include("include/title.php");?>
 <link href="css/base.css" type="text/css" rel="stylesheet" />
 <link href="css/common.css" type="text/css" rel="stylesheet" />
 <!--[if IE 6]>
@@ -11,17 +11,17 @@
 <![endif]-->
 </head>
 <body>
-<?php include("include/header.php")?>
+<?php include("include/header.php");?>
 <div class="mainbody" id="mainbody">
     <div class="container mrgB30">
         <div class="member clearfix">
-            <?php include("include/uc_menu.php")?>
+            <?php include("include/uc_menu.php");?>
             <div class="fr uc_content">
-            	<?php include("include/notice.php")?>
+            	<?php include("include/notice.php");?>
                 <div class="clearfix uitopg">
                     <div class="transa">
                         <div class="aut_bti clearfix">
-                        	<h3 class="fl">客户管理</h3>
+                        	<h3 class="fl">客户管理1</h3>
 							<a class="fr addto" href="javascript:;" onclick="alertWin(this)"><i></i>添加客户</a>
                         </div>
                         <table class="tran_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -42,13 +42,14 @@
                         </table>
                     </div>
                 </div>
+                
             </div>
         </div>
         <div class="help_bottom"></div>
     </div> 
 </div>
 <!--mainbody-->
-<?php include("include/footer.php")?>
+<?php include("include/footer.php");?>
 
 <div class="popover-mask"></div>
 <div class="popover complaint addcust">
