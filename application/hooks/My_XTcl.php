@@ -155,7 +155,7 @@ class My_XTcl{
 				exit;
 			}else
 			{
-				$QUERY_STRING =  $_SERVER['QUERY_STRING'];echo $QUERY_STRING;die;
+				$QUERY_STRING =  $_SERVER['QUERY_STRING'];//echo $QUERY_STRING;die;
 				$SCRIPT_URL =  '/'.$CI->uri->uri_string;
 				$url  = $base_url.'user/login?forword_url='.urlencode($SCRIPT_URL.($QUERY_STRING ? '?' : '').$QUERY_STRING);
 				header('location:'. $url );

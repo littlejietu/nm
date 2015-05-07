@@ -4,22 +4,22 @@
             <img src="<?php echo _get_cfg_path('images')?>head.jpg"/>
             <div class="head_bj"></div>
         </a>
-        <h3 class="m_name"><a href="member.php">范萌</a></h3>
+        <h3 class="m_name"><a href="/n/member.php">范萌</a></h3>
         <p class="m_prompt">哈尼，喝杯下午茶，精神精神！</p>
     </div>
     <div class="menu_box">
         <ul>
-            <li class=""><a href="interactive.php"><?php echo strtolower(get_called_class());?>互动总览<i></i></a></li>
-            <li class="current"><a href="/m/info">个人资料<i></i></a></li>
+            <li class=""><a href="/n/interactive.php"><?php //echo strtolower(get_called_class());?>互动总览<i></i></a></li>
+            <li class="current"><a href="/m/info"><?php //echo _current_url();?>个人资料<i></i></a></li>
             <li class=""><a href="/m/product">服务价格<i></i></a></li>
-            <li><a href="authent.php">我的认证<i></i></a></li>
-            <li><a href="mworks.php">作品管理<i></i></a></li>
-            <li><a href="order.php">交易管理<span class="o_mete">8</span><i></i></a></li>
+            <li><a href="/n/authent.php">我的认证<i></i></a></li>
+            <li><a href="/n/mworks.php">作品管理<i></i></a></li>
+            <li><a href="/n/order.php">交易管理<span class="o_mete">8</span><i></i></a></li>
             <li><a href="##">资金账户<i></i></a></li>
             <li style="display:none"><a href="transaction.php">交易管理<i></i></a></li>
-            <li><a href="review.php">评论管理<i></i></a></li>
-            <li><a href="client.php">客户管理<i></i></a></li>
-            <li><a href="letter.php">站内信<i></i></a></li>
+            <li><a href="/n/review.php">评论管理<i></i></a></li>
+            <li><a href="/n/client.php">客户管理<i></i></a></li>
+            <li><a href="/n/letter.php">站内信<i></i></a></li>
         </ul>
     </div>
     <div class="m_level">
