@@ -23,7 +23,7 @@
     <div class="personal mrgB30">
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
-            	<li><span>姓名</span>范萌</li>
+            	<li><span>姓名</span><?=$oUser['nickname']?></li>
                 <li><span>罩杯</span>75B</li>
                 <li><span>身高</span>163.0 cm</li>
                 <li><span>体重</span>50.0 kg</li>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>获得奖项</h3>
-                        <div class="p_wzi">第12届南方新丝路模特大赛 第一名<br />2014中国广州国际模特大赛 第二名<br />2013中国内衣模特大赛 第一名<br />第12届南方新丝路模特大赛 第一名<br />2014中国广州国际模特大赛 第二名</div>
+                        <div class="p_wzi"><?=$oUser['awards']?></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>T台活动</h3>
