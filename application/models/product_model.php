@@ -10,6 +10,10 @@ class Product_model extends XT_Model {
 		return $this->get_by_id($id, $fields);
 	}
 
+	public function get_product_by_uid($id, $fields='*'){
+		return $this->get_list("userid=$id and status=1", $fields);
+	}
+
 	public function insert_update($data){
 		$res = 0;
 		$where = 'userid='.$data['userid'].' and item='.$data['item'].' and scene='.$data['scene'].' and time='.$data['time'].' and status=1';

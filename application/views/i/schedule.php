@@ -18,61 +18,29 @@
 
 <div class="mainbody" id="mainbody">
 	<div class="introd container">
-        <div class="introd_top">
-    <div class="intopimg"><img src="images/ma_1.jpg" /></div>
-    <div class="intcon">
-        <div class="fl col_sub">
-            <div class="cs_avatar"><img src="images/ma_2.jpg"/></div>
-            <ul class="cs_number clearfix">
-                <li><strong>272</strong><span>关注</span></li>
-                <li><strong>21502</strong> <span>粉丝</span></li>
-                <li><strong>15021</strong> <span>拍片次数</span></li>
-            </ul>
-            <div class="cs_popul"><strong>502137</strong>人气</div>
-        </div>
-        <div class="fl info_wrap">
-        	<div class="clearfix">
-            	<div class="namebox fl"><span>杭州乐玛摄影</span></div>
-                <div class="contact attention fl"><a href="##" class="atte_cur"><i class="qq atte"></i>未关注</a></div>
-            	<div class="contact fl"><a href="##"><i class="qq"></i>联系我</a></div>
-            	<div class="tips piccon fl"><a href="##" rel="牛模网签约经纪公司" class="preview"></a></div>
-            </div>
-            <div class="namebox"><p>女 &nbsp;&nbsp; 浙江，杭州西湖区 &nbsp;&nbsp; 平面模特</p></div>
-        </div>
-    </div>
-</div>
-<div class="introd_title" id="introd_title">
-    <ul class="clearfix">
-        <li class="iton"><a href="malbums.php">TA的作品（45）</a></li>
-        <li><a href="personal.php">个人信息</a></li>
-        <li><a href="appraisal.php">拍摄评价（423） </a></li>
-        <li><a href="schedule.php">档期选择</a></li>
-    </ul>
-</div>  
+        
+<?php include_once(VIEWPATH."i/public/top.php");?>  
 
 <div class="schedule clearfix">
             <div class="clearfix">
                 <div class="time_top">
                     <form action="" method="post">
-                        <input type="hidden" name="y" id="y" value="2015">
-                        <input type="hidden" name="m" id="m" value="03">
+                        <input type="hidden" name="y" id="y" value="<?=$YM['y']?>">
+                        <input type="hidden" name="m" id="m" value="<?=$YM['m']?>">
                         <div class="time">
-                            <span id="total_nian">2015.</span><span id="total_yue">03</span>
+                            <span id="total_nian"><?=$YM['y']?>.</span><span id="total_yue"><?=$YM['m']?></span>
                         </div>
                         <div class="nianyue fr">
-                            <div class="time_select" id="nian">2015年</div>
+                            <div class="time_select" id="nian"><?=$YM['y']?>年</div>
                             <div class="time_select_click"><i></i></div>
                             <div class="select" id="nianfen" style="display: none;">
                                 <ul>
-                                  <li>2015年</li>
-                                  <li>2014年</li>
-                                  <li>2013年</li>
-                                  <li>2012年</li>
-                                  <li>2011年</li>
-                                  <li>2010年</li>
+                                  <?php for($i=(date("Y")+1);$i>(date("Y")-9);$i--){?>
+                                  <li><?=$i?>年</li>
+                                  <?php }?>
                                 </ul>
                             </div>
-                            <div class="time_select" id="yue">03月</div>
+                            <div class="time_select" id="yue"><?=$YM['m']?>月</div>
                             <div class="time_select_click"><i></i></div>
                             <div class="select" id="yuefen">
                                 <ul>
@@ -108,211 +76,178 @@
                         <li>星期六</li>
                     </ul>
                 </div>
-                <div class="piao_con">
-                    <div style="float:left;width:740px; background:url(images/yanchu_list_bg.gif) left top repeat-y; margin-top:1px;display:none"></div>
-                    <div class="con_day">
-                        <div class="day"></div>
-                        <div class="day bg_day"></div>
-                        <div class="day"></div>
-                        <div class="day bg_day"></div>
-                        <div class="day"></div>
-                        <div class="day bg_day"></div>
-                        <div class="day teba_kan">
-                           <p class="d_number">1</p>
-                           <div class="arrang">
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="con_day">
-                        <div class="day d_reser bg_day" onclick="alertWin(this)">
-                          <p class="d_number">2</p>
-                          <i class="res_b"></i>
-                          <p class="res_zi">有空哦，快来预约</p>
-                        </div>
-                        <div class="day d_reser" onclick="alertWin(this)">
-                          <p class="d_number">3</p>
-                          <i class="res_b"></i>
-                          <p class="res_zi">有空哦，快来预约</p>
-                        </div>
-                        <div class="day teba_kan bg_day">
-                          <p class="d_number">4</p>
-                          <div class="arrang">
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                          </div>
-                        </div>
-                        <div class="day d_reser" onclick="alertWin(this)">
-                          <p class="d_number">5</p>
-                          <i class="res_b"></i>
-                          <p class="res_zi">有空哦，快来预约</p>
-                        </div>
-                        <div class="day d_reser bg_day" onclick="alertWin(this)">
-                          <p class="d_number">6</p>
-                          <i class="res_b"></i>
-                          <p class="res_zi">有空哦，快来预约</p>
-                        </div>
-                        <div class="day d_reser" onclick="alertWin(this)">
-                          <p class="d_number">7</p>
-                          <i class="res_b"></i>
-                          <p class="res_zi">有空哦，快来预约</p>
-                        </div>
-                        <div class="day teba_kan bg_day">
-                           <p class="d_number">8</p>
-                           <div class="arrang">
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                               <p class="arr_con">周末特色文化广场活动<i>19:30</i></p>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="con_day">
-                        <div class="day">
-                          <p class="d_number">9</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">10</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">11</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">12</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">13</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">14</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">15</p>
-                        </div>
-                    </div>
-                    <div class="con_day">
-                        <div class="day bg_day">
-                          <p class="d_number">16</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">17</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">18</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">19</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">20</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">21</p>
-                        </div>
-                        <div class="day bg_day">
-                           <p class="d_number">22</p>
-                        </div>
-                    </div>
-                    <div class="con_day">
-                        <div class="day">
-                          <p class="d_number">23</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">24</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">25</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">26</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">27</p>
-                        </div>
-                        <div class="day bg_day">
-                          <p class="d_number">28</p>
-                        </div>
-                        <div class="day">
-                          <p class="d_number">29</p>
-                        </div>
-                    </div>
-                    <div class="con_day">
-                        <div class="day bg_day">
-                           <p class="d_number">30</p>
-                        </div>
-                        <div class="day">
-                           <p class="d_number">31</p>
-                        </div>
-                        <div class="day bg_day"></div>
-                        <div class="day"></div>
-                        <div class="day bg_day"></div>
-                        <div class="day"></div>
-                        <div class="day bg_day"></div>
-                    </div>
+
+                <?php
+                        
+            $now_year=$YM['y'];//取得年份
+            $now_mondy=$YM['m'];//取得月份
+            $now_date=$now_year.'-'.$now_mondy;
+            if($now_mondy==02){
+              if($now_year%4==0 && $now_year%100!=0){$mondy_total=28;}
+              elseif($now_year%100==0 && $now_year%400==0){$mondy_total=28;}
+              else{$mondy_total=29;}
+            }
+            elseif($now_mondy==01||$now_mondy==03||$now_mondy==05||$now_mondy==07||$now_mondy==08||$now_mondy==10||$now_mondy==12){$mondy_total=31;}//取得月份中的日起数
+            else{$mondy_total=30;}
+              $date_first=date("w",strtotime($now_date."-01"));//第一天的日期
+            if(($date_first>4&&$mondy_total==31)||($date_first>5&&$mondy_total==30)){$total_num=42;}
+            else{$total_num=35;}//判断总共有多少个显示日期的格子
+                    ?>
+                    <div class="piao_con">
+                      <div style="float:left;width:740px; margin-top:1px;display:none"></div>
+                      <?php 
+            for($i=0;$i<$total_num;$i++){
+              $the_date=$YM['y'].'-'.str_pad($YM['m'],2,"0",STR_PAD_LEFT).'-'.str_pad(($i-$date_first+1),2,"0",STR_PAD_LEFT);//得到完整日期
+              if($i%7==0)
+                   echo '<div class="con_day">';
+              ?>
+                <?php $arrItem = array('class'=>'','title'=>'','dayno'=>'','date'=>'');
+                  if($i%2==1)
+                    $arrItem['class'] = ' bg_day';
+
+                  if($i>=$date_first && $i-$date_first<$mondy_total)
+                    $arrItem['dayno']='<p class="d_number">'.($i-$date_first+1).'</p>';
+
+                  $tmp_title='';
+                  //已有预约
+                  foreach ($list as $key => $a) {
+                      if($the_date == substr($a['datetime'],0,10))
+                      {
+                        $HI =date('H:i',strtotime($a['datetime']));
+                        $title = strlen($a['title'])<=10 ? $a['title'] : substr($a['title'],0,10).'..';
+                        $tmp_title.='<p class="arr_con">'.$title.'<i>'.$HI.'</i></p>';
+                      }
+                  }
+                  if(!empty($tmp_title)){
+                    $arrItem['class'].=' teba_kan';
+                    $arrItem['title']='<div class="arrang">'.$tmp_title.'</div>';
+                  }
+                  else if(!empty($arrItem['dayno']) && strtotime($the_date)>time())
+                  {
+                    $arrItem['class'].=' d_reser';
+                    $arrItem['title']='<i class="res_b"></i><p class="res_zi">有空哦，快来预约</p>';
+                    $arrItem['date']=' _date='.$the_date;
+                  }
+                ?>
+                        
+                          
+                      <div class="day<?=$arrItem['class']?>"<?=$arrItem['date']?>>
+                        <?=$arrItem['dayno']?>
+                        <?=$arrItem['title']?>
+                      </div>
+
+                <?php
+                if($i%7==6)
+                  echo '</div>';
+            }
+            ?>
+                 
                 </div>
+
             </div>
         </div>
       
     </div>
 </div>
 <!--mainbody-->
-<div class="footer">
-    <div class="fortop">
-    	<div class="clearfix container">
-        	<div class="fat_link fl clearfix">
-                <ul style="width:300px;">
-                	<li class="bt_tes"><a href="##"><i></i>我们的服务</a></li>
-                    <li><a href="##"><i></i>优质服务是我们的使命</a></li>
-                    <li><a href="##"><i></i>高品质是我们的义务</a></li>
-                    <li><a href="##"><i></i>我们承诺24小时内出货</a></li>
-                    <li><a href="##"><i></i>我们可以在24小时内回复您的邮件</a></li>
-                    <li><a href="##"><i></i>我们是一家工厂竞争力的价格和供应</a></li>
-                    <li><a href="##"><i></i>顾客至上</a></li>
-                </ul>
-                <ul class="flik">
-                	<li class="bt_tes"><a href="##"><i></i>经纪合作</a></li>
-                    <li><a href="##"><img src="images/flik_1.jpg"/></a></li>
-                    <li><a href="##"><img src="images/flik_2.jpg"/></a></li>
-                    <li><a href="##"><img src="images/flik_3.jpg"/></a></li>
-                    <li><a href="##"><img src="images/flik_4.jpg"/></a></li>
-                </ul>
-                <ul>
-                	<li class="bt_tes"><a href="##"><i></i>关于我们</a></li>
-                    <li><a href="#"><i></i>什么是牛模网?</a></li>
-                    <li><a href="#"><i></i>公司简介</a></li>
-                    <li><a href="#"><i></i>加入我们</a></li>
-                    <li><a href="#"><i></i>联系我们</a></li>
-                </ul>
-                <ul>
-                	<li class="bt_tes"><a href="##"><i></i>帮助中心</a></li>
-                    <li><a href="##"><i></i>防骗说明</a></li>
-                    <li><a href="##"><i></i>官方互动</a></li>
-                    <li><a href="##"><i></i>合作链接</a></li>
-                </ul>
-            </div>
-            <div class="fr">
-               <div class="fot_img"><img src="images/f_tel.jpg" width="188" height="46" /></div>
-               <div class="fot_login">
-                   <a title="注册" class="f_reg" href="##"></a>
-                   <a title="登陆" class="f_land" href="##"></a>
-               </div>
-            </div>
-        </div>
-    </div>
-    <div class="foobot">
-    	<div class="container">
-        	<p class="fl fb_wibo">
-            	<a class="f_wb" href="http://weibo.com/guoxingwang0713" target="_blank" title="新浪微博"></a>
-                <a class="f_qq" href="##" title="腾讯空间"></a>
-            </p>
-            <p class="fr">版权所有 &copy; 2015NEWMODELS   浙ICP备10021016号  DESIGNED BY :<a href="http://www.lebang.com/" target="_blank"> LEBANG.COM</a></p>
-        </div>
-    </div>
-</div><!--footer-->
+<?php include_once(VIEWPATH."public/footer.php");?>
 
 <div id="share">
 	<a id="totop" title="" href="javascript:void(0);">返回顶部</a>
-</div></body>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+</div>
+
+
+<div class="popover-mask"></div>
+<div class="popover">
+  <div class="poptit"> <a href="javascript:;" title="关闭" class="close">×</a></div>
+  <div class="popbod">
+    <div class="fl popimg"><img src="<?php echo _get_cfg_path('images')?>mt_12.jpg"/></div>
+      <div class="fr poptab">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td width="80"><font>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 格：</font></td>
+                  <td>¥ <em class="money">150.00</em></td>
+                </tr>
+                <tr>
+                  <td><font>工作内容：</font></td>
+                  <td>
+                    <select name="item" id="item" class="txt sele" onchange="getPrice()">
+                        <?php foreach ($workitem as $k => $v):?>
+                        <option value="<?=$k?>"><?=$v?></option>
+                        <?php endforeach;?>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td><font>工作场景：</font></td>
+                  <td>
+                     <div class="clearfix scene">
+                        <?php foreach ($workscene as $k => $v):?>
+                         <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
+                        <?php endforeach;?>
+                        <input name="scene" id="scene" value="0" type="hidden">
+                     </div> 
+                  </td>
+                </tr>
+                <tr>
+                  <td><font>计价方式：</font></td>
+                  <td>
+                      <div class="clearfix scene">
+                        <?php foreach ($worktime as $k => $v):?>
+                          <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
+                        <?php endforeach;?>
+                        <input name="time" id="time" value="0" type="hidden">
+                      </div> 
+                  </td>
+                </tr>
+                <tr>
+                  <td><font>数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 量：</font></td>
+                  <td>
+                    <div class="i_tips" style="display:none"></div>
+          <div class="i_box">
+                        <a href="javascript:;" class="J_minus">-</a>
+                        <input type="text" value="0" class="J_input" name="num" id="num" />
+                        <a href="javascript:;" class="J_add">+</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                   <td valign="top"><font>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注：</font></td>
+                   <td><textarea class="txt text" name="" cols="" rows=""></textarea></td>
+                </tr>
+                <tr>
+                  <td><font>拍片日期：</font></td>
+                  <td><span id="photo_date"></span></td>
+                </tr>
+                <tr><td colspan="2"><p class="line"></p></td></tr>
+                <tr>
+                  <td><font>联&nbsp;系&nbsp;&nbsp;人：</font></td>
+                  <td><input class="txt" name="linkman" type="text"/></td>
+                </tr>
+                <tr>
+                  <td><font>联系方式：</font></td>
+                  <td><input class="txt" name="linkway" type="text"/></td>
+                </tr>
+                <tr><td height="25"></td></tr>
+                <tr>
+                   <td colspan="2"><input class="but" name="" type="button" value="立即下单"/></td>
+                </tr>
+            </table>
+        </div>
+  </div>
+  <script type="text/javascript">
+  var arrProduct = new Array();
+  <?php $i = 0;
+   foreach ($oProductList as $k => $v):
+      $i++;?>
+    arrProduct[<?=$i?>]=["<?=$k?>","<?=$v?>"];
+  <?php endforeach;?>
+  </script>
+</div>
+</body>
+
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/i/schedule.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>Quantity.js"></script>
+
 </html>

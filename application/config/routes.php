@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //$route['services/(\w+)\.(\w+)'] = "services/$1/$2";
 $route['m'] = "m/index";
+$route['i/(:any)/(:num)'] = "i/$1/index/$2";
 
 $route['reg'] = "user/register/index";
 $route['reg/(:any)'] = "user/register/$1";

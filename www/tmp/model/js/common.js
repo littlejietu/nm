@@ -41,7 +41,7 @@ $(function(){
 	  });
 });
 
-/* 档期选择 */
+//档期选择 
 $().ready(function(){
 	$('.time_select_click').click(function(){
 		$(this).next().toggle();
@@ -58,7 +58,7 @@ $().ready(function(){
 		$("#yue").html($(this).html());
 		$("#total_yue").html($(this).html());
 		$("#m").val($.trim($(this).html().replace("月","")));
-		$(".time_select_button").click();
+//		$(".time_select_button").click();
 		$('.select').hide();
 	});
 	
@@ -76,7 +76,7 @@ $().ready(function(){
 	$(".piao_con .day:odd").addClass('bg_day');
 })
 
-/* 档期选择弹出 */
+// 档期选择弹出 
 function alertWin(a){
 	$('.popover-mask').show();
 	$('.popover-mask').height($(document).height());

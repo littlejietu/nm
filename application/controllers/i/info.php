@@ -10,12 +10,12 @@ class Info extends CI_Controller {
     }
 	
 
-	public function index()
+	public function index($userid)
 	{
-		$userid=3;
-		$o = $this->User_model->get_info_by_id($userid);
+		
+		$oUser = $this->User_model->get_info_by_id($userid);
 		$result = array(
-			'o' => $o,
+			'oUser' => $oUser,
 			);
 		$this->load->view('i/info',$result);
 	}

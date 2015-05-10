@@ -43,3 +43,5 @@ $config['worktime'] = array(
 	3 => '场',
 	4 => '件',
 );
+
+$config['workprice'] = 150;

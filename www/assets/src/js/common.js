@@ -41,7 +41,7 @@ $(function(){
 	  });
 });
 
-/* 档期选择 */
+/* //档期选择 
 $().ready(function(){
 	$('.time_select_click').click(function(){
 		$(this).next().toggle();
@@ -76,7 +76,7 @@ $().ready(function(){
 	$(".piao_con .day:odd").addClass('bg_day');
 })
 
-/* 档期选择弹出 */
+// 档期选择弹出 
 function alertWin(a){
 	$('.popover-mask').show();
 	$('.popover-mask').height($(document).height());
@@ -86,11 +86,12 @@ function closeWin(a){
 	$('.popover-mask').hide();
 	$('.popover').slideUp(200);
 }
-
+*/
 function filt(a){
 	$(a).addClass('licur').siblings().removeClass('licur');
 	$(a).siblings('input').val($(a).attr('name'));
-}	
+}
+	
 	
 /* login */	
 jQuery.fn.customInput = function(){
