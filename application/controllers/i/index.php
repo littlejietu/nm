@@ -19,4 +19,6 @@ class Index extends CI_Controller {
 		$this->load->view('i/index',$result);
 	}
 
+	
+
 }
