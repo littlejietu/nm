@@ -66,14 +66,14 @@ button,.button{border:1px solid #a3a3a3;cursor:pointer;font-family: "Microsoft Y
 
 .newcon{height:72px;overflow:hidden;}
 .newcon,.newcon p,.newcon span,.newcon strong,.introdcon,.introdcon p,.introdcon span,.introdcon strong{font-size:13px !important;line-height:24px !important;color:#666 !important;}
-.fat_link ul li a i,.fot_login a,.foobot p.fb_wibo a,#share a#totop,.contact a i.qq,.tips a,.d_reser i.res_b,.poptit .close,.f_prompt,.ibanner .prev,.ibanner .next,.iban_bot a,.p_bti i,.menu_box li a i,.help_notice .not_ico,.help_notice .close,.beye a,.uwh_title span i,.aut_tab .inp_btn,.back a,.control_bar span,.htop_fr a.h_sche i,.htop_fr a.h_drop,.aut_bti a.addto i,.mwk_hover span,.reg_top a i,.letter li a i,.tran_tab a.t_delete i{background:url(../images/look.png) no-repeat;}
+.fat_link ul li a i,.fot_login a,.foobot p.fb_wibo a,#share a#totop,.contact a i.qq,.tips a,.d_reser i.res_b,.poptit .close,.f_prompt,.ibanner .prev,.ibanner .next,.iban_bot a,.p_bti i,.menu_box li a i,.help_notice .not_ico,.help_notice .close,.beye a,.uwh_title span i,.aut_tab .inp_btn,.back a,.control_bar span,.htop_fr a.h_sche i,.htop_fr a.h_drop,.aut_bti a.addto i,.mwk_hover span,.reg_top a i,.letter li a i,.tran_tab a.t_delete i,.upload_list li .udl_bti a.delete{background:url(../images/look.png) no-repeat;}
 
 .mrgB30{margin-bottom:30px;}
 
 /* public start */
-.samp,.ne_title li a em,.time_top .time span,.d_number,.arrang i,.i_box input,.em_lef h3,.em_lef span,.bti a.more{font-family:"Arial",Helvetica,sans-serif;}
-.women li a span,.picBtnTop .hd ul li p,.nebti{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
-.recom li a p,.our_insti li a,.wrap .more,.lk_outer a.more,.status,.wsti li a,.works li a .wor_wzi,.back a,.m_sort li a,.brand-list .item{transition: all 0.3s ease-out 0s;-webkit-transition: all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-o-transition: all 0.3s ease-out 0s;}
+.samp,.ne_title li a em,.time_top .time span,.d_number,.arrang i,.i_box input,.em_lef h3,.em_lef span,.bti a.more,.fund_uli li p i{font-family:"Arial",Helvetica,sans-serif;}
+.women li a span,.picBtnTop .hd ul li p,.nebti,.upload_list li p{text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.recom li a p,.our_insti li a,.wrap .more,.lk_outer a.more,.status,.wsti li a,.works li a .wor_wzi,.back a,.m_sort li a,.brand-list .item,.fund_uli li{transition: all 0.3s ease-out 0s;-webkit-transition: all 0.3s ease-out 0s;-moz-transition:all 0.3s ease-out 0s;-o-transition: all 0.3s ease-out 0s;}
 .our_insti li a:hover{opacity:0.7;-moz-opacity:0.7;filter:alpha(opacity=70);}
 .banner .hd a,.help_notice .close,.beye a,.back a,.htop_fr a.h_drop{font-size:0;line-height:0;}
 .wrap .more,.lk_outer p,.lk_outer a.more,.ne_title li a em,.bti a.more{text-transform:uppercase;}

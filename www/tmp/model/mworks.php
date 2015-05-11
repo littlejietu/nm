@@ -23,8 +23,8 @@
                         <div class="aut_bti"><h3>作品管理</h3></div>
                         <div class="works malbums mworks">
                         	<div class="aut_bti mw_upload clearfix">
-                            	<a class="fl addto ato_1" href="##"><i></i>上传照片</a>
-                                <a class="fl addto" href="##"><i></i>创建相册</a>
+                            	<a class="fl addto ato_1" href="uploadworks.php"><i></i>上传照片</a>
+                                <a class="fl addto" href="javascript:;" onclick="alertWin(this)"><i></i>创建相册</a>
                             </div>
                             <ul class="clearfix">
                                 <?php for($i=0;$i<3;$i++){?>
@@ -55,6 +55,30 @@
 </div>
 <!--mainbody-->
 <?php include("include/footer.php")?>
+
+<div class="popover-mask"></div>
+<div class="popover complaint">
+	<div class="compl_top"><span class="fl">创建相册</span><a href="javascript:;" onclick="closeWin(this)" title="关闭" class="close fr">×</a></div>
+	<div class="compl_con">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="80"><font>相册名称：</font></td>
+              <td><input style="width:300px" class="txt" name="" type="text" placeholder="请输入相册名称"/></td>
+            </tr>
+            <tr><td height="10"></td></tr>
+            <tr>
+              <td valign="top"><font>相册描述：</font></td>
+              <td><textarea class="txt text" name="" cols="" rows="" placeholder="请添加相册描述"></textarea></td>
+            </tr>
+            <tr><td height="10"></td></tr>
+            <tr>
+            	<td>&nbsp;</td>
+               <td><input class="but" name="" type="button" value="创建"/></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 </body>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
