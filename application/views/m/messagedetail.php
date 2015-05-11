@@ -22,42 +22,16 @@
             	<?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
                     <div class="transa">
-                        <div class="aut_bti clearfix">
-                          <h3 class="fl">客户管理</h3>
-              <a class="fr addto" href="javascript:;" onclick="alertWin(this)"><i></i>添加客户</a>
-                        </div>
-                        <table class="tran_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                              <th width="250">联系人</th>
-                              <th width="110">联系方式</th>
-                              <th>备注</th>
-                              <th width="120">操作</th>
-                            </tr>
-                            <?php foreach ($list['rows'] as $key => $a): ?>
-                            <tr>
-                              <td><?php echo $a['linkman'];?></td>
-                              <td><?php echo $a['contact'];?></td>
-                              <td><?php echo $a['memo'];?></div></td>
-                              <td class="operat">
-                                <a class="t_delete" href="/admin/client/del?id=<?php echo _get_key_val($a['id']);?>"><i></i>删除</a>
-                                <a class="t_editor" href="/admin/client/add?id=<?php echo _get_key_val($a['id']);?>"><i></i>编辑</a>
-                              </td>
-                            </tr>
-                            <?php endforeach;?>
-                           
-                        </table>
-                        <table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
-                        <tr>
-                                <td colspan="2" height="32" align="right">
-                                    <div class="page">
-                                      <?=$list['pages']?>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="aut_bti"><h3>站内信</h3></div>
+                        <div class="letter">
+                          <div class="letdeta_ti">
+                                <h2><?=$o['title']?></h2>
+                                <p><?php echo date('Y-m-d H:i:s',$o['addtime']);?></p>
+                            </div>
+                            <div class="letdeta_con"><?=$o['content']?></div>
+                            </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="help_bottom"></div>

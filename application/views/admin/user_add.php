@@ -128,6 +128,10 @@
 		         <tr>
 		            <td height="25" align="right"> 杂志拍摄；</td>
 		            <td align="left" class="padL10"><input type="text" name="magazine" value="<?php if( !empty($info['magazine']) ) echo $info['magazine']; ?>" /></td>
+		        </tr>
+		        <tr>
+		            <td height="25" align="right"> 视频地址；</td>
+		            <td align="left" class="padL10"><input type="text" name="video" value="<?php if( !empty($info['video']) ) echo $info['video']; ?>" /></td>
 		        </tr>				      
 				<tr>
 		            <td></td>

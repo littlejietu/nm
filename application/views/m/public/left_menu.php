@@ -19,7 +19,7 @@
             <li style="display:none"><a href="transaction.php">交易管理<i></i></a></li>
             <li><a href="/m/comment">评论管理<i></i></a></li>
             <li><a href="/m/client">客户管理<i></i></a></li>
-            <li><a href="letter.php">站内信<i></i></a></li>
+            <li><a href="/m/message">站内信<i></i></a></li>
         </ul>
     </div>
     <div class="m_level">

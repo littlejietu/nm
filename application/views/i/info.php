@@ -23,12 +23,12 @@
     <div class="personal mrgB30">
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
-            	<li><span>姓名</span><?=$oUser['nickname']?></li>
-                <li><span>罩杯</span>75B</li>
-                <li><span>身高</span>163.0 cm</li>
-                <li><span>体重</span>50.0 kg</li>
-                <li><span>三围</span>83-63-88</li>
-                <li><span>鞋码</span>34码</li>
+            	<li><span>姓名</span> <?=$oUser['nickname']?></li>
+                <li><span>罩杯</span> <?=$oUser['cup']?></li>
+                <li><span>身高</span> <?=$oUser['height']?></li>
+                <li><span>体重</span> <?=$oUser['weight']?></li>
+                <li><span>三围</span> <?=$oUser['bust']?>-<?=$oUser['waist']?>-<?=$oUser['hips']?></li>
+                <li><span>鞋码</span> <?=$oUser['shoes']?></li>
             </ul>
             <br /><br /><br />
             <div class="title">个人经历</div>
@@ -36,46 +36,44 @@
             	<div class="fl flpet">
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>平面拍摄</h3>
-                        <div class="p_wzi">歌诗菲&nbsp;&nbsp;&nbsp;例秀女装&nbsp;&nbsp;&nbsp;档口网</div>
+                        <div class="p_wzi"> <?=$oUser['planeshot']?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>获得奖项</h3>
-                        <div class="p_wzi"><?=$oUser['awards']?></div>
+                        <div class="p_wzi"> <?=$oUser['awards']?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>T台活动</h3>
-                        <div class="p_wzi">歌诗菲&nbsp;&nbsp;&nbsp;例秀女装</div>
+                        <div class="p_wzi"> <?=$oUser['tactivity']?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>影视广告</h3>
-                        <div class="p_wzi">歌诗菲&nbsp;&nbsp;&nbsp;例秀女装&nbsp;&nbsp;&nbsp;档口网</div>
+                        <div class="p_wzi"> <?=$oUser['telead']?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>杂志拍摄</h3>
-                        <div class="p_wzi">歌诗菲&nbsp;&nbsp;&nbsp;例秀女装&nbsp;&nbsp;&nbsp;档口网</div>
+                        <div class="p_wzi"> <?=$oUser['magazine']?><br /></div>
                     </div>
                 </div>
+                <?php if($oUser['video']):?>
                 <div class="fr p_video">
-                    <iframe width="400px" height="260px" src="http://player.youku.com/embed/XOTAwNTg5NTYw" frameborder=0 allowfullscreen></iframe>
+                    <iframe width="400px" height="260px" src="$oUser['video']" frameborder=0 allowfullscreen></iframe>
                 </div>
+                <?php endif?>
             </div>
             <br /><br /><br />
             <div class="title">服务说明</div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>模特费</h3>
-                <div class="p_wzi">普通按件：室内实景150一件，纯外景180一件，30件起拍，拼拍180每件
-<br />寄拍：300一件全包（含模特费，摄影师，化妆师，后期修图，服装搭配，场地费）
-<br />小时计算：1200一小时（4小时起，包括化妆时间）
-<br />摄影师：80－120一件（供亲选择）
-<br />化妆师：800－1000一天</div>
+                <div class="p_wzi"><?=$oUser['fee']?></div>
             </div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>服务时间</h3>
-                <div class="p_wzi">拍片请提前3-5天预约哦~</div>
+                <div class="p_wzi"><?=$oUser['servicetime']?></div>
             </div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>禁拍说明</h3>
-                <div class="p_wzi">不拍情趣 &nbsp;&nbsp;&nbsp; 内衣　&nbsp;&nbsp;&nbsp; 私房 &nbsp;&nbsp;&nbsp;　拒绝闲聊</div>
+                <div class="p_wzi"><?=$oUser['takenote']?></div>
             </div>
             <br /><br />
         </div>
