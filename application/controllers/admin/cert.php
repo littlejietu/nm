@@ -64,16 +64,7 @@ class Cert extends CI_Controller {
 		{
 			//验证规则
 			$config = array(
-				array(
-                     'field'   => 'userid', 
-                     'label'   => '用户id', 
-                     'rules'   => 'trim|required'
-                  ),  
-				array(
-                     'field'   => 'username', 
-                     'label'   => '用户名(冗余)', 
-                     'rules'   => 'trim|required'
-                  ),  
+				
 				array(
                      'field'   => 'realname', 
                      'label'   => '真实姓名', 
@@ -93,7 +84,8 @@ class Cert extends CI_Controller {
                      'field'   => 'company', 
                      'label'   => '所属经纪公司', 
                      'rules'   => 'trim|required'
-                  ),  
+                  ),
+                  
                
                
             );
@@ -104,14 +96,14 @@ class Cert extends CI_Controller {
   			{
   				//将需要保存的数据赋值给数组$data
   				$data = array(
-					'userid'=>$this->input->post('userid'),
-					'username'=>$this->input->post('username'),
+					
 					'realname'=>$this->input->post('realname'),
 					'idno'=>$this->input->post('idno'),
 					'mobile'=>$this->input->post('mobile'),
 					'idnoimg'=>$this->input->post('idnoimg'),
 					'company'=>$this->input->post('company'),
-					'bail'=>$this->input->post('bail'),										
+					'bail'=>$this->input->post('bail'),
+					'status'=>$this->input->post('status'),
 					'op_userid'=>0,
 					'op_username'=>0,
 					'op_time'=>time(),

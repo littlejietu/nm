@@ -22,7 +22,10 @@
 	            <td>身份证</td>	           
            		<td>手机号</td>
 	            <td>所属经纪公司</td>
-	            <td>保证金</td>	                       	           
+	            <td>保证金</td>
+	            <td>添加时间</td>
+	            <td>认证时间</td>
+	            <td>认证状态</td>	                       	           
 	            <td>最后操作人</td>
 	            <td>最后操作时间</td>
 	            <td>操作</td>
@@ -35,7 +38,10 @@
 				<td><?php echo $a['idno'];?></td>
 				<td><?php echo $a['mobile'];?></td>								
 				<td><?php echo $a['company'];?></td>
-				<td><?php echo $a['bail'];?></td>												
+				<td><?php echo $a['bail'];?></td>
+				<td><?php echo $a['addtime'];?></td>
+				<td><?php echo $a['certtime'];?></td>
+				<td><?php if($a['status']==1) echo '成功'; else if($a['status']==-1) echo '失败';  else echo '';?></td>
 				<td><?php echo $a['op_username'];?></td>
 				<td><?php echo $a['op_time'];?></td>
 				<td class="con_title">

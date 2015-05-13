@@ -11,7 +11,7 @@ class MY_Controller extends CI_Controller {
     public  $systemList;
     function __construct(){
         parent::__construct();
-        $this->load->helper(array('form', 'url', 'main', 'source'));
+        $this->load->helper(array('form', 'url', 'main'));
 
         //验证登录
         $this->checkLogin();

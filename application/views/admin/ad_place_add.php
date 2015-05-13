@@ -38,7 +38,7 @@
 		            <td height="25" align="right"><span class="tips">*</span> 是否停用；</td>
 		            <td align="left" class="padL10">
 		            	<input type="radio" name="status" value="1" <?php if( !empty($info['status']) && $info['status']==1 ) echo ' checked' ?> />使用
-		            		<input type="radio" name="status" value="-1" <?php if( !empty($info['status']) && $info['status']==—1 ) echo ' checked' ?> />停用
+		            		<input type="radio" name="status" value="-1" <?php if( !empty($info['status']) && $info['status']==-1 ) echo ' checked' ?> />停用
 		            </td>
 		        </tr>
 				<tr>

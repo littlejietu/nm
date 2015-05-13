@@ -19,12 +19,12 @@
 		<table class="addTable">
 			<tbody>
 		        <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 用户id；</td>
-		            <td align="left" class="padL10"><input type="text" name="userid" value="<?php if( !empty($info['userid']) ) echo $info['userid']; ?>" /></td>
+		            <td height="25" align="right"> 用户id；</td>
+		            <td align="left" class="padL10"><?php if( !empty($info['userid']) ) echo $info['userid']; ?></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 用户名(冗余)；</td>
-		            <td align="left" class="padL10"><input type="text" name="username" value="<?php if( !empty($info['username']) ) echo $info['username']; ?>" /></td>
+		            <td height="25" align="right"> 用户名(冗余)；</td>
+		            <td align="left" class="padL10"><?php if( !empty($info['username']) ) echo $info['username']; ?></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 真实姓名；</td>
@@ -49,6 +49,13 @@
 		         <tr>
 		            <td height="25" align="right"> 保证金；</td>
 		            <td align="left" class="padL10"><input type="text" name="bail" value="<?php if( !empty($info['bail']) ) echo $info['bail']; ?>" /></td>
+		        </tr>
+		        <tr>
+		            <td height="25" align="right"><span class="tips">*</span> 认证状态；</td>
+		            <td align="left" class="padL10">
+		            	<input type="radio" name="status" value="1" <?php if( !empty($info['status']) && $info['status']==1 ) echo ' checked' ?> />成功
+		            		<input type="radio" name="status" value="-1" <?php if( !empty($info['status']) && $info['status']==-1 ) echo ' checked' ?> />失败
+		            </td>
 		        </tr>
 		        
 				<tr>

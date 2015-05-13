@@ -27,7 +27,7 @@
 				<td height="30"><?php echo $a['title'];?></td>
 				<td><?php echo $a['adcode'];?></td>
 				<td><?php echo $a['size'];?></td>
-				<td><?php if($a['status']==1) echo '使用'; else if($a['status']==—1) echo '停用';  else echo '';?></td>				
+				<td><?php if($a['status']==1) echo '使用'; else if($a['status']==-1) echo '停用';  else echo '';?></td>				
 				<td class="con_title">
 					<a href="/admin/ad_place/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/ad_place/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
