@@ -163,6 +163,7 @@
   <div class="popbod">
     <div class="fl popimg"><img src="<?php echo _get_cfg_path('images')?>mt_12.jpg"/></div>
       <div class="fr poptab">
+        <form name="xtform" method="post" action="">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="80"><font>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 格：</font></td>
@@ -228,11 +229,12 @@
                   <td><font>联系方式：</font></td>
                   <td><input class="txt" name="linkway" type="text"/></td>
                 </tr>
-                <tr><td height="25"></td></tr>
+                <tr><td height="25" colspan="2" id="err-message" class="main_color"></td></tr>
                 <tr>
-                   <td colspan="2"><input class="but" name="" type="button" value="立即下单"/></td>
+                   <td colspan="2"><input class="but" name="" id="XT-Book" type="button" value="立即下单"/></td>
                 </tr>
             </table>
+          </form>
         </div>
   </div>
   <script type="text/javascript">
@@ -248,6 +250,8 @@
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/i/schedule.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>Quantity.js"></script>
 
 </html>

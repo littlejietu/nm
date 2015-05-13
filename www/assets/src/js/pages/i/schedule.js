@@ -71,3 +71,111 @@ function getPrice(){
 
 }
 
+$('#XT-Book').bind('click',function() {
+	/*
+	if($('.money').html()=='' || $('.money').html()=='0')
+	{
+		$('#err-message').html('请选择工作内容');
+		return;
+	}
+	if($('#scene').val()=="0")
+	{
+		$('#err-message').html('请选择工作场景');
+		return;
+	}
+	if($('#time').val()=="0")
+	{
+		$('#err-message').html('请选择计价方式');
+		return;
+	}
+	if($('#num').val()=="0"||$('#num').val()=="")
+	{
+		$('#err-message').html('请填写数量');
+		return;
+	}
+	if($('#linkman').val()=="")
+	{
+		$('#err-message').html('请填写联系人');
+		return;
+	}
+	if($('#linkway').val()=="")
+	{
+		$('#err-message').html('请填写联系方式');
+		return;
+	}
+	*/
+
+	//验证--begin
+    $("#xtform").validate({
+        rules: {
+            nickname : {required:true,
+                remote:{//验证昵称是否存在
+                    type:"POST",
+                    dataType: "json",
+                    url:"/user/check/regcheck",
+                    data:{
+                        'nickname':function(){return $("#nickname").val();},
+                        'type':'nickname',
+                        'is_remote':1
+                    }
+                } 
+            },
+            realname : 'required',
+            sex : 'required',
+            height : 'required',
+            weight : 'required'
+          
+        },
+        messages: {
+           nickname: {required:'<span class="xt_no">请填写昵称</span>',remote:'<span class="xt_no">该昵称已被注册，请正确填写</span>'},
+           sex : '<span class="xt_no"></span>',
+           realname : '<span class="xt_no"></span>',
+           height : '<span class="xt_no"></span>',
+           weight : '<span class="xt_no"></span>'
+        },
+
+        //errorClass:"no",
+        errorElement:"em",
+        errorPlacement: function(error, element) { //指定错误信息位置 
+            var arrELE = ['manage_funds','years_profit[]'];
+
+            if (element.is(':radio') || element.is(':checkbox') || $.inArray(element.attr('name'), arrELE)>-1 ) { //如果是radio或checkbox 
+                var eid = element.attr('name'); //获取元素的name属性 
+                error.appendTo(element.parent().parent()); //将错误信息添加当前元素的父结点后面 
+            }
+            else
+            {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler:function(){
+            return true;
+        }
+    });
+    //验证--end
+
+
+	var options = { dataType:'json',
+		success: function(res) {
+            if(res.code ==200){
+                alert('下单成功！等待模特确认后再到订单中心去支付。')
+            }
+            else
+            {
+            	var msg = '';
+            	$.each(res.data.error_messages,function(n,value) {  
+	            	msg +=value+'\\n';
+	            });  
+	            if(msg!='')
+	            	alert(msg);
+            }
+        }
+
+	};
+    $('#afrm').ajaxSubmit(options);
+
+
+	
+		
+});
+
