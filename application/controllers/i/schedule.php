@@ -59,4 +59,11 @@ class Schedule extends CI_Controller {
 		$this->load->view('i/schedule',$result);
 	}
 
+	public function book()
+	{
+		$sellerid = _get_key_val( $this->input->post('booked_userid'), true);
+		echo $sellerid;
+
+	}
+
 }
