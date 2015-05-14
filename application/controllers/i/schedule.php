@@ -61,6 +61,8 @@ class Schedule extends CI_Controller {
 
 	public function book()
 	{
+
+		$buyerid = $this->loginID;
 		$sellerid = _get_key_val( $this->input->post('booked_userid'), true);
 		echo $sellerid;
 
