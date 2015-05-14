@@ -14,6 +14,15 @@ class Product_model extends XT_Model {
 		return $this->get_list("userid=$id and status=1", $fields);
 	}
 
+	public function get_price_by_produdct($userid, $item, $scene, $time)
+	{
+		$o = $this->fetch_row("userid=$userid and item=$item and scene=$scene and time=$time and status=1");
+		if(!empty($o))
+			return $o['price'];
+		else
+			return 0;
+	}
+
 	public function insert_update($data){
 		$res = 0;
 		$where = 'userid='.$data['userid'].' and item='.$data['item'].' and scene='.$data['scene'].' and time='.$data['time'].' and status=1';
