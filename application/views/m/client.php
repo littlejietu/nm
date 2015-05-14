@@ -37,7 +37,7 @@
                             <tr>
                               <td><?php echo $a['linkman'];?></td>
                               <td><?php echo $a['contact'];?></td>
-                              <td><?php echo $a['memo'];?></div></td>
+                              <td><?php echo $a['memo'];?></td>
                               <td class="operat">
                                 <a class="t_delete" href="/admin/client/del?id=<?php echo _get_key_val($a['id']);?>"><i></i>删除</a>
                                 <a class="t_editor" href="/admin/client/add?id=<?php echo _get_key_val($a['id']);?>"><i></i>编辑</a>
