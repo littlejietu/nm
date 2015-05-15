@@ -173,10 +173,7 @@ class My_XTcl{
 		
 		$CI->base_url    =    $base_url;
 		//$CI->site_id = 0;
-		$class 	= $CI->router->fetch_class();
-		$method = $CI->router->fetch_method();
-		$directory = trim($CI->router->fetch_directory(), '/');
-		$CI->d_m_c = ($directory ? $directory.'/' : '').$class.'/'.$method;
+
 		
 	}
 	

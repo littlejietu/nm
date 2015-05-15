@@ -45,3 +45,8 @@ $config['worktime'] = array(
 );
 
 $config['workprice'] = 150;
+
+$config['orderkind'] = array(
+	'book'=>1,
+	'cert'=>2,
+);
