@@ -116,6 +116,7 @@ class Register extends CI_Controller {
             //'password_plaintext'=>$passwd_plaintext,
             'mobile'=>$this->input->post('mobile'),
             'username'=>$this->input->post('mobile'),
+            'usertype'=>$this->input->post('usertype'),
         );
 
         return array($config, $data_main);

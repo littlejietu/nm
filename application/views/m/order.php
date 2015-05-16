@@ -25,10 +25,11 @@
                         <div class="aut_bti clearfix">
                           <h3 class="fl">我的订单</h3>
                             <div class="fr t_sosu">
-                              
-                                <p class="fl sele sele_ta"><a href="##">代付款</a><a href="##">已完成</a><a href="##">待完成</a></p>
-                                <input name="" type="text" class="txt fl" placeholder="请输入关键词">
-                                <input name="" class="but fr" type="button" value="搜 索">
+                              <form action="" method="post">
+                                <p class="fl sele sele_ta"><a href="?paystatus=1">待付款</a><a href="?paystatus=3">已完成</a><a href="?paystatus=2">待完成</a></p>
+                                <input name="keyword" type="text" class="txt fl" value="<?php echo $keyword;?>" placeholder="请输入关键词">
+                                <input name="" class="but fr" type="submit" value="搜 索">
+                              </form>
                             </div>
                         </div>
                         <table class="tran_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -39,24 +40,35 @@
                               <th width="90">预约时间</th>
                               <th width="90">下单时间</th>
                               <th width="80">订单状态</th>
-                              <th width="110">操作</th>
+                              <th width="120">操作</th>
                             </tr>
                             <?php foreach ($list['rows'] as $key => $a): ?>
                             <tr>
                               <td><a href="orderdeta.php"><?php echo $a['no'];?></a></td>
                               <td><div class="t_cont"><?php echo $a['title'];?></div></td>
                               <td><?php echo $a['totalprice'];?></td>
-                              <td><?php //echo $a['title'];?></td>
-                              <td><?php echo $a['addtime'];?></td>
-                              <td><a href="#">待付款</a></td>
-                              <td><a class="t_delete" href="##">拒绝</a><a class="t_delete" href="##">编辑</a><a class="t_delete" href="##">删除</a></td>
+                              <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'-'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
+                              <td><?php echo date('m-d H:i:s',$a['addtime']);?></td>
+                              <td><?php if($a['paystatus']=='waitpay'):?>
+                                <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
+                                <?php else:?>
+                                  <?php echo $oSysPaystatus[$a['paystatus']];?>
+                                <?php endif?>
+                              </td>
+                              <td><?php if($a['sellerid']==$this->loginID):?>
+                                  <?php if($a['reject']==-1):?>已拒绝<?php else:?><a class="t_delete" href="/m/order/reject?id=<?=_get_key_val($a['id'])?>">拒绝</a><?php endif?>
+                                  <a class="t_delete" href="javascript:;">编辑</a><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
+                                <?php endif?>
+                              </td>
                             </tr>
                             <?php endforeach;?>
                           </tbody>
                         </table>
                     </div>
 
-
+                    <div class="page">
+                      <?=$list['pages']?>
+                    </div>
 
 
 

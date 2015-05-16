@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>资料-个人中心-牛模网</title>
+<title>资料-机构中心-牛模网</title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -19,19 +19,19 @@
         <div class="member clearfix">
             <?php include_once(VIEWPATH."m/public/left_menu.php");?>
             <div class="fr uc_content">
-            	<?php include_once(VIEWPATH."m/public/notice.php");?>
+              <?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
-                	<div class="fl um_uitop">
+                  <div class="fl um_uitop">
                     <form method="post" action="" id="xtform">
-                   	  <div class="authent">
-                   	    <div class="aut_bti">个人资料</div>
+                      <div class="authent">
+                        <div class="aut_bti">机构资料</div>
                           <?php echo validation_errors('<div class="error">', '</div>');?>
                           <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0">
-                           	  <tr>
-                               	  <td colspan="4">基本信息</td>
+                              <tr>
+                                  <td colspan="4">基本信息</td>
                               </tr>
                               <tr>
-                                <td width="86"><span class="tips">*</span>昵  称</td>
+                                <td width="86">昵  称</td>
                                 <td colspan="3">
                                   <?php if(!empty($o['nickname'])) 
                                           echo $o['nickname']; 
@@ -46,7 +46,7 @@
                                 <td width="86">头  像</td>
                                 <td colspan="3">
                                     <div id="previews" class="drsMoveHandle">
-                                   	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.$o['userlogo'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                        <img id="show_userlogo" border=0 src='<?php echo _get_userlogo_url($o['userlogo']);?>'>
                                     </div>
                                     <div class="f_note">
                                         <p>尺寸：90×90像数</p>
@@ -59,59 +59,45 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td width="86">真实姓名</td>
-                                <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
-                                <td><span class="tips">*</span>身高</td>
-                                <td><input name="height" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/> cm<?php //echo form_error('height');?></td>
-                              </tr>
-                              <tr>
-                                <td>性别</td>
-                                <td class="reg-sort">
-                                	<p><input type="radio" name="sex" value="1" <?php if($o['sex']==1) echo 'checked';?> id="sort_1"/><label for="sort_1">男</label></p>
-                        			<p><input type="radio" name="sex" value="2" <?php if($o['sex']==2) echo 'checked';?> id="sort_2"/><label for="sort_2">女</label></p>
+                                <td width="86">展示图</td>
+                                <td colspan="3">
+                                    <div id="previews" class="drsMoveHandle">
+                                        <img id="show_showimg" border=0 src='<?php echo _get_userlogo_url($o['showimg']);?>'>
+                                    </div>
+                                    <div class="f_note">
+                                        <p>尺寸：345×209像数</p>
+                                        <input type="hidden"  name="showimg" id="showimg" value="<?=$o['showimg']?>">
+                                        <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="showimg_upload" name="showimg_upload" value="选择展示图" class="inp_file" type="file">
+                                        </div>
+                                    </div>
                                 </td>
-                                <td><span class="tips">*</span>体重</td>
-                                <td><input name="weight" type="text" class="txt" value="<?=$o['weight']?>" placeholder="请输入体重"/> Kg</td>
                               </tr>
                               <tr>
-                                <td>所在城市</td>
-                                <td><input name="city" type="text" class="txt" value="<?=$o['city']?>" placeholder="请输入你所在城市"/></td>
-                                <td><span class="tips">*</span>三围</td>
-                                <td><input name="BWH" type="text" class="txt" value="<?=$o['bust'].'-'.$o['waist'].'-'.$o['hips']?>" placeholder="请输入你的三围"/>以-组合</td>
+                                <td width="86"><span class="tips">*</span>联系人姓名</td>
+                                <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
+                                <td></td>
+                                <td>
+                                  
+                                </td>
                               </tr>
                               <tr>
-                                <td>罩杯</td>
-                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/></td>
-                                <td>鞋码</td>
-                                <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/></td>
+                                <td>联系人性别</td>
+                                <td class="reg-sort">
+                                  <p><input type="radio" name="sex" value="1" <?php if($o['sex']==1) echo 'checked';?> id="sort_1"/><label for="sort_1">男</label></p>
+                              <p><input type="radio" name="sex" value="2" <?php if($o['sex']==2) echo 'checked';?> id="sort_2"/><label for="sort_2">女</label></p>
+                                </td>
+                                <td></td>
+                                <td></td>
                               </tr>
                                <tr>
-                               	  <td colspan="4">个人经历</td>
+                                  <td colspan="4">公司简介</td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>拍摄品牌</font></p></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
+                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=$o['memo']?></textarea></td>
                               </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>品牌类型</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>获得奖项</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="awards" cols="" rows=""><?=$o['awards']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>模特费</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="fee" cols="" rows=""><?=$o['fee']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>服务时间</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="servicetime" cols="" rows=""><?=$o['servicetime']?></textarea></td>
-                              </tr>
-                              <tr style="border-bottom:none;">
-                                <td width="86" valign="top"><font>禁拍说明</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="" name="takenote" cols="" rows=""><?=$o['takenote']?></textarea></td>
-                              </tr>
+                              
                               <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
                                 <td colspan="3">
@@ -124,18 +110,18 @@
                       </form>
                     </div>
                     <div class="fr um_wind">
-                    	<div class="uw_help">
-                        	<div class="uwh_title"><h3></h3><span><i></i>我的档期</span></div>
+                      <div class="uw_help">
+                          <div class="uwh_title"><h3></h3><span><i></i>我的档期</span></div>
                             <div class="u_circle">
-                            	<a href="##"><h3>档期小助手</h3><p>方便 快捷 明确</p></a>
+                              <a href="##"><h3>档期小助手</h3><p>方便 快捷 明确</p></a>
                             </div>
                         </div>
                         <div class="uw_help">
-                        	<div class="uwh_title"><h3></h3><span><i></i>热门推荐</span></div>
+                          <div class="uwh_title"><h3></h3><span><i></i>热门推荐</span></div>
                             <div class="u_recom">
-                            	<ul class="clearfix">
-                                	<?php for($i=0;$i<6;$i++){?>
-                                	<li><a href="##"><img src="<?php echo _get_cfg_path('images')?>h_1.jpg"/></a></li>
+                              <ul class="clearfix">
+                                  <?php for($i=0;$i<6;$i++){?>
+                                  <li><a href="##"><img src="<?php echo _get_cfg_path('images')?>h_1.jpg"/></a></li>
                                     <?php }?>
                                 </ul>
                             </div>
@@ -188,6 +174,39 @@ $(function() {
           $('#userlogo').val(imgpath);
           $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
           $('#show_userlogo').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+
+    $('#showimg_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'showimg',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择展示图',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#showimg').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#showimg').val(imgpath);
+          $('#showimg').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_showimg').attr('src','/'+imgpath);
         }
       }
 

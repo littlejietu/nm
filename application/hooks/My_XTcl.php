@@ -46,7 +46,7 @@ class My_XTcl{
 		{
 			$CI->loginUser['auth'] = array();
 			
-			$fields = 'id,usertype,userlevel,username,nickname,email,validemail,validmobile,status,lastlogintime';
+			$fields = 'id,usertype,userlevel,username,nickname,mobile,email,validemail,validmobile,status,lastlogintime';
 			$CI->loginUser = XTM('User')->fetch_row(array('id'=>$xt_loginID), $fields);
 
 
@@ -57,6 +57,10 @@ class My_XTcl{
 				$CI->loginUserName      = $CI->loginUser['username'];
 				$CI->loginNickName      = empty($CI->loginUser['nickname']) ? $CI->loginUser['username'] : $CI->loginUser['nickname'];
 				$CI->loginUsertype = (int)$CI->loginUser['usertype'];
+
+				$CI->loginUserNum = array();
+				if($CI->loginUsertype==1)
+					$CI->loginUserNum = XTM('Usernum')->fetch_row(array('userid'=>$xt_loginID), 'be_ordernum_new');
 				
 
 				$loginUserID = _get_key_val($CI->loginUser['id']);

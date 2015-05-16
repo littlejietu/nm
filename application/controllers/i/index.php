@@ -10,7 +10,7 @@ class Index extends CI_Controller {
     }
 	
 
-	public function index()
+	public function index($userid)
 	{
 		// $o = $this->User_model->get_info_by_id($userid);
 		$result = array(

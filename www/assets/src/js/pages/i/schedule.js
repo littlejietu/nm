@@ -109,7 +109,8 @@ $('#XT-Book').bind('click',function() {
 	var options = { dataType:'json',
 		success: function(res) {
             if(res.code ==200){
-                alert('下单成功！等待模特确认后，请到订单中心去支付。')
+                alert('下单成功！等待模特确认后，请到订单中心去支付。');
+                window.location.href='/m/order';
             }
             else
             {

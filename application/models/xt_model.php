@@ -43,7 +43,7 @@ class XT_Model extends CI_Model {
 	{
 		$result = $this->db->select($fields)
 					->from($this->mTable)
-					->where('id', $id)
+					->where($this->mPkId, $id)
 					->get()
 					->row_array();
 		return $result;
@@ -296,12 +296,13 @@ class XT_Model extends CI_Model {
 		return $result;
 	}*/
 	
-	public function fetch_page($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='')
+	public function fetch_page($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='', $tb = '')
 	{
+		if(!$tb) $tb = $this->mTable;
 		$order_by = $order_by ? $order_by : $this->mPkId.' DESC';
 		$fields_count = 'COUNT(1) AS count';
 		$this->db->select($fields_count, FALSE)
-					->from($this->mTable);
+					->from($tb);
 	    foreach($where as $key=>$val)
 		{	
 		    if ($key{0} == '@' && is_array($val))
@@ -319,7 +320,10 @@ class XT_Model extends CI_Model {
 			}
 			else
 			{
-				$this->db->where($key, $val);
+				$bAuto = true;
+				if($tb)
+					$bAuto = false;
+				$this->db->where($key, $val, $bAuto);
 			}
 		}
 		$result = $this->db->get()->row_array();

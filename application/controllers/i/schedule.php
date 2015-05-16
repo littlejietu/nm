@@ -13,6 +13,7 @@ class Schedule extends CI_Controller {
 
 	public function index($userid)
 	{
+
 		$y = $this->input->post('y');
 		$m = $this->input->post('m');
 		if(empty($y)) $y = date('Y');

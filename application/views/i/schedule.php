@@ -20,7 +20,6 @@
 	<div class="introd container">
         
 <?php include_once(VIEWPATH."i/public/top.php");?>  
-
 <div class="schedule clearfix">
             <div class="clearfix">
                 <div class="time_top">
@@ -225,11 +224,11 @@
                 <tr><td colspan="2"><p class="line"></p></td></tr>
                 <tr>
                   <td><font>联&nbsp;系&nbsp;&nbsp;人：</font></td>
-                  <td><input class="txt" name="linkman" id="linkman" type="text"/></td>
+                  <td><input class="txt" name="linkman" id="linkman" type="text" value="<?php if($this->loginID>0) echo $this->loginNickName;?>"/></td>
                 </tr>
                 <tr>
                   <td><font>联系方式：</font></td>
-                  <td><input class="txt" name="linkway" id="linkway" type="text"/></td>
+                  <td><input class="txt" name="linkway" id="linkway" type="text" value="<?php if($this->loginUser) echo $this->loginUser['mobile'];?>"/></td>
                 </tr>
                 <tr><td height="25" colspan="2" id="err-message" class="main_color"></td></tr>
                 <tr>
