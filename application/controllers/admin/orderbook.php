@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Orderbook extends CI_Controller {
+class Orderbook extends MY_Admin_Controller {
 
 	public function __construct()
     {

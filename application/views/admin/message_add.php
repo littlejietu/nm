@@ -30,7 +30,7 @@
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 内容；</td>
-		            <td align="left" class="padL10"><textarea type="text" name="content" cols="40" rows="10" value="<?php if( !empty($info['content']) ) echo $info['content']; ?>" ></textarea></td>
+		            <td align="left" class="padL10"><textarea type="text" name="content" cols="40" rows="10" ><?php if( !empty($info['content']) ) echo $info['content']; ?></textarea></td>
 		        </tr>
 				 <tr>
 		            <td></td>

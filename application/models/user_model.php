@@ -9,7 +9,9 @@ class User_model extends XT_Model {
 	public function get_info_by_id($id, $fields='*')
 	{
 		$aUser = $this->get_by_id($id, $fields);
-		$aUserDetail = $this->get_by_where("userid=$id",'*',$this->tb_userdetail);
+		$this->set_table($this->tb_userdetail);
+		$aUserDetail = $this->get_by_where("userid=$id",'*');
+		$this->set_table($this->tb_usermemo);
 		$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
 		return array_merge($aUserDetail, $aUserMemo, $aUser);
 		/*$rs = $this->db->select($fields)
@@ -99,9 +101,15 @@ class User_model extends XT_Model {
 	public function update_info_by_id($id, $data, $data_detail=array(), $data_memo=array()){
 		$where = array('id'=> $id);
 		if(!empty($data_detail))
+		{
+			$this->set_table($this->tb_userdetail);
 			$this->update_by_where(array('userid'=>$id), $data_detail, $this->tb_userdetail);
+		}
 		if(!empty($data_memo))
+		{
+			$this->set_table($this->tb_usermemo);
 			$this->update_by_where(array('userid'=>$id), $data_memo, $this->tb_usermemo);
+		}
 		return $this->update_by_id($id, $data);
 	}
 

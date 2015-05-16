@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class userAction extends MY_Controller
+class userAction extends MY_Admin_Controller
 {
     function __construct()
     {

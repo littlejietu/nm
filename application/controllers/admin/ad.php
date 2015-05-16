@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ad extends CI_Controller {
+class Ad extends MY_Admin_Controller {
 
 	public function __construct()
     {

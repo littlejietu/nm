@@ -18,7 +18,6 @@
 			<tr height="39" style="font-size:13px;">
 	            <td width="250" height="25" align="center">活动名称</td>
 	            <td>活动类型</td>
-	            <td>活动图片</td>
 	            <td>开始时间</td>
 	            <td>结束时间</td>
 	            <td>地点</td>
@@ -34,9 +33,8 @@
 			<tr>
 				<td height="30"><?php echo $a['title'];?></td>
 				<td><?php echo $a['type'];?></td>
-				<td><?php echo $a['img'];?></td>
-				<td><?php echo $a['begtime'];?></td>
-				<td><?php echo $a['endtime'];?></td>
+				<td><?php echo date('Y-m-d',$a['begtime']);?></td>
+				<td><?php echo date('Y-m-d',$a['endtime']);?></td>
 				<td><?php echo $a['place'];?></td>
 				<td><?php echo $a['innumfake'];?></td>
 				<td><?php echo $a['innum'];?></td>

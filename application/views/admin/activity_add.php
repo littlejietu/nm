@@ -24,23 +24,31 @@
 		        </tr>
 		        <tr>
 		            <td width="150" height="25" align="right"><span class="tips">*</span> 活动类型；</td>
-		            <td align="left" class="padL10"><input type="text" name="type" value="<?php if( !empty($info['type']) ) echo $info['type']; else echo 'http://'; ?>" /></td>
+		            <td align="left" class="padL10">
+		            	<select name="type">
+		            		<option value="0">请选择类型</option>
+							<option value="1"<?php if( !empty($info['type']) && $info['type']==1 ) echo ' selected'; ?>>模特面试</option>
+							<option value="2"<?php if( !empty($info['type']) && $info['type']==2 ) echo ' selected'; ?>>模特工作</option>
+							<option value="3"<?php if( !empty($info['type']) && $info['type']==3 ) echo ' selected'; ?>>模特比赛</option>
+							
+						</select>
+		            	</td>
 		        </tr>
 		        <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 活动图片；</td>
-		            <td align="left" class="padL10"><input type="text" name="img" value="<?php if( !empty($info['img']) ) echo $info['img']; ?>" /></td>
+		            <td align="left" class="padL10"><input type="text" name="img" class="w300" value="<?php if( !empty($info['img']) ) echo $info['img']; else echo 'http://'; ?>" /></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 简介；</td>
-		            <td align="left" class="padL10"><input type="text" name="intro" value="<?php if( !empty($info['intro']) ) echo $info['intro']; ?>" /></td>
+		            <td height="25" align="right"> 简介；</td>
+		            <td align="left" class="padL10"><textarea type="text" name="intro" cols="40" rows="10"><?php if( !empty($info['intro']) ) echo $info['intro']; ?></textarea></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 开始时间；</td>
-		            <td align="left" class="padL10"><input type="text" name="begtime" value="<?php if( !empty($info['begtime']) ) echo $info['begtime']; ?>" /></td>
+		            <td align="left" class="padL10"><input type="text" name="begtime" value="<?php if( !empty($info['begtime']) ) echo date('Y-m-d',$info['begtime']); ?>" readonly="readonly" onclick="WdatePicker()" /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 结束时间；</td>
-		            <td align="left" class="padL10"><input type="text" name="endtime" value="<?php if( !empty($info['endtime']) ) echo $info['endtime']; ?>" /></td>
+		            <td align="left" class="padL10"><input type="text" name="endtime" value="<?php if( !empty($info['endtime']) ) echo date('Y-m-d',$info['endtime']); ?>" readonly="readonly" onclick="WdatePicker()" /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 地点；</td>
@@ -74,5 +82,6 @@
 	</form>
 </div>
 
+<script type="text/javascript" src="<?php echo _get_cfg_path('lib')?>My97DatePicker/WdatePicker.js"></script>
 </body>
 </html>

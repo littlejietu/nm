@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Activity extends CI_Controller {
+class Activity extends MY_Admin_Controller {
 
 	public function __construct()
     {
@@ -105,13 +105,14 @@ class Activity extends CI_Controller {
 
 			if ($this->form_validation->run() === TRUE)
   			{
+
   				$data = array(
 					'title'=>$this->input->post('title'),
 					'type'=>$this->input->post('type'),
 					'img'=>$this->input->post('img'),
 					'intro'=>$this->input->post('intro'),
-					'begtime'=>$this->input->post('begtime'),
-					'endtime'=>$this->input->post('endtime'),
+					'begtime'=>strtotime($this->input->post('begtime')),
+					'endtime'=>strtotime($this->input->post('endtime')),
 					'place'=>$this->input->post('place'),
 					'address'=>$this->input->post('address'),
 					'innumfake'=>$this->input->post('innumfake'),
@@ -121,7 +122,7 @@ class Activity extends CI_Controller {
 					'status'=>$this->input->post('status'),
 					'op_userid'=>0,
 					'op_username'=>0,
-					'op_time'=>$this->time(),
+					'op_time'=>time(),
 				);
 
   				$id	= _get_key_val($this->input->get('id'), TRUE);
