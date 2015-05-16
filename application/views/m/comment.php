@@ -35,10 +35,10 @@
                               <div class="em_rit fl">
                                    <div class="apprtop">
 
-                                       <div class="fl a_rev"><span>身材尺寸：</span><?//=$a['figure'];?><p class="star_on"><i class="star_5">5</i></p></div>
-                                       <div class="fl a_rev"><span>专业技能：</span><?//=$a['skill'];?><p class="star_on"><i class="star_4">5</i></p></div>
-                                       <div class="fl a_rev"><span>工作效率：</span><?//=$a['efficiency'];?><p class="star_on"><i class="star_3">5</i></p></div>
-                                       <div class="fl a_rev" style="margin-right:0;"><span>服务态度：</span><?//=$a['attitude'];?><p class="star_on"><i class="star_2">5</i></p></div>
+                                       <div class="fl a_rev"><span>身材尺寸：</span><p class="star_on"><i class="star_<?=$a['figure'];?>">5</i></p></div>
+                                       <div class="fl a_rev"><span>专业技能：</span><p class="star_on"><i class="star_<?=$a['skill'];?>">5</i></p></div>
+                                       <div class="fl a_rev"><span>工作效率：</span><p class="star_on"><i class="star_<?=$a['efficiency'];?>">5</i></p></div>
+                                       <div class="fl a_rev" style="margin-right:0;"><span>服务态度：</span><p class="star_on"><i class="star_<?=$a['attitude'];?>">5</i></p></div>
                                    </div>
 
                                    <div class="apprcon"><?=$a['memo'];?></div>

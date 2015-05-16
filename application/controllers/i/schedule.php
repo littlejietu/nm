@@ -65,79 +65,12 @@ class Schedule extends CI_Controller {
 		if(!$this->loginID)
 		{
 			$res['code'] = 201;
-			$res['data']['error'] = '请先登录';
+			$res['data']['error_messages'] = array('请先登录');
 		}
 		else{
-
-			$config = array(
-               array(
-                     'field'   => 'booked_userid', 
-                     'label'   => '登录用户', 
-                     'rules'   => 'trim|required'
-                  ),
-                array(
-                     'field'   => 'item', 
-                     'label'   => '工作内容', 
-                     'rules'   => 'trim|required'
-                  ),
-               array(
-                     'field'   => 'scene', 
-                     'label'   => '工作场景', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'time', 
-                     'label'   => '计价方式', 
-                     'rules'   => 'trim|required'
-                  ),  
-            );
-
-            $this->form_validation->set_rules($config);
-
-			if ($this->form_validation->run() === TRUE)
-  			{
-
-  				$buyerid = $this->loginID;
-				$sellerid = _get_key_val( $this->input->post('booked_userid'), true);
-				$price = $this->Product_model->get_price_by_produdct($sellerid, $item, $scene, $time);
-				if(!$price)
-					$price = _get_product_default_price();
-				$oSeller = $this->User_model->get_by_id($sellerid);
-
-				
-  				$data = array(
-  					'buyerid'=>$buyerid,
-  					'sellerid'=>$sellerid,
-  					'seller_username'=>$oSeller['username'],
-					'item'=>$this->input->post('item'),
-					'scene'=>$this->input->post('scene'),
-					'time'=>$this->input->post('time'),
-					'price'=>$this->input->post('price'),
-					'status'=>$this->input->post('status'),
-				);
-
-  				$this->Order_model->insert($data);
-
-				$res['code'] = 200;
-				
-				// else
-				// {
-				// 	$res['code'] = 201;
-				// 	$res['data']['error_messages']='不存在此产品';
-
-				// }
-  			}
-  			else
-			{
-				$res['data']['error_messages'] = $this->form_validation->getErrors();
-			}
-
-
-
+			$this->load->service('Order_service');
+			$res = $this->order_service->book();
 		}
-
-		
-		
 
 		$this->view->json($res);
 
