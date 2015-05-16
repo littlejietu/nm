@@ -6,7 +6,8 @@ class User_service
 	public function __construct()
 	{
 		$this->ci = & get_instance();
-		$this->ci->load->model('user_model');
+		$this->ci->load->model('User_model');
+		// $this->ci->load->model('Usernum_model');
 	}
 
 

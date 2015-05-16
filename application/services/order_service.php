@@ -8,6 +8,7 @@ class Order_service
 	{
 		$this->ci = & get_instance();
 		$this->ci->load->model('Order_model');
+		$this->ci->load->model('Orderbook_model');
 		$this->ci->load->model('User_model');
 		$this->ci->load->model('Product_model');
 	}
@@ -37,11 +38,11 @@ class Order_service
                  'label'   => '计价方式', 
                  'rules'   => 'trim|required'
             ),
-            // array(
-            //      'field'   => 'begtime', 
-            //      'label'   => '预订时间', 
-            //      'rules'   => 'trim|required'
-            // ),
+            array(
+                 'field'   => 'begtime', 
+                 'label'   => '预订时间', 
+                 'rules'   => 'trim|required'
+            ),
         );
 
         $this->ci->form_validation->set_rules($config);
@@ -53,13 +54,20 @@ class Order_service
 			$time = $this->ci->input->post('time');
 
 			$buyerid = $this->ci->loginID;
+			$buyer_usertype = $this->ci->loginUsertype;
 			if(!$buyerid)
 				$buyerid = (int)$this->ci->input->post('buyerid');
 			$sellerid = _get_key_val( $this->ci->input->post('booked_userid'), true);
+			if(!$sellerid)
+			{
+				$res['code'] = 201;
+				$res['data']['error_messages'] = array('页面过期，请刷新页面后重新下单');
+				return $res;
+			}
 			$price = $this->ci->Product_model->get_produdct_by_uist($sellerid, $item, $scene, $time);
 			if(!$price)
 				$price = $this->ci->config->item('workprice');
-			$begtime='2015-5-14';//$this->ci->input->post('begtime');		//格式:2015-5-15
+			$begtime=$this->ci->input->post('begtime');		//格式:2015-5-15
 
 			$oSysKind = $this->ci->config->item('orderkind');
 			$no = date('YmdHis',time()).rand(10000,99999);
@@ -84,6 +92,7 @@ class Order_service
 					'item'=>$item,
 					'scene'=>$scene,
 					'time'=>$time,
+					'price'=>$price,
 					'num'=>( (int)$this->ci->input->post('num') == 0)?1:(int)$this->ci->input->post('num'),
 					'memo'=>$this->ci->input->post('memo'),
 					'linkman'=>$this->ci->input->post('linkman'),
@@ -93,7 +102,7 @@ class Order_service
 
 			if(!isset($o['seller_username']) || !isset($o['seller_nickname']))
 			{
-				$oSeller = $this->ci->load->User_model->get_by_id($sellerid);
+				$oSeller = $this->ci->User_model->get_by_id($sellerid);
 				if(!empty($oSeller))
 				{
 					$o['seller_username'] = $oSeller['username'];
@@ -103,12 +112,21 @@ class Order_service
 
 			if(!isset($o['buyer_username']) || !isset($o['buyer_nickname']))
 			{
-				$oBuyer = $this->ci->load->User_model->get_by_id($sellerid);
+				$oBuyer = $this->ci->User_model->get_by_id($buyerid);
 				if(!empty($oBuyer))
 				{
 					$o['buyer_username'] = $oBuyer['username'];
 					$o['buyer_nickname'] = $oBuyer['nickname'];
+					$buyer_usertype = $oBuyer['usertype'];
+					
 				}
+			}
+
+			if($buyer_usertype==1)
+			{
+				$res['code'] = 202;
+				$res['data']['error_messages'] = array('模特不能预约其他模特');
+				return $res;
 			}
 
 			$oBook['begtime'] = strtotime($begtime);
@@ -122,7 +140,7 @@ class Order_service
 					$oBook['begtime'] = strtotime($begtime)+8*60*60;
 				$oBook['begtime'] = $oBook['begtime'] + 60*60*$num;
 			}
-			$o['totalprice'] = $o['price'] * $oBook['num'];
+			$o['totalprice'] = $oBook['price'] * $oBook['num'];
 
 			$orderid = $this->ci->Order_model->insert_string($o);
 			$oBook['orderid'] = $orderid;

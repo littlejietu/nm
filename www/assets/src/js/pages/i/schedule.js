@@ -103,18 +103,19 @@ $('#XT-Book').bind('click',function() {
 		$('#err-message').html('请填写联系方式');
 		return;
 	}
+	$('#begtime').val($('#photo_date').html());
 
 
 	var options = { dataType:'json',
 		success: function(res) {
             if(res.code ==200){
-                alert('下单成功！等待模特确认后再到订单中心去支付。')
+                alert('下单成功！等待模特确认后，请到订单中心去支付。')
             }
             else
             {
             	var msg = '';
             	$.each(res.data.error_messages,function(n,value) {  
-	            	msg +=value+'\\n';
+	            	msg +=value+'\n';
 	            });  
 	            if(msg!='')
 	            	alert(msg);

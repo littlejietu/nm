@@ -165,6 +165,7 @@
       <div class="fr poptab">
         <form id="xtform" method="post" action="/i/schedule/book">
           <input type="hidden" name="booked_userid" value="<?=_get_key_val($oUser['id'])?>" />
+          <input type="hidden" name="begtime" id="begtime" value=""/>
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="80"><font>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 格：</font></td>

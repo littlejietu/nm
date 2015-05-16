@@ -56,9 +56,8 @@ class My_XTcl{
 				$CI->loginID         = $CI->loginUser['id'];
 				$CI->loginUserName      = $CI->loginUser['username'];
 				$CI->loginNickName      = empty($CI->loginUser['nickname']) ? $CI->loginUser['username'] : $CI->loginUser['nickname'];
-				$CI->loginRealNickName = $CI->loginUser['nickname'];
-				$CI->loginLevel     = $CI->loginUser['userlevel'];
-				$CI->businesscardUnlimited = 0;
+				$CI->loginUsertype = (int)$CI->loginUser['usertype'];
+				
 
 				$loginUserID = _get_key_val($CI->loginUser['id']);
 				$CI->loginUser['id_key'] = $loginUserID;

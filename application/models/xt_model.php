@@ -39,11 +39,10 @@ class XT_Model extends CI_Model {
 		return $this->db->query($sql);
 	}
 
-	public function get_by_id($id, $fields='*', $tb = '')
+	public function get_by_id($id, $fields='*')
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$result = $this->db->select($fields)
-					->from($tb)
+					->from($this->mTable)
 					->where('id', $id)
 					->get()
 					->row_array();
@@ -53,20 +52,18 @@ class XT_Model extends CI_Model {
 	/**
 	*根据条件查询
 	*/
-	public function get_by_where($where, $fields='*', $tb = ''){
-		$tb = empty($tb) ? $this->mTable : $tb;
+	public function get_by_where($where, $fields='*'){
 		$result = $this->db->select($fields)
-		->from($tb)
+		->from($this->mTable)
 		->where($where,NULL,FALSE)
 		->get()
 		->row_array();
 		return $result;
 	}
 
-	public function insert($data, $tb = '')
+	public function insert($data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
-		$sql = $this->db->insert_string($tb, $data);
+		$sql = $this->db->insert_string($this->mTable, $data);
 		$sql = 'INSERT IGNORE '.ltrim($sql,'INSERT');
 
 		$update = array();
@@ -79,19 +76,17 @@ class XT_Model extends CI_Model {
 		return $this->db->query($sql);
 	}
 	
-	public function insert_string($data, $tb = '')
+	public function insert_string($data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
-		$sql = $this->db->insert_string($tb, $data);
+		$sql = $this->db->insert_string($this->mTable, $data);
 		$this->db->query($sql);
 		$id =  $this->db->insert_id();
 		return $id;
 	}
 
-	public function insert_ignore($data, $tb = '')
+	public function insert_ignore($data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
-		$sql = $this->db->insert_string($tb, $data);
+		$sql = $this->db->insert_string($this->mTable, $data);
 		$sql = 'INSERT IGNORE '.ltrim($sql,'INSERT');
 		$this->db->query($sql);
 		
@@ -99,32 +94,29 @@ class XT_Model extends CI_Model {
 	}
 
 	//拼写错了。带删
-	public function insert_igonre($data, $tb = '')
+	public function insert_igonre($data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
-		$sql = $this->db->insert_string($tb, $data);
+		$sql = $this->db->insert_string($this->mTable, $data);
 		$sql = 'INSERT IGNORE '.ltrim($sql,'INSERT');
 		$this->db->query($sql);
 		
 		return $this->db->insert_id();
 	}
 
-	public function get_count($where, $tb = '')
+	public function get_count($where)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$result = $this->db->select('COUNT(1) AS count', FALSE)
-					->from($tb)
+					->from($this->mTable)
 					->where($where)
 					->get()
 					->row_array();
 		return (int)$result['count'];
 	}
 	
-	public function count($arrWhere, $tb = '')
+	public function count($arrWhere)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$this->db->select('COUNT(1) AS count', FALSE)
-					->from($tb);
+					->from($this->mTable);
 		foreach($arrWhere as $key=>$val)
 		{	
 			if (is_array($val))
@@ -154,17 +146,15 @@ class XT_Model extends CI_Model {
 		return $this->db->where($where)->delete($this->mTable);
 	}
 	
-	public function update_by_id($id, $data, $tb='')
+	public function update_by_id($id, $data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$where = array($this->mPkId=> $id);
-		$sql = $this->db->update_string($tb, $data, $where);
+		$sql = $this->db->update_string($this->mTable, $data, $where);
 		return $this->db->query($sql);
 	}
 	
-	public function update_by_where($where, $data, $tb='')
+	public function update_by_where($where, $data)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		if (!$where)return false;
 		if(!is_array($where))
 			$this->db->where($where);
@@ -182,7 +172,7 @@ class XT_Model extends CI_Model {
 				}
 			}
 		}
-		return $this->db->update($tb, $data);
+		return $this->db->update($this->mTable, $data);
 	}
 	
 	/**
@@ -205,11 +195,10 @@ class XT_Model extends CI_Model {
 		return $this->fetch_rows($where, $fields, $order_by);
 	}
 	
-	public function fetch_row($where, $fields='*', $order_by='', $tb = '')
+	public function fetch_row($where, $fields='*', $order_by='')
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$this->db->select($fields)
-						->from($tb)
+						->from($this->mTable)
 						->where($where);
 		if ($order_by)
 		{
@@ -218,21 +207,19 @@ class XT_Model extends CI_Model {
 		return $this->db->limit(1)->get()->row_array();
 	}
 	
-	public function fetch_field($where, $field='', $tb = '')
+	public function fetch_field($where, $field='')
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$arr =	$this->db->select($field)
-						->from($tb)
+						->from($this->mTable)
 						->where($where)
 						->get()
 						->row_array();
 		return $arr[$field];
 	} 
 	
-	public function fetch_rows($where=array(), $fields='*', $order_by='', $limit=0, $tb = '')
+	public function fetch_rows($where=array(), $fields='*', $order_by='', $limit=0)
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
-		$this->db->select($fields)->from($tb);
+		$this->db->select($fields)->from($this->mTable);
 		if(!is_array($where))
 			$this->db->where($where);
 		else
@@ -268,13 +255,12 @@ class XT_Model extends CI_Model {
 		return $this->db->get()->result_array();
 	}
 
-	/*public function fetch_page_more($page=1, $pagesize=10, $tb = '', $where=array(), $fields='*', $order_by='')
+	/*public function fetch_page_more($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='')
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$order_by = $order_by ? $order_by : $this->mPkId.' DESC';
 		$fields_count = 'COUNT(1) AS count';
 		$this->db->select($fields_count, FALSE)
-					->from($tb);
+					->from($this->mTable);
 	    foreach($where as $key=>$val)
 		{	
 		    if ($key{0} == '@' && is_array($val))
@@ -310,13 +296,12 @@ class XT_Model extends CI_Model {
 		return $result;
 	}*/
 	
-	public function fetch_page($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='', $tb = '')
+	public function fetch_page($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='')
 	{
-		$tb = empty($tb) ? $this->mTable : $tb;
 		$order_by = $order_by ? $order_by : $this->mPkId.' DESC';
 		$fields_count = 'COUNT(1) AS count';
 		$this->db->select($fields_count, FALSE)
-					->from($tb);
+					->from($this->mTable);
 	    foreach($where as $key=>$val)
 		{	
 		    if ($key{0} == '@' && is_array($val))
