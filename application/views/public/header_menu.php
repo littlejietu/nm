@@ -4,7 +4,7 @@
        <div class="fr nav">
           <ul class="clearfix">
              <li>
-                <a class="" href="/n/models.php">
+                <a class="" href="/model">
                     <p>
                         <span class="navimg"><img alt="模特" src="<?php echo _get_cfg_path('images')?>nav_1.jpg" height="16"/></span>
                         <span class="navzi">模特</span>

@@ -31,7 +31,7 @@
                         </tbody></table>
                         <ul class="tran_tab">
                         <?php foreach ($list['rows'] as $key => $a): ?>
-                                                    <li class="clearfix t_review">
+                            <li class="clearfix t_review">
                               <div class="em_rit fl">
                                    <div class="apprtop">
 
@@ -43,7 +43,7 @@
 
                                    <div class="apprcon"><?=$a['memo'];?></div>
                                    <div class="clearfix">
-                                        <span class="fl"><?php echo $a['nickname'];?></span><em class="fr"><?php echo date('Y-m-d H:i:s',$a['addtime']);?></em>       
+                                        <span class="fl"><?=$a['nickname'];?></span><em class="fr"><?=date('Y-m-d H:i:s',$a['addtime']);?></em>       
                                    </div>
                                 </div>
                                 <div class="fl operat"><a class="t_delete" href="javascript:;"><i></i>回复</a></div>
@@ -55,8 +55,8 @@
                                     <input name="" type="submit" class="but" value="创建"><input name="" type="submit" class="but but_2" value="取消">
                                 </div>
                             </li>
-                            <?php endforeach;?>
-                            </ul>
+                        <?php endforeach;?>
+                        </ul>
                     </div>
                 </div>
 

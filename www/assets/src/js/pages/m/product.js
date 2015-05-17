@@ -37,7 +37,7 @@ $(function() {
             if($.inArray(code, arrProductCode)<0)
             {
                 arrProductCode.push(code);
-                htmlTmp += htmlItem.replace(/{{item_code}}/g, code).replace(/{{item_work}}/g, arrTxt[idx]+' + '+scene_text+' + '+time_text);
+                htmlTmp += htmlItem.replace(/{{_eg_}}/g,'').replace(/{{item_code}}/g, code).replace(/{{item_work}}/g, arrTxt[idx]+' + '+scene_text+' + '+time_text);
             }
         });
         

@@ -3,17 +3,29 @@
 class User_model extends XT_Model {
 
 	protected $mTable = 'user';
+	protected $tb_user = 'user';
 	protected $tb_userdetail = 'user_detail';
 	protected $tb_usermemo = 'user_memo';
 
 	public function get_info_by_id($id, $fields='*')
 	{
 		$aUser = $this->get_by_id($id, $fields);
-		$this->set_table($this->tb_userdetail);
-		$aUserDetail = $this->get_by_where("userid=$id",'*');
-		$this->set_table($this->tb_usermemo);
-		$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
-		return array_merge($aUserDetail, $aUserMemo, $aUser);
+		if($aUser['usertype']==1)
+		{
+
+			$this->set_table($this->tb_userdetail);
+			$aUserDetail = $this->get_by_where("userid=$id",'*');
+			$this->set_table($this->tb_usermemo);
+			$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
+			return array_merge($aUserDetail, $aUserMemo, $aUser);
+		}
+		else
+		{
+			$this->set_table($this->tb_usermemo);
+			$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
+			return array_merge($aUserMemo, $aUser);
+		}
+
 		/*$rs = $this->db->select($fields)
 		->from($this->mTable.' a')
 		->join($this->tb_userdetail.' b','a.id=b.userid','left')
@@ -110,6 +122,8 @@ class User_model extends XT_Model {
 			$this->set_table($this->tb_usermemo);
 			$this->update_by_where(array('userid'=>$id), $data_memo, $this->tb_usermemo);
 		}
+		$this->set_table($this->tb_user);
+
 		return $this->update_by_id($id, $data);
 	}
 

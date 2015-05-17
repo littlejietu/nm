@@ -20,7 +20,9 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		header('location:'.base_url('n/index.php') );
+
+		//echo '正在建设中..';die;
+		header('location:'.base_url('model') );
 		//$this->load->view('home');
 	}
 }

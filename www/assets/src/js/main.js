@@ -44,3 +44,24 @@ this.imagePreview = function(){
 $(document).ready(function(){
 	imagePreview();
 });
+
+
+$('.atte_cur').bind('click',function(){
+	$.ajax( {
+	    url:'/i/index/fans',
+	    data:{
+	    		mid : $('#mid').val()
+	    },
+	    type:'post',
+	    cache:false,
+	    dataType:'json',
+	    success:function(res) {
+	        if(res.code ==200 ){
+	            alert('关注成功');
+	        }
+	        else{
+	        	alert('已关注');
+	        }
+	     }
+	});
+});

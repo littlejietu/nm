@@ -86,8 +86,8 @@
                               </tr>
                               <div id="priceitem" class="xthide">
                                   <div class="itemer">
-                                    {{item_work}}<input name="code[]" type="hidden" value="{{item_code}}">
-                                    <span class="xtright">¥ <input name="price[]" type="text" class="txt txt_price" value="150.00" ></span>
+                                    {{item_work}}<input name="{{_eg_}}code[]" type="hidden" value="{{item_code}}">
+                                    <span class="xtright">¥ <input name="{{_eg_}}price[]" type="text" class="txt txt_price" value="150.00" ></span>
                                   </div>
                               </div>
                           </tbody></table>

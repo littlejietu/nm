@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Comment extends CI_Controller {
+class Fans extends CI_Controller {
 
 	public function __construct()
     {
@@ -36,7 +36,7 @@ class Comment extends CI_Controller {
 			'list' => $list,
 			);
 		
-		$this->load->view('m/comment',$result);
+		$this->load->view('m/fans',$result);
 	}
 
 }

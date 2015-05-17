@@ -43,7 +43,6 @@ class Product extends CI_Controller {
             //$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 			if ($this->form_validation->run() === TRUE)
   			{
-  				
 
   				foreach ($arrCode as $key => $v) {
   					
@@ -66,7 +65,6 @@ class Product extends CI_Controller {
 
 						//保存数据库
 		  				$this->Product_model->insert_update($data);
-
 					}	
 
   				}

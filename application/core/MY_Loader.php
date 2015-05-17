@@ -96,7 +96,7 @@ class MY_Loader extends CI_Loader
 				$object_name = $service;
 			}
 
-			$service = ucfirst($service);
+			//$service = ucfirst($service);
 			$CI = &get_instance();
 			if($params !== NULL)
 			{

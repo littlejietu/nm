@@ -81,10 +81,7 @@
 </div>
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
-
-<div id="share">
-	<a id="totop" title="" href="javascript:void(0);">返回顶部</a>
-</div></body>
+</body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>main.js"></script>

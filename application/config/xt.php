@@ -50,3 +50,22 @@ $config['orderkind'] = array(
 	'book'=>1,
 	'cert'=>2,
 );
+
+$config['activity'] = array(
+	1 => '模特面试',
+	2 => '模特工作',
+	3 => '模特比赛',
+);
+
+$config['get_paystatus'] = array(
+	1=>'waitpay',
+	2=>'payed',
+	3=>'finish',
+);
+
+$config['paystatus'] = array(
+	'waitpay'=>'待付款',
+	'payed'=>'已付款',
+	'finish'=>'成功',
+);
+

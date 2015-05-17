@@ -52,6 +52,7 @@ class Order_service
 			$item = $this->ci->input->post('item');
 			$scene = $this->ci->input->post('scene');
 			$time = $this->ci->input->post('time');
+			$num = ( (int)$this->ci->input->post('num') == 0 )?1:(int)$this->ci->input->post('num');
 
 			$buyerid = $this->ci->loginID;
 			$buyer_usertype = $this->ci->loginUsertype;
@@ -64,15 +65,22 @@ class Order_service
 				$res['data']['error_messages'] = array('页面过期，请刷新页面后重新下单');
 				return $res;
 			}
-			$price = $this->ci->Product_model->get_produdct_by_uist($sellerid, $item, $scene, $time);
+			$price = 0;
+			$oProduct = $this->ci->Product_model->get_produdct_by_uist($sellerid, $item, $scene, $time);
+			if($oProduct)
+				$price = $oProduct['price'];
 			if(!$price)
 				$price = $this->ci->config->item('workprice');
 			$begtime=$this->ci->input->post('begtime');		//格式:2015-5-15
 
 			$oSysKind = $this->ci->config->item('orderkind');
+			$oSysItem = $this->ci->config->item('workitem');
+			$oSysScene = $this->ci->config->item('workscene');
+			$oSysTime = $this->ci->config->item('worktime');
 			$no = date('YmdHis',time()).rand(10000,99999);
 			$o = array(
 					'sellerid'=>$sellerid,
+					'title'=>'工作:'.$oSysItem[$item].' 场景:'.$oSysScene[$scene].' '.$num.$oSysTime[$time],
 					'no'=>$no,
 					'kind'=>$oSysKind['book'],
 					'buyerid'=>$buyerid,
@@ -93,7 +101,7 @@ class Order_service
 					'scene'=>$scene,
 					'time'=>$time,
 					'price'=>$price,
-					'num'=>( (int)$this->ci->input->post('num') == 0)?1:(int)$this->ci->input->post('num'),
+					'num'=>$num,
 					'memo'=>$this->ci->input->post('memo'),
 					'linkman'=>$this->ci->input->post('linkman'),
 					'linkway'=>$this->ci->input->post('linkway'),
@@ -136,7 +144,7 @@ class Order_service
 			}
 			else if($oBook['time']==2)	//时
 			{
-				if(date('H',$begtime)==0)
+				if(date('H',$oBook['begtime'])=='00')
 					$oBook['begtime'] = strtotime($begtime)+8*60*60;
 				$oBook['begtime'] = $oBook['begtime'] + 60*60*$num;
 			}
@@ -146,6 +154,16 @@ class Order_service
 			$oBook['orderid'] = $orderid;
 			$outerid = $this->ci->Orderbook_model->insert_string($oBook);
 			$this->ci->Order_model->update_by_id($orderid, array('outerid'=>$outerid));
+			//统计订单数与新订单数
+			$this->ci->load->service('Num_service');
+			$this->ci->num_service->set_user_num($sellerid,'be_ordernum');
+			$this->ci->num_service->set_user_num($buyerid,'ordernum');
+			$this->ci->num_service->set_user_num($sellerid,'be_ordernum_new',1);
+			$this->ci->num_service->set_user_num($buyerid,'ordernum_new',1);
+			$this->ci->num_service->set_user_num($sellerid,'ordernum_m');
+			$this->ci->num_service->set_user_num($sellerid,'be_fund_m');
+			$this->ci->num_service->set_user_num($buyerid,'fund_m');
+
 			$res['code'] = 200;
 		}
 		else
