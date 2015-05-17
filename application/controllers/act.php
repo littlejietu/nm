@@ -10,11 +10,13 @@ class Act extends CI_Controller {
     }
 	public function index()
 	{
+		$type = (int)$this->input->get('type');
+		$type = $type==0?1:$type;
 		
 		$page     = _get_page();
-		$pagesize = 3;
-		$arrParam = array();
-		$arrWhere = array();
+		$pagesize = 8;
+		$arrParam = array('type'=>$type);
+		$arrWhere = array('status'=>1, 'type'=>$type);
 
 		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -22,7 +24,7 @@ class Act extends CI_Controller {
 
 		//分页
 		$pagecfg = array();
-		$pagecfg['base_url']     = _create_url('admin/activity', $arrParam);
+		$pagecfg['base_url']     = _create_url('act', $arrParam);
 		$pagecfg['total_rows']   = $list['count'];
 		$pagecfg['cur_page'] = $page;
 		$pagecfg['per_page'] = $pagesize;

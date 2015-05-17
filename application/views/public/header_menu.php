@@ -12,7 +12,7 @@
                 </a>
              </li>
              <li>
-                 <a class="" href="/n/institutions.php">
+                 <a<?php if( strtolower(uri_string())=='ins' ) echo ' class="nav_on"';?> href="/ins">
                     <p>
                          <span class="navimg"><img alt="机构" src="<?php echo _get_cfg_path('images')?>nav_2.jpg" height="16"/></span>
                          <span class="navzi">机构</span>
@@ -20,21 +20,14 @@
                  </a>
              </li>
              <li>
-                 <a class="" href="/n/notlce.php">
+                 <a<?php if( strtolower(uri_string())=='act' ) echo ' class="nav_on"';?> href="/act">
                     <p>
                         <span class="navimg"><img alt="通告" src="<?php echo _get_cfg_path('images')?>nav_3.jpg" height="16"/></span>
                         <span class="navzi">通告</span>
                     </p>
                  </a>
              </li>
-             <li>
-                <a class="" href="#">
-                    <p>
-                        <span class="navimg"><img alt="新闻" src="<?php echo _get_cfg_path('images')?>nav_4.jpg" height="16"/></span>
-                        <span class="navzi">新闻</span>
-                    </p>
-                </a>
-             </li>
+             
              <li class="nav_search">
                 <a href="##" title="搜索"><img alt="搜索" src="<?php echo _get_cfg_path('images')?>nsos.jpg" height="20"/></a>
              </li>

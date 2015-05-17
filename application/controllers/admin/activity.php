@@ -13,7 +13,7 @@ class Activity extends MY_Admin_Controller {
 	public function index()
 	{
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array();
 
@@ -119,7 +119,7 @@ class Activity extends MY_Admin_Controller {
 					'innum'=>$this->input->post('innum'),
 					'addtime'=>time(),
 					'display'=>$this->input->post('display'),
-					'status'=>$this->input->post('status'),
+					'status'=>1,
 					'op_userid'=>0,
 					'op_username'=>0,
 					'op_time'=>time(),
