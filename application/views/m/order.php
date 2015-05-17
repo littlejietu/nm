@@ -88,7 +88,4 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
-<script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-
 </html>

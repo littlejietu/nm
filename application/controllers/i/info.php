@@ -14,6 +14,9 @@ class Info extends CI_Controller {
 	{
 		
 		$oUser = $this->User_model->get_info_by_id($userid);
+		$oUsernum = $this->Usernum_model->get_by_id($userid);
+		if($oUsernum)
+			$oUser = array_merge($oUsernum, $oUser);
 		$result = array(
 			'oUser' => $oUser,
 			);

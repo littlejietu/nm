@@ -41,12 +41,13 @@ class My_XTcl{
 		$CI->loginUser = array();
 		$loginUserID = '';
 		$CI->loginID = 0;
+		$CI->loginInsID = 0;
 
 		if ($xt_loginID)
 		{
 			$CI->loginUser['auth'] = array();
 			
-			$fields = 'id,usertype,userlevel,username,nickname,mobile,email,validemail,validmobile,status,lastlogintime';
+			$fields = 'id,usertype,userlevel,username,nickname,mobile,email,userlogo,validemail,validmobile,status,lastlogintime';
 			$CI->loginUser = XTM('User')->fetch_row(array('id'=>$xt_loginID), $fields);
 
 

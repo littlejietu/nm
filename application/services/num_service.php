@@ -68,7 +68,30 @@ class Num_service
 					$this->ci->Usernum_model->insert(array('userid'=>$userid,'commentnum_new'=>$num));
 					$res_num = $num;
 					break;
-				
+				case 'be_ordernum_m':
+					$num = $this->ci->Order_model->get_count(array('sellerid'=>$userid,'status'=>1,'addtime<'=>time()+30*24*60*60));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$num));
+					$res_num = $num;
+					break;
+				case 'ordernum_m':
+					$num = $this->ci->Order_model->get_count(array('buyerid'=>$userid,'status'=>1,'addtime<'=>time()+30*24*60*60));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'ordernum_m'=>$num));
+					$res_num = $num;
+					break;
+				case 'be_fund_m':
+					$dbprefix = $this->Order_model->db->dbprefix;
+					$rs = $this->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where sellerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$total = $rs['s'];
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
+					$res_num = $num;
+					break;
+				case 'fund_m':
+					$dbprefix = $this->Order_model->db->dbprefix;
+					$rs = $this->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where buyerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$total = $rs['s'];
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
+					$res_num = $num;
+					break;
 				default:
 					# code...
 					break;
@@ -87,6 +110,31 @@ class Num_service
 			$this->ci->Usernum_model->insert(array('userid'=>$userid, $field=>0));
 			if($this->ci->loginUserNum && $this->ci->loginUserNum[$field]) $this->ci->loginUserNum[$field]=0;
 		}
+	}
+
+	public function set_album_photo_num($userid, $field, $albumid)
+	{
+		$res_num = 0;
+		$aField = array('photonum');
+		if(in_array($field, $aField))
+		{
+			$this->ci->load->model('Photo_model');
+			$this->ci->load->model('Album_model');
+			switch ($field) {
+				case 'photonum':
+					$num = $this->ci->Photo_model->get_count(array('albumid'=>$albumid,'status'=>1));
+					$this->ci->Album_model->update_by_where(array('id'=>$albumid),array('photonum'=>$num));
+					$res_num = $num;
+					break;
+				
+				default:
+					# code...
+					break;
+			}
+		}
+
+		return $res_num;
+
 	}
 
 }
