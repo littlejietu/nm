@@ -12,7 +12,7 @@ class My_XTcl{
 		
 		$is_manage = FALSE;
 		//个人中心验证是否登录
-		if ($CI->uri->uri_string && preg_match('~^m\/*~',$CI->uri->uri_string))		//XT_WWW=='user' || 
+		if ($CI->uri->uri_string && $CI->uri->uri_string!='model' && preg_match('~^m\/*~',$CI->uri->uri_string))		//XT_WWW=='user' || 
 		{
 			$is_manage = true;
 		}
