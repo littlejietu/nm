@@ -37,15 +37,17 @@
                             </div>
                             <div class="inter_li">
                               <ul class="clearfix">
+                                <?php foreach ($list['rows'] as $key => $a): ?>
                                   <li>
+                                      
                                       <div class="intimg fl"><img src="<?=_get_cfg_path('images')?>intimg.jpg"></div>
                                         <div class="imtcon fr">
-                                          <h3><span>范萌</span><em>√已关注</em></h3>
-                                            <h4>平面模特</h4>
-                                            <p>通过 <a href="##">平台找人</a> 关注</p>
+                                          <h3><span><?=$a['nickname'];?></span><em>√已关注</em></h3>
+                                           
+                                            <!--<p>通过 <a href="##">平台找人</a> 关注</p>-->
                                         </div>
-                                    </li>
-                                                                      
+                                  </li>
+                                <?php endforeach;?>                                  
                               </ul>
                             </div>
                         </div>

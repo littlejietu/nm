@@ -6,7 +6,7 @@ class Fans extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-        $this->load->model('Comment_model');
+        $this->load->model('Fans_model');
     }
 	
 
@@ -14,17 +14,17 @@ class Fans extends CI_Controller {
 	{
 		$userid = $this->loginID;
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 9;
 		$arrParam = array();
-		$arrWhere = array('touserid'=>$userid);		//条件
+		$arrWhere = array('fansuserid'=>$userid);		//条件
 
-		$list = $this->Comment_model->fetch_page($page, $pagesize, $arrWhere);
+		$list = $this->Fans_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
 		
 
 		//分页
 		$pagecfg = array();
-		$pagecfg['base_url']     = _create_url('m/Comment', $arrParam);
+		$pagecfg['base_url']     = _create_url('m/Fans', $arrParam);
 		$pagecfg['total_rows']   = $list['count'];
 		$pagecfg['cur_page'] = $page;
 		$pagecfg['per_page'] = $pagesize;
