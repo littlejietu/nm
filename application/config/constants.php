@@ -86,6 +86,6 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-//define('XT_DOMAIN', '.nm.com');
-define('XT_DOMAIN', '.66571.com');
+define('XT_DOMAIN', '.nm.com');
+//define('XT_DOMAIN', '.66571.com');
 define('XT_TEL', '15968850531');

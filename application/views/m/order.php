@@ -52,6 +52,7 @@
                               <td><?php if($a['paystatus']=='waitpay' ):?>
                                 <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
                                 <?php else:?>
+                                <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>
                                 <?php endif?>
                               </td>

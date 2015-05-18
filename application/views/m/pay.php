@@ -18,7 +18,7 @@
         <div class="pay_title">提交订单</div>
         <div id="subOrder">
             <div class="subOrder">
-            <form action="/m/paying" method="post">
+            <form action="/public/pay/done" method="post">
             	<input type="hidden" name="orderid" value="<?=_get_key_val($o['id'])?>" />
             	<input type="hidden" name="orderno" value="<?=$o['no']?>" />
                 <div class="subOrder1">
