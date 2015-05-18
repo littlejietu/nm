@@ -68,6 +68,12 @@ $db['default'] = array(
 	'username' => 'root',
 	'password' => '',
 	'database' => 'newmo',
+
+	// 'hostname' => 'mysql.h03.66571.com',
+	// 'username' => 'niumowang',
+	// 'password' => '1C1BD1E55Cf475',
+	// 'database' => 'niumowang',
+
 	'dbdriver' => 'mysqli',
 	'dbprefix' => 'nm_',
 	'pconnect' => FALSE,

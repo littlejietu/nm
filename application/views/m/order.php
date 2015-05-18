@@ -49,7 +49,7 @@
                               <td><?php echo $a['totalprice'];?></td>
                               <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'-'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
                               <td><?php echo date('m-d H:i:s',$a['addtime']);?></td>
-                              <td><?php if($a['paystatus']=='waitpay'):?>
+                              <td><?php if($a['paystatus']=='waitpay' ):?>
                                 <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
                                 <?php else:?>
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>

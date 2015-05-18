@@ -18,6 +18,9 @@
         <div class="pay_title">提交订单</div>
         <div id="subOrder">
             <div class="subOrder">
+            <form action="/m/paying" method="post">
+            	<input type="hidden" name="orderid" value="<?=_get_key_val($o['id'])?>" />
+            	<input type="hidden" name="orderno" value="<?=$o['no']?>" />
                 <div class="subOrder1">
                     <h1>订单提交成功！还差一步，请继续完成在线支付！</h1>
                     <p>订单号：<span><?=$o['no']?></span> </p>
@@ -25,7 +28,8 @@
                 </div>
                 <div class="subOrder2"><input name="radio" type="radio" value="" class="radio" /><img src="<?php echo _get_cfg_path('images')?>pay_1.jpg" /><p>支付￥<span><?=$o['totalprice']?></span></p></div>
                 <div class="subOrder2"><input name="radio" type="radio" value="" class="radio"/><img src="<?php echo _get_cfg_path('images')?>pay_2.jpg" /><i>（推荐）</i><p>支付￥<span><?=$o['totalprice']?></span></p></div>
-                <div class="subOrder3"><input type="button" class="but zf-btn" value="确认支付"/></div>
+                <div class="subOrder3"><input type="submit" class="but zf-btn"value="确认支付"/></div>
+            </form>
             </div>
         </div>
     </div>

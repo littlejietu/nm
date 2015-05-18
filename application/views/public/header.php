@@ -9,7 +9,7 @@
     	</p>   
         <div class="fr htop_fr">
             <a class="h_sche" href="/n/schedule.php"><i></i>档期管理</a>
-            <a class="h_orde" href="/m/order">我的订单(<i><?php if($this->loginUserNum) echo $this->loginUserNum['be_ordernum_new'];else echo '0';?></i>)</a>
+            <a class="h_orde" href="/m/order">我的订单(<i><?php if(!empty($this->loginUserNum)) echo $this->loginUserNum['be_ordernum_new'];else echo '0';?></i>)</a>
             <a class="h_drop" href="##">下拉</a>
         </div>
     </div>
