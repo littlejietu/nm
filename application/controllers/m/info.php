@@ -104,7 +104,8 @@ class Info extends CI_Controller {
 			'planeshot'=>$this->input->post('planeshot'),
 			'tactivity'=>$this->input->post('tactivity'),
 			'telead'=>$this->input->post('telead'),
-			'magazine'=>$this->input->post('magazine'),					
+			'magazine'=>$this->input->post('magazine'),
+			'video'=>$this->input->post('video'),					
 			);
 		if(!$this->loginUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');

@@ -40,4 +40,73 @@ class Client extends CI_Controller {
 		$this->load->view('m/client',$result);
 	}
 
+	public function addclient()
+	{
+		$res = array('code'=>0,'data'=>array());
+		
+		if ($this->input->is_post())
+		{
+			//验证规则
+			$config = array(
+               	array(
+                     'field'   => 'linkman', 
+                     'label'   => '联系人', 
+                     'rules'   => 'trim|required'
+                ),
+                array(
+                     'field'   => 'contact', 
+                     'label'   => '联系方式', 
+                     'rules'   => 'trim|required'
+                ),
+            );
+
+            $this->form_validation->set_rules($config);
+
+			if ($this->form_validation->run() === TRUE)
+  			{
+  				$res['data'] = '添加成功';
+  				$id	= _get_key_val($this->input->post('id'), TRUE);
+  				if($id)
+  				{
+  					$res['data'] = '修改成功';
+  					$data = array(
+						'linkman'=>$this->input->post('linkman'),
+						'contact'=>$this->input->post('contact'),
+						'memo'=>$this->input->post('memo'),
+						'updatetime'=>time(),
+						'op_userid'=>$this->loginID,
+						'op_nickname'=>$this->loginNickName,
+						'op_time'=>time(),
+					);
+					$data['id'] = $id;
+  				}
+  				else
+  				{
+	  				$data = array(
+	  					'userid'=>$this->loginID,
+	  					'nickname'=>$this->loginNickName,
+						'linkman'=>$this->input->post('linkman'),
+						'contact'=>$this->input->post('contact'),
+						'memo'=>$this->input->post('memo'),
+						'addtime'=>time(),
+						'status'=>1,
+						'op_userid'=>$this->loginID,
+						'op_nickname'=>$this->loginNickName,
+						'op_time'=>time(),
+					);
+				}
+
+  				$this->Client_model->insert($data);
+				$res['code'] = 200;
+
+  			}
+  			else
+  				$res['data']['error_messages'] = $this->form_validation->getErrors();
+
+		}//-is_post()
+		$this->view->json($res);
+		exit;
+
+	}
+
 }

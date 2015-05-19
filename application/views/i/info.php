@@ -24,11 +24,11 @@
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
             	<li><span>姓名</span> <?=$oUser['nickname']?></li>
-                <li><span>罩杯</span> <?=$oUser['cup']?></li>
-                <li><span>身高</span> <?=$oUser['height']?></li>
-                <li><span>体重</span> <?=$oUser['weight']?></li>
+                <li><span>罩杯</span> <?=$oUser['cup']?>  B</li>
+                <li><span>身高</span> <?=$oUser['height']?>  cm</li>
+                <li><span>体重</span> <?=$oUser['weight']?>  kg</li>
                 <li><span>三围</span> <?=$oUser['bust']?>-<?=$oUser['waist']?>-<?=$oUser['hips']?></li>
-                <li><span>鞋码</span> <?=$oUser['shoes']?></li>
+                <li><span>鞋码</span> <?=$oUser['shoes']?>  码</li>
             </ul>
             <br /><br /><br />
             <div class="title">个人经历</div>
@@ -53,6 +53,10 @@
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>杂志拍摄</h3>
                         <div class="p_wzi"> <?=$oUser['magazine']?><br /></div>
+                    </div>
+                    <div class="per_con">
+                        <h3 class="p_bti"><i></i>视频地址</h3>
+                        <div class="p_wzi"> <?=$oUser['video']?><br /></div>
                     </div>
                 </div>
                 <?php if($oUser['video']):?>

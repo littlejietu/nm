@@ -16,8 +16,8 @@ $config['cfg_path'] = array(
 );
 
 $config['usertype'] = array(
-	1 => '经纪公司',
-	2 => '模特',
+	1 => '模特',
+	2 => '经纪公司',
 	3 => '企业',
 );
 

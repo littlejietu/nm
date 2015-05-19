@@ -81,9 +81,9 @@
                               </tr>
                               <tr>
                                 <td>罩杯</td>
-                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/></td>
+                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/>B</td>
                                 <td>鞋码</td>
-                                <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/></td>
+                                <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/>码</td>
                               </tr>
                                <tr>
                                	  <td colspan="4">个人经历</td>
@@ -101,12 +101,16 @@
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="tactivity" cols="" rows=""><?=$o['tactivity']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>影视广告</font></p></td>
+                                <td width="86" valign="top"><font>影视广告1</font></p></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="telead" cols="" rows=""><?=$o['telead']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>杂志拍摄</font></p></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="magazine" cols="" rows=""><?=$o['magazine']?></textarea></td>
+                              </tr>
+                              <tr>
+                                 <td>视频地址</td>
+                                <td><input name="video" type="text" class="txt" value="<?=$o['video']?>" placeholder="请输入你拍摄过的品牌"/></td>
                               </tr>
                                <!-- <tr>
                                 <td width="86" valign="top"><font>拍摄品牌1</font></p></td>

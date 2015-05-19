@@ -87,6 +87,20 @@ function closeWin(a){
 	$('.popover').slideUp(200);
 }
 */
+
+$('.TX-win-open').bind('click',function(){
+
+	$('.popover-mask').show();
+	$('.popover-mask').height($(document).height());
+	$('.popover').slideDown(200);
+
+});
+
+$('.TX-win-close').bind('click',function(){
+	$('.popover-mask').hide();
+	$('.popover').slideUp(200);
+});
+
 function filt(a){
 	$(a).addClass('licur').siblings().removeClass('licur');
 	$(a).siblings('input').val($(a).attr('name'));
