@@ -53,7 +53,6 @@ class Index extends CI_Controller {
 
 		$this->view->json($res);
 	}
-
 	
 
 }

@@ -112,7 +112,7 @@ class Num_service
 		}
 	}
 
-	public function set_album_photo_num($userid, $field, $albumid)
+	public function set_album_photo_num($userid, $field, $albumid = 0)
 	{
 		$res_num = 0;
 		$aField = array('photonum');
@@ -123,7 +123,9 @@ class Num_service
 			switch ($field) {
 				case 'photonum':
 					$num = $this->ci->Photo_model->get_count(array('albumid'=>$albumid,'status'=>1));
-					$this->ci->Album_model->update_by_where(array('id'=>$albumid),array('photonum'=>$num));
+					$this->ci->Album_model->update_by_where(array('id'=>$albumid),array($field=>$num));
+					$num = $this->ci->Photo_model->get_count(array('userid'=>$userid,'status'=>1));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid, $field=>$num));
 					$res_num = $num;
 					break;
 				

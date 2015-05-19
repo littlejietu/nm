@@ -80,7 +80,7 @@ class Info extends CI_Controller {
 		$data = array(					
 			'userlogo'=>$this->input->post('userlogo'),
 			'realname'=>$this->input->post('realname'),					
-			'mobile'=>$this->input->post('mobile'),					
+			//'mobile'=>$this->input->post('mobile'),					
 			'sex'=>$this->input->post('sex'),
 			'city'=>$this->input->post('city'),					
 		);

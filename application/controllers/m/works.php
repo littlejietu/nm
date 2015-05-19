@@ -21,7 +21,7 @@ class Works extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
-		$arrWhere = array();
+		$arrWhere = array('userid'=>$this->loginID);
 
 		$list = $this->Album_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;

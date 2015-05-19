@@ -20,20 +20,13 @@
 	<div class="introd container">
         
     <?php include_once(VIEWPATH."i/public/top.php");?>
-    <div class="works malbums">
-            <ul class="clearfix">
+
+        <div class="malbumdeta">
+            <div class="brand-list" id="brand-waterfall">
                 <?php foreach ($list as $key => $a): ?>
-                <li>
-                    <a href="/i/photo/<?=$a['id']?>">
-                        <img src="<?=$a['showimg']?>">
-                        <div class="wor_wzi">
-                            <h3><?=$a['title']?><span>（<?=$a['photonum']?>张）</span></h3>
-                            <p>创建时间：<?=date('Y-m-d H:i:s',$a['addtime'])?></p>
-                        </div>
-                    </a>
-                </li>
+                <div class="item"><img src="<?=$a['img']?>" /></div>
                 <?php endforeach;?>
-            </ul>
+            </div>
         </div>
 
     </div>
@@ -44,4 +37,5 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>main.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>waterfall.js"></script>
 </html>

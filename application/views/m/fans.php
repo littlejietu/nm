@@ -24,9 +24,9 @@
                     <div class="transa">
                         <div class="aut_bti">互动总览</div>
                         <div class="brotop inter_top">
-                          <div class="fl broad"><span class="b_num"><em>2150</em> <a href="##">关注</a></span></div>
-                            <div class="fl broad"><span class="b_num"><em>32314</em> <a href="##">粉丝</a></span></div>
-                            <div class="fl broad b_gain"><span class="b_num"><em>12234</em> <a href="##">拍片次数</a></span></div>
+                          <div class="fl broad"><span class="b_num"><em>0</em> <a href="##">关注</a></span></div>
+                            <div class="fl broad"><span class="b_num"><em>0</em> <a href="##">粉丝</a></span></div>
+                            <div class="fl broad b_gain"><span class="b_num"><em>0</em> <a href="##">拍片次数</a></span></div>
                         </div>
                         <div class="inter_con">
                           <div class="clearfix">
