@@ -41,6 +41,7 @@ class Ad extends MY_Admin_Controller {
 
 	public function add()
 	{
+
 		//需要修改
 		$id	= _get_key_val($this->input->get('id'), TRUE);
 		$result = array();
@@ -141,7 +142,7 @@ class Ad extends MY_Admin_Controller {
 
 				if(!empty($id))
 				{
-					$info = $this->Ad_model->get_info_by_id($id);
+					$info = $this->Ad_model->get_info_by_id($id); //查找
 					$result = array(
 						'info'=>$info,
 						);

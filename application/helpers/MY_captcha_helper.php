@@ -25,7 +25,7 @@ if ( ! function_exists('create_captcha'))
             return FALSE;
         }
 
-        $pool = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';//abcdefghijklmnopqrstuvwxyz
+        $pool = '123456789ABCDEFGHIJKLMNPQRSTUVWXYZ';//abcdefghijklmnopqrstuvwxyz
         
         $randval = '';
         for ($i = 0; $i < $length; $i++)
