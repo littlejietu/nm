@@ -7,6 +7,7 @@ class Photo extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Usernum_model');
     }
 	
 

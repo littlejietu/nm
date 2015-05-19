@@ -7,6 +7,7 @@ class Index extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('User_model');
+        $this->load->model('Usernum_model');
         $this->load->model('Fans_model');
         $this->load->model('Album_model');
     }
