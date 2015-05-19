@@ -91,8 +91,8 @@ class Info extends CI_Controller {
 			'bust'=>$bust,
 			'waist'=>$waist,
 			'hips'=>$hips,
-			'shoes'=>$this->input->post('shoes'),
-			'cup'=>$this->input->post('cup'),
+			'shoes'=>(int)$this->input->post('shoes'),
+			'cup'=>(int)$this->input->post('cup'),
 			);
 		$data_memo = array(
 			'brand'=>$this->input->post('brand'),
@@ -108,8 +108,8 @@ class Info extends CI_Controller {
 			);
 		if(!$this->loginUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
-				
-		return array($config, $data, $data_deatil, $data_memo);
+
+		return array($config, $data, $data_detail, $data_memo);
 
 
 	}

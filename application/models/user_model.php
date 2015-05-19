@@ -15,15 +15,21 @@ class User_model extends XT_Model {
 
 			$this->set_table($this->tb_userdetail);
 			$aUserDetail = $this->get_by_where("userid=$id",'*');
+			if($aUserDetail)
+				$aUser = array_merge($aUserDetail, $aUser);
 			$this->set_table($this->tb_usermemo);
 			$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
-			return array_merge($aUserDetail, $aUserMemo, $aUser);
+			if($aUserMemo)
+				$aUser = array_merge($aUserMemo, $aUser);
+			return $aUser;
 		}
 		else
 		{
 			$this->set_table($this->tb_usermemo);
 			$aUserMemo = $this->get_by_where("userid=$id",'*',$this->tb_usermemo);
-			return array_merge($aUserMemo, $aUser);
+			if($aUserMemo)
+				$aUser = array_merge($aUserMemo, $aUser);
+			return $aUser;
 		}
 
 		/*$rs = $this->db->select($fields)

@@ -70,8 +70,10 @@ class Register extends CI_Controller {
                         'userid'=>$userid,
                     );
 
-                $this->User_model->insert($data_detail, 'user_detail');
-                $this->User_model->insert($data_memo, 'user_memo');
+                $this->User_model->set_table('user_detail');
+                $this->User_model->insert($data_detail);
+                $this->User_model->set_table('user_memo');
+                $this->User_model->insert($data_memo);
                 $res['code'] = 200;
             }
             else
