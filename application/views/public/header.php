@@ -2,7 +2,7 @@
 	<div class="container">
     	<p class="fl htop_fl">
     	<?php if($this->loginID):?>
-    		Hi,<?=$this->loginNickName;?> <a href="/user/login/out">[<i>退出</i>]</a>
+    		Hi,<a href="/m/"><i><?=$this->loginNickName;?></i></a> <a href="/user/login/out">[<i>退出</i>]</a>
     	<?php else:?>
     		Hi,~<a href="/user/login">[<i>请登录</i>]</a> <a href="/reg">[<i>免费注册</i>]</a>
     	<?php endif?>
