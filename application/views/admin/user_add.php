@@ -88,7 +88,8 @@
 		        <tr>
 		            <td height="25" align="right"> 罩杯；</td>
 		            <td align="left" class="padL10"><input type="text" name="cup" value="<?php if( !empty($info['cup']) ) echo $info['cup']; ?>" /></td>
-		        </tr>	
+		        </tr>
+		        	
 		        <tr>
 		            <td height="25" align="right"> 拍摄品牌；</td>
 		            <td align="left" class="padL10"><input type="text" name="brand" value="<?php if( !empty($info['brand']) ) echo $info['brand']; ?>" /></td>

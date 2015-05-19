@@ -89,16 +89,36 @@
                                	  <td colspan="4">个人经历</td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>拍摄品牌</font></p></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>品牌类型</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
+                                <td width="86" valign="top"><font>平面拍摄</font></p></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="planeshot" cols="" rows=""><?=$o['planeshot']?></textarea></td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>获得奖项</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="awards" cols="" rows=""><?=$o['awards']?></textarea></td>
+                              </tr>
+                              <tr>
+                                <td width="86" valign="top"><font>T台活动</font></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="tactivity" cols="" rows=""><?=$o['tactivity']?></textarea></td>
+                              </tr>
+                              <tr>
+                                <td width="86" valign="top"><font>影视广告</font></p></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="telead" cols="" rows=""><?=$o['telead']?></textarea></td>
+                              </tr>
+                              <tr>
+                                <td width="86" valign="top"><font>杂志拍摄</font></p></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="magazine" cols="" rows=""><?=$o['magazine']?></textarea></td>
+                              </tr>
+                               <!-- <tr>
+                                <td width="86" valign="top"><font>拍摄品牌1</font></p></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
+                              </tr>
+                              <tr>
+                                <td width="86" valign="top"><font>品牌类型2</font></td>
+                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
+                              </tr>  -->
+                              
+                              <tr>
+                                  <td colspan="4">服务说明</td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>模特费</font></td>
