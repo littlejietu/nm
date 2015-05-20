@@ -39,8 +39,8 @@
                               <td><?php echo $a['contact'];?></td>
                               <td><?php echo $a['memo'];?></td>
                               <td class="operat">
-                                <a class="t_delete" href="/admin/client/del?id=<?php echo _get_key_val($a['id']);?>"><i></i>删除</a>
-                                <a class="t_editor" href="/admin/client/add?id=<?php echo _get_key_val($a['id']);?>"><i></i>编辑</a>
+                                <a href="javascript:;" class="t_delete XT-del" _val="<?=_get_key_val($a['id'])?>"><i></i>删除</a>
+                                <a href="javascript:;" class="t_editor XT-modify" _val="<?=_get_key_val($a['id'])?>"><i></i>编辑</a>
                               </td>
                             </tr>
                             <?php endforeach;?>
@@ -67,7 +67,7 @@
 <?php include_once(VIEWPATH."public/footer.php");?>
 <div class="popover-mask"></div>
 <div class="popover complaint addcust">
-  <div class="compl_top"><span class="fl">添加客户</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
+  <div class="compl_top"><span class="fl">添加客户</span><input type="hidden" name="clientid" id="clientid" value=""><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
   <div class="compl_con">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>

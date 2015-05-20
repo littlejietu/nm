@@ -78,7 +78,7 @@ $('.XT-album').bind('click',function(){
 $('.XT-del-album').bind('click',function(){
 	var obj = $(this).parent().parent().parent().parent();
 
-	if(!confirm("确定要删除相册吗")){return}
+	if(!confirm("确定要删除相册吗?")){return}
 	$.ajax( {
 	    url:'/m/works/delalbum',
 	    data:{

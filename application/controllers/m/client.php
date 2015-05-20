@@ -16,7 +16,7 @@ class Client extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
-		$arrWhere = array('userid'=>$userid);		//条件
+		$arrWhere = array('userid'=>$userid,'status'=>1);		//条件
 
 		$list = $this->Client_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -109,4 +109,25 @@ class Client extends CI_Controller {
 
 	}
 
+	public function getinfo(){
+		$res = array('code'=>0,'data'=>array());
+		$id	= _get_key_val($this->input->get('id'), TRUE);
+		$o = $this->Client_model->get_info_by_id($id,'linkman,contact,memo');
+		$res['code'] = 200;
+		$res['data'] = $o;
+
+		$this->view->json($res);
+		exit;
+
+	}
+
+	public function del(){
+		$res = array('code'=>0,'data'=>array());
+		$id	= _get_key_val($this->input->post('id'), TRUE);
+		
+		$this->Client_model->update_by_where(array('id'=>$id, 'userid'=>$this->loginID),array('status'=>0));
+		$res['code'] = 200;
+
+		$this->view->json($res);
+	}
 }
