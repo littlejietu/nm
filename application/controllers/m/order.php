@@ -73,11 +73,37 @@ class Order extends CI_Controller {
 		$this->load->view('m/order',$result);
 	}
 
+	public function detail(){
+		$id = _get_key_val($this->input->get('id'),true);
+		$o = $this->Order_model->get_by_id($id);
+		$this->load->model('Orderbook_model');
+		$oBook = $this->Orderbook_model->get_by_where(array('orderid'=>$id));
+
+		$o = array_merge($oBook, $o);
+
+		$result = array(
+			'o' => $o,
+			);
+
+		$this->load->view('m/orderdetail',$result);
+	}
+
 	public function reject()
 	{
 		$id = _get_key_val($this->input->get('id'),true);
 		$arrWhere = array('id'=>$id, 'sellerid'=>$this->loginID);
 		$data = array('reject'=>-1);
+		$this->Order_model->update_by_where($arrWhere, $data);
+
+		redirect('/m/order');
+
+	}
+
+	public function agree()
+	{
+		$id = _get_key_val($this->input->get('id'),true);
+		$arrWhere = array('id'=>$id, 'sellerid'=>$this->loginID);
+		$data = array('reject'=>1);
 		$this->Order_model->update_by_where($arrWhere, $data);
 
 		redirect('/m/order');

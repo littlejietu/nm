@@ -15,6 +15,7 @@
 <?php include_once(VIEWPATH."public/header.php");?>
 <div class="mainbody" id="mainbody">
 	<div class="container">
+        <?php if($o['reject']==1):?>
         <div class="pay_title">提交订单</div>
         <div id="subOrder">
             <div class="subOrder">
@@ -32,6 +33,9 @@
             </form>
             </div>
         </div>
+        <?php else:?>
+            <div class="pay_title">请先得到对方的同意</div>
+        <?php endif?>
     </div>
 </div>
 <?php include_once(VIEWPATH."public/footer.php");?>

@@ -12,20 +12,19 @@ class Pay extends CI_Controller {
 
 	public function done()
 	{
-		$id = _get_key_val( $this->input->post('orderid'),true);
-		$no = $this->input->post('orderno');
-
-		$o = $this->Order_model->get_by_id($id);
-		if($o && $o['no']==$no)
+		if ($this->input->is_post())
 		{
-			$oSysPaystatus = $this->config->item('get_paystatus');
-			$this->Order_model->update_by_where(array('id'=>$id), array('paystatus'=>$oSysPaystatus[3]));
+			$id = _get_key_val( $this->input->post('orderid'),true);
+			$no = $this->input->post('orderno');
 
-			echo '成功';exit;
-		}
-		else
-		{
+			$o = $this->Order_model->get_by_id($id);
+			if($o && $o['no']==$no)
+			{
+				$oSysPaystatus = $this->config->item('get_paystatus');
+				$this->Order_model->update_by_where(array('id'=>$id), array('paystatus'=>$oSysPaystatus[3]));
 
+				redirect(base_url('/m/order'));
+			}
 		}
 	}
 

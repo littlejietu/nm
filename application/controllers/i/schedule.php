@@ -66,14 +66,18 @@ class Schedule extends CI_Controller {
 	public function book()
 	{
 		$res = array('code'=>0, 'data'=>array());
-		if(!$this->loginID)
+
+		if ($this->input->is_post())
 		{
-			$res['code'] = 201;
-			$res['data']['error_messages'] = array('请先登录');
-		}
-		else{
-			$this->load->service('Order_service');
-			$res = $this->order_service->book();
+			if(!$this->loginID)
+			{
+				$res['code'] = 201;
+				$res['data']['error_messages'] = array('请先登录');
+			}
+			else{
+				$this->load->service('Order_service');
+				$res = $this->order_service->book();
+			}
 		}
 
 		$this->view->json($res);

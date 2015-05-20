@@ -40,24 +40,27 @@
                               <th width="90">预约时间</th>
                               <th width="90">下单时间</th>
                               <th width="80">订单状态</th>
-                              <th width="120">操作</th>
+                              <th width="150">操作</th>
                             </tr>
                             <?php foreach ($list['rows'] as $key => $a): ?>
                             <tr>
-                              <td><a href="orderdeta.php"><?php echo $a['no'];?></a></td>
-                              <td><div class="t_cont"><?php echo $a['title'];?></div></td>
+                              <td><a href="/m/order/detail?id=<?=_get_key_val($a['id'])?>"><?php echo $a['no'];?></a></td>
+                              <td><div class="t_cont"><a href="/m/order/detail?id=<?=_get_key_val($a['id'])?>"><?php echo $a['title'];?></a></div></td>
                               <td><?php echo $a['totalprice'];?></td>
                               <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'-'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
                               <td><?php echo date('m-d H:i:s',$a['addtime']);?></td>
-                              <td><?php if($a['paystatus']=='waitpay' ):?>
-                                <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
+                              <td><?php if($a['paystatus']=='waitpay'):?>
+                                    <?php if( $a['reject']==1 ):?>
+                                      <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
+                                    <?php else:?>
+                                      等待同意
+                                    <?php endif?>
                                 <?php else:?>
-                                <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>
                                 <?php endif?>
                               </td>
                               <td><?php if($a['sellerid']==$this->loginID):?>
-                                  <?php if($a['reject']==-1):?>已拒绝<?php else:?><a class="t_delete" href="/m/order/reject?id=<?=_get_key_val($a['id'])?>">拒绝</a><?php endif?>
+                                  <?php if($a['reject']==-1):?>已拒绝<?php elseif($a['reject']==1):?>已同意<?php else:?><a class="t_delete" href="/m/order/reject?id=<?=_get_key_val($a['id'])?>">拒绝</a><a class="t_delete" href="/m/order/agree?id=<?=_get_key_val($a['id'])?>">同意</a><?php endif?>
                                   <a class="t_delete" href="javascript:;">编辑</a><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
                                 <?php endif?>
                               </td>
