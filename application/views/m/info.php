@@ -101,7 +101,7 @@
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="tactivity" cols="" rows=""><?=$o['tactivity']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>影视广告1</font></p></td>
+                                <td width="86" valign="top"><font>影视广告</font></p></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="telead" cols="" rows=""><?=$o['telead']?></textarea></td>
                               </tr>
                               <tr>

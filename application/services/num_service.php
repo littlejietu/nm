@@ -108,7 +108,7 @@ class Num_service
 		if(in_array($field, $aField))
 		{
 			$this->ci->Usernum_model->insert(array('userid'=>$userid, $field=>0));
-			if($this->ci->loginUserNum && $this->ci->loginUserNum[$field]) $this->ci->loginUserNum[$field]=0;
+			//if($this->ci->loginUserNum && $this->ci->loginUserNum[$field]) $this->ci->loginUserNum[$field]=0;
 		}
 	}
 

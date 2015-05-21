@@ -140,13 +140,13 @@ class Order_service
 			$oBook['begtime'] = strtotime($begtime);
 			if($oBook['time']==1)	//时间:天
 			{
-				$oBook['begtime'] = $oBook['begtime'] + 24*60*60*$num;
+				$oBook['endtime'] = $oBook['begtime'] + 24*60*60*($num-1);
 			}
 			else if($oBook['time']==2)	//时
 			{
 				if(date('H',$oBook['begtime'])=='00')
 					$oBook['begtime'] = strtotime($begtime)+8*60*60;
-				$oBook['begtime'] = $oBook['begtime'] + 60*60*$num;
+				$oBook['endtime'] = $oBook['begtime'] + 60*60*$num;
 			}
 			$o['totalprice'] = $oBook['price'] * $oBook['num'];
 
