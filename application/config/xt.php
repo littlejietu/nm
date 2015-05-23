@@ -69,3 +69,7 @@ $config['paystatus'] = array(
 	'finish'=>'成功',
 );
 
+$config['visittype'] = array(
+	'home'=>1,
+);
+

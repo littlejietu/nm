@@ -257,6 +257,7 @@
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/i/schedule.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>main.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>Quantity.js"></script>
 

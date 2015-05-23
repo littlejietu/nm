@@ -52,15 +52,25 @@
                               <td><?php if($a['paystatus']=='waitpay'):?>
                                     <?php if( $a['reject']==1 ):?>
                                       <a href="/m/pay?id=<?=_get_key_val($a['id'])?>"><?php echo $oSysPaystatus[$a['paystatus']];?></a>
+                                    <?php elseif( $a['reject']==-1 ):?>
+                                      已过期
                                     <?php else:?>
-                                      等待同意
+                                      等待确认
                                     <?php endif?>
+                                <?php elseif( $a['paystatus']=='payed' ):?>
+                                  <?php if( $a['commentstatus']==1 ):?>
+                                    <a href="/m/comment/add?orderid=<?=_get_key_val($a['id'])?>">已评价</a>
+                                  <?php elseif( $a['commentstatus']==2 ):?>
+                                    已互评
+                                  <?php else:?>
+                                    <a href="/m/comment/add?orderid=<?=_get_key_val($a['id'])?>">待评价</a>
+                                  <?php endif?>
                                 <?php else:?>
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>
                                 <?php endif?>
                               </td>
                               <td><?php if($a['sellerid']==$this->loginID):?>
-                                  <?php if($a['reject']==-1):?>已拒绝<?php elseif($a['reject']==1):?>已同意<?php else:?><a class="t_delete" href="/m/order/reject?id=<?=_get_key_val($a['id'])?>">拒绝</a><a class="t_delete" href="/m/order/agree?id=<?=_get_key_val($a['id'])?>">同意</a><?php endif?>
+                                  <?php if($a['reject']==-1):?>已过期<?php elseif($a['reject']==1):?>已确认<?php else:?><a class="t_delete" href="/m/order/agree?id=<?=_get_key_val($a['id'])?>">确认</a><?php endif?>
                                   <a class="t_delete" href="javascript:;">编辑</a><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
                                 <?php endif?>
                               </td>

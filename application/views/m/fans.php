@@ -24,27 +24,30 @@
                     <div class="transa">
                         <div class="aut_bti">互动总览</div>
                         <div class="brotop inter_top">
-                          <div class="fl broad"><span class="b_num"><em>0</em> <a href="##">关注</a></span></div>
-                            <div class="fl broad"><span class="b_num"><em>0</em> <a href="##">粉丝</a></span></div>
-                            <div class="fl broad b_gain"><span class="b_num"><em>0</em> <a href="##">拍片次数</a></span></div>
+                          <div class="fl broad"><span class="b_num"><em><?=$oUsernum['concernnum']?></em> <a href="/m/fans">关注</a></span></div>
+                            <div class="fl broad"><span class="b_num"><em><?=$oUsernum['fansnum']?></em> <a href="/m/fans?havefans=1">粉丝</a></span></div>
+                            <div class="fl broad b_gain"><span class="b_num"><em><?=$oUsernum['photonum']?></em> <a href="/m/works">拍片次数</a></span></div>
                         </div>
                         <div class="inter_con">
                           <div class="clearfix">
-                              <h3 class="fl ic_bti">我的关注</h3>
+                              <h3 class="fl ic_bti"><?php if(!empty($arrParam['havefans']) && $arrParam['havefans']==1) echo "我的粉丝"; else echo "我的关注";?></h3>
                               <div class="search fr">
-                        <form><input type="text" onblur="if (this.value ==''){this.value='输入关键字'}" onfocus="if (this.value =='输入关键字'){this.value =''}" value="输入关键字" name=""><input class="search1" type="submit" value="" name=""></form>
+                        <form><input type="text" onblur="if (this.value ==''){this.value='输入关键字'}" onfocus="if (this.value =='输入关键字'){this.value =''}" value="<?php if(!empty($arrParam['keyword'])) echo $arrParam['keyword']; else echo "输入关键字";?>" name="keyword">
+                            <input type="hidden" name="havefans" value="<?php if(!empty($arrParam['havefans'])) echo $arrParam['havefans']?>">
+                            <input class="search1" type="submit" value="" name=""></form>
                                 </div>
                             </div>
                             <div class="inter_li">
                               <ul class="clearfix">
                                 <?php foreach ($list['rows'] as $key => $a): ?>
+                                  
                                   <li>
                                       
-                                      <div class="intimg fl"><img src="<?=_get_cfg_path('images')?>intimg.jpg"></div>
+                                      <div class="intimg fl"><img src="<?=_get_userlogo_url($a['userlogo']);?>"></div>
                                         <div class="imtcon fr">
                                           <h3><span><?=$a['nickname'];?></span><em>√已关注</em></h3>
                                            
-                                            <!--<p>通过 <a href="##">平台找人</a> 关注</p>-->
+                                            <p>通过 <a href="/">平台找人</a> 关注</p>
                                         </div>
                                   </li>
                                 <?php endforeach;?>                                  

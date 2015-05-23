@@ -46,9 +46,10 @@ $(document).ready(function(){
 });
 
 
-$('.atte_cur').bind('click',function(){
+$('.XT-fans').bind('click',function(){
+	var it = $(this);
 	$.ajax( {
-	    url:'/i/index/fans',
+	    url:'/public/fans/concern',
 	    data:{
 	    		mid : $('#mid').val()
 	    },
@@ -57,10 +58,10 @@ $('.atte_cur').bind('click',function(){
 	    dataType:'json',
 	    success:function(res) {
 	        if(res.code ==200 ){
-	            alert('关注成功');
+	            it.html('<i class="qq atte"></i>已关注');
 	        }
 	        else{
-	        	alert('已关注');
+	        	alert(res.data.msg);
 	        }
 	     }
 	});

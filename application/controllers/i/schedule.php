@@ -17,15 +17,19 @@ class Schedule extends CI_Controller {
 	{
 		$dbprefix = $this->User_model->db->dbprefix;
 
+		//浏览
+		$sysVisittype = _get_config('visittype');
+		$this->load->service('User_service');
+		$this->user_service->visit($userid, $this->loginID, $sysVisittype['home']);
+		//-浏览
+
 		$y = $this->input->post('y');
 		$m = $this->input->post('m');
 		if(empty($y)) $y = date('Y');
 		if(empty($m)) $m = date('m');
 
-		$oUser = $this->User_model->get_info_by_id($userid);
-		$oUsernum = $this->Usernum_model->get_by_id($userid);
-		if($oUsernum)
-			$oUser = array_merge($oUsernum, $oUser);
+		$this->load->service('User_service');
+		$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
 
 		$oProduList = $this->Product_model->get_product_by_uid($userid);
 		$oProductList = array();

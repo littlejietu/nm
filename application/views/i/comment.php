@@ -21,9 +21,11 @@
     <?php include_once(VIEWPATH."i/public/top.php");?>
         <div class="appraisal mrgB30">
             <ul>
-                <?php foreach ($list['rows'] as $key => $a): ?>
+                <?php $i=0;
+                 foreach ($list['rows'] as $key => $a): 
+                  $i++;?>
                 <li class="clearfix estim">
-                   <div class="fl em_lef"><h3>5</h3><h4><?=$a['nickname'];?></h4><span><?php echo date('Y-m-d H:i:s',$a['addtime']);?></span></div>
+                   <div class="fl em_lef"><h3><?=$i + ($list['page']-1)*$list['pagesize']?></h3><h4><?=$a['nickname'];?></h4><span><?php echo date('Y-m-d H:i:s',$a['addtime']);?></span></div>
                    <div class="fr em_rit">
                        <div class="apprtop">
                            <div class="fl a_rev"><span>身材样貌：</span><p class="star_on"><i class="star_<?=$a['figure'];?>">5</i></p></div>
@@ -37,6 +39,9 @@
                 <?php endforeach;?>
             </ul>
             <br>
+            <div class="page">
+              <?=$list['pages']?>
+            </div>
             <div class="fabiao" style="display:none">
                 <input type="hidden" name="act" value="online">
                 <div class="xzw_starSys clearfix">
