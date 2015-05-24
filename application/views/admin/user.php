@@ -47,7 +47,7 @@
 				<td><?php echo $a['waist'];?></td>
 				<td><?php echo $a['hips'];?></td>								
 				<td class="con_title"> 
-					<a href="/admin/message/add?touserid=<?php echo _get_key_val($a['id']);?>">发站内信</a>
+					<a href="/admin/message/add?touserid=<?php echo _get_key_val($a['id']);?>">发消息</a>
 					<a href="/admin/user/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/user/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
 				</td>

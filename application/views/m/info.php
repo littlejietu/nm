@@ -49,7 +49,7 @@
                                    	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.$o['userlogo'] : _get_cfg_path('images').'imghead.jpg';?>'>
                                     </div>
                                     <div class="f_note">
-                                        <p>尺寸：90×90像数</p>
+                                        <p>尺寸：180×180像数</p>
                                         <input type="hidden"  name="userlogo" id="userlogo" value="<?=$o['userlogo']?>">
                                         <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
                                         <div class="file_but">
@@ -59,6 +59,67 @@
                                 </td>
                               </tr>
                               <tr>
+                                <tr>
+                                <td width="86">形象照片</td>
+                                <td colspan="3">
+                                    <div class="fl">
+                                        <img id="show_showimg" border=0 src='<?php echo $o['showimg']? '/'.$o['showimg'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                    </div>
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="showimg" id="showimg" value="<?=$o['showimg']?>">
+                                        <em><i class="icoPro16"></i>可上传黑白与彩色照片, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="showimg_upload" name="showimg_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
+                               <tr>
+                                <td width="86">模特卡</td>
+                                <td colspan="3">
+                                    <div class="fl">
+                                        <img id="show_card" border=0 src='<?php echo $o['card']? '/'.$o['card'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                    </div>
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="card" id="card" value="<?=$o['card']?>">
+                                        <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="card_upload" name="card_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="86">主页背景图</td>
+                                <td colspan="3">
+                                    <div class="fl">
+                                        <img id="show_bgimg" border=0 src='<?php echo $o['bgimg']? '/'.$o['bgimg'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                    </div>
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
+                                        <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="bgimg_upload" name="bgimg_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="86">视频</td>
+                                <td colspan="3">
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="video" id="video" value="<?=$o['video']?>">
+                                        <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="video_upload" name="video_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div>
+                                </td>
+                              </tr>
                                 <td width="86">真实姓名</td>
                                 <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
                                 <td><span class="tips">*</span>身高</td>
@@ -86,10 +147,15 @@
                                 <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/>码</td>
                               </tr>
                                <tr>
+                                <td>QQ</td>
+                                <td><input name="qq" type="text" class="txt" value="<?=$o['qq']?>" placeholder="请输入你的QQ"/></td>
+                                
+                              </tr>
+                               <tr>
                                	  <td colspan="4">个人经历</td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>平面拍摄</font></p></td>
+                                <td width="86" valign="top"><font>平面拍摄</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="planeshot" cols="" rows=""><?=$o['planeshot']?></textarea></td>
                               </tr>
                               <tr>
@@ -101,17 +167,14 @@
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="tactivity" cols="" rows=""><?=$o['tactivity']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>影视广告1</font></p></td>
+                                <td width="86" valign="top"><font>影视广告</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="telead" cols="" rows=""><?=$o['telead']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>杂志拍摄</font></p></td>
+                                <td width="86" valign="top"><font>杂志拍摄</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="magazine" cols="" rows=""><?=$o['magazine']?></textarea></td>
                               </tr>
-                              <tr>
-                                 <td>视频地址</td>
-                                <td><input name="video" type="text" class="txt" value="<?=$o['video']?>" placeholder="请输入你拍摄过的品牌"/></td>
-                              </tr>
+                              
                                <!-- <tr>
                                 <td width="86" valign="top"><font>拍摄品牌1</font></p></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
@@ -212,6 +275,134 @@ $(function() {
           $('#userlogo').val(imgpath);
           $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
           $('#show_userlogo').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+    $('#showimg_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'showimg',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择照片',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#showimg').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#showimg').val(imgpath);
+          $('#showimg').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_showimg').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+    $('#card_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'card',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择照片',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#card').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#card').val(imgpath);
+          $('#card').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_card').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+    $('#bgimg_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'bgimg',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择照片',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#bgimg').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#bgimg').val(imgpath);
+          $('#bgimg').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_bgimg').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+   $('#video_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'video',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择视频',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#video').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#video').val(imgpath);
+          $('#video').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_video').attr('src','/'+imgpath);
         }
       }
 

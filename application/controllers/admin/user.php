@@ -120,7 +120,9 @@ class User extends MY_Admin_Controller {
 					'realname'=>$this->input->post('realname'),					
 					//'mobile'=>$this->input->post('mobile'),					
 					'sex'=>$this->input->post('sex'),
-					'city'=>$this->input->post('city'),					
+					'city'=>$this->input->post('city'),	
+					'showimg'=>$this->input->post('showimg'),
+					'qq'=>$this->input->post('qq'),				
 				);
 
 				$data_detail = array(
@@ -143,6 +145,8 @@ class User extends MY_Admin_Controller {
 					'tactivity'=>$this->input->post('tactivity'),
 					'telead'=>$this->input->post('telead'),
 					'magazine'=>$this->input->post('magazine'),
+					'card'=>$this->input->post('card'),
+					'bgimg'=>$this->input->post('bgimg'),
 					'video'=>$this->input->post('video'),					
 					);
 

@@ -15,10 +15,9 @@
 	<table cellpadding="0" cellspacing="0" align="center" bordercolor="#eee" border="1" width="100%" class="listTab">
 		<tbody>
 			<tr height="39" style="font-size:13px;">
-	            <td width="250" height="25" align="center">用户</td>
+	            <td width="250" height="25" align="center">id</td>
 	            <td>昵称</td>
-	            <td>公司</td>
-	            <td>公司名称</td>
+	            
 	            <td>联系人</td>
 	            <td>联系方式</td>
 	            <td>备注</td>	           
@@ -27,10 +26,9 @@
 	        </tr>
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
-				<td height="30"><?php echo $a['userid'];?></td>
+				<td height="30"><?php echo $a['id'];?></td>
 				<td><?php echo $a['nickname'];?></td>
-				<td><?php echo $a['corpid'];?></td>
-				<td><?php echo $a['corp'];?></td>
+				
 				<td><?php echo $a['linkman'];?></td>
 				<td><?php echo $a['contact'];?></td>
 				<td><?php echo $a['memo'];?></td>				

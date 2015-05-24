@@ -14,7 +14,7 @@ class Client extends CI_Controller {
 	{
 		$userid = $this->loginID;
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array('userid'=>$userid,'status'=>1);		//条件
 

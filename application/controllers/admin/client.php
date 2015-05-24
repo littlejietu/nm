@@ -13,7 +13,7 @@ class Client extends MY_Admin_Controller {
 	public function index()
 	{
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array();
 
