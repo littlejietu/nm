@@ -39,14 +39,14 @@
 				<td><?php echo $a['mobile'];?></td>								
 				<td><?php echo $a['company'];?></td>
 				<td><?php echo $a['bail'];?></td>
-				<td><?php echo $a['addtime'];?></td>
-				<td><?php echo $a['certtime'];?></td>
-				<td><?php if($a['status']==1) echo '成功'; else if($a['status']==-1) echo '失败';  else echo '';?></td>
+				<td><?php if($a['addtime']>0) echo date('Y-m-d H:i:s',$a['addtime']);?></td>
+				<td><?php if($a['certtime']>0) echo date('Y-m-d H:i:s',$a['certtime']);?></td>
+				<td><?php if($a['status']==1) echo '成功'; else if($a['status']==-1) echo '失败'; else if($a['status']==2) echo '已支付';  else echo '';?></td>
 				<td><?php echo $a['op_username'];?></td>
-				<td><?php echo $a['op_time'];?></td>
+				<td><?php echo date('Y-m-d H:i:s',$a['op_time']);?></td>
 				<td class="con_title">
-					<a href="/admin/cert/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
-					<a href="/admin/cert/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
+					<a href="/admin/cert/add?userid=<?php echo _get_key_val($a['userid']);?>">修改</a>
+					<a href="/admin/cert/del?userid=<?php echo _get_key_val($a['userid']);?>">删除</a>
 				</td>
 			</tr>
 			<?php endforeach;?>

@@ -17,7 +17,7 @@ class Cert extends MY_Admin_Controller {
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Cert_model->fetch_page($page, $pagesize, $arrWhere);
+		$list = $this->Cert_model->fetch_page($page, $pagesize, $arrWhere,'*','status desc,addtime desc');
 		//echo $this->db->last_query();die;
 		
 
@@ -42,12 +42,12 @@ class Cert extends MY_Admin_Controller {
 	public function add()
 	{
 		//需要修改
-		$id	= _get_key_val($this->input->get('id'), TRUE);
+		$userid	= _get_key_val($this->input->get('userid'), TRUE);
 		$result = array();
 
-		if(!empty($id))
+		if(!empty($userid))
 		{
-			$info = $this->Cert_model->get_info_by_id($id);
+			$info = $this->Cert_model->get_info_by_id($userid);
 			$result = array(
 				'info'=>$info,
 				);
@@ -109,11 +109,9 @@ class Cert extends MY_Admin_Controller {
 					'op_time'=>time(),
 				);
 
-  				$id	= _get_key_val($this->input->get('id'), TRUE);
-  				if($id)
-  					$data['id'] = $id;
+  				$userid	= _get_key_val($this->input->get('userid'), TRUE);
   				//保存至数据库
-  				$this->Cert_model->insert($data);
+  				$this->Cert_model->update_by_id($userid,$data);
 
 				//echo '成功,<a href="/admin/aa">返回列表页</a>';
 				redirect(base_url('/admin/Cert'));
@@ -121,12 +119,12 @@ class Cert extends MY_Admin_Controller {
   			}
   			else
   			{
-  				$id	= _get_key_val($this->input->get('id'), TRUE);
+  				$userid	= _get_key_val($this->input->get('userid'), TRUE);
 				$result = array();
 
-				if(!empty($id))
+				if(!empty($userid))
 				{
-					$info = $this->Cert_model->get_info_by_id($id);
+					$info = $this->Cert_model->get_info_by_id($userid);
 					$result = array(
 						'info'=>$info,
 						);
@@ -142,10 +140,10 @@ class Cert extends MY_Admin_Controller {
 	}
 
 	function del(){
-		$id	= _get_key_val($this->input->get('id'), TRUE);
+		$userid	= _get_key_val($this->input->get('userid'), TRUE);
 		$page = _get_page();
 
-		$this->Cert_model->delete_by_id($id);
+		$this->Cert_model->delete_by_id($userid);
 		redirect( base_url('/admin/Cert?page='.$page) );
 
 	}

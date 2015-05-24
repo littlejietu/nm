@@ -18,7 +18,7 @@
             <li<?php if( strtolower(uri_string())=='m/account' ) echo ' class="current"';?>><a href="/m/fund">资金账户<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/comment' ) echo ' class="current"';?>><a href="/m/comment">评论管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/client' ) echo ' class="current"';?>><a href="/m/client">客户管理<i></i></a></li>
-            <li<?php if( strtolower(uri_string())=='m/message' ) echo ' class="current"';?>><a href="/m/message">站内信<i></i></a></li>
+            <li<?php if( strtolower(uri_string())=='m/message' ) echo ' class="current"';?>><a href="/m/message">系统消息<i></i></a></li>
         </ul>
     </div>
     <div class="m_level">

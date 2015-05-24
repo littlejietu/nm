@@ -22,7 +22,7 @@
             	<?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
                     <div class="transa">
-                        <div class="aut_bti"><h3>站内信</h3></div>
+                        <div class="aut_bti"><h3>系统消息</h3></div>
                         <div class="letter">
                           <div class="letdeta_ti">
                                 <h2><?=$o['title']?></h2>
@@ -46,42 +46,5 @@
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
-<script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-<?php $timestamp = $this->timestamp;?>
-$(function() {
-    $('#userlogo_upload').uploadify({
-      'formData'     : {
-        'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
-        'type' : 'userlogo',
-        'uid' : <?php echo $this->loginID;?>
-      },
-      'auto':true,
-      //'buttonClass':'inp_btn',
-      'fileSizeLimit' : '1024KB',
-      'buttonText':'选择照片',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
-      //'buttonImage' : '{$js_url}uploadify/button.png',
-      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
-      'onUploadSuccess' : function(file, data, response) {
-        if (!data){
-         alert('上传失败');
-         return;
-        }
-        data = data.split('|');
-        if (data[0] == 100){
-          $('#userlogo').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
-        }else if(data[0] == 200 && data[1]!=''){
-          var imgpath=data[1];
-          $('#userlogo').val(imgpath);
-          $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_userlogo').attr('src','/'+imgpath);
-        }
-      }
 
-    });
-});
-</script>
 </html>

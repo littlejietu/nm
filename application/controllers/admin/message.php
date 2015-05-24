@@ -41,13 +41,23 @@ class Message extends MY_Admin_Controller {
 
 	public function add()
 	{
-		//需要修改
-		$touserid	= _get_key_val($this->input->get('touserid'), TRUE);
+		$touserid = 0;
 		$result = array();
+		//需要修改
+		if($this->input->get('touserid'))
+		{
+			$touserid = _get_key_val($this->input->get('touserid'), TRUE);
+				
+			$this->load->model('User_model');
+			$userinfo = $this->User_model->get_by_id($touserid);
+		}
+		else
+		{
+			$userinfo['id'] = 0;
+			$userinfo['nickname'] = '所有用户';
+		}
 
-		
-		$this->load->model('User_model');
-		$userinfo = $this->User_model->get_by_id($touserid);
+
 		$result = array(
 			'userinfo'=>$userinfo,
 			);

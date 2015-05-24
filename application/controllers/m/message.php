@@ -13,10 +13,13 @@ class Message extends CI_Controller {
 	public function index()
 	{
 		$userid = $this->loginID;
+		//所有人的消息
+		$toall_list = $this->Message_model->get_list(array('touserid'=>0,'status'=>1));
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
-		$arrWhere = array('touserid'=>$userid);		//条件
+		$arrWhere = array('touserid'=>$userid,'status'=>1);		//条件
 
 		$list = $this->Message_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -34,6 +37,7 @@ class Message extends CI_Controller {
 
 		$result = array(
 			'list' => $list,
+			'toall_list' =>$toall_list,
 			);
 
 		//print_r($list);
@@ -41,6 +45,8 @@ class Message extends CI_Controller {
 	}
 
 	public function detail($id){
+		//修改为已读
+		$this->Message_model->update_by_where(array('id'=>$id),array('readed'=>1));
 
 		$o = $this->Message_model->get_info_by_id($id);
 		$result = array(

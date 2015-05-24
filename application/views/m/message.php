@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>客户管理-个人中心-牛模网</title>
+<title>系统消息-个人中心-牛模网</title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -22,7 +22,13 @@
             	<?php include_once(VIEWPATH."m/public/notice.php");?>
                 <div class="clearfix uitopg">
                     <div class="transa">
-                        <div class="aut_bti"><h3>站内信</h3></div>
+                        <div class="aut_bti"><h3>系统消息</h3></div>
+                        <ul class="letter">
+                          <?php foreach ($toall_list as $key => $a): ?>
+                          <li <?php if($a['readed']==0):?> class="intro"<?php endif?>><a href="/m/message/detail/<?=$a['id']?>"><i></i><?php echo $a['title'];?></a></li>
+                          
+                          <?php endforeach;?>
+                        </ul>
                         <ul class="letter">
                           <?php foreach ($list['rows'] as $key => $a): ?>
                           <li <?php if($a['readed']==0):?> class="intro"<?php endif?>><a href="/m/message/detail/<?=$a['id']?>"><i></i><?php echo $a['title'];?></a></li>
