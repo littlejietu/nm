@@ -110,10 +110,16 @@
                   $tmp_title='';
                   //已有预约
                   foreach ($list as $key => $a) {
-                      if($the_date == substr($a['datetime'],0,10))
+                      if(strtotime($the_date) == strtotime(date('Y-m-d',$a['datetime'])))
                       {
-                        $HI =date('H:i',strtotime($a['datetime']));
-                        $title = strlen($a['title'])<=10 ? $a['title'] : substr($a['title'],0,10).'..';
+
+                        $HI = '';
+                        if( $a['endtime']>$a['datetime'] &&   $a['endtime']-$a['datetime'] <24*60*60 )
+                        {
+                          $HI =date('H:i',$a['datetime']);
+                          $HI .='-'.date('H:i',$a['endtime']);
+                        }
+                        $title = $a['title'];//strlen($a['title'])<=30 ? $a['title'] : substr($a['title'],0,30).'..';
                         $tmp_title.='<p class="arr_con">'.$title.'<i>'.$HI.'</i></p>';
                       }
                   }
@@ -251,6 +257,7 @@
 
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/i/schedule.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>main.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.form.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>Quantity.js"></script>
 

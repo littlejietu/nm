@@ -8,7 +8,7 @@
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('lib')?>uploadify/uploadify.css" type="text/css" rel="stylesheet" />
 <!--[if IE 6]>
-<script src="js/DD_belatedPNG.js" type="text/javascript" ></script>
+<script src="<?php echo _get_cfg_path('js')?>DD_belatedPNG.js" type="text/javascript" ></script>
 <script>DD_belatedPNG.fix('a,img');</script>
 <![endif]-->
 </head>
@@ -46,7 +46,7 @@
                                         <span class="fl"><?=$a['nickname'];?></span><em class="fr"><?=date('Y-m-d H:i:s',$a['addtime']);?></em>       
                                    </div>
                                 </div>
-                                <div class="fl operat"><a class="t_delete" href="javascript:;"><i></i>回复</a></div>
+                                <div class="fl operat"><a class="t_delete" href="/m/comment/add?commentid=<?=_get_key_val($a['id'])?>&orderid=<?=_get_key_val($a['orderid'])?>"><i></i>回复</a></div>
                                 <a class="t_editor fr" href="javascript:;" onclick="alertWin(this)"><i></i>投诉</a>
                                 <div style="clear:both"></div>
                                 <div class="fabiao reply">
@@ -57,6 +57,9 @@
                             </li>
                         <?php endforeach;?>
                         </ul>
+                        <div class="page">
+                          <?=$list['pages']?>
+                        </div>
                     </div>
                 </div>
 
@@ -69,47 +72,6 @@
 <?php include_once(VIEWPATH."public/footer.php");?>
 </body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
-<script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-<?php $timestamp = $this->timestamp;?>
-$(function() {
-    $('#userlogo_upload').uploadify({
-      'formData'     : {
-        'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
-        'type' : 'userlogo',
-        'uid' : <?php echo $this->loginID;?>
-      },
-      'auto':true,
-      //'buttonClass':'inp_btn',
-      'fileSizeLimit' : '1024KB',
-      'buttonText':'选择照片',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
-      //'buttonImage' : '{$js_url}uploadify/button.png',
-      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
-      'onUploadSuccess' : function(file, data, response) {
-        if (!data){
-         alert('上传失败');
-         return;
-        }
-        data = data.split('|');
-        if (data[0] == 100){
-          $('#userlogo').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
-        }else if(data[0] == 200 && data[1]!=''){
-          var imgpath=data[1];
-          $('#userlogo').val(imgpath);
-          $('#userlogo').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_userlogo').attr('src','/'+imgpath);
-        }
-      }
-
-    });
-});
-</script>
 </html>

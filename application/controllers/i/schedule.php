@@ -15,16 +15,21 @@ class Schedule extends CI_Controller {
 
 	public function index($userid)
 	{
+		$dbprefix = $this->User_model->db->dbprefix;
+
+		//浏览
+		$sysVisittype = _get_config('visittype');
+		$this->load->service('User_service');
+		$this->user_service->visit($userid, $this->loginID, $sysVisittype['home']);
+		//-浏览
 
 		$y = $this->input->post('y');
 		$m = $this->input->post('m');
 		if(empty($y)) $y = date('Y');
 		if(empty($m)) $m = date('m');
 
-		$oUser = $this->User_model->get_info_by_id($userid);
-		$oUsernum = $this->Usernum_model->get_by_id($userid);
-		if($oUsernum)
-			$oUser = array_merge($oUsernum, $oUser);
+		$this->load->service('User_service');
+		$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
 
 		$oProduList = $this->Product_model->get_product_by_uid($userid);
 		$oProductList = array();
@@ -38,7 +43,10 @@ class Schedule extends CI_Controller {
 		$oProductList = array_merge($oDefaultPrice, $oProductList);
 
 		$oSysPaystatus = $this->config->item('get_paystatus');
-		$list = $this->Order_model->get_list(array('sellerid'=>$userid,'status'=>1,'paystatus'=>$oSysPaystatus[3]),'id,addtime as datetime,title');
+		$arrWhere = array('a.sellerid'=>$userid,
+				'a.status'=>1,'paystatus'=>"'".$oSysPaystatus[3]."'");
+		$tb = $dbprefix.'order a left join '.$dbprefix.'order_book b on(a.id=b.orderid)';
+		$list_result = $this->Order_model->fetch_page(1, 100, $arrWhere,'a.id,a.title,b.begtime,b.endtime','a.addtime desc',$tb);
 
 		// $list = array(
 		// 	array('id'=>1,'datetime'=>'2015-05-01 8:30:00','title'=>'周末特色文化广场活动吧','yinyueji'=>1,'classid'=>1),
@@ -47,6 +55,20 @@ class Schedule extends CI_Controller {
 		// 	array('id'=>3,'datetime'=>'2015-05-1 18:00:00','title'=>'kk','yinyueji'=>1,'classid'=>12),
 		// 	array('id'=>5,'datetime'=>'2015-05-15 9:20:20','title'=>'测试','yinyueji'=>1,'classid'=>1),
 		// 	);
+		$list = array();
+		foreach ($list_result['rows'] as $key => $a) {
+			$list[] = array('id'=>$a['id'],'datetime'=>$a['begtime'],'endtime'=>$a['endtime'],'title'=>$a['title']);
+			if( $a['endtime'] > $a['begtime'] && ($a['endtime']-$a['begtime'])>= 24*60*60 )
+			{
+				$date_i = ($a['endtime']-$a['begtime'])/(24*60*60);
+				for($i=0; $i<$date_i; $i++)
+				{
+					$list[] = array('id'=>$a['id'],'datetime'=>$a['endtime'] - 24*60*60*$i,'endtime'=>$a['endtime'],'title'=>$a['title']);
+				}
+
+			}
+
+		}
 
 		
 		$result = array(

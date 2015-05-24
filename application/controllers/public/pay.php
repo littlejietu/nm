@@ -20,8 +20,8 @@ class Pay extends CI_Controller {
 			$o = $this->Order_model->get_by_id($id);
 			if($o && $o['no']==$no)
 			{
-				$oSysPaystatus = $this->config->item('get_paystatus');
-				$this->Order_model->update_by_where(array('id'=>$id), array('paystatus'=>$oSysPaystatus[3]));
+				$oSysPaystatus = _get_config('get_paystatus');
+				$this->Order_model->update_by_where(array('id'=>$id), array('paystatus'=>$oSysPaystatus[2]));
 
 				redirect(base_url('/m/order'));
 			}

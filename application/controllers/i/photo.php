@@ -13,16 +13,21 @@ class Photo extends CI_Controller {
 
 	public function index($albumid)
 	{
+
 		$this->load->model('Album_model');
 		$o = $this->Album_model->get_info_by_id($albumid);
 		if($o)
 		{
 			$userid = $o['userid'];
 
-			$oUser = $this->User_model->get_info_by_id($userid);
-			$oUsernum = $this->Usernum_model->get_by_id($userid);
-			if($oUsernum)
-				$oUser = array_merge($oUsernum, $oUser);
+			//浏览
+			$sysVisittype = _get_config('visittype');
+			$this->load->service('User_service');
+			$this->user_service->visit($userid, $this->loginID, $sysVisittype['home']);
+			//-浏览
+
+			$this->load->service('User_service');
+			$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
 			
 
 			$arrWhere = array('albumid'=>$albumid,'status'=>1);

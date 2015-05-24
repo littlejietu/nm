@@ -74,6 +74,12 @@ function _get_key_val($val, $flag=FALSE)
 	}
 }
 
+function _get_config($key)
+{
+	$CI     =& get_instance();
+	return $CI->config->item($key);
+}
+
 function _get_cfg_path($key)
 {
 	$CI     =& get_instance();

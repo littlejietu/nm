@@ -24,7 +24,7 @@
                         <div class="aut_bti clearfix">
                             <h3 class="fl">资金账户</h3>
                             <div class="fr t_sosu">
-                              <form action="/m/order" method="post">
+                              <form action="/m/fund" method="post">
                                 <p class="fl sele sele_ta"><a href="/m/order?paystatus=1">待付款</a><a href="/m/order?paystatus=3">已完成</a><a href="/m/order?paystatus=2">待完成</a></p>
                                 <input name="keyword" type="text" class="txt fl" value="<?php echo $keyword;?>" placeholder="请输入关键词">
                                 <input name="" class="but fr" type="submit" value="搜 索">
@@ -38,7 +38,7 @@
                         <div class="fund_list">
                             <div class="dl_title">正在交易中 （<?=count($list)?>）</div>
                             <ul class="fund_uli">
-                                <?php foreach ($list as $key => $a): ?>
+                                <?php foreach ($list['rows'] as $key => $a): ?>
                                 <li>
                                     <div class="fl">
                                         <p><i><?=$a['no'];?></i>   <em><?=$a['title'];?></em></p>
@@ -48,6 +48,9 @@
                                 </li>
                                 <?php endforeach;?>
                             </ul>
+                            <div class="page">
+                              <?=$list['pages']?>
+                            </div>
                         </div>
 
                     </div>

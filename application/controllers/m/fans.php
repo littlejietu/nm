@@ -13,12 +13,39 @@ class Fans extends CI_Controller {
 	public function index()
 	{
 		$userid = $this->loginID;
+		$this->load->model('Usernum_model');
+		$oUsernum = $this->Usernum_model->get_by_id($userid, 'fansnum,concernnum,photonum');
+
+		$keyword = $this->input->get('keyword');
+
+		
 		$page     = _get_page();
 		$pagesize = 9;
 		$arrParam = array();
 		$arrWhere = array('fansuserid'=>$userid);		//条件
+		$cField = 'userid,nickname,userlogo,type';
+		if($keyword)
+		{
+			$arrParam['keyword'] = $keyword;
+			$arrWhere['nickname like'] = "'%$keyword%'";
+		}
 
-		$list = $this->Fans_model->fetch_page($page, $pagesize, $arrWhere);
+		if($this->input->get('havefans'))
+		{
+			$arrParam = array('havefans'=>(int)$this->input->get('havefans'));
+			$arrWhere = array('userid'=>$userid);
+			$cField = 'fansuserid as userid,fansnickname as nickname,fanslogo as userlogo,type';
+
+			if($keyword)
+			{
+				$arrParam['keyword'] = $keyword;
+				$arrWhere['fansnickname like'] = "'%$keyword%'";
+			}
+		}
+
+		
+
+		$list = $this->Fans_model->fetch_page($page, $pagesize, $arrWhere, $cField);
 		//echo $this->db->last_query();die;
 		
 
@@ -34,6 +61,8 @@ class Fans extends CI_Controller {
 
 		$result = array(
 			'list' => $list,
+			'oUsernum' => $oUsernum,
+			'arrParam' => $arrParam,
 			);
 		
 		$this->load->view('m/fans',$result);

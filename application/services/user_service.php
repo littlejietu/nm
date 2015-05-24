@@ -264,28 +264,48 @@ class User_service
 		setcookie('PHPSESSID', '', -1, '/', TRJ_DOMAIN);
 	}
 
+	public function get_user_homeinfo($mid, $loginrID){
+		$this->ci->load->model('Usernum_model');
+		$this->ci->load->model('Fans_model');
 
-	function add_user_log($log_action, $log_value='', $log_info='', $user_id=0)
-	{
-		switch($log_action)
+		$oUser = $this->ci->User_model->get_info_by_id($mid);
+		$oUsernum = $this->ci->Usernum_model->get_by_id($mid, 'fansnum,concernnum,photonum,visitnum,be_commentnum');
+		if($oUsernum)
+			$oUser = array_merge($oUsernum, $oUser);
+
+		$o = $this->ci->Fans_model->get_by_where(array('userid'=>$mid,'fansuserid'=>$loginrID,'status<>'=>-1),'status as concernstatus');
+		if(!$o)
 		{
-			case 'login':
-				break;
-			case 'zjxmrefresh':
-				break;
-			case 'zjxmentrust':
-				break;
+			$o['concernstatus'] = 0;
 		}
-		$data = array(
-			'log_action'=>$log_action,
-			'log_time'=>$this->ci->timestamp,
-			'log_value'=>$log_value,
-			'log_info'=>$log_info,
-			'user_id'=>$this->ci->loginUser['id'] ? $this->ci->loginUser['id'] : $user_id,
-			'ip_address'=>$this->ci->input->ip_address(),
-		);
-		$this->ci->load->model('user_log_model');
-		return $this->ci->user_log_model->insert($data);
+			
+		$oUser = array_merge($o, $oUser);
+
+		return $oUser;
+
+	}
+
+	public function visit($mid, $visitid, $type){
+		if($mid==$visitid)
+			return;
+		$this->ci->load->model('Visit_model');
+		$o = $this->ci->Visit_model->get_by_where(array('userid'=>$mid,'type'=>$type,'sessionid'=>"'".session_id()."'"));
+		if(!$o)
+		{
+			$data = array(
+				'userid'=>$mid,
+				'visituserid'=>$visitid,
+				'type'=>$type,
+				'addtime'=>time(),
+				'sessionid'=>session_id(),
+				);
+			$this->ci->Visit_model->insert_string($data);
+
+			$this->ci->load->service('Num_service');
+			$this->ci->num_service->set_user_num($mid,'visitnum');
+			
+		}
+
 	}
 
 }

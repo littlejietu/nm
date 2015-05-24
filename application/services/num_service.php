@@ -14,7 +14,7 @@ class Num_service
 	public function set_user_num($userid, $field, $addnum = 0)
 	{
 		$res_num = 0;
-		$aField = array('be_ordernum','be_ordernum_new','be_commentnum','be_commentnum_new');
+		$aField = array('be_ordernum','be_ordernum_new','be_commentnum','be_commentnum_new','commentnum','commentnum_new','fansnum','concernnum','visitnum');
 		if(in_array($field, $aField))
 		{
 			$this->ci->load->model('Order_model');
@@ -79,17 +79,35 @@ class Num_service
 					$res_num = $num;
 					break;
 				case 'be_fund_m':
-					$dbprefix = $this->Order_model->db->dbprefix;
-					$rs = $this->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where sellerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$dbprefix = $this->ci->Order_model->db->dbprefix;
+					$rs = $this->ci->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where sellerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
 					$total = $rs['s'];
 					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
 					$res_num = $num;
 					break;
 				case 'fund_m':
-					$dbprefix = $this->Order_model->db->dbprefix;
-					$rs = $this->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where buyerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$dbprefix = $this->ci->Order_model->db->dbprefix;
+					$rs = $this->ci->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where buyerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
 					$total = $rs['s'];
 					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
+					$res_num = $num;
+					break;
+				case 'fansnum':
+					$this->ci->load->model('Fans_model');
+					$num = $this->ci->Fans_model->get_count(array('userid'=>$userid,'status>'=>0));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'fansnum'=>$num));
+					$res_num = $num;
+					break;
+				case 'concernnum':
+					$this->ci->load->model('Fans_model');
+					$num = $this->ci->Fans_model->get_count(array('fansuserid'=>$userid,'status>'=>0));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'concernnum'=>$num));
+					$res_num = $num;
+					break;
+				case 'visitnum':
+					$this->ci->load->model('Visit_model');
+					$num = $this->ci->Visit_model->get_count(array('userid'=>$userid));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'visitnum'=>$num));
 					$res_num = $num;
 					break;
 				default:
@@ -108,7 +126,7 @@ class Num_service
 		if(in_array($field, $aField))
 		{
 			$this->ci->Usernum_model->insert(array('userid'=>$userid, $field=>0));
-			if($this->ci->loginUserNum && $this->ci->loginUserNum[$field]) $this->ci->loginUserNum[$field]=0;
+			//if($this->ci->loginUserNum && $this->ci->loginUserNum[$field]) $this->ci->loginUserNum[$field]=0;
 		}
 	}
 

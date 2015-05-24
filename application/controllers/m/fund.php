@@ -15,16 +15,34 @@ class Fund extends CI_Controller {
 	{
 		$get_paystatus = (int)$this->input->get('paystatus');
 		$get_keyword = $this->input->post('keyword')?$this->input->post('keyword'):$this->input->get('keyword');
-		if($get_keyword)
-		{
-			$arrParam['keyword']=$get_keyword;
-		}
+		$dbprefix = $this->User_model->db->dbprefix;
+
 
 		$id = _get_key_val($this->input->get('id'),true);
 		$o = $this->Usernum_model->get_by_id($this->loginID);
 		$oSysPaystatus = $this->config->item('get_paystatus');
-		$arrWhere = array('sellerid'=>$this->loginID,'status'=>1,'paystatus'=>$oSysPaystatus[2]);
-		$list = $this->Order_model->get_list($arrWhere);
+
+		$page     = _get_page();
+		$pagesize = 10;
+		$arrParam = array();
+		$arrWhere = array('a.sellerid'=>$this->loginID,'status'=>1,'paystatus'=>"'".$oSysPaystatus[2]."'");
+		if($get_keyword)
+		{
+			$arrParam['keyword']=$get_keyword;
+			$arrWhere['@like']=array('title'=>$get_keyword);
+		}
+		$tb = $dbprefix.'order a left join '.$dbprefix.'order_book b on(a.id=b.orderid)';
+		$list = $this->Order_model->fetch_page($page, $pagesize, $arrWhere,'a.*,b.begtime,b.endtime','a.addtime desc',$tb);
+		//分页
+		$pagecfg = array();
+		$pagecfg['base_url']     = _create_url('m/order', $arrParam);
+		$pagecfg['total_rows']   = $list['count'];
+		$pagecfg['cur_page'] = $page;
+		$pagecfg['per_page'] = $pagesize;
+		//$this->load->library('pagination');
+		$this->pagination->initialize($pagecfg);
+		$list['pages'] = $this->pagination->create_links();
+
 		$result = array(
 			'o' => $o,
 			'list' => $list,
