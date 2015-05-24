@@ -2,7 +2,9 @@
     <div class="bd">
         <span class="not_ico"></span>
         <ul class="infoList">
-            <li><a href="##">3月5日开始，模特档期管理开放，请大家及时更新自己的档期~么么哒</a></li>
+        	<?php foreach ($this->sysMsgList as $key => $a):?>
+            	<li><a href="/m/message/detail/<?=$a['id']?>"><?=$a['title']?></a></li>
+        	<?php endforeach;?>
         </ul>
     </div>
     <div class="close" onclick="helpClose(this)">关闭</div>

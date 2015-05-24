@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config['md5_prefix']                       = 'myxt';
+$config['bail']	= array(
+	1=>1000,
+	2=>100,
+	3=>300,
+	);
 
 
 $config['cfg_path'] = array(

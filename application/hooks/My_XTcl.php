@@ -47,7 +47,7 @@ class My_XTcl{
 		{
 			$CI->loginUser['auth'] = array();
 			
-			$fields = 'id,usertype,userlevel,username,nickname,mobile,email,userlogo,validemail,validmobile,status,lastlogintime';
+			$fields = 'id,usertype,userlevel,username,nickname,realname,mobile,email,userlogo,validemail,validmobile,status,lastlogintime';
 			$CI->loginUser = XTM('User')->fetch_row(array('id'=>$xt_loginID), $fields);
 
 
@@ -68,13 +68,13 @@ class My_XTcl{
 				$CI->loginUser['id_key'] = $loginUserID;
 				if ($is_manage)
 				{
-
-					//未读短信
-					// $where = array(
-					// 	'homepage_id'=>$CI->loginID,
-					// 	'inbox_del'=>0,
-					// );                    
-					// $CI->loginUser['feedback_num'] = M('Item_feedback')->count($where);
+					//系统消息--所有人
+					$where = array(
+						'touserid'=>0,
+						'status'=>1,
+						'addtime<'=>time()-7*60*60,
+					);                    
+					$CI->sysMsgList = XTM('Message')->get_list($where);
 				}
 				
 				//VIP会员标识

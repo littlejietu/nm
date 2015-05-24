@@ -77,7 +77,7 @@ class Order_service
 			$oSysItem = $this->ci->config->item('workitem');
 			$oSysScene = $this->ci->config->item('workscene');
 			$oSysTime = $this->ci->config->item('worktime');
-			$no = date('YmdHis',time()).rand(10000,99999);
+			$no = date('YmdHis',time()).rand(1000,9999);
 			$o = array(
 					'sellerid'=>$sellerid,
 					'title'=>'工作:'.$oSysItem[$item].' 场景:'.$oSysScene[$scene].' '.$num.$oSysTime[$time],
@@ -160,7 +160,8 @@ class Order_service
 			$this->ci->num_service->set_user_num($buyerid,'ordernum');
 			$this->ci->num_service->set_user_num($sellerid,'be_ordernum_new',1);
 			$this->ci->num_service->set_user_num($buyerid,'ordernum_new',1);
-			$this->ci->num_service->set_user_num($sellerid,'ordernum_m');
+			$this->ci->num_service->set_user_num($sellerid,'be_ordernum_m');
+			$this->ci->num_service->set_user_num($buyerid,'ordernum_m');
 			$this->ci->num_service->set_user_num($sellerid,'be_fund_m');
 			$this->ci->num_service->set_user_num($buyerid,'fund_m');
 

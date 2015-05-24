@@ -14,7 +14,7 @@ class Num_service
 	public function set_user_num($userid, $field, $addnum = 0)
 	{
 		$res_num = 0;
-		$aField = array('be_ordernum','be_ordernum_new','be_commentnum','be_commentnum_new','commentnum','commentnum_new','fansnum','concernnum','visitnum');
+		$aField = array('ordernum','ordernum_new','ordernum_m','be_ordernum','be_ordernum_new','be_ordernum_m','be_commentnum','be_commentnum_new','commentnum','commentnum_new','fansnum','concernnum','visitnum','fund_m','be_fund_m');
 		if(in_array($field, $aField))
 		{
 			$this->ci->load->model('Order_model');
@@ -79,18 +79,24 @@ class Num_service
 					$res_num = $num;
 					break;
 				case 'be_fund_m':
-					$dbprefix = $this->ci->Order_model->db->dbprefix;
-					$rs = $this->ci->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where sellerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$db = $this->ci->Order_model->db;
+					$db->select(' sum(totalprice) as s', FALSE)->from('order');
+					$db->where(array('sellerid'=>$userid,'status'=>1,'addtime>='=>(time()-30*24*60*60)));
+					$db->where_in('paystatus',array('payed','finish'));
+					$rs = $db->get()->row_array();
 					$total = $rs['s'];
-					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
-					$res_num = $num;
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_fund_m'=>$total));
+					$res_num = $total;
 					break;
 				case 'fund_m':
-					$dbprefix = $this->ci->Order_model->db->dbprefix;
-					$rs = $this->ci->Order_model->db->query('select sum(totalprice) as s from '.$dbprefix.'order where buyerid='.$userid.' and status=1 and addtime<'.(time()+30*24*60*60) );
+					$db = $this->ci->Order_model->db;
+					$db->select(' sum(totalprice) as s', FALSE)->from('order');
+					$db->where(array('buyerid'=>$userid,'status'=>1,'addtime>='=>(time()-30*24*60*60)));
+					$db->where_in('paystatus',array('payed','finish'));
+					$rs = $db->get()->row_array();
 					$total = $rs['s'];
-					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_m'=>$total));
-					$res_num = $num;
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'fund_m'=>$total));
+					$res_num = $total;
 					break;
 				case 'fansnum':
 					$this->ci->load->model('Fans_model');
