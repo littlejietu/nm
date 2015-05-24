@@ -12,13 +12,14 @@ class Info extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
+		$that_usertype = $this->thatUser['usertype'];
 		//is_post()
 		if ($this->input->is_post())
 		{
-			if($this->loginUsertype==1)
+			if($that_usertype==1)
 				list($config, $data, $data_detail, $data_memo) = $this->m_model_config();
-			else if($this->loginUsertype==2)
+			else if($that_usertype==2)
 				list($config, $data, $data_detail, $data_memo) = $this->m_ins_config();
 
 			$this->form_validation->set_rules($config);
@@ -36,7 +37,7 @@ class Info extends CI_Controller {
 			'o' => $o,
 			);
 		$view = 'm/info';
-		if($this->loginUsertype==2)
+		if($that_usertype==2)
 			$view = 'm/info_ins';
 		$this->load->view($view,$result);
 	}
@@ -60,7 +61,7 @@ class Info extends CI_Controller {
                  'rules'   => 'trim|required'
               ),
         );
-		if(!$this->loginUser['nickname'])
+		if(!$this->thatUser['nickname'])
 			$config[] = array(
                  'field'   => 'nickname', 
                  'label'   => '昵称', 
@@ -84,6 +85,7 @@ class Info extends CI_Controller {
 			'sex'=>$this->input->post('sex'),
 			'city'=>$this->input->post('city'),
 			'showimg'=>$this->input->post('showimg'),
+			'showimg2'=>$this->input->post('showimg2'),
 			'qq'=>$this->input->post('qq'),					
 		);
 
@@ -111,7 +113,7 @@ class Info extends CI_Controller {
 			'bgimg'=>$this->input->post('bgimg'),
 			'video'=>$this->input->post('video'),					
 			);
-		if(!$this->loginUser['nickname'])
+		if(!$this->thatUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
 
 		return array($config, $data, $data_detail, $data_memo);
@@ -138,7 +140,7 @@ class Info extends CI_Controller {
                  'rules'   => 'trim|required'
               ),
         );
-		if(!$this->loginUser['nickname'])
+		if(!$this->thatUser['nickname'])
 			$config[] = array(
                  'field'   => 'nickname', 
                  'label'   => '昵称', 
@@ -156,7 +158,7 @@ class Info extends CI_Controller {
 		$data_memo = array(
 			'memo'=>$this->input->post('memo'),
 			);
-		if(!$this->loginUser['nickname'])
+		if(!$this->thatUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
 				
 		return array($config, $data, array(), $data_memo);

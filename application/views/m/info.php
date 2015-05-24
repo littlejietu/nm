@@ -46,12 +46,12 @@
                                 <td width="86">头  像</td>
                                 <td colspan="3">
                                     <div id="previews" class="drsMoveHandle">
-                                   	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.$o['userlogo'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                   	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.trim($o['userlogo'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
                                     </div>
                                     <div class="f_note">
                                         <p>尺寸：180×180像数</p>
                                         <input type="hidden"  name="userlogo" id="userlogo" value="<?=$o['userlogo']?>">
-                                        <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
+                                        <em><i class="icoPro16"></i>支持JPG,PNG，上传图片大小不能超过1M</em>
                                         <div class="file_but">
                                             <input id="userlogo_upload" name="userlogo_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
@@ -63,17 +63,32 @@
                                 <td width="86">形象照片</td>
                                 <td colspan="3">
                                     <div class="fl">
-                                        <img id="show_showimg" border=0 src='<?php echo $o['showimg']? '/'.$o['showimg'] : _get_cfg_path('images').'imghead.jpg';?>'>
+                                        <img id="show_showimg" border=0 src='<?php echo $o['showimg']? '/'.trim($o['showimg'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
                                     </div>
                                     <div class="f_note">
                                         <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="showimg" id="showimg" value="<?=$o['showimg']?>">
-                                        <em><i class="icoPro16"></i>可上传黑白与彩色照片, 上传图片大小不能超过1M</em>
+                                        <em><i class="icoPro16"></i>请上传黑白照片, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
                                             <input id="showimg_upload" name="showimg_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
-                                    </div>
+                                    </div><br>
+                                    
                                 </td>
+                              </tr>
+                              <tr>
+                                <td></td>
+                                <td colspan="3"><div class="fl">
+                                        <img id="show_showimg2" border=0 src='<?php echo $o['showimg2']? '/'.trim($o['showimg2'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
+                                    </div>
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="showimg2" id="showimg2" value="<?=$o['showimg2']?>">
+                                        <em><i class="icoPro16"></i>请上传彩色照片, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="showimg2_upload" name="showimg2_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div></td>
                               </tr>
                                <tr>
                                 <td width="86">模特卡</td>
@@ -250,7 +265,7 @@ $(function() {
     $('#userlogo_upload').uploadify({
       'formData'     : {
         'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'token'     : "<?php echo md5($this->config->item('encryption_key') . $timestamp );?>",
         'type' : 'userlogo',
         'uid' : <?php echo $this->loginID;?>
       },
@@ -262,6 +277,7 @@ $(function() {
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
       'uploader' : '/public/upload/uploadimg',
+      'multi' : false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
          alert('上传失败');
@@ -294,6 +310,7 @@ $(function() {
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
       'uploader' : '/public/upload/uploadimg',
+      'multi' : false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
          alert('上传失败');
@@ -307,6 +324,39 @@ $(function() {
           $('#showimg').val(imgpath);
           $('#showimg').nextAll('em').html('<i class="icoCor16"></i>');
           $('#show_showimg').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+    $('#showimg2_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'showimg',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择照片',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'multi' : false,
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#showimg2').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#showimg2').val(imgpath);
+          $('#showimg2').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_showimg2').attr('src','/'+imgpath);
         }
       }
 
@@ -326,6 +376,7 @@ $(function() {
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
       'uploader' : '/public/upload/uploadimg',
+      'multi':false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
          alert('上传失败');
@@ -358,6 +409,7 @@ $(function() {
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
       'uploader' : '/public/upload/uploadimg',
+      'multi':false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
          alert('上传失败');
@@ -390,6 +442,7 @@ $(function() {
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
       'uploader' : '/public/upload/uploadimg',
+      'multi':false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
          alert('上传失败');

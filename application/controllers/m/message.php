@@ -12,7 +12,7 @@ class Message extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 		//所有人的消息
 		$toall_list = $this->Message_model->get_list(array('touserid'=>0,'status'=>1));
 
@@ -45,10 +45,14 @@ class Message extends CI_Controller {
 	}
 
 	public function detail($id){
-		//修改为已读
-		$this->Message_model->update_by_where(array('id'=>$id),array('readed'=>1));
-
+		
+		
 		$o = $this->Message_model->get_info_by_id($id);
+
+		//修改为已读
+		if($o['touserid']>0)
+			$this->Message_model->update_by_where(array('id'=>$id),array('readed'=>1));
+
 		$result = array(
 			'o' => $o,
 			);

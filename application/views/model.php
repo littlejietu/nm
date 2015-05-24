@@ -57,11 +57,8 @@
             	<li>
                     <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
                         <div class="mtimg">
-                            <?php $i = 0;
-                             foreach ($a['photolist'] as $k => $v):
-                                $i++;?>
-                            	<img class="<?=($i==1?'show':'hide')?>" alt="<?=$a['nickname']?>" originalsrc="<?=$v['img']?>"/>
-                            <?php endforeach;?>
+                            <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
+                            <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
                         </div>
                         <span class="womzi"><?=$a['nickname']?></span>
                     </a>

@@ -6,7 +6,7 @@ class Model extends CI_Controller {
 	
 	public function index()
 	{
-		
+		/*
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
@@ -37,6 +37,29 @@ class Model extends CI_Controller {
 
 		$result = array(
 			'list' => $alist,
+			);
+		*/
+		
+		$page     = _get_page();
+		$pagesize = 3;
+		$arrParam = array();
+		$arrWhere = array('status'=>1,'showimg<>'=>"''",'showimg2<>'=>"''");
+
+		$this->load->model('User_model');
+		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere,'id,nickname,showimg,showimg2','addtime desc');
+
+		//分页
+		$pagecfg = array();
+		$pagecfg['base_url']     = _create_url('model', $arrParam);
+		$pagecfg['total_rows']   = $list['count'];
+		$pagecfg['cur_page'] = $page;
+		$pagecfg['per_page'] = $pagesize;
+		//$this->load->library('pagination');
+		$this->pagination->initialize($pagecfg);
+		$list['pages'] = $this->pagination->create_links();
+
+		$result = array(
+			'list' => $list,
 			);
 
 		$this->load->view('model',$result);

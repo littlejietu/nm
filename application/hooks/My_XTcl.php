@@ -68,13 +68,24 @@ class My_XTcl{
 				$CI->loginUser['id_key'] = $loginUserID;
 				if ($is_manage)
 				{
-					//系统消息--所有人
-					$where = array(
-						'touserid'=>0,
-						'status'=>1,
-						'addtime<'=>time()-7*60*60,
-					);                    
-					$CI->sysMsgList = XTM('Message')->get_list($where);
+
+					$CI->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
+					if ( ! $sysMsgList = $CI->cache->get('sysMsgList'))
+					{
+					    //系统消息--所有人
+						$where = array(
+							'touserid'=>0,
+							'status'=>1,
+							'addtime<'=>time()-7*60*60,
+						);                    
+						$sysMsgList = XTM('Message')->get_list($where);
+
+					    $CI->cache->save('sysMsgList', $sysMsgList, 10*60);
+					}
+
+					//当前登录或当前代理用户
+					$CI->thatUser = _get_login_agent_user();
+					
 				}
 				
 				//VIP会员标识

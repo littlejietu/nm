@@ -12,7 +12,7 @@ class Fans extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 		$this->load->model('Usernum_model');
 		$oUsernum = $this->Usernum_model->get_by_id($userid, 'fansnum,concernnum,photonum');
 

@@ -21,7 +21,7 @@ class Works extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
-		$arrWhere = array('userid'=>$this->loginID);
+		$arrWhere = array('userid'=>$this->thatUser['id']);
 
 		$list = $this->Album_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -85,8 +85,8 @@ class Works extends CI_Controller {
   				else
   				{
 	  				$data = array(
-	  					'userid'=>$this->loginID,
-	  					'nickname'=>$this->loginNickName,
+	  					'userid'=>$this->thatUser['id'],
+	  					'nickname'=>$this->thatUser['nickname'],
 	  					'insid'=>$this->loginInsID,
 						'title'=>$this->input->post('title'),
 						'memo'=>$this->input->post('memo'),
@@ -127,7 +127,7 @@ class Works extends CI_Controller {
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
 		
-		$this->Album_model->update_by_where(array('id'=>$id, 'userid'=>$this->loginID),array('status'=>0));
+		$this->Album_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
 		$res['code'] = 200;
 
 		$this->view->json($res);
@@ -135,7 +135,7 @@ class Works extends CI_Controller {
 
 	public function photo(){
 		$id = _get_key_val($this->input->get('id'), TRUE);
-		$arrWhere = array('userid'=>$this->loginID,'status'=>1);
+		$arrWhere = array('userid'=>$this->thatUser['id'],'status'=>1);
 
 		$list = $this->Album_model->get_list($arrWhere,'id,title');
 		$photolist = $this->Photo_model->get_list($arrWhere,'id,img,title');
@@ -151,7 +151,7 @@ class Works extends CI_Controller {
 	public function delphoto(){
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
-		$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$this->loginID),array('status'=>0));
+		$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
 		$res['code'] = 200;
 
 		$this->view->json($res);
@@ -160,7 +160,7 @@ class Works extends CI_Controller {
 	public function getphoto(){
 		$res = array('code'=>0,'data'=>array());
 		$id = _get_key_val($this->input->post('albumid'), TRUE);
-		$arrWhere = array('albumid'=>$id,'userid'=>$this->loginID,'status'=>1);
+		$arrWhere = array('albumid'=>$id,'userid'=>$this->thatUser['id'],'status'=>1);
 
 		$photolist = $this->Photo_model->get_list($arrWhere,'id,img,title');
 		$res['code'] = 200;

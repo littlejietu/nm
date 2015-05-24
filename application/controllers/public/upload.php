@@ -29,7 +29,7 @@ class Upload extends CI_Controller {
         {
             $config = array();
             $config['upload_path'] = "upload/$type/".date('Ym');
-            $config['allowed_types']= '*';  //jpg|png|jpeg
+            $config['allowed_types']= 'jpg|png|jpeg';  
             $config['max_size']     = 1500;
             $config['overwrite']    = true;
             $config['file_name']    = $type.'_'.$uid.'_'.time();

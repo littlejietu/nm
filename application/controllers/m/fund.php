@@ -19,13 +19,13 @@ class Fund extends CI_Controller {
 
 
 		$id = _get_key_val($this->input->get('id'),true);
-		$o = $this->Usernum_model->get_by_id($this->loginID);
+		$o = $this->Usernum_model->get_by_id($this->thatUser['id']);
 		$oSysPaystatus = $this->config->item('get_paystatus');
 
 		$page     = _get_page();
 		$pagesize = 10;
 		$arrParam = array();
-		$arrWhere = array('a.sellerid'=>$this->loginID,'status'=>1,'paystatus'=>"'".$oSysPaystatus[2]."'");
+		$arrWhere = array('a.sellerid'=>$this->thatUser['id'],'status'=>1,'paystatus'=>"'".$oSysPaystatus[2]."'");
 		if($get_keyword)
 		{
 			$arrParam['keyword']=$get_keyword;

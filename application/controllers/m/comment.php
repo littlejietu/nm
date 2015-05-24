@@ -12,7 +12,7 @@ class Comment extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
@@ -40,7 +40,7 @@ class Comment extends CI_Controller {
 	}
 
 	public function add(){
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 
 		if ($this->input->is_post())
 		{
@@ -99,9 +99,9 @@ class Comment extends CI_Controller {
 						$data = array(
 		  					'touserid'=>$touserid,
 		  					'tonickname'=>$tonickname,
-		  					'userid'=>$this->loginID,
-		  					'nickname'=>$this->loginNickName,
-		  					'logo'=>$this->loginUser['userlogo'],
+		  					'userid'=>$this->thatUser['id'],
+		  					'nickname'=>$this->thatUser['nickname'],
+		  					'logo'=>$this->thatUser['userlogo'],
 		  					'commentid'=>$commentid,
 		  					'orderid'=>$orderid,
 							'figure'=>$this->input->post('figure'),
@@ -126,8 +126,8 @@ class Comment extends CI_Controller {
 		  				$this->load->service('Num_service');
 		  				$this->num_service->set_user_num($touserid,'be_commentnum');
 		  				$this->num_service->set_user_num($touserid,'be_commentnum_new',1);
-						$this->num_service->set_user_num($this->loginID,'commentnum');
-						$this->num_service->set_user_num($this->loginID,'commentnum_new',1);
+						$this->num_service->set_user_num($this->thatUser['id'],'commentnum');
+						$this->num_service->set_user_num($this->thatUser['id'],'commentnum_new',1);
 
 						redirect(base_url('/m/order'));
 						exit;

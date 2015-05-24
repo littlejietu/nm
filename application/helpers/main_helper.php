@@ -8,5 +8,15 @@ function _get_userlogo_url($userlogo){
 
 }
 
+function _get_login_agent_user(){
+	$CI =& get_instance();
+
+	$agentUser = $CI->cache->get('agentUser');
+	if(!empty($agentUser))
+		return $agentUser;
+	else
+		return $CI->loginUser;
+}
+
 
 ?>

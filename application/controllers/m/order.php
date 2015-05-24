@@ -15,7 +15,7 @@ class Order extends CI_Controller {
 		$get_paystatus = (int)$this->input->get('paystatus');
 		$get_keyword = $this->input->post('keyword')?$this->input->post('keyword'):$this->input->get('keyword');
 		$dbprefix = $this->User_model->db->dbprefix;
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 		if($this->loginUserNum && $this->loginUserNum['be_ordernum_new'])
 		{
 			$this->load->service('Num_service');
@@ -26,7 +26,7 @@ class Order extends CI_Controller {
 		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array();		//条件
-		if($this->loginUsertype==1)
+		if($this->thatUser['usertype']==1)
 		{
 			$arrWhere = array('a.sellerid'=>$userid,'a.status'=>1);
 		}
@@ -91,7 +91,7 @@ class Order extends CI_Controller {
 	public function reject()
 	{
 		$id = _get_key_val($this->input->get('id'),true);
-		$arrWhere = array('id'=>$id, 'sellerid'=>$this->loginID);
+		$arrWhere = array('id'=>$id, 'sellerid'=>$this->thatUser['id']);
 		$data = array('reject'=>-1);
 		$this->Order_model->update_by_where($arrWhere, $data);
 
@@ -102,7 +102,7 @@ class Order extends CI_Controller {
 	public function agree()
 	{
 		$id = _get_key_val($this->input->get('id'),true);
-		$arrWhere = array('id'=>$id, 'sellerid'=>$this->loginID);
+		$arrWhere = array('id'=>$id, 'sellerid'=>$this->thatUser['id']);
 		$data = array('reject'=>1);
 		$this->Order_model->update_by_where($arrWhere, $data);
 
@@ -113,7 +113,7 @@ class Order extends CI_Controller {
 	public function del()
 	{
 		$id = _get_key_val($this->input->get('id'),true);
-		$arrWhere = array('id'=>$id, 'sellerid'=>$this->loginID);
+		$arrWhere = array('id'=>$id, 'sellerid'=>$this->thatUser['id']);
 		$data = array('status'=>-1);
 		$this->Order_model->update_by_where($arrWhere, $data);
 

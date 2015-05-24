@@ -12,16 +12,19 @@ class Cert extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
+		$that_usertype = $this->thatUser['usertype'];
 		if ($this->input->is_post())
 		{
 			$this->save();
+			redirect(base_url('/m/cert'));
+			exit;
 		}
 
 		$o = $this->Cert_model->get_by_id($userid);
 
 		$oSysBail = _get_config('bail');
-		$sysBail = $oSysBail[$this->loginUsertype];
+		$sysBail = $oSysBail[$that_usertype];
 		
 		$result = array(
 			'o' => $o,
@@ -69,11 +72,11 @@ class Cert extends CI_Controller {
 
 			$oSysKind = _get_config('orderkind');
 			$oSysBail = _get_config('bail');
-			$buyerid = $this->loginID;
+			$buyerid = $this->thatUser['id'];
 
 			$o = array(
 					'userid'=>$buyerid,
-					'username'=>$this->loginUserName,
+					'username'=>$this->thatUser['username'],
 					'realname'=>$this->input->post('realname'),
 					'idno'=>$this->input->post('idno'),
 					'mobile'=>$this->input->post('mobile'),
@@ -82,7 +85,7 @@ class Cert extends CI_Controller {
 					'bail'=>$oSysBail[$this->loginUsertype],
 					'addtime'=>time(),
 					'status'=>0,
-					'op_userid'=>$buyerid,
+					'op_userid'=>$this->loginID,
 					'op_username'=>$this->loginUserName,
 					'op_time'=>time(),
 				);

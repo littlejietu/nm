@@ -69,7 +69,7 @@
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>
                                 <?php endif?>
                               </td>
-                              <td><?php if($a['sellerid']==$this->loginID):?>
+                              <td><?php if($a['sellerid']==$this->thatUser['id']):?>
                                   <?php if($a['reject']==-1):?>已过期<?php elseif($a['reject']==1):?>已确认<?php else:?><a class="t_delete" href="/m/order/agree?id=<?=_get_key_val($a['id'])?>">确认</a><?php endif?>
                                   <a class="t_delete" href="javascript:;">编辑</a><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
                                 <?php endif?>

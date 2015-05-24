@@ -12,7 +12,7 @@ class Client extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
+		$userid = $this->thatUser['id'];
 		$page     = _get_page();
 		$pagesize = 10;
 		$arrParam = array();
@@ -83,8 +83,8 @@ class Client extends CI_Controller {
   				else
   				{
 	  				$data = array(
-	  					'userid'=>$this->loginID,
-	  					'nickname'=>$this->loginNickName,
+	  					'userid'=>$this->thatUser['id'],
+	  					'nickname'=>$this->thatUser['nickname'],
 						'linkman'=>$this->input->post('linkman'),
 						'contact'=>$this->input->post('contact'),
 						'memo'=>$this->input->post('memo'),
@@ -125,7 +125,7 @@ class Client extends CI_Controller {
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
 		
-		$this->Client_model->update_by_where(array('id'=>$id, 'userid'=>$this->loginID),array('status'=>0));
+		$this->Client_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
 		$res['code'] = 200;
 
 		$this->view->json($res);

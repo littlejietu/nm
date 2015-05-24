@@ -12,9 +12,8 @@ class Product extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->loginID;
-		$username = $this->loginUserName;
-		$nickname = $this->loginNickName;
+		$userid = $this->thatUser['id'];
+		$nickname = $this->thatUser['nickname'];
 		//is_post()
 		if ($this->input->is_post())
 		{
@@ -58,8 +57,8 @@ class Product extends CI_Controller {
 							'price'=>$arrPrice[$key],
 							'status'=>1,
 							'addtime'=>time(),
-							'op_userid'=>$userid,
-							'op_username'=>$username,
+							'op_userid'=>$this->loginID,
+							'op_username'=>$this->loginUserName,
 							'op_time'=>time(),
 						);
 
