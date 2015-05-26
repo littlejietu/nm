@@ -23,7 +23,10 @@ class Index extends CI_Controller {
 		$result = array(
 			'oUser' => $oUser,
 			);
-		$this->load->view('i/index',$result);
+		$view = 'i/index';
+		if($oUser['usertype']==2)
+			$view = 'i/index_ins';
+		$this->load->view($view,$result);
 	}
 
 }

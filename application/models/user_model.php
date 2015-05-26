@@ -21,6 +21,7 @@ class User_model extends XT_Model {
 			$aUserMemo = $this->get_by_where("userid=$id",'*');
 			if($aUserMemo)
 				$aUser = array_merge($aUserMemo, $aUser);
+			$this->set_table($this->tb_user);
 			return $aUser;
 		}
 		else
@@ -29,6 +30,7 @@ class User_model extends XT_Model {
 			$aUserMemo = $this->get_by_where("userid=$id",'*');
 			if($aUserMemo)
 				$aUser = array_merge($aUserMemo, $aUser);
+			$this->set_table($this->tb_user);
 			return $aUser;
 		}
 

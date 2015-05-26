@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php if($oUser['usertype']==1):?>个人主页<?php else:?>机构主页<?php endif?>-牛模网</title>
+<title>机构主页-牛模网</title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -24,20 +24,24 @@
         include_once(VIEWPATH."i/public/top.php");
       if($oUser['usertype']==2)
         include_once(VIEWPATH."i/public/top_ins.php");?>
-    <div class="works malbums">
+        <div class="women artistes">
             <ul class="clearfix">
-                <?php foreach ($list as $key => $a): ?>
+                <?php foreach ($list['rows'] as $key => $a):?>
                 <li>
-                    <a href="/i/photo/<?=$a['id']?>">
-                        <img src="<?=$a['showimg']?>">
-                        <div class="wor_wzi">
-                            <h3><?=$a['title']?><span>（<?=$a['photonum']?>张）</span></h3>
-                            <p>创建时间：<?=date('Y-m-d H:i:s',$a['addtime'])?></p>
+                    <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
+                        <div class="mtimg">
+                            <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
+                            <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
                         </div>
+                        <span class="womzi"><?=$a['nickname']?></span>
                     </a>
                 </li>
                 <?php endforeach;?>
             </ul>
+
+            <div class="page">
+              <?=$list['pages']?>
+            </div>
         </div>
 
     </div>
