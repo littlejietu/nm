@@ -543,8 +543,8 @@
 <?php include_once(VIEWPATH."public/footer.php");?>
 </body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>/common.js"></script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>/jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script type="text/javascript">
 /* banner */
 $(document).ready(function(){

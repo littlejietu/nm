@@ -25,7 +25,7 @@ class Home extends CI_Controller {
 		//header('location:'.base_url('model') );
 
 		$this->load->model('Ad_model');
-		$list = $this->Ad_model->get_list(array('adcode'=>'index_top_banner','status'=>1));
+		$list = $this->Ad_model->get_list(array('adcode'=>'home_top_banner','status'=>1,'begtime<='=>time(),'endtime>'=>time()),'img,url','sort,addtime desc');
 		$result = array(
 			'list' => $list,
 			);

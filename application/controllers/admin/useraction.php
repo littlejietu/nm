@@ -100,6 +100,7 @@ class userAction extends MY_Admin_Controller
         /*登录通过*/
         $loginSuccessSession = array(
             'admin_id' => $userInfo[0]->user_id,
+            'user_name' => $userInfo[0]->user_name,
             'user_level' => $userInfo[0]->user_level,
             'user_power' => $userInfo[0]->user_power,
         );

@@ -68,7 +68,7 @@ body{ background: none;}
 .addroute tr{border-bottom: 1px solid #ccc;}
 .addroute .sub{float:right;margin:10px 20px 10px 0;}
 input[type='text']{height:28px;border:1px solid #ccc;padding:0 5px;}
-select{width:140px;height:28px;padding:0 5px;}
+select{height:28px;padding:0 5px;}
 
 
 .expressul li{position:relative;}

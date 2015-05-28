@@ -45,14 +45,23 @@ class Ad extends MY_Admin_Controller {
 		//需要修改
 		$id	= _get_key_val($this->input->get('id'), TRUE);
 		$result = array();
+		$info = array();
+
+		$this->load->model('Ad_place_model');
+		$arrPlace = $this->Ad_place_model->get_list(array('status'=>1));
 
 		if(!empty($id))
 		{
 			$info = $this->Ad_model->get_info_by_id($id);
-			$result = array(
-				'info'=>$info,
-				);
+
+			
+
 		}
+		
+		$result = array(
+				'info'=>$info,
+				'arrPlace'=>$arrPlace,
+		);
 		
 
 		$this->load->view('admin/Ad_add', $result);
@@ -107,21 +116,30 @@ class Ad extends MY_Admin_Controller {
 
 			if ($this->form_validation->run() === TRUE)
   			{
+  				$placeid = (int)$this->input->post('placeid');
+  				$adcode = '';
+  				$this->load->model('Ad_place_model');
+  				$oPlace = $this->Ad_place_model->get_by_id($placeid);
+  				if($oPlace)
+  					$adcode = $oPlace['adcode'];
   				//将需要保存的数据赋值给数组$data
   				$data = array(
 					'title'=>$this->input->post('title'),
 					'placeid'=>$this->input->post('placeid'),
+					'adcode'=>$adcode,
 					'img'=>$this->input->post('img'),
 					'url'=>$this->input->post('url'),
 					'summary'=>$this->input->post('summary'),
 					'memo'=>$this->input->post('memo'),
 					'price'=>$this->input->post('price'),
-					'begtime'=>$this->input->post('begtime'),
-					'endtime'=>$this->input->post('endtime'),
+					'addtime'=>time(),
+					'begtime'=>strtotime($this->input->post('begtime')),
+					'endtime'=>strtotime($this->input->post('endtime').' 23:59:59'),
 					'sort'=>$this->input->post('sort'),
-					'display'=>$this->input->post('display'),					
-					'op_userid'=>0,
-					'op_username'=>0,
+					'display'=>$this->input->post('display'),
+					'status'=>1,
+					'op_userid'=>$this->session->userdata['admin_id'],
+					'op_username'=>$this->session->userdata['user_name'],
 					'op_time'=>time(),
 				);
 

@@ -25,7 +25,14 @@
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 广告位id：</td>
-		            <td align="left" class="padL10"><input type="text" name="placeid" value="<?php if( !empty($info['placeid']) ) echo $info['placeid']; ?>" /></td>
+		            <td align="left" class="padL10">
+		            	<select name="placeid">
+		            	<option>请选择广告位</option>
+	            		<?php foreach ($arrPlace as $key => $a):?>
+	            			<option value="<?=$a['id']?>"<?php if( !empty($info['placeid']) && $info['placeid']==$a['id'] ) echo ' selected';?>><?=$a['title']?>(<?=$a['size']?>, <?=$a['price']?>元)</option>
+	            		<?php endforeach;?>
+		            	</select>
+		            </td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 图片地址：</td>
@@ -33,9 +40,8 @@
 	                        <img id="show_img" border=0 src='<?php if( !empty($info['img']) ) echo  _get_image_url($info['img']);?>'>
 	                    </div>
 	                    <div class="f_note">
-	                        <p>尺寸：509×280像数</p>
 	                        <input type="hidden"  name="img" id="img" value="<?php if( !empty($info['img']) ) echo $info['img']; else echo 'http://'; ?>">
-	                        <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
+	                        <em><i class="icoPro16"></i>支持JPEG/PNG，上传图片大小不能超过1M</em>
 	                        <div class="file_but">
 	                            <input id="img_upload" name="img_upload" value="选择照片" class="inp_file" type="file">
 	                        </div>
@@ -60,11 +66,11 @@
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 开始时间：</td>
-		            <td align="left" class="padL10"><input type="text" name="begtime" value="<?php if( !empty($info['begtime']) ) echo $info['begtime']; ?>" readonly="readonly" onclick="WdatePicker()"  /></td>
+		            <td align="left" class="padL10"><input type="text" name="begtime" value="<?php if( !empty($info['begtime']) ) echo date('Y-m-d',$info['begtime']); ?>" readonly="readonly" onclick="WdatePicker()"  /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 结束时间：</td>
-		            <td align="left" class="padL10"><input type="text" name="endtime" value="<?php if( !empty($info['endtime']) ) echo $info['endtime']; ?>" readonly="readonly" onclick="WdatePicker()"  /></td>
+		            <td align="left" class="padL10"><input type="text" name="endtime" value="<?php if( !empty($info['endtime']) ) echo date('Y-m-d', $info['endtime']); ?>" readonly="readonly" onclick="WdatePicker()"  /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 排序：</td>

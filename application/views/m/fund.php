@@ -36,7 +36,7 @@
                             <div class="fl broad b_gain"><p class="b_pti">本月收益总额</p><span class="b_num"><em><?=$o['be_fund_m']?></em> </span></div>
                         </div>
                         <div class="fund_list">
-                            <div class="dl_title">正在交易中 （<?=count($list)?>）</div>
+                            <div class="dl_title">正在交易中 （<?=count($list['rows'])?>）</div>
                             <ul class="fund_uli">
                                 <?php foreach ($list['rows'] as $key => $a): ?>
                                 <li>
