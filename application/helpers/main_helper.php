@@ -18,5 +18,12 @@ function _get_login_agent_user(){
 		return $CI->loginUser;
 }
 
+function _get_image_url($img){
+
+    return $img? '/'.trim($img,'/') : '';
+
+}
+
+
 
 ?>

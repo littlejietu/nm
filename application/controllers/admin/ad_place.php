@@ -76,8 +76,8 @@ class Ad_place extends MY_Admin_Controller {
                   ),
                array(
                      'field'   => 'size', 
-                     'label'   => '尺寸单位', 
-                     'rules'   => 'trim|required|numeric'
+                     'label'   => '广告尺寸', 
+                     'rules'   => 'trim|required'
                   ),  
                 array(
                      'field'   => 'status', 

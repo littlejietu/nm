@@ -19,23 +19,23 @@
 		<table class="addTable">
 			<tbody>
 				<tr>
-		            <td width="150" height="25" align="right"><span class="tips">*</span> 广告位名称；</td>
+		            <td width="150" height="25" align="right"><span class="tips">*</span> 广告位名称：</td>
 		            <td align="left" class="padL10"><input type="text" name="title" value="<?php if( !empty($info['title']) ) echo $info['title']; ?>" /></td>
 		        </tr>
 		        <tr>
-		            <td width="150" height="25" align="right"><span class="tips">*</span> 金额；</td>
-		            <td align="left" class="padL10"><input type="text" name="price" value="<?php if( !empty($info['price']) ) echo $info['price']; else echo 'http://'; ?>" /></td>
+		            <td width="150" height="25" align="right"> 金额：</td>
+		            <td align="left" class="padL10"><input type="text" name="price" value="<?php if( !empty($info['price']) ) echo $info['price']; ?>" /></td>
 		        </tr>
 		        <tr>
-		            <td height="25" align="right">广告代码；</td>
+		            <td height="25" align="right"><span class="tips">*</span>广告代码：</td>
 		            <td align="left" class="padL10"><input type="text" name="adcode" value="<?php if( !empty($info['adcode']) ) echo $info['adcode']; ?>" /></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right">尺寸单位；</td>
+		            <td height="25" align="right"><span class="tips">*</span>广告尺寸</td>
 		            <td align="left" class="padL10"><input type="text" name="size" value="<?php if( !empty($info['size']) ) echo $info['size']; ?>" /></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 是否停用；</td>
+		            <td height="25" align="right"><span class="tips">*</span> 是否停用：</td>
 		            <td align="left" class="padL10">
 		            	<input type="radio" name="status" value="1" <?php if( !empty($info['status']) && $info['status']==1 ) echo ' checked' ?> />使用
 		            		<input type="radio" name="status" value="-1" <?php if( !empty($info['status']) && $info['status']==-1 ) echo ' checked' ?> />停用

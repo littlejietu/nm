@@ -6,7 +6,6 @@
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo _get_cfg_path('lib')?>uploadify/uploadify.css" type="text/css" rel="stylesheet" />
 <!--[if IE 6]>
 <script src="js/DD_belatedPNG.js" type="text/javascript" ></script>
 <script>DD_belatedPNG.fix('a,img');</script>

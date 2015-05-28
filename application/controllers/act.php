@@ -16,7 +16,7 @@ class Act extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 8;
 		$arrParam = array('type'=>$type);
-		$arrWhere = array('status'=>1, 'type'=>$type);
+		$arrWhere = array('status'=>1, 'display'=>1, 'type'=>$type);
 
 		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;

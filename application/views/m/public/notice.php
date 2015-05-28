@@ -1,9 +1,10 @@
-<?php if(!empty($this->cache->get('sysMsgList'))):?>
+<?php $sysMsgList = $this->cache->get('sysMsgList');
+ if(!empty($sysMsgList)):?>
 <div class="txtScroll-top help_notice">
     <div class="bd">
         <span class="not_ico"></span>
         <ul class="infoList">
-        	<?php foreach ($this->cache->get('sysMsgList') as $key => $a):?>
+        	<?php foreach ($sysMsgList as $key => $a):?>
             	<li><a href="/m/message/detail/<?=$a['id']?>"><?=$a['title']?></a></li>
         	<?php endforeach;?>
         </ul>

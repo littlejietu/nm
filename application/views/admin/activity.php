@@ -32,7 +32,7 @@
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
 				<td height="30"><?php echo $a['title'];?></td>
-				<td><?php echo $a['type'];?></td>
+				<td><?php if(!empty($oSysActType[$a['type']])) echo $oSysActType[$a['type']];?></td>
 				<td><?php echo date('Y-m-d',$a['begtime']);?></td>
 				<td><?php echo date('Y-m-d',$a['endtime']);?></td>
 				<td><?php echo $a['place'];?></td>

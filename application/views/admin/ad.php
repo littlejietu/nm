@@ -18,8 +18,7 @@
 			<tr height="39" style="font-size:13px;">
 	            <td width="250" height="25" align="center">广告名称</td>
 	            <td>广告位</td>
-	            <td>图片地址</td>
-	            <td>链接地址</td>	           
+	            <td>图片地址</td>           
            		<td>金额</td>
 	            <td>开始时间</td>
 	            <td>结束时间</td>
@@ -31,10 +30,9 @@
 	        </tr>
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
-				<td height="30"><?php echo $a['title'];?></td>
+				<td height="30"><a href="<?php echo $a['url'];?>" target="_blank"><?php echo $a['title'];?></a></td>
 				<td><?php echo $a['placeid'];?></td>
-				<td><?php echo $a['img'];?></td>
-				<td><?php echo $a['url'];?></td>
+				<td><img src="<?php echo _get_image_url($a['img']);?>" width="150"></td>
 				<td><?php echo $a['price'];?></td>								
 				<td><?php echo $a['begtime'];?></td>
 				<td><?php echo $a['endtime'];?></td>

@@ -22,9 +22,9 @@
    </div>
    <div class="bd">
      <ul>
-        <li _src="url(img/banner.jpg)"><a href="##"></a></li>
-        <li _src="url(img/banner.jpg)"><a href="##"></a></li>
-        <li _src="url(img/banner.jpg)"><a href="##"></a></li>
+        <?php foreach ($list as $key => $a):?>
+            <li _src="url(<?=$a['img']?>)"><a href="<?=$a['url']?>" target="_blank"></a></li>
+        <?php endforeach;?>
      </ul>
    </div>
 </div>

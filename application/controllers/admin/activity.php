@@ -19,7 +19,7 @@ class Activity extends MY_Admin_Controller {
 
 		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
-		
+		$oSysActType = _get_config('activity');
 
 		//分页
 		$pagecfg = array();
@@ -33,6 +33,7 @@ class Activity extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'oSysActType' => $oSysActType,
 			);
 
 
@@ -47,9 +48,11 @@ class Activity extends MY_Admin_Controller {
 
 		if(!empty($id))
 		{
+			$oSysActType = _get_config('activity');
 			$info = $this->Activity_model->get_info_by_id($id);
 			$result = array(
 				'info'=>$info,
+				'oSysActType' => $oSysActType,
 				);
 		}
 		

@@ -22,7 +22,13 @@ class Home extends CI_Controller {
 	{
 
 		//echo '正在建设中..';die;
-		header('location:'.base_url('model') );
-		//$this->load->view('home');
+		//header('location:'.base_url('model') );
+
+		$this->load->model('Ad_model');
+		$list = $this->Ad_model->get_list(array('adcode'=>'index_top_banner','status'=>1));
+		$result = array(
+			'list' => $list,
+			);
+		$this->load->view('home',$result);
 	}
 }
