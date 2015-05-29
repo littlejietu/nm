@@ -56,7 +56,7 @@
                                     <input name="efficiency" id="efficiency" value="0" type="hidden">
                                 </div>
                                 <div class="op_rate fl">
-                                    <span class="fl">服务态度：</span>
+                                    <span class="fl">工作态度：</span>
                                     <a href="javascript:;" onclick="filt(this)" name="1">非常差<i class="one_rate"></i></a>
                                     <a href="javascript:;" onclick="filt(this)" name="2">很差<i class="two_rate"></i></a>
                                     <a href="javascript:;" onclick="filt(this)" name="3">一般<i class="three_rate"></i></a>

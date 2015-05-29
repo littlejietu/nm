@@ -21,12 +21,12 @@ class Product extends CI_Controller {
 			$config = array(
                 array(
                      'field'   => 'code', 
-                     'label'   => '服务', 
+                     'label'   => '工作', 
                      'rules'   => 'required'
                   ),
                 array(
                      'field'   => 'price', 
-                     'label'   => '服务价格', 
+                     'label'   => '工作价格', 
                      'rules'   => 'required'
                   ),
             );

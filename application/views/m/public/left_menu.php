@@ -17,7 +17,7 @@
         <?php if($this->thatUser['usertype']==1):?>
             <li<?php if( strtolower(uri_string())=='m/fans' ) echo ' class="current"';?>><a href="/m/fans">互动总览<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/info' ) echo ' class="current"';?>><a href="/m/info">个人资料<i></i></a></li>
-            <li<?php if( strtolower(uri_string())=='m/product' ) echo ' class="current"';?>><a href="/m/product">服务价格<i></i></a></li>
+            <li<?php if( strtolower(uri_string())=='m/product' ) echo ' class="current"';?>><a href="/m/product">工作价格<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/cert' ) echo ' class="current"';?>><a href="/m/cert">我的认证<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/works' ) echo ' class="current"';?>><a href="/m/works">作品管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/order' ) echo ' class="current"';?>><a href="/m/order">交易管理<?php if($this->loginUserNum):?><span class="o_mete"><?php echo $this->loginUserNum['be_ordernum_new'];?></span><?php endif?><i></i></a></li>

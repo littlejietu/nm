@@ -31,7 +31,7 @@
                 <li><span>鞋码</span> <?=$oUser['shoes']?>  码</li>
             </ul>
             <br /><br /><br />
-            <div class="title">个人经历</div>
+            <div class="title">个人说明</div>
             <div class="clearfix">
             	<div class="fl flpet">
                     <div class="per_con">
@@ -66,17 +66,17 @@
                 <?php endif?>
             </div>
             <br /><br /><br />
-            <div class="title">服务说明</div>
+            <div class="title">工作说明</div>
             <div class="per_con">
-                <h3 class="p_bti"><i></i>模特费</h3>
+                <h3 class="p_bti"><i></i>工作报价</h3>
                 <div class="p_wzi"><?=$oUser['fee']?></div>
             </div>
             <div class="per_con">
-                <h3 class="p_bti"><i></i>服务时间</h3>
+                <h3 class="p_bti"><i></i>工作时间</h3>
                 <div class="p_wzi"><?=$oUser['servicetime']?></div>
             </div>
             <div class="per_con">
-                <h3 class="p_bti"><i></i>禁拍说明</h3>
+                <h3 class="p_bti"><i></i>注意事项</h3>
                 <div class="p_wzi"><?=$oUser['takenote']?></div>
             </div>
             <br /><br />

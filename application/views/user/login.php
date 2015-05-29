@@ -75,7 +75,7 @@
     <div class="container clearfix">
         <a class="fl" href="index.php"><img src="<?php echo _get_cfg_path('images')?>logo.png" alt="logo"/></a>
         <p class="fr">
-            <a href="#" title="服务条款">服务条款</a>牛模网版权所有&copy;2004-2015
+            <a href="#" title="工作条款">工作条款</a>牛模网版权所有&copy;2004-2015
         </p>
     </div>
 </div>

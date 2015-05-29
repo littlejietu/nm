@@ -11,7 +11,7 @@
 
 <div class="right_con common">
 
-	<h1>消息管理</h1>
+	<h1>系统通知</h1>
 	<div><a href="/admin/message/add" class="sub">添加</a></div>
 	<table cellpadding="0" cellspacing="0" align="center" bordercolor="#eee" border="1" width="100%" class="listTab">
 		<tbody>

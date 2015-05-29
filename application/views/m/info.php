@@ -167,7 +167,7 @@
                                 
                               </tr>
                                <tr>
-                               	  <td colspan="4">个人经历</td>
+                               	  <td colspan="4">个人说明</td>
                               </tr>
                               <tr>
                                 <td width="86" valign="top"><font>平面拍摄</font></td>
@@ -191,27 +191,27 @@
                               </tr>
                               
                                <!-- <tr>
-                                <td width="86" valign="top"><font>拍摄品牌1</font></p></td>
+                                <td width="86" valign="top"><font>拍摄经历</font></p></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>品牌类型2</font></td>
+                                <td width="86" valign="top"><font>工作经历</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
                               </tr>  -->
                               
                               <tr>
-                                  <td colspan="4">服务说明</td>
+                                  <td colspan="4">工作说明</td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>模特费</font></td>
+                                <td width="86" valign="top"><font>工作报价</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder=""  name="fee" cols="" rows=""><?=$o['fee']?></textarea></td>
                               </tr>
                               <tr>
-                                <td width="86" valign="top"><font>服务时间</font></td>
+                                <td width="86" valign="top"><font>工作时间</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder=""  name="servicetime" cols="" rows=""><?=$o['servicetime']?></textarea></td>
                               </tr>
                               <tr style="border-bottom:none;">
-                                <td width="86" valign="top"><font>禁拍说明</font></td>
+                                <td width="86" valign="top"><font>注意事项</font></td>
                                 <td colspan="3"><textarea class="txt text" placeholder="" name="takenote" cols="" rows=""><?=$o['takenote']?></textarea></td>
                               </tr>
                               <tr style="border-bottom:none;">

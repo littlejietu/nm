@@ -17,8 +17,9 @@ class User extends MY_Admin_Controller {
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
-		$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid)';
-		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere, '*','a.id', $tb);
+		//$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid) left join '.$dbprefix.'recommend c on(c.outerid=a.id and c.kind=1)';
+		$tb = $dbprefix.'user a left join '.$dbprefix.'recommend b on(b.outerid=a.id and b.kind=1)';
+		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend ','a.id', $tb);
 		//echo $this->db->last_query();die;
 		
 
@@ -32,8 +33,13 @@ class User extends MY_Admin_Controller {
 		$this->pagination->initialize($pagecfg);
 		$list['pages'] = $this->pagination->create_links();
 
+		$oSysUsertype = _get_config('usertype');
+		$oSysUserlevel = _get_config('userlevel');
+
 		$result = array(
 			'list' => $list,
+			'oSysUsertype' => $oSysUsertype,
+			'oSysUserlevel' => $oSysUserlevel,
 			);
 
 

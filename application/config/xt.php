@@ -26,6 +26,11 @@ $config['usertype'] = array(
 	3 => '企业',
 );
 
+$config['userlevel'] = array(
+	0 => '普通',
+	1 => '平台专属',
+);
+
 $config['workitem'] = array(
 	1 => '服装拍摄',
 	2 => '平面广告',

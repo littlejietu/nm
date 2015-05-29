@@ -35,7 +35,7 @@
                            <div class="fl a_rev"><span>身材样貌：</span><p class="star_on"><i class="star_<?=$a['figure'];?>">5</i></p></div>
                            <div class="fl a_rev"><span>专业技能：</span><p class="star_on"><i class="star_<?=$a['skill'];?>">5</i></p></div>
                            <div class="fl a_rev"><span>工作效率：</span><p class="star_on"><i class="star_<?=$a['efficiency'];?>">5</i></p></div>
-                           <div class="fl a_rev"><span>服务态度：</span><p class="star_on"><i class="star_<?=$a['attitude'];?>">5</i></p></div>
+                           <div class="fl a_rev"><span>工作态度：</span><p class="star_on"><i class="star_<?=$a['attitude'];?>">5</i></p></div>
                        </div>
                        <div class="apprcon"><?=$a['memo'];?></div>
                    </div>

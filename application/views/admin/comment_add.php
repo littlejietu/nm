@@ -31,7 +31,7 @@
 		            <td align="left" class="padL10"><input type="text" name="efficiency" value="<?php if( !empty($info['efficiency']) ) echo $info['efficiency']; ?>" /></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 服务态度；</td>
+		            <td height="25" align="right"><span class="tips">*</span> 工作态度；</td>
 		            <td align="left" class="padL10"><input type="text" name="attitude" value="<?php if( !empty($info['attitude']) ) echo $info['attitude']; ?>" /></td>
 		        </tr>
 		         <tr>

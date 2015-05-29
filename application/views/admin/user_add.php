@@ -182,23 +182,23 @@
                     <td class="padL10"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="magazine" cols="60" rows="3"><?=$info['magazine']?></textarea></td>
               	</tr>
 		        <tr>
-                    <td valign="top" align="right"><font>模特费</font></td>
+                    <td valign="top" align="right"><font>工作报价：</font></td>
                     <td class="padL10"><textarea class="txt text" placeholder=""  name="fee" cols="60" rows="3"><?=$info['fee']?></textarea></td>
                 </tr>
                 <tr>
-                    <td valign="top" align="right"><font>服务时间</font></td>
+                    <td valign="top" align="right"><font>工作时间：</font></td>
                     <td class="padL10"><textarea class="txt text" placeholder=""  name="servicetime" cols="60" rows="3"><?=$info['servicetime']?></textarea></td>
                 </tr>
                 <tr style="border-bottom:none;">
-                    <td valign="top" align="right"><font>禁拍说明</font></td>
+                    <td valign="top" align="right"><font>注意事项：</font></td>
                     <td class="padL10"><textarea class="txt text" placeholder="" name="takenote" cols="60" rows="3"><?=$info['takenote']?></textarea></td>
                	</tr>
 		        <!-- <tr>
-		            <td height="25" align="right"> 拍摄品牌；</td>
+		            <td height="25" align="right"> 拍摄经历：</td>
 		            <td align="left" class="padL10"><input type="text" name="brand" value="<?php if( !empty($info['brand']) ) echo $info['brand']; ?>" /></td>
 		        </tr>	
 		        <tr>
-		            <td height="25" align="right"> 品牌类型；</td>
+		            <td height="25" align="right"> 工作经历：</td>
 		            <td align="left" class="padL10"><input type="text" name="brandtype" value="<?php if( !empty($info['brandtype']) ) echo $info['brandtype']; ?>" /></td>
 		        </tr> -->
 				<tr>

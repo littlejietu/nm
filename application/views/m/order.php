@@ -35,7 +35,7 @@
                         <table class="tran_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tbody><tr>
                               <th width="120">订单编号</th>
-                              <th>服务项目</th>
+                              <th>工作内容</th>
                               <th width="90">总价</th>
                               <th width="90">预约时间</th>
                               <th width="90">下单时间</th>

@@ -63,7 +63,7 @@ class Comment extends CI_Controller {
                   ),  
                 array(
                      'field'   => 'attitude', 
-                     'label'   => '服务态度', 
+                     'label'   => '工作态度', 
                      'rules'   => 'trim|required'
                   ),
                 array(
