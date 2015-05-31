@@ -43,6 +43,7 @@
 				<td><?php echo $a['op_username'];?></td>
 				<td><?php echo $a['op_time'];?></td>
 				<td class="con_title">
+					<a href="/admin/activity/recommend?id=<?php echo _get_key_val($a['id']);?>"><?php if(empty($a['isrecommend'])) echo '推荐';else echo '不推荐';?></a>
 					<a href="/admin/activity/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/activity/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
 				</td>

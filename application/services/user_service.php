@@ -108,7 +108,7 @@ class User_service
 	public function verify_login_check()
 	{
 		$mobile = trim($this->ci->input->post('mobile'));
-		$fields   = 'id,username,user_type,contact_name,mobile,passwd,status,mobile_true,email_true,initial';
+		$fields   = 'id,username,user_type,contact_name,mobile,passwd,status,mobile_true,email_true';
 		if(is_mobile($mobile))
 		{
 			$user_info = $this->ci->user_model->fetch_row(array('mobile'=>$mobile), $fields);
@@ -142,13 +142,6 @@ class User_service
 				$this->ci->loginUser = $user_info;
 				//$this->add_user_log('login');
 	
-				if ($this->ci->loginUser['initial'])
-				{
-					$this->ci->load->service('novice_service');
-					$this->ci->novice_service->reward($user_info['id'],1);
-					$this->ci->novice_service->reward($user_info['id'],2);
-					$this->ci->novice_service->reward($user_info['id'],3);
-				}
 	
 				$this->ci->load->service('cart_service');
 				$this->ci->cart_service->init_cart_num($user_info['id']);
@@ -169,7 +162,7 @@ class User_service
 	public function user_login_check()
 	{
 		$username = trim($_POST['username']);
-		$fields   = 'id,username,usertype,nickname,mobile,password,status,validmobile,validemail,initial';
+		$fields   = 'id,username,usertype,nickname,mobile,password,status,validmobile,validemail';
 		$this->ci->load->helper('email');
 		if (valid_email($username))
 		{
@@ -224,13 +217,6 @@ class User_service
 
 			//$this->add_user_log('login');
 
-			if ($this->ci->loginUser['initial'])
-			{
-				$this->ci->load->service('novice_service');
-				$this->ci->novice_service->reward($user_info['id'],1);
-				$this->ci->novice_service->reward($user_info['id'],2);
-				$this->ci->novice_service->reward($user_info['id'],3);
-			}
 
 			$this->ci->load->service('cart_service');
 			$this->ci->cart_service->init_cart_num($user_info['id']);
@@ -264,7 +250,7 @@ class User_service
 		setcookie('PHPSESSID', '', -1, '/', TRJ_DOMAIN);
 	}
 
-	public function get_user_homeinfo($mid, $loginrID){
+	public function get_user_homeinfo($mid, $loginID){
 		$this->ci->load->model('Usernum_model');
 		$this->ci->load->model('Fans_model');
 
@@ -273,10 +259,14 @@ class User_service
 		if($oUsernum)
 			$oUser = array_merge($oUsernum, $oUser);
 
-		$o = $this->ci->Fans_model->get_by_where(array('userid'=>$mid,'fansuserid'=>$loginrID,'status<>'=>-1),'status as concernstatus');
-		if(!$o)
+		$o['concernstatus'] = 0;
+		if($loginID)
 		{
-			$o['concernstatus'] = 0;
+			$o = $this->ci->Fans_model->get_by_where(array('userid'=>$mid,'fansuserid'=>$loginID,'status<>'=>-1),'status as concernstatus');
+			if(!$o)
+			{
+				$o['concernstatus'] = 0;
+			}
 		}
 			
 		$oUser = array_merge($o, $oUser);

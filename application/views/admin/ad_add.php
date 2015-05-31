@@ -37,7 +37,7 @@
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 图片地址：</td>
 		            <td align="left" class="padL10"><div id="previews" class="drsMoveHandle">
-	                        <img id="show_img" border=0 src='<?php if( !empty($info['img']) ) echo  _get_image_url($info['img']);?>'>
+	                        <img id="show_img" width="400" border=0 src='<?php if( !empty($info['img']) ) echo  _get_image_url($info['img']);?>'>
 	                    </div>
 	                    <div class="f_note">
 	                        <input type="hidden"  name="img" id="img" value="<?php if( !empty($info['img']) ) echo $info['img']; else echo 'http://'; ?>">
@@ -54,7 +54,7 @@
 		        </tr>
 		        <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 简介：</td>
-		            <td align="left" class="padL10"><textarea type="text" name="intro" cols="50" rows="6"><?php if( !empty($info['intro']) ) echo $info['intro']; ?></textarea></td>
+		            <td align="left" class="padL10"><textarea type="text" name="summary" cols="50" rows="6"><?php if( !empty($info['summary']) ) echo $info['summary']; ?></textarea></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 备注：</td>

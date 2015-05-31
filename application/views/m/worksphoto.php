@@ -65,28 +65,6 @@
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
 
-<div class="popover-mask"></div>
-<div class="popover complaint">
-  <div class="compl_top"><span class="fl" id="X-title">创建相册</span><input type="hidden" name="albumid" id="albumid" value=""><a href="javascript:;" id="TX-win-close" title="关闭" class="close fr">×</a></div>
-  <div class="compl_con">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="80"><font>相册名称：</font></td>
-              <td><input style="width:300px" id="title" class="txt" name="title" type="text" placeholder="请输入相册名称"/></td>
-            </tr>
-            <tr><td height="10"></td></tr>
-            <tr>
-              <td valign="top"><font>相册描述：</font></td>
-              <td><textarea class="txt text" id="memo" name="memo" cols="" rows="" placeholder="请添加相册描述"></textarea></td>
-            </tr>
-            <tr><td height="10"></td></tr>
-            <tr>
-              <td>&nbsp;</td>
-               <td><input class="but" name="" id="TX-create" type="button" value="创建"/><span id="T-msg"></span></td>
-            </tr>
-        </table>
-    </div>
-</div>
 </body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>

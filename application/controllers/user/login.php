@@ -107,7 +107,7 @@ class Login extends CI_Controller {
     public function user_login_check()
     {
         $username = trim($_POST['username']);
-        $fields   = 'id,username,usertype,nickname,mobile,password,status,validmobile,validemail,initial';
+        $fields   = 'id,username,usertype,nickname,mobile,password,status,validmobile,validemail';
         $this->load->helper('email');
         if (valid_email($username))
         {
@@ -162,14 +162,6 @@ class Login extends CI_Controller {
             $this->loginUser = $user_info;
 
             //$this->add_user_log('login');
-
-            if ($this->loginUser['initial'])
-            {
-                $this->load->service('novice_service');
-                $this->novice_service->reward($user_info['id'],1);
-                $this->novice_service->reward($user_info['id'],2);
-                $this->novice_service->reward($user_info['id'],3);
-            }
 
             $param = array('ver'=>'v3');
             $this->res['data']['login_userid'] = _get_key_val($user_info['id']);

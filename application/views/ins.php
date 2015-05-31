@@ -21,7 +21,7 @@
                 <ul class="clearfix">
                     <?php foreach ($list['rows'] as $key => $a): ?>
                     <li>
-                        <a href="/i/index/<?=$a['id']?>" title="<?=$a['company']?>"><img src="<?=$a['showimg'];?>"/></a>
+                        <a href="/i/index/<?=$a['id']?>" title="<?=$a['company']?>"><img src="<?=_get_companylogo_url($a['showimg']);?>"/></a>
                     </li>
                     <?php endforeach;?>
                 </ul>

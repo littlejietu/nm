@@ -29,7 +29,7 @@
              </li>
              
              <li class="nav_search">
-                <a href="##" title="搜索"><img alt="搜索" src="<?php echo _get_cfg_path('images')?>nsos.jpg" height="20"/></a>
+                <a href="/search" title="搜索"><img alt="搜索" src="<?php echo _get_cfg_path('images')?>nsos.jpg" height="20"/></a>
              </li>
           </ul>
        </div>

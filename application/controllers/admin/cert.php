@@ -44,15 +44,22 @@ class Cert extends MY_Admin_Controller {
 		//需要修改
 		$userid	= _get_key_val($this->input->get('userid'), TRUE);
 		$result = array();
+		$info = array();
 
 		if(!empty($userid))
 		{
 			$info = $this->Cert_model->get_info_by_id($userid);
-			$result = array(
-				'info'=>$info,
-				);
+			$oDetail = $this->Userdetail_model->get_by_id($userid);
+			$info = array_merge($oDetail, $info);
 		}
-		
+
+		$oSysModelarea = _get_config('modelarea');
+		$oSysModelstyle = _get_config('modelstyle');
+		$result = array(
+			'info'=>$info,
+			'oSysModelarea'=>$oSysModelarea,
+			'oSysModelstyle'=>$oSysModelstyle,
+			);
 
 		$this->load->view('admin/Cert_add', $result);
 	}
@@ -85,7 +92,11 @@ class Cert extends MY_Admin_Controller {
                      'label'   => '所属经纪公司', 
                      'rules'   => 'trim|required'
                   ),
-                  
+                array(
+                	'field'		=>	'area',
+                	'label'		=>	'区域',
+                	'rules'		=>	'trim|required',
+                ),  
                
                
             );
@@ -112,6 +123,15 @@ class Cert extends MY_Admin_Controller {
   				$userid	= _get_key_val($this->input->get('userid'), TRUE);
   				//保存至数据库
   				$this->Cert_model->update_by_id($userid,$data);
+
+  				$style = '';
+  				if(is_array($this->input->post('style')))
+  					$style = implode(',', $this->input->post('style'));
+  				$data_detail = array(
+					'area'=>$this->input->post('area'),
+					'style'=>$style,
+					);
+  				$this->Userdetail_model->update_by_id($userid,$data_detail);
 
 				//echo '成功,<a href="/admin/aa">返回列表页</a>';
 				redirect(base_url('/admin/Cert'));

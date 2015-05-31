@@ -20,7 +20,7 @@
 			<tbody>
 		        <tr>
 		            <td height="25" align="right"> 用户id：</td>
-		            <td align="left" class="padL10"><?php if( !empty($info['userid']) ) echo $info['userid']; ?></td>
+		            <td align="left" class="padL10"><?php if( !empty($info['userid']) ) echo $info['userid']; ?>&nbsp;<a href="/admin/user/add?id=<?=_get_key_val($info['userid'])?>" target="_blank">详细信息</a></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"> 用户名(冗余)：</td>
@@ -46,9 +46,25 @@
 		            <td height="25" align="right"><span class="tips">*</span> 所属经纪公司：</td>
 		            <td align="left" class="padL10"><input type="text" name="company" value="<?php if( !empty($info['company']) ) echo $info['company']; ?>" /></td>
 		        </tr>
-		         <tr>
+		        <tr>
 		            <td height="25" align="right"> 保证金：</td>
 		            <td align="left" class="padL10"><input type="text" name="bail" value="<?php if( !empty($info['bail']) ) echo $info['bail']; ?>" /></td>
+		        </tr>
+		        <tr>
+		            <td height="25" align="right"> 模特类型：</td>
+		            <td align="left" class="padL10">
+		            	<?php foreach ($oSysModelarea as $key => $v):?>
+		            	<input type="radio" name="area" value="<?=$key?>"<?php if($key==$info['area']) echo ' checked';?> /><?=$v?>
+		            	<?php endforeach;?>
+		            </td>
+		        </tr>
+		        <tr>
+		            <td height="25" align="right"> 模特风格：</td>
+		            <td align="left" class="padL10">
+		            	<?php foreach ($oSysModelstyle as $key => $v):?>
+		            	<input type="checkbox" name="style[]" value="<?=$key?>"<?php if(strpos(','.$info['style'].',',','.$key.',')>-1) echo ' checked';?> /><?=$v?>
+		            	<?php endforeach;?>
+		            </td>
 		        </tr>
 		        <tr>
 		            <td width="150" height="25" align="right"><span class="tips">*</span> 认证状态：</td>

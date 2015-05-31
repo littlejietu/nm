@@ -164,6 +164,8 @@ class Order_service
 			$this->ci->num_service->set_user_num($buyerid,'ordernum_m');
 			$this->ci->num_service->set_user_num($sellerid,'be_fund_m');
 			$this->ci->num_service->set_user_num($buyerid,'fund_m');
+			$this->ci->num_service->set_user_num($sellerid,'be_ordernum_t');
+			$this->ci->num_service->set_user_num($buyerid,'ordernum_t');
 
 			$res['code'] = 200;
 		}

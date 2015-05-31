@@ -66,6 +66,11 @@ $config['activity'] = array(
 	2 => '模特工作',
 	3 => '模特比赛',
 );
+$config['activity_en'] = array(
+	1 => 'interview',
+	2 => 'work',
+	3 => 'game',
+);
 
 $config['get_paystatus'] = array(
 	1=>'waitpay',
@@ -83,3 +88,19 @@ $config['visittype'] = array(
 	'home'=>1,
 );
 
+$config['modelarea'] = array(
+	1=>'亚洲模特',
+	2=>'欧美模特',
+);
+
+$config['modelstyle'] = array(
+	1=>'韩系名媛',
+	2=>'气场欧美',
+	3=>'优雅复古',
+	4=>'清新文艺',
+	5=>'英伦学院',
+	6=>'甜美日系',
+	7=>'OL通勤',
+	8=>'接头混搭',
+	9=>'性感诱惑',
+);

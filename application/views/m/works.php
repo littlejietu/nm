@@ -35,10 +35,12 @@
                                     <a href="javascript:;">
                                         <img src="<?=$a['showimg']?>">
                                         <div class="mwk_hover">
+                                          <?php if($a['kind']<>1):?>
                                           <p>
-                                                <span class="mh_1 XT-album" _val="<?=_get_key_val($a['id'])?>"></span>
-                                                <span class="mh_2 XT-del-album" _val="<?=_get_key_val($a['id'])?>"></span>
-                                            </p>
+                                              <span class="mh_1 XT-album" _val="<?=_get_key_val($a['id'])?>"></span>
+                                              <span class="mh_2 XT-del-album" _val="<?=_get_key_val($a['id'])?>"></span>
+                                          </p>
+                                          <?php endif?>
                                         </div>
                                         <div class="wor_wzi">
                                             <h3><span id="X-tit-<?=_get_key_val($a['id'])?>"><?=$a['title']?></span><span>（<?=$a['photonum']?>张）</span></h3>

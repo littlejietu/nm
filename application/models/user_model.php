@@ -185,26 +185,4 @@ class User_model extends XT_Model {
 		return $db_temp['num'];
 	}
 
-	 /**
-     * 增加访问量
-     * @param $id
-     * 
-     */
-    public function add_hit_num($id, $flag=0)
-    {
-        $this->db->set('hit_num', 'hit_num+1', FALSE);
-        if ($flag)
-        {
-            $this->db->set('hit_yestoday_num', 'hit_today_num', FALSE);
-            $this->db->set('hit_today_num', '0', FALSE);
-            $this->db->set('hit_flag', $flag, FALSE);
-        }else
-        {
-            $this->db->set('hit_today_num', 'hit_today_num+1', FALSE);
-        }
-        $this->db->where('id', $id);
-        return $this->db->update($this->mTable); 
-    }
-        
-
 }

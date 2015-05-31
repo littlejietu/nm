@@ -30,14 +30,22 @@
 		        <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 用户类型：</td>
 		            <td align="left" class="padL10">
-		            	<input type="radio" name="usertype" value="1" <?php if( !empty($info['usertype']) && $info['usertype']==1 ) echo ' checked' ?> />模特
-		            		<input type="radio" name="usertype" value="2" <?php if( !empty($info['usertype']) && $info['usertype']==2 ) echo ' checked' ?> />经纪公司
-		            		<input type="radio" name="usertype" value="3" <?php if( !empty($info['usertype']) && $info['usertype']==3 ) echo ' checked' ?> />企业
+                  <?php foreach ($oSysUsertype as $k => $v):?>
+		            	<input type="radio" name="usertype" value="<?=$k?>" <?php if( !empty($info['usertype']) && $info['usertype']==$k ) echo ' checked' ?> /><?=$v?>
+		            	<?php endforeach;?>
 		            </td>
-
+            </tr>
+            <tr>
+                <td height="25" align="right"><span class="tips">*</span> 用户级别：</td>
+                <td align="left" class="padL10">
+                  <?php foreach ($oSysUserlevel as $k => $v):?>
+                  <input type="radio" name="userlevel" value="<?=$k?>" <?php if( !empty($info['userlevel']) && $info['userlevel']==$k ) echo ' checked' ?> /><?=$v?>
+                  <?php endforeach;?>
+                </td>
+            </tr>
 		        <tr>
 		            <td height="25" align="right"> 密码：</td>
-		            <td align="left" class="padL10"><input type="text" name="password" value="<?php if( !empty($info['password']) ) echo $info['password']; ?>" /></td>
+		            <td align="left" class="padL10"><input type="text" name="password" value="" /></td>
 		        </tr>
 		        <tr>
 		            <td height="25" align="right"> 会员头像：</td>

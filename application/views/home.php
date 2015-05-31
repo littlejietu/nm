@@ -22,7 +22,7 @@
    </div>
    <div class="bd">
      <ul>
-        <?php foreach ($list as $key => $a):?>
+        <?php foreach ($adlist as $key => $a):?>
             <li _src="url(<?=$a['img']?>)"><a href="<?=$a['url']?>" target="_blank"></a></li>
         <?php endforeach;?>
      </ul>
@@ -32,419 +32,75 @@
 <div class="mainbody">
     <div class="recom">
     	<ul class="clearfix">
-        	<li>
-                <a href="#">
-                    <img alt="" src="http://i.mdel.net/i/hp/JuicyCoutureSS15-320x270.jpg"/>
-                	<p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
+        	<?php foreach ($rmdlist1 as $key => $a):?>
             <li>
-                <a href="#">
-                    <img alt="" src="http://i.mdel.net/i/hp/DavidArmstrong-320x270c.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
+                <a href="/i/index/<?=$a['id']?>">
+                    <img alt="<?=$a['nickname']?>" src="<?=_get_userlogo_url($a['userlogo'])?>"/>
+                	<p><span><?=$a['nickname']?></span></p>
                 </a>
             </li>
-            <li>
-            	<a href="#">
-                	<img alt="" src="http://i.mdel.net/i/hp/YearinReview2014-320x270.gif"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-            	<a href="#">
-                	<img alt="" src="http://i.mdel.net/i/hp/ballet-320x270-c.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                	<img alt="" src="http://i.mdel.net/i/hp/DieselBlackGoldMen-FW15-320x270b.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img alt="" src="http://i.mdel.net/i/hp/SVA-320x270.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
+            <?php endforeach;?>
         </ul>
     </div>
     <div class="women">
         <div class="container">
-        	<div class="bti clearfix"><img class="fl" alt="women" src="images/bti_1.png"/><a class="fr more" href="women.php">More +</a></div>
+        	<div class="bti clearfix"><img class="fl" alt="women" src="<?php echo _get_cfg_path('images')?>bti_1.png"/><a class="fr more" href="/model?s=2">More +</a></div>
         	<ul class="clearfix">
-            	            	<li>
-                    <a href="##" title="美少妇模特秀">
+            	<?php foreach ($rmdlist2 as $key => $a):?>
+                <li>
+                    <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
                         <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
+                            <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
+                            <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
                         </div>
-                        <span class="womzi">美少妇模特秀</span>
+                        <span class="womzi"><?=$a['nickname']?></span>
                     </a>
                 </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                    <a href="##" title="美少妇模特秀">
-                        <div class="mtimg">
-                        	<img class="show" alt="美少妇模特秀" src="images/mt_1.jpg"/>
-                        	<img class="hide" alt="美少妇模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">美少妇模特秀</span>
-                    </a>
-                </li>
-                            </ul>
+                <?php endforeach;?>
+            </ul>
         </div>
     </div>
     <div class="recom">
     	<ul class="clearfix">
-        	<li>
-                <a href="#">
-                    <img src="http://i.mdel.net/i/hp/JuicyCoutureSS15-320x270.jpg"/>
-                	<p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
+        	<?php foreach ($rmdlist3 as $key => $a):?>
             <li>
-                <a href="#">
-                    <img src="http://i.mdel.net/i/hp/DavidArmstrong-320x270c.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
+                <a href="/i/index/<?=$a['id']?>">
+                    <img alt="<?=$a['nickname']?>" src="<?=_get_userlogo_url($a['userlogo'])?>"/>
+                    <p><span><?=$a['nickname']?></span></p>
                 </a>
             </li>
-            <li>
-            	<a href="#">
-                	<img src="http://i.mdel.net/i/hp/YearinReview2014-320x270.gif"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-            	<a href="#">
-                	<img src="http://i.mdel.net/i/hp/ballet-320x270-c.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                	<img src="http://i.mdel.net/i/hp/DieselBlackGoldMen-FW15-320x270b.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <img src="http://i.mdel.net/i/hp/SVA-320x270.jpg"/>
-                    <p><span>近期模特大赛公告：17届超级模特大赛获奖名单公布</span></p>
-                </a>
-            </li>
+            <?php endforeach;?>
         </ul>
     </div>
     <div class="women">
         <div class="container">
-        	<div class="bti clearfix"><img class="fl" alt="MEN" src="images/bti_2.png"/><a class="fr more" href="women.php">More +</a></div>
+        	<div class="bti clearfix"><img class="fl" alt="MEN" src="<?php echo _get_cfg_path('images')?>bti_2.png"/><a class="fr more" href="/model?s=1">More +</a></div>
         	<ul class="clearfix">
-            	            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
+                <?php foreach ($rmdlist4 as $key => $a):?>
+                <li>
+                    <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
+                        <div class="mtimg">
+                            <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
+                            <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
                         </div>
-                        <span class="womzi">老大叔模特秀</span>
+                        <span class="womzi"><?=$a['nickname']?></span>
                     </a>
                 </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            	<li>
-                	<a href="##" title="老大叔模特秀">
-                    	<div class="mtimg">
-                        	<img class="show" alt="老大叔模特秀" src="images/mt_2.jpg"/>
-                        	<img class="hide" alt="老大叔模特秀" src="images/mt_4.jpg"/>
-                        </div>
-                        <span class="womzi">老大叔模特秀</span>
-                    </a>
-                </li>
-                            </ul>
+                <?php endforeach;?>
+                </ul>
         </div>
     </div>
     <div class="insti">
         <div class="container">
-        	<div class="bti clearfix"><img class="fl" alt="institutions" src="images/bti_3.png"/><a class="fr more" href="institutions.php">More +</a></div>
+        	<div class="bti clearfix"><img class="fl" alt="institutions" src="<?php echo _get_cfg_path('images')?>bti_3.png"/><a class="fr more" href="/ins">More +</a></div>
         	<div class="our_insti">
             	<ul class="clearfix">
-                	                	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
+                    <?php foreach ($rmdlist5 as $key => $a): ?>
+                    <li>
+                        <a href="/i/index/<?=$a['id']?>" title="<?=$a['company']?>"><img src="<?=$a['showimg'];?>"/></a>
                     </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    	<li>
-                    	<a href="#" title="机构"><img alt="机构" src="images/mt_5.jpg"/></a>
-                    </li>
-                                    </ul>
+                    <?php endforeach;?>
+                </ul>
             </div>
         </div>
     </div>
@@ -452,7 +108,11 @@
     	<div class="container">
           <div class="slideTxtBox advert_stb">
                 <div class="hd">
-                    <ul><li value="adswitch.php">模特工作</li><li value="adswitch.php">模特比赛</li><li value="adswitch.php">模特活动</li></ul>
+                    <ul>
+                        <?php foreach ($oSysAct as $k => $v):?>
+                           <li value="/home/model?type=<?=$k?>"><?=$v?></li>
+                        <?php endforeach;?>
+                    </ul>
                 </div>
                 <div class="bd">
                     <ul>
@@ -468,76 +128,7 @@
             </div>
       </div>
     </div>
-    <div class="index_link">
-    	<div class="container">
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td colspan="2" rowspan="2" width="572">
-                      <div class="picimg">
-                      	 <a href="##"><img alt="模外1" src="images/link_1.jpg" width="572" height="335"/></a>
-                      </div>
-                  </td>
-                  <td rowspan="2">
-                      <div class="picimg"><a href="##"><img alt="模外2" src="images/link_2.jpg" width="235" height="335"/></a></div>
-                  </td>
-                  <td>
-                  	  <div class="lk_outer">
-                      	  <h3>时尚资讯</h3>
-                          <p>Fashion  information</p>
-                          <a class="more" href="##">MORE</a>
-                      </div>	
-                  </td>
-                </tr>
-                <tr>
-                  <td width="293">
-                      <div class="picimg"><a href="##"><img alt="模外3" src="images/link_3.jpg" width="293" height="155"/></a></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="2">
-                  	  <div class="picimg"><a href="##"><img src="images/link_4.jpg" width="279" height="335"/></a></div>
-                  </td>
-                  <td>
-                  	  <div class="lk_outer lk_out_2">
-                      	  <h3>时尚大片</h3>
-                          <p>Fashion shoot</p>
-                          <a class="more" href="##">MORE</a>
-                      </div>
-                  </td>
-                  <td colspan="2" rowspan="2">
-                  	  <div class="picimg"><a href="##"><img src="images/link_6.jpg" width="528" height="335"/></a></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                  	  <div class="picimg"><a href="##"><img src="images/link_5.jpg" width="293" height="155"/></a></div>
-                  </td>
-                </tr>
-            </table>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td colspan="2" rowspan="2">
-                  	  <div class="picimg"><a href="##"><img src="images/link_7.jpg" width="572" height="332"/></a></div>
-                  </td>
-                  <td>
-                  	  <div class="lk_outer lk_out_3">
-                      	  <h3>广告花絮</h3>
-                          <p>Fashion  information</p>
-                          <a class="more" href="##">MORE</a>
-                      </div>
-                  </td>
-                  <td rowspan="2">
-                  	  <div class="picimg"><a href="##"><img src="images/link_9.jpg" width="235" height="332"/></a></div>
-                  </td>
-                </tr>
-                <tr>
-                  <td width="293">
-                  	  <div class="picimg"><a href="##"><img src="images/link_8.jpg" width="293" height="152"/></a></div>
-                  </td>
-                </tr>
-            </table>
-		</div>
-    </div>
+    
 </div>
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>

@@ -66,8 +66,12 @@
 	                    </div>
 	            	</td>
 		        </tr>
-		         <tr>
+		        <tr>
 		            <td height="25" align="right"> 简介：</td>
+		            <td align="left" class="padL10"><textarea type="text" name="summary" cols="40" rows="10"><?php if( !empty($info['summary']) ) echo $info['summary']; ?></textarea></td>
+		        </tr>
+		         <tr>
+		            <td height="25" align="right"> 内容：</td>
 		            <td align="left" class="padL10"><textarea type="text" name="intro" cols="40" rows="10"><?php if( !empty($info['intro']) ) echo $info['intro']; ?></textarea></td>
 		        </tr>
 		         <tr>

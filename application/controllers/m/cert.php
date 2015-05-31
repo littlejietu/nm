@@ -23,12 +23,26 @@ class Cert extends CI_Controller {
 
 		$o = $this->Cert_model->get_by_id($userid);
 
+		//begin:右侧-推荐用户
+		$right_usertype = 1;
+		$right_sex = 1;
+		if($this->loginUsertype == 1)
+			$right_usertype = 2;
+		if($this->loginUser['sex']==1)
+			$right_sex = 2;
+		$arrWhere = array('usertype'=>$right_usertype,'status'=>1,'userlevel'=>1,'sex'=>$right_sex);
+		$feild = 'user.id,nickname,userlogo,company';
+		$this->load->model('Recommend_model');
+		$rightlist = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+		//end:右侧-推荐用户
+
 		$oSysBail = _get_config('bail');
 		$sysBail = $oSysBail[$that_usertype];
 		
 		$result = array(
 			'o' => $o,
 			'sysBail' => $sysBail,
+			'rightlist' => $rightlist,
 			);
 		
 		$this->load->view('m/cert',$result);

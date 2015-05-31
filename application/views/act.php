@@ -18,9 +18,9 @@
         <div class="notlce">
             <div class="ne_title">
             	<ul class="clearfix">
-                	<li<?php if( !$this->input->get('type') || $this->input->get('type')==1 ) echo ' class="ne_on"'; ?>><a href="?type=1"><em>interview</em><span>模特面试</span></a></li>
-                    <li<?php if( $this->input->get('type')==2 ) echo ' class="ne_on"'; ?>><a href="?type=2"><em>work</em><span>模特工作</span></a></li>
-                    <li<?php if( $this->input->get('type')==3 ) echo ' class="ne_on"'; ?>><a href="?type=3"><em>game</em><span>模特比赛</span></a></li>
+                    <?php foreach ($oSysAct as $k => $v):?>
+                	   <li<?php if( ($k==1 && !$this->input->get('type')) || $this->input->get('type')==$k ) echo ' class="ne_on"'; ?>><a href="?type=<?=$k?>"><em><?=$oSysAct_en[$k]?></em><span><?=$v?></span></a></li>
+                    <?php endforeach;?>
                 </ul>
             </div>
             <div class="ne_con">
@@ -30,11 +30,11 @@
                     	<a class="picimg" href="#"><img src="<?=$a['img'];?>"/></a>
                         <div class="clearfix">
                         	<p class="fl nebti"><?=$a['title'];?> <em><?=($a['innum']+$a['innumfake']);?>人 报名</em></p>
-                            <a class="fr status" href="##">
-                            <?php if($a['endtime']>=time())
-                                    echo date('Y-m-d',$a['endtime']);
-                                else
-                                    echo '已结束';?></a>
+                            <?php if($a['endtime']>=time()):?>
+                                <a class="fr status XT-enter" _val="<?=_get_key_val($a['id']);?>" title="<?=$a['title'];?>" href="javascript:;">报名</a>
+                            <?php else:?>
+                                <span class="fr status">已结束</span>
+                            <?php endif?>
                         </div>
                     </li>
                     <?php endforeach;?>
@@ -55,6 +55,7 @@
 <div id="share">
 	<a id="totop" title="" href="javascript:void(0);">返回顶部</a>
 </div></body>
-<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/act.js"></script>
 </html>

@@ -12,12 +12,14 @@ class Activity extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$dbprefix = $this->Activity_model->db->dbprefix;
 		$page     = _get_page();
 		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere);
+		$tb = $dbprefix.'activity a left join '.$dbprefix.'recommend b on(b.outerid=a.id and b.kind=2)';
+		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend','a.id desc',$tb);
 		//echo $this->db->last_query();die;
 		$oSysActType = _get_config('activity');
 
@@ -77,7 +79,7 @@ class Activity extends MY_Admin_Controller {
                      'label'   => '活动类型', 
                      'rules'   => 'trim|required'
                   ),
-               array(
+               	array(
                      'field'   => 'img', 
                      'label'   => '活动图片', 
                      'rules'   => 'trim|required'
@@ -87,12 +89,12 @@ class Activity extends MY_Admin_Controller {
                      'label'   => '开始时间', 
                      'rules'   => 'trim|required'
                   ),  
-                 array(
+                array(
                      'field'   => 'endtime', 
                      'label'   => '结束时间', 
                      'rules'   => 'trim|required'
                   ),  
-                  array(
+                array(
                      'field'   => 'place', 
                      'label'   => '地点', 
                      'rules'   => 'trim|required'
@@ -113,6 +115,8 @@ class Activity extends MY_Admin_Controller {
 					'title'=>$this->input->post('title'),
 					'type'=>$this->input->post('type'),
 					'img'=>$this->input->post('img'),
+					'img2'=>$this->input->post('img2'),
+					'summary'=>$this->input->post('summary'),
 					'intro'=>$this->input->post('intro'),
 					'begtime'=>strtotime($this->input->post('begtime')),
 					'endtime'=>strtotime($this->input->post('endtime')),
@@ -123,8 +127,8 @@ class Activity extends MY_Admin_Controller {
 					'addtime'=>time(),
 					'display'=>$this->input->post('display'),
 					'status'=>1,
-					'op_userid'=>0,
-					'op_username'=>0,
+					'op_userid'=>$this->session->userdata['admin_id'],
+					'op_username'=>$this->session->userdata['user_name'],
 					'op_time'=>time(),
 				);
 
@@ -165,6 +169,17 @@ class Activity extends MY_Admin_Controller {
 		$page = _get_page();
 
 		$this->Activity_model->delete_by_id($id);
+		redirect( base_url('/admin/activity?page='.$page) );
+
+	}
+
+	function recommend(){
+		$id	= _get_key_val($this->input->get('id'), TRUE);
+		$page = _get_page();
+
+		$this->load->model('Recommend_model');
+		$this->Recommend_model->do_recommend(2,$id);
+
 		redirect( base_url('/admin/activity?page='.$page) );
 
 	}

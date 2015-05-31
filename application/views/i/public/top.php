@@ -1,8 +1,8 @@
 <div class="introd_top">
-    <div class="intopimg"><img src="<?php echo _get_cfg_path('images')?>ma_1.jpg" /></div>
+    <div class="intopimg"><img src="<?php echo _get_image_url($oUser['userlogo']);?>" /></div>
     <div class="intcon">
         <div class="fl col_sub">
-            <div class="cs_avatar"><img src="<?php echo _get_cfg_path('images')?>ma_2.jpg"/></div>
+            <div class="cs_avatar"><img src="<?php echo _get_userlogo_url($oUser['bgimg']);?>"/></div>
             <ul class="cs_number clearfix">
                 <li><strong><?=empty($oUser['concernnum'])?0:$oUser['concernnum'];?></strong><span>关注</span></li>
                 <li><strong><?=empty($oUser['fansnum'])?0:$oUser['fansnum'];?></strong> <span>粉丝</span></li>
@@ -12,7 +12,7 @@
         </div>
         <div class="fl info_wrap">
         	<div class="clearfix">
-            	<div class="namebox fl"><span><?=$oUser['company']?></span></div>
+            	<div class="namebox fl"><span><?=$oUser['nickname']?></span></div>
                 <div class="contact attention fl">
                     <?php if($oUser['concernstatus']>0):?>
                         <a href="javascript:;" class="atte_cur"><i class="qq atte"></i>已关注</a>
@@ -20,10 +20,12 @@
                         <a href="javascript:;" class="atte_cur XT-fans"><i class="qq atte"></i>未关注</a>
                     <?php endif?>
                     </div>
+                <?php if(!empty($oUser['qq'])):?>
             	<div class="contact fl"><a href="##"><i class="qq"></i>联系我</a></div>
+                <?php endif?>
             	<div class="tips piccon fl"><a href="##" rel="牛模网签约经纪公司" class="preview"></a></div>
             </div>
-            <div class="namebox"><p><?=$oUser['sex']==1?'男':'女'?> &nbsp;&nbsp; <?=$oUser['city']?> &nbsp;&nbsp;</p></div>
+            <div class="namebox"><p><?php if($oUser['sex']) echo $oUser['sex']==1?'男':'女'?> &nbsp;&nbsp; <?=$oUser['city']?> &nbsp;&nbsp;</p></div>
         </div>
     </div>
 </div>

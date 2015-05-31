@@ -25,10 +25,57 @@ class Home extends CI_Controller {
 		//header('location:'.base_url('model') );
 
 		$this->load->model('Ad_model');
-		$list = $this->Ad_model->get_ads_by_code('home_top_banner');
+		$adlist = $this->Ad_model->get_ads_by_code('home_top_banner');
+
+		$this->load->model('Recommend_model');
+		
+		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>1,'sex'=>2);
+		$feild = 'user.id,nickname,userlogo,company,showimg';
+		$rmdlist1 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+
+		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>0,'sex'=>2);
+		$rmdlist2 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+
+		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>1,'sex'=>1);
+		$rmdlist3 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+
+		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>0,'sex'=>1);
+		$rmdlist4 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+
+		$arrWhere = array('usertype'=>2,'status'=>1,'userlevel'=>0);
+		$rmdlist5 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
+
+		$oSysAct = _get_config('activity');
+
 		$result = array(
-			'list' => $list,
+			'adlist' => $adlist,
+			'rmdlist1' => $rmdlist1,
+			'rmdlist2' => $rmdlist2,
+			'rmdlist3' => $rmdlist3,
+			'rmdlist4' => $rmdlist4,
+			'rmdlist5' => $rmdlist5,
+			'oSysAct' => $oSysAct,
 			);
 		$this->load->view('home',$result);
+	}
+
+	public function model(){
+		$type = $this->input->get('type');
+		$type = $type==0?1:$type;
+		$this->load->model('Recommend_model');
+		$arrWhere = array('type'=>$type,'status'=>1,'display'=>1,'img2<>'=>'');
+		$actlist = $this->Recommend_model->get_act_list($arrWhere, 'activity.id,title,img2,summary,activity.addtime', 10);
+		$oAct = array();
+		if(!empty($actlist))
+		{
+			$oAct = $actlist[0];
+			unset($actlist[0]);
+		}
+
+		$result = array(
+			'actlist' => $actlist,
+			'oAct' => $oAct,
+			);
+		$this->load->view('homemodel',$result);
 	}
 }

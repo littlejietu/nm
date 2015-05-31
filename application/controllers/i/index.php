@@ -19,7 +19,7 @@ class Index extends CI_Controller {
 		$this->user_service->visit($userid, $this->loginID, $sysVisittype['home']);
 		//-浏览
 		$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
-		
+
 		$result = array(
 			'oUser' => $oUser,
 			);

@@ -51,14 +51,21 @@ class User extends MY_Admin_Controller {
 		//需要修改
 		$id	= _get_key_val($this->input->get('id'), TRUE);
 		$result = array();
+		$info = array();
 
 		if(!empty($id))
 		{
 			$info = $this->User_model->get_info_by_id($id);
-			$result = array(
-				'info'=>$info,
-				);
+			
 		}
+
+		$oSysUsertype = _get_config('usertype');
+		$oSysUserlevel = _get_config('userlevel');
+		$result = array(
+				'info'=>$info,
+				'oSysUsertype' => $oSysUsertype,
+				'oSysUserlevel' => $oSysUserlevel,
+			);
 		
 
 		$this->load->view('admin/user_add', $result);
@@ -85,7 +92,12 @@ class User extends MY_Admin_Controller {
                      'field'   => 'usertype', 
                      'label'   => '用户类型', 
                      'rules'   => 'trim|required'
-                  ),  
+                  ),
+               	array(
+                     'field'   => 'userlevel', 
+                     'label'   => '用户级别', 
+                     'rules'   => 'trim|required'
+                  ), 
                 array(
                      'field'   => 'height', 
                      'label'   => '身高', 
@@ -121,7 +133,8 @@ class User extends MY_Admin_Controller {
 					'username'=>$this->input->post('username'),
 					'nickname'=>$this->input->post('nickname'),
 					'usertype'=>$this->input->post('usertype'),
-					'password'=>$this->input->post('password'),
+					'userlevel'=>$this->input->post('userlevel'),
+					
 					'userlogo'=>$this->input->post('userlogo'),
 					'realname'=>$this->input->post('realname'),					
 					//'mobile'=>$this->input->post('mobile'),					
@@ -130,6 +143,9 @@ class User extends MY_Admin_Controller {
 					'showimg'=>$this->input->post('showimg'),
 					'qq'=>$this->input->post('qq'),				
 				);
+				if($this->input->post('password'))
+					$data['password'] = md5($this->input->post('password'));
+
 
 				$data_detail = array(
 					'height'=>$this->input->post('height'),
@@ -191,9 +207,22 @@ class User extends MY_Admin_Controller {
 	function del(){
 		$id	= _get_key_val($this->input->get('id'), TRUE);
 		$page = _get_page();
+		
+		$this->User_model->update_by_where(array('id'=>$id),array('status'=>0));
 
-		$this->User_model->delete_by_id($id);
 		redirect( base_url('/admin/user?page='.$page) );
 
 	}
+
+	function recommend(){
+		$id	= _get_key_val($this->input->get('id'), TRUE);
+		$page = _get_page();
+
+		$this->load->model('Recommend_model');
+		$this->Recommend_model->do_recommend(1,$id);
+
+		redirect( base_url('/admin/user?page='.$page) );
+
+	}
+	
 }

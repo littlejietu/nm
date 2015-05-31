@@ -1,10 +1,10 @@
 <div class="fl uc_menu">
     <div class="menu_head">
-        <a class="m_himg" href="##">
+        <a class="m_himg" href="/m/">
             <img src="<?php echo _get_userlogo_url($this->thatUser['userlogo'])?>"/>
             <div class="head_bj"></div>
         </a>
-        <h3 class="m_name"><a href="/n/member.php"><?=$this->thatUser['nickname']?></a></h3>
+        <h3 class="m_name"><a href="/m/"><?=$this->thatUser['nickname']?></a></h3>
         <p class="m_prompt">
             <?php $agentUser = $this->cache->get('agentUser');
                 if(!empty($agentUser)):?>
@@ -38,7 +38,23 @@
         </ul>
     </div>
     <div class="m_level">
-        <h3 class="clearfix ml_bti"><font class="fl">账户安全级别：</font><em class="fr">中</em></h3>
-        <div class="level"><span class="rating_2"></span></div>
+        <h3 class="clearfix ml_bti"><font class="fl">账户安全级别：</font><em class="fr">
+            <?php $str_safety = '低';
+             switch ($this->loginUser['safety']) {
+                case 1:
+                    $str_safety = '低';
+                    break;
+                case 2:
+                    $str_safety = '中';
+                    break;
+                case 3:
+                    $str_safety = '高';
+                    break;
+                
+                default:
+                    # code...
+                    break;
+            }?><?=$str_safety?></em></h3>
+        <div class="level"><span class="rating_<?=$this->loginUser['safety']?>"></span></div>
     </div>
 </div>

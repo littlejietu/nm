@@ -53,9 +53,6 @@ class Ad extends MY_Admin_Controller {
 		if(!empty($id))
 		{
 			$info = $this->Ad_model->get_info_by_id($id);
-
-			
-
 		}
 		
 		$result = array(

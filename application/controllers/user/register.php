@@ -49,7 +49,7 @@ class Register extends CI_Controller {
             switch($version)
             {
                 default://默认注册页
-                    list($config, $data_main) = $this->phone_config();
+                    list($config, $data_main, $data_detail) = $this->phone_config();
                     break;
             }
 
@@ -63,9 +63,7 @@ class Register extends CI_Controller {
                     );
                 $userid = $this->User_model->insert_string( array_merge($data_main,$data_init) );
 
-                $data_detail = array(
-                        'userid'=>$userid,
-                    );
+                $data_detail = array_merge(array('userid'=>$userid), $data_detail);
                 $data_memo = array(
                         'userid'=>$userid,
                     );
@@ -74,6 +72,18 @@ class Register extends CI_Controller {
                 $this->User_model->insert($data_detail);
                 $this->User_model->set_table('user_memo');
                 $this->User_model->insert($data_memo);
+                //begin-初始化相册
+                $this->load->model('Album_model');
+                $data_album = array('userid'=>$userid,
+                    'title'=>'精选作品',
+                    'memo'=>'系统默认',
+                    'kind'=>1,
+                    'status'=>1,
+                    'addtime'=>time(),
+                    );
+                $this->Album_model->insert($data_album);
+                //end-初始化相册
+
                 $res['code'] = 200;
             }
             else
@@ -119,9 +129,15 @@ class Register extends CI_Controller {
             'mobile'=>$this->input->post('mobile'),
             'username'=>$this->input->post('mobile'),
             'usertype'=>$this->input->post('usertype'),
+            'userlevel'=>0,
         );
 
-        return array($config, $data_main);
+        $safety = _check_password_safe($this->input->post('password_phone'));
+        $data_detail = array(
+            'safety'=>$safety,
+        );
+
+        return array($config, $data_main, $data_detail);
     }
 
 

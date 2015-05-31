@@ -226,22 +226,7 @@
                       </form>
                     </div>
                     <div class="fr um_wind">
-                    	<div class="uw_help">
-                        	<div class="uwh_title"><h3></h3><span><i></i>我的档期</span></div>
-                            <div class="u_circle">
-                            	<a href="/i/schedule/<?=$this->loginID?>"><h3>档期小助手</h3><p>方便 快捷 明确</p></a>
-                            </div>
-                        </div>
-                        <div class="uw_help">
-                        	<div class="uwh_title"><h3></h3><span><i></i>热门推荐</span></div>
-                            <div class="u_recom">
-                            	<ul class="clearfix">
-                                	<?php for($i=0;$i<6;$i++){?>
-                                	<li><a href="##"><img src="<?php echo _get_cfg_path('images')?>h_1.jpg"/></a></li>
-                                    <?php }?>
-                                </ul>
-                            </div>
-                        </div>
+                    	<?php include_once(VIEWPATH."m/public/right.php");?>
                     </div>
                 </div>
             </div>

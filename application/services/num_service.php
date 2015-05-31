@@ -14,7 +14,7 @@ class Num_service
 	public function set_user_num($userid, $field, $addnum = 0)
 	{
 		$res_num = 0;
-		$aField = array('ordernum','ordernum_new','ordernum_m','be_ordernum','be_ordernum_new','be_ordernum_m','be_commentnum','be_commentnum_new','commentnum','commentnum_new','fansnum','concernnum','visitnum','fund_m','be_fund_m');
+		$aField = array('ordernum','ordernum_new','ordernum_m','be_ordernum','be_ordernum_new','be_ordernum_m','be_commentnum','be_commentnum_new','commentnum','commentnum_new','fansnum','concernnum','visitnum','fund_m','be_fund_m','be_ordernum_t','ordernum_t');
 		if(in_array($field, $aField))
 		{
 			$this->ci->load->model('Order_model');
@@ -76,6 +76,16 @@ class Num_service
 				case 'ordernum_m':
 					$num = $this->ci->Order_model->get_count(array('buyerid'=>$userid,'status'=>1,'addtime<'=>time()+30*24*60*60));
 					$this->ci->Usernum_model->insert(array('userid'=>$userid,'ordernum_m'=>$num));
+					$res_num = $num;
+					break;
+				case 'be_ordernum_t':
+					$num = $this->ci->Order_model->get_count(array('sellerid'=>$userid,'status'=>1,'date(from_unixtime(addtime))'=>'date(now())'));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'be_ordernum_t'=>$num));
+					$res_num = $num;
+					break;
+				case 'ordernum_t':
+					$num = $this->ci->Order_model->get_count(array('buyerid'=>$userid,'status'=>1,'date(from_unixtime(addtime))'=>'date(now())'));
+					$this->ci->Usernum_model->insert(array('userid'=>$userid,'ordernum_t'=>$num));
 					$res_num = $num;
 					break;
 				case 'be_fund_m':

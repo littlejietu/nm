@@ -40,6 +40,7 @@
 				<td><?php if(!empty($a['isrecommend'])) echo '推荐';?></td>
 				<td class="con_title"> 
 					<a href="/admin/message/add?touserid=<?php echo _get_key_val($a['id']);?>">发消息</a>
+					<a href="/admin/user/recommend?id=<?php echo _get_key_val($a['id']);?>"><?php if(empty($a['isrecommend'])) echo '推荐';else echo '不推荐';?></a>
 					<a href="/admin/user/add?id=<?php echo _get_key_val($a['id']);?>">修改</a>
 					<a href="/admin/user/del?id=<?php echo _get_key_val($a['id']);?>">删除</a>
 				</td>

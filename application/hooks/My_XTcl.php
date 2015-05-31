@@ -47,8 +47,9 @@ class My_XTcl{
 		{
 			$CI->loginUser['auth'] = array();
 			
-			$fields = 'id,usertype,userlevel,username,nickname,realname,mobile,email,userlogo,validemail,validmobile,status,lastlogintime';
+			$fields = 'id,usertype,userlevel,username,nickname,realname,mobile,email,userlogo,validemail,validmobile,status,sex,lastlogintime';
 			$CI->loginUser = XTM('User')->fetch_row(array('id'=>$xt_loginID), $fields);
+
 
 
 			if($CI->loginUser && $CI->loginUser['status'])
@@ -62,6 +63,13 @@ class My_XTcl{
 				$CI->loginUserNum = array();
 				if($CI->loginUsertype==1)
 					$CI->loginUserNum = XTM('Usernum')->fetch_row(array('userid'=>$xt_loginID), 'be_ordernum_new');
+
+				$fields = 'safety';
+				$oUser_detail = XTM('Userdetail')->fetch_row(array('userid'=>$xt_loginID), $fields);
+				if($oUser_detail)
+				{
+					$CI->loginUser = array_merge($oUser_detail, $CI->loginUser);
+				}
 				
 
 				$loginUserID = _get_key_val($CI->loginUser['id']);
@@ -76,7 +84,7 @@ class My_XTcl{
 						$where = array(
 							'touserid'=>0,
 							'status'=>1,
-							'addtime<'=>time()-7*60*60,
+							'addtime>'=>time()-7*24*60*60,
 						);                    
 						$sysMsgList = XTM('Message')->get_list($where);
 

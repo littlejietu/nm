@@ -190,9 +190,9 @@ class XT_Model extends CI_Model {
 		$this->db->update($this->mTable);
 	}
 
-	public function get_list($where=array(), $fields='*', $order_by='')
+	public function get_list($where=array(), $fields='*', $order_by='', $limit = 0)
 	{
-		return $this->fetch_rows($where, $fields, $order_by);
+		return $this->fetch_rows($where, $fields, $order_by, $limit);
 	}
 	
 	public function fetch_row($where, $fields='*', $order_by='')
@@ -254,47 +254,6 @@ class XT_Model extends CI_Model {
 		}
 		return $this->db->get()->result_array();
 	}
-
-	/*public function fetch_page_more($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='')
-	{
-		$order_by = $order_by ? $order_by : $this->mPkId.' DESC';
-		$fields_count = 'COUNT(1) AS count';
-		$this->db->select($fields_count, FALSE)
-					->from($this->mTable);
-	    foreach($where as $key=>$val)
-		{	
-		    if ($key{0} == '@' && is_array($val))
-		    {// array('@where'=>array('a'=>1,'b'=>1))
-		        $key = substr($key, 1);
-		        foreach($val as $k=>$v)
-		        {
-		            $this->db->$key($k, $v);
-		        }
-		        continue;
-		    }
-			if (is_array($val))
-			{
-				$this->db->where_in($key, $val);
-			}
-			else
-			{
-				$this->db->where($key, $val);
-			}
-		}
-		$result = $this->db->get()->row_array();
-		
-		$num = $result['count'];
-		$result['rows'] = array();
-		if ($num > 0)
-		{
-		    $sql = $this->db->last_query();
-			$sql =  str_replace($fields_count, $fields, $sql);
-			$sql .= ' ORDER BY '.$order_by;
-			$sql .= ' LIMIT '.(($page-1)*$pagesize).','.$pagesize;
-			$result['rows'] = $this->db->query($sql)->result_array();
-		}
-		return $result;
-	}*/
 	
 	public function fetch_page($page=1, $pagesize=10, $where=array(), $fields='*', $order_by='', $tb = '')
 	{
