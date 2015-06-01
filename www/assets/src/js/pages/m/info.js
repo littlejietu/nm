@@ -49,4 +49,25 @@ $(function() {
     });
     //验证--end
 
+
+    //地区--begin
+    if(typeof($('#city').val())!="undefined")
+    {
+        var multiSelect         = new MultiSelect('divCity','city',dataMultiArea,dataAllArea);
+        multiSelect.pLabels  = '省,市';
+        //multiSelect.pClass   = 'w70 mr5';
+        multiSelect.pNames  = 'province_id,city_id';
+        multiSelect.pStart  = 1;
+        multiSelect.init(chinese_id);
+        var initId = $('#init_city_id').val();
+        if(initId=='' || initId==0)
+            initId = chinese_id;
+        multiSelect.select(initId);
+        // $("#divCity select").each(function(){
+        //     $(this).addClass("select-style");
+        //     //$(this).wrap('<span class="standard_select"><span class="select_shelter"></span></span></div>');
+        // });
+    }
+    //地区--end
+
 });

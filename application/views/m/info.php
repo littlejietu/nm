@@ -151,7 +151,11 @@
                               </tr>
                               <tr>
                                 <td>所在城市</td>
-                                <td><input name="city" type="text" class="txt" value="<?=$o['city']?>" placeholder="请输入你所在城市"/></td>
+                                <td>
+                                  <span id="divCity"></span>
+                                  <input type="hidden" id="init_city_id" name="init_city_id" value="<?=$o['city_id'];?>">
+                                  <input type="hidden" id="city" name="city" value="<?=$o['city'];?>">
+                                </td>
                                 <td><span class="tips">*</span>三围</td>
                                 <td><input name="BWH" type="text" class="txt" value="<?=$o['bust'].'-'.$o['waist'].'-'.$o['hips']?>" placeholder="请输入你的三围"/>以-组合</td>
                               </tr>
@@ -242,9 +246,14 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('lib')?>data/area.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('lib')?>data/multiselect.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
+
 <script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <script type="text/javascript">
+
+
 <?php $timestamp = $this->timestamp;?>
 $(function() {
     $('#userlogo_upload').uploadify({

@@ -111,6 +111,8 @@ class Info extends CI_Controller {
 			'hips'=>$hips,
 			'shoes'=>(int)$this->input->post('shoes'),
 			'cup'=>(int)$this->input->post('cup'),
+			'province_id'=>(int)$this->input->post('province_id'),
+			'city_id'=>(int)$this->input->post('city_id'),
 			);
 		$data_memo = array(
 			'brand'=>$this->input->post('brand'),

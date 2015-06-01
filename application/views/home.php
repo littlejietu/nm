@@ -16,8 +16,10 @@
 <!--banner start -->
 <div id="slideBox" class="banner">
    <div class="hd">
+    <?php if(count($adlist)>1):?>
       <a class="prev" title="上一页">上一页</a>
       <a class="next" title="下一页">下一页</a>
+    <?php endif?>
       <ul></ul>
    </div>
    <div class="bd">

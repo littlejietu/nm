@@ -30,7 +30,7 @@ img,object,embed {max-width:100%;height:auto;}
 object,embed {height:100%;}
 img{-ms-interpolation-mode:bicubic;border:none;display:inline-block;vertical-align:middle;}
 textarea {height:auto;}
-select {width:100%;}
+select {/*width:100%;*/}
 
 /*浮动*/
 .fl{float:left;}

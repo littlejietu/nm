@@ -16,8 +16,8 @@
         <div class="newcon"><?=$oAct['summary']?></div>
         <a class="more" href="/act/detail?id=<?=$oAct['id']?>">MORE</a> 
     </div>
-    <?php endif?>
     <img class="fr" src="<?=_get_image_url($oAct['img2'])?>"/>
+    <?php endif?>
 </div>
 <div class="fr atb_fr">
   <div id="adswitch" class="picBtnTop">
