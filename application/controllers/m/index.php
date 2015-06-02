@@ -16,6 +16,7 @@ class Index extends CI_Controller {
 		$this->load->model('Ad_model');
 		$adlist = $this->Ad_model->get_ads_by_code('member_banner');
 
+		$this->load->model('Usernum_model');
 		$o = $this->Usernum_model->get_by_id($this->thatUser['id']);
 
 		//begin:右侧-推荐用户

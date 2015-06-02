@@ -1,8 +1,8 @@
 <div class="introd_top">
-    <div class="intopimg"><img src="<?php echo _get_image_url($oUser['userlogo']);?>" /></div>
+    <div class="intopimg"><img src="<?php if(!empty($oUser['bgimg'])) echo _get_image_url($oUser['bgimg']);?>" /></div>
     <div class="intcon">
         <div class="fl col_sub">
-            <div class="cs_avatar"><img src="<?php echo _get_userlogo_url($oUser['bgimg']);?>"/></div>
+            <div class="cs_avatar"><img src="<?=_get_userlogo_url($oUser['userlogo']);?>"/></div>
             <ul class="cs_number clearfix">
                 <li><strong><?=empty($oUser['concernnum'])?0:$oUser['concernnum'];?></strong><span>关注</span></li>
                 <li><strong><?=empty($oUser['fansnum'])?0:$oUser['fansnum'];?></strong> <span>粉丝</span></li>
