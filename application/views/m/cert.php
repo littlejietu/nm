@@ -99,13 +99,13 @@
                                   <td><input name="company" type="text" class="txt" placeholder="请输入所属经纪公司" value="<?php if(!empty($o['company'])) echo $o['company'];?>"></td>
                                 </tr>
                                 <tr>
-                                  <td>认证保证金</td>
+                                  <td>工作担保金</td>
                                   <td><input class="money" type="text" value="¥ <?php if(!empty($o['bail'])) echo $o['bail']; else echo $sysBail;?>" disabled="">
                                       <input name="bail" type="hidden" value="<?php if(!empty($o['bail'])) echo $o['bail']; else echo $sysBail;?>"><span class="remark">备注：保证金在注销账号时，返予您的账户。</span></td>
                                 </tr>
                                 <tr style="border-bottom:none;">
                                   <td style="height:80px">&nbsp;</td>
-                                  <td><input name="" type="submit" class="but" value="前去缴纳"></td>
+                                  <td><input name="" type="button" class="but" value="保存" style="margin-right:20px"><input name="" type="submit" class="but" value="前去缴纳"></td>
                                 </tr>
                             </tbody></table>
                           </form>
