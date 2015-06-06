@@ -80,6 +80,13 @@
                 <div class="p_wzi"><?=$oUser['takenote']?></div>
             </div>
             <br /><br />
+            <div class="title">模特卡</div>
+            <br />
+            <div class="per_advert">
+                <a href="##" target="_blank"><img style="width:1070px;height:500px;" src="/upload/showimg/201505/showimg_8_1432006844.jpg"/></a>
+            </div>
+            <br /><br />
+            <div class="title">精选作品</div>
         </div>
     </div>
 </div>
