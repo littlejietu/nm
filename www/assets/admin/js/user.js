@@ -23,6 +23,8 @@ function ajaxLogin(baseUrl){
         var url         =  baseUrl+"admin/useraction/ajaxLogin";
         var parmarr     = {username:username,password:password,code:code};
         rel             = ajaxMain(url,parmarr);
+        if(rel != "success")
+            $('#yzimg').attr('src','/util/captcha_admin?'+Math.random());
         if(rel == "code_error"){
 			$(".error").html("验证码错误！");
 			$(".error").show();

@@ -197,6 +197,11 @@ echo $Shortcut;exit;
 		$this->load->helper('captcha');
 		create_captcha(4,95,40);
 	}
+
+	public function captcha_admin(){
+		$this->load->helper('captcha');
+		create_captcha(4,95,40,'verify_adm');
+	}
 	
 	public function nokeywords()
 	{    

@@ -73,12 +73,20 @@ class userAction extends MY_Admin_Controller
 
         $userName = $_POST['username']; //过滤特殊字符和html标签
         $password = self::setMd5($_POST['password']);
-        $code = self::setMd5(strtolower($_POST['code']));
-        $loginCode = $this->session->userdata('login_code');
+        $code = $this->input->post('code');
 
-        if ($code != $loginCode && $code != '') { //验证码错误
-            //echo 'code_error';
-            //exit;
+        //
+        if (!$code)
+        {
+            echo 'code_error';
+            exit;
+        }
+        $this->load->helper('captcha');
+
+        if (!check_captcha($code,'verify_adm'))
+        {
+            echo 'code_error';
+            exit;
         }
 
         $userInfo = $this->UserModel->getAdminUserInfoByUserName($userName);

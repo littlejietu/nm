@@ -55,9 +55,10 @@ document.onkeydown=function(event){
                             <input class="code" type="text" id="loginCode" placeholder="验证码" style="width:85px;"/>
                             
                         </p>
-                        <div id="codeimg" class="codeimg fl" onClick="javascript:;"><!--ajaxGetVerify('<?php echo base_url()?>')-->
 
-                        <?php //echo $code['image'];?></div><span id="error_code"></span>
+                        <div id="codeimg" class="codeimg fl" onClick="javascript:;">
+                            <img class="xtml-15" id="yzimg" src="/util/captcha_admin?<?php echo rand(10000,9999);?>" onclick="this.src='/util/captcha_admin?'+Math.random()" alt="验证码" >
+                        </div><span id="error_code"></span>
     
                         <div class="but fl" onClick="javascript:ajaxLogin('<?php echo base_url()?>');">登&nbsp;录</div>
                 </div>
@@ -72,3 +73,4 @@ document.onkeydown=function(event){
     <span class="error"></span>
 </div>
 <?php include_once('publish/foot.php');?>
+
