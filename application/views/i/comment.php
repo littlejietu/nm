@@ -19,7 +19,7 @@
 	<div class="introd container">
         
     <?php
-      if($oUser['usertype']==1)
+      if( in_array($oUser['usertype'], array(1,4,5)) )
         include_once(VIEWPATH."i/public/top.php");
       if($oUser['usertype']==2)
         include_once(VIEWPATH."i/public/top_ins.php");?>

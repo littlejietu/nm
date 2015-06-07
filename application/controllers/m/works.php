@@ -151,8 +151,13 @@ class Works extends CI_Controller {
 	public function delphoto(){
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
-		$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
-		$res['code'] = 200;
+		if(!$id)
+			$id = $this->input->post('id');
+		if($id)
+		{
+			$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
+			$res['code'] = 200;
+		}
 
 		$this->view->json($res);
 	}

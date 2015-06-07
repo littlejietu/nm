@@ -39,14 +39,73 @@ class Model extends CI_Controller {
 			'list' => $alist,
 			);
 		*/
+		$get_style = (int)$this->input->get('style');
+		$get_sex = (int)$this->input->get('sex');
+		$get_area = (int)$this->input->get('area');
+		$get_height = $this->input->get('height');
+		$get_orderby = $this->input->get('orderby');
+
 		
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 12;
 		$arrParam = array();
 		$arrWhere = array('status'=>1,'showimg<>'=>"''",'showimg2<>'=>"''");
+		if($get_style)
+		{
+			$arrWhere["concat(',',style,',') like "]="'%,".$get_style.",%'";
+			$arrParam['style']=$get_style;
+		}
+		if($get_sex)
+		{
+			$arrWhere['sex']=$get_sex;
+			$arrParam['sex']=$get_sex;
+		}
+		if($get_area)
+		{
+			$arrWhere['area']=$get_area;
+			$arrParam['area']=$get_area;
+		}
+		if($get_height)
+		{
+			$arrHeightParam = explode('-', $get_height);
+			if(count($arrHeightParam)==2)
+			{
+				if($arrHeightParam[0])
+					$arrWhere['height>=']=$arrHeightParam[0];
+				if($arrHeightParam[1])
+					$arrWhere['height<=']=$arrHeightParam[1];
+			}
+			else
+				$arrWhere['height>']=$get_height;
+			
+			$arrParam['height']=$get_height;
+		}
+		$orderby = 'addtime desc';
+		if($get_orderby)
+		{
+			$arrParam['orderby']=$get_orderby;
+			switch ($get_orderby) {
+				case 1:
+					$orderby = 'addtime desc';
+					break;
+				case 2:
+					$orderby = 'fansnum desc';
+					break;
+				case 3:
+					$orderby = 'be_ordernum desc';
+					break;
+				
+				default:
+					$orderby = 'addtime desc';
+					break;
+			}
+			
+		}
 
 		$this->load->model('User_model');
-		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere,'id,nickname,showimg,showimg2','addtime desc');
+		$dbprefix = $this->User_model->db->dbprefix;
+		$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid) left join '.$dbprefix.'user_num c on(a.id=c.userid)';
+		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere,'a.id,nickname,showimg,showimg2',$orderby, $tb);
 
 		//分页
 		$pagecfg = array();
@@ -57,9 +116,12 @@ class Model extends CI_Controller {
 		//$this->load->library('pagination');
 		$this->pagination->initialize($pagecfg);
 		$list['pages'] = $this->pagination->create_links();
+		$oSysModelstyle = _get_config('modelstyle');
 
 		$result = array(
 			'list' => $list,
+			'oSysModelstyle'=>$oSysModelstyle,
+			'arrParam'=>$arrParam,
 			);
 
 		$this->load->view('model',$result);

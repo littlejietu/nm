@@ -14,7 +14,7 @@ class User extends MY_Admin_Controller {
 	{
 		$dbprefix = $this->User_model->db->dbprefix;
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 20;
 		$arrParam = array();
 		$arrWhere = array();
 		//$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid) left join '.$dbprefix.'recommend c on(c.outerid=a.id and c.kind=1)';
@@ -53,18 +53,28 @@ class User extends MY_Admin_Controller {
 		$result = array();
 		$info = array();
 
+		$oSysType = array();
 		if(!empty($id))
 		{
 			$info = $this->User_model->get_info_by_id($id);
+
+			if($info)
+			{
+				$oSysType = _get_config('type');
+	        	$oSysType = $oSysType[$info['usertype']];
+	        }
 			
 		}
 
 		$oSysUsertype = _get_config('usertype');
 		$oSysUserlevel = _get_config('userlevel');
+		$oSysModelstyle = _get_config('modelstyle');
 		$result = array(
 				'info'=>$info,
 				'oSysUsertype' => $oSysUsertype,
 				'oSysUserlevel' => $oSysUserlevel,
+				'oSysType' => $oSysType,
+				'oSysModelstyle' => $oSysModelstyle,
 			);
 		
 
@@ -76,102 +86,21 @@ class User extends MY_Admin_Controller {
 		
 		if ($this->input->is_post())
 		{
+			$usertype = (int)$this->input->post('usertype');
+			if($usertype==1)
+				list($config, $data, $data_detail, $data_memo) = $this->u_model_config();
+			else if( in_array($usertype, array(4,5)) )
+				list($config, $data, $data_detail, $data_memo) = $this->u_photo_config();
+			else if($usertype==2)
+				list($config, $data, $data_detail, $data_memo) = $this->u_ins_config();
+
 			//验证规则
-			$config = array(
-                array(
-                     'field'   => 'username', 
-                     'label'   => '用户名', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'nickname', 
-                     'label'   => '昵称', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'usertype', 
-                     'label'   => '用户类型', 
-                     'rules'   => 'trim|required'
-                  ),
-               	array(
-                     'field'   => 'userlevel', 
-                     'label'   => '用户级别', 
-                     'rules'   => 'trim|required'
-                  ), 
-                array(
-                     'field'   => 'height', 
-                     'label'   => '身高', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'weight', 
-                     'label'   => '体重', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'bust', 
-                     'label'   => '胸围', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'waist', 
-                     'label'   => '腰围', 
-                     'rules'   => 'trim|required'
-                  ),  
-                array(
-                     'field'   => 'hips', 
-                     'label'   => '臀围', 
-                     'rules'   => 'trim|required'
-                  ),  
-            );
+			
 
             $this->form_validation->set_rules($config);
 
 			if ($this->form_validation->run() === TRUE)
   			{
-  				$data = array(
-					'username'=>$this->input->post('username'),
-					'nickname'=>$this->input->post('nickname'),
-					'usertype'=>$this->input->post('usertype'),
-					'userlevel'=>$this->input->post('userlevel'),
-					
-					'userlogo'=>$this->input->post('userlogo'),
-					'realname'=>$this->input->post('realname'),					
-					//'mobile'=>$this->input->post('mobile'),					
-					'sex'=>$this->input->post('sex'),
-					'city'=>$this->input->post('city'),	
-					'showimg'=>$this->input->post('showimg'),
-					'qq'=>$this->input->post('qq'),				
-				);
-				if($this->input->post('password'))
-					$data['password'] = md5($this->input->post('password'));
-
-
-				$data_detail = array(
-					'height'=>$this->input->post('height'),
-					'weight'=>$this->input->post('weight'),
-					'bust'=>$this->input->post('bust'),
-					'waist'=>$this->input->post('waist'),
-					'hips'=>$this->input->post('hips'),
-					'shoes'=>$this->input->post('shoes'),
-					'cup'=>$this->input->post('cup'),
-					);
-				$data_memo = array(
-					'brand'=>$this->input->post('brand'),
-					'brandtype'=>$this->input->post('brandtype'),
-					'awards'=>$this->input->post('awards'),
-					'fee'=>$this->input->post('fee'),
-					'servicetime'=>$this->input->post('servicetime'),
-					'takenote'=>$this->input->post('takenote'),
-					'planeshot'=>$this->input->post('planeshot'),
-					'tactivity'=>$this->input->post('tactivity'),
-					'telead'=>$this->input->post('telead'),
-					'magazine'=>$this->input->post('magazine'),
-					'card'=>$this->input->post('card'),
-					'bgimg'=>$this->input->post('bgimg'),
-					'video'=>$this->input->post('video'),					
-					);
-
   				$id	= _get_key_val($this->input->get('id'), TRUE);
   				if($id)
   					$data['id'] = $id;
@@ -223,6 +152,210 @@ class User extends MY_Admin_Controller {
 
 		redirect( base_url('/admin/user?page='.$page) );
 
+	}
+
+
+
+
+	//////////////////////////////
+	private function u_model_config(){
+		//验证规则		required必填项
+		$config = array(
+                array(
+                     'field'   => 'username', 
+                     'label'   => '用户名', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'nickname', 
+                     'label'   => '昵称', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'usertype', 
+                     'label'   => '用户类型', 
+                     'rules'   => 'trim|required'
+                  ),
+               	array(
+                     'field'   => 'userlevel', 
+                     'label'   => '用户级别', 
+                     'rules'   => 'trim|required'
+                  ), 
+                array(
+                     'field'   => 'height', 
+                     'label'   => '身高', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'weight', 
+                     'label'   => '体重', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'bust', 
+                     'label'   => '胸围', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'waist', 
+                     'label'   => '腰围', 
+                     'rules'   => 'trim|required'
+                  ),  
+                array(
+                     'field'   => 'hips', 
+                     'label'   => '臀围', 
+                     'rules'   => 'trim|required'
+                  ),  
+            );
+		//-验证规则
+        
+
+		$style = '';
+		if(is_array($this->input->post('style')))
+			$style = implode(',', $this->input->post('style'));
+
+		$data = array(
+			'username'=>$this->input->post('username'),
+			'nickname'=>$this->input->post('nickname'),
+			'usertype'=>$this->input->post('usertype'),
+			'userlevel'=>$this->input->post('userlevel'),
+			
+			'userlogo'=>$this->input->post('userlogo'),
+			'realname'=>$this->input->post('realname'),					
+			//'mobile'=>$this->input->post('mobile'),					
+			'sex'=>$this->input->post('sex'),
+			'city'=>$this->input->post('city'),	
+			'showimg'=>$this->input->post('showimg'),
+			'showimg2'=>$this->input->post('showimg2'),
+			'qq'=>$this->input->post('qq'),				
+		);
+		if($this->input->post('password'))
+			$data['password'] = md5($this->input->post('password'));
+
+
+		$data_detail = array(
+			'height'=>$this->input->post('height'),
+			'weight'=>$this->input->post('weight'),
+			'bust'=>$this->input->post('bust'),
+			'waist'=>$this->input->post('waist'),
+			'hips'=>$this->input->post('hips'),
+			'shoes'=>$this->input->post('shoes'),
+			'cup'=>$this->input->post('cup'),
+			'style'=>$style,
+			'province_id'=>(int)$this->input->post('province_id'),
+			'city_id'=>(int)$this->input->post('city_id'),
+			);
+		$data_memo = array(
+			'brand'=>$this->input->post('brand'),
+			'brandtype'=>$this->input->post('brandtype'),
+			'awards'=>$this->input->post('awards'),
+			'fee'=>$this->input->post('fee'),
+			'servicetime'=>$this->input->post('servicetime'),
+			'takenote'=>$this->input->post('takenote'),
+			'planeshot'=>$this->input->post('planeshot'),
+			'tactivity'=>$this->input->post('tactivity'),
+			'telead'=>$this->input->post('telead'),
+			'magazine'=>$this->input->post('magazine'),
+			'card'=>$this->input->post('card'),
+			'bgimg'=>$this->input->post('bgimg'),
+			'video'=>$this->input->post('video'),					
+			);
+
+		return array($config, $data, $data_detail, $data_memo);
+
+
+	}
+
+	private function u_photo_config(){
+		//验证规则		required必填项
+		$config = array(
+            array(
+                 'field'   => 'sex', 
+                 'label'   => '性别', 
+                 'rules'   => 'trim|required'
+              ),  
+        );
+		if(!$this->thatUser['nickname'])
+			$config[] = array(
+                 'field'   => 'nickname', 
+                 'label'   => '艺名', 
+                 'rules'   => 'trim|required'
+              );
+		//-验证规则
+
+		$data = array(					
+			'userlogo'=>$this->input->post('userlogo'),
+			'realname'=>$this->input->post('realname'),					
+			//'mobile'=>$this->input->post('mobile'),					
+			'sex'=>$this->input->post('sex'),
+			'city'=>$this->input->post('city'),
+			'mobile'=>$this->input->post('mobile'),
+		);
+
+		$data_detail = array(
+			'province_id'=>(int)$this->input->post('province_id'),
+			'city_id'=>(int)$this->input->post('city_id'),
+			);
+		$data_memo = array(
+			'brand'=>$this->input->post('brand'),
+			'brandtype'=>$this->input->post('brandtype'),
+			'memo'=>$this->input->post('memo'),
+			'fee'=>$this->input->post('fee'),
+			'servicetime'=>$this->input->post('servicetime'),
+			'takenote'=>$this->input->post('takenote'),
+			'bgimg'=>$this->input->post('bgimg'),
+			//'video'=>$this->input->post('video'),					
+			);
+
+		return array($config, $data, $data_detail, $data_memo);
+
+
+	}
+
+	private function u_ins_config(){
+		//验证规则
+		$config = array(
+            array(
+                 'field'   => 'realname', 
+                 'label'   => '联系人姓名', 
+                 'rules'   => 'trim|required'
+              ),  
+            array(
+                 'field'   => 'sex', 
+                 'label'   => '性别', 
+                 'rules'   => 'trim|required'
+              ),
+            array(
+                 'field'   => 'memo', 
+                 'label'   => '公司简介', 
+                 'rules'   => 'trim|required'
+              ),
+        );
+		//-验证规则
+
+		$type = '';
+		if(is_array($this->input->post('type')))
+			$type = implode(',', $this->input->post('type'));
+
+		$data = array(					
+			'userlogo'=>$this->input->post('userlogo'),
+			'showimg'=>$this->input->post('showimg'),
+			'realname'=>$this->input->post('realname'),
+			'sex'=>$this->input->post('sex'),
+			'city'=>$this->input->post('city'),
+		);
+
+		$data_detail = array(
+			'type'=>$type,
+			'province_id'=>(int)$this->input->post('province_id'),
+			'city_id'=>(int)$this->input->post('city_id'),
+			);
+
+		$data_memo = array(
+			'memo'=>$this->input->post('memo'),
+			);
+				
+		return array($config, $data, $data_detail, $data_memo);
 	}
 	
 }

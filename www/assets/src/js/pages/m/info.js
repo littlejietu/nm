@@ -1,4 +1,16 @@
 $(function() {
+    $('#XT-info-base,#XT-info-pic').bind('click',function(){
+        var id = $(this).attr('id');
+        if(id=='XT-info-base'){
+            $('#tb-'+id).show();
+            $('#tb-XT-info-pic').hide();
+        }
+        else
+        {
+            $('#tb-'+id).show();
+            $('#tb-XT-info-base').hide();
+        }
+    });
 
 	//验证--begin
     $("#xtform").validate({
@@ -69,5 +81,7 @@ $(function() {
         // });
     }
     //地区--end
+
+
 
 });

@@ -1,10 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $config['md5_prefix']                       = 'myxt';
+$config['sitename'] = '牛模网';
 $config['bail']	= array(
 	1=>1000,
 	2=>100,
 	3=>300,
+	4=>200,
+	5=>100,
 	);
 $config['cfg_path'] = array(
 	'css'=>'/assets/src/css/',
@@ -19,6 +22,8 @@ $config['usertype'] = array(
 	1 => '模特',
 	2 => '经纪公司',
 	3 => '企业',
+	4 => '摄影师',
+	5 => '化妆师',
 );
 $config['userlevel'] = array(
 	0 => '普通',
@@ -88,4 +93,21 @@ $config['modelstyle'] = array(
 	7=>'OL通勤',
 	8=>'接头混搭',
 	9=>'性感诱惑',
+);
+
+$config['type'] = array(
+	1=>array(
+	),
+	2=>array(
+		1=>'经纪公司',
+		2=>'摄影设计',
+		3=>'化妆造型',
+		4=>'培训学校',
+		5=>'场景基地',
+		6=>'媒体杂志',
+		7=>'广告传媒',
+	),
+	3=>array(),
+	4=>array(),
+	5=>array(),
 );

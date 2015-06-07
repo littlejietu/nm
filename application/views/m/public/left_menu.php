@@ -14,7 +14,7 @@
     </div>
     <div class="menu_box">
         <ul>
-        <?php if($this->thatUser['usertype']==1):?>
+        <?php if(in_array($this->thatUser['usertype'],array(1,4,5)) ):?>
             <li<?php if( strtolower(uri_string())=='m/fans' ) echo ' class="current"';?>><a href="/m/fans">互动总览<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/info' ) echo ' class="current"';?>><a href="/m/info">个人资料<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/product' ) echo ' class="current"';?>><a href="/m/product">工作价格<i></i></a></li>

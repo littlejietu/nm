@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>我的认证-机构中心-牛模网</title>
+<title>我的认证-个人中心-<?=_get_config('sitename')?></title>
 <?php include_once(VIEWPATH."public/header_title.php");?>
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
@@ -24,11 +24,11 @@
                   <div class="fl um_uitop">
                       <div class="authent">
                           <div class="aut_bti">我的认证</div>
-                          <?php if($o && ($o['status']==1 || $o['status']==0 || $o['status']==2) ):?>
+                          <?php if($o && ($o['status']==1 || $o['status']==2) ):?>
                             <?php if($o['status']==1):?>
                               认证成功
                             <?php else:?>
-                              正在审核中..
+                              缴费中..
                             <?php endif?>
                             <table class="aut_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody><tr>
@@ -49,13 +49,15 @@
                                       <img border=0 src='<?php echo '/'.$o['idnoimg'];?>'>
                                   </td>
                                 </tr>
+                                <?php if($o['company']):?>
                                 <tr>
                                   <td>所属经纪公司</td>
                                   <td><?=$o['company']?></td>
                                 </tr>
+                                <?php endif?>
                                 <tr>
-                                  <td>认证保证金</td>
-                                  <td><input class="money" type="text" value="¥ <?=$o['bail']?>" disabled=""><span class="remark">备注：保证金在注销账号时，返予您的账户。</span></td>
+                                  <td>工作担保金</td>
+                                  <td><input class="money" type="text" value="¥ <?=$o['bail']?>" disabled=""><span class="remark">备注：担保金在注销账号时，返予您的账户。</span></td>
                                 </tr>
                             </tbody></table>
                           <?php else:?>
@@ -99,13 +101,13 @@
                                   <td><input name="company" type="text" class="txt" placeholder="请输入所属经纪公司" value="<?php if(!empty($o['company'])) echo $o['company'];?>"></td>
                                 </tr>
                                 <tr>
-                                  <td>认证保证金</td>
+                                  <td>工作担保金</td>
                                   <td><input class="money" type="text" value="¥ <?php if(!empty($o['bail'])) echo $o['bail']; else echo $sysBail;?>" disabled="">
-                                      <input name="bail" type="hidden" value="<?php if(!empty($o['bail'])) echo $o['bail']; else echo $sysBail;?>"><span class="remark">备注：保证金在注销账号时，返予您的账户。</span></td>
+                                      <input name="bail" type="hidden" value="<?php if(!empty($o['bail'])) echo $o['bail']; else echo $sysBail;?>"><span class="remark">备注：担保金在注销账号时，返予您的账户。</span></td>
                                 </tr>
                                 <tr style="border-bottom:none;">
                                   <td style="height:80px">&nbsp;</td>
-                                  <td><input name="" type="submit" class="but" value="前去缴纳"></td>
+                                  <td><input name="" type="submit" class="but" value="保存" style="margin-right:20px"><a class="but" href="/m/cert/gotopay" target="_blank">前去缴纳</a></td>
                                 </tr>
                             </tbody></table>
                           </form>

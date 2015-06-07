@@ -109,7 +109,7 @@
 
                   $tmp_title='';
                   //已有预约
-                  foreach ($list as $key => $a) {
+                  foreach ($list['rows'] as $key => $a) {
                       if(strtotime($the_date) == strtotime(date('Y-m-d',$a['datetime'])))
                       {
 

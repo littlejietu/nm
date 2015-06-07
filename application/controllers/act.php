@@ -45,6 +45,41 @@ class Act extends CI_Controller {
 		$this->load->view('act',$result);
 	}
 
+	public function enterlist(){
+		$aid = (int)$this->input->get('aid');
+
+		$page     = _get_page();
+		$pagesize = 120;
+		$arrParam = array('aid'=>$aid);
+		$arrWhere = array('actid'=>$aid);
+
+		$o = $this->Activity_model->get_by_id($aid);
+		
+		$dbprefix = $this->Activity_model->db->dbprefix;
+		$this->load->model('Activityenter_model');
+		$tb = $dbprefix.'activity_enter a left join '.$dbprefix.'user b on(a.userid=b.id and b.status=1)';
+		$list = $this->Activityenter_model->fetch_page($page, $pagesize, $arrWhere,'a.userid,b.nickname,b.userlogo','a.addtime desc',$tb);
+		//echo $this->db->last_query();die;
+		
+
+		//分页
+		$pagecfg = array();
+		$pagecfg['base_url']     = _create_url('act/enterlist', $arrParam);
+		$pagecfg['total_rows']   = $list['count'];
+		$pagecfg['cur_page'] = $page;
+		$pagecfg['per_page'] = $pagesize;
+		//$this->load->library('pagination');
+		$this->pagination->initialize($pagecfg);
+		$list['pages'] = $this->pagination->create_links();
+
+		$result = array(
+			'list' => $list,
+			'o' => $o,
+			);
+
+		$this->load->view('actenterlist',$result);
+	}
+
 	public function enter(){
 		$actid = _get_key_val($this->input->post('id'),true);
 

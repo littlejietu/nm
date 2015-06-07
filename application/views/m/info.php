@@ -28,43 +28,21 @@
                           <?php echo validation_errors('<div class="error">', '</div>');?>
                           <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0">
                            	  <tr>
-                               	  <td colspan="4">基本信息</td>
+                               	  <td><a href="javascript:;" id="XT-info-base">基本信息</a>&nbsp;&nbsp;<a href="javascript:;" id="XT-info-pic">图片设置</a></td>
                               </tr>
-                              <tr>
-                                <td width="86"><span class="tips">*</span>昵  称</td>
-                                <td colspan="3">
-                                  <?php if(!empty($o['nickname'])) 
-                                          echo $o['nickname']; 
-                                        else
-                                          echo '<input name="nickname" type="text" class="txt" placeholder="请输入昵称"/>';
-
-                                  ?>
-                                  <?php //echo form_error('nickname');?>
-                                  </td>
-                              </tr>
-                              <tr>
-                                <td width="86">头  像</td>
-                                <td colspan="3">
-                                    <div id="previews" class="drsMoveHandle">
-                                   	    <img id="show_userlogo" border=0 src='<?php echo $o['userlogo']? '/'.trim($o['userlogo'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
-                                    </div>
-                                    <div class="f_note">
-                                        <p>尺寸：180×180像数</p>
-                                        <input type="hidden"  name="userlogo" id="userlogo" value="<?=$o['userlogo']?>">
-                                        <em><i class="icoPro16"></i>支持JPG,PNG，上传图片大小不能超过1M</em>
-                                        <div class="file_but">
-                                            <input id="userlogo_upload" name="userlogo_upload" value="选择照片" class="inp_file" type="file">
-                                        </div>
-                                    </div>
-                                </td>
-                              </tr>
+                          </table>
+                          <?php
+                          if($o['usertype']==1)
+                            include_once(VIEWPATH."m/public/info_model_inc.php");
+                          else if(in_array($o['usertype'], array(4,5)) )
+                            include_once(VIEWPATH."m/public/info_photo_inc.php");
+                          ?>
+                            <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0" id="tb-XT-info-pic" style="display:none">
+                              <?php if($o['usertype']==1):?>
                               <tr>
                                 <tr>
                                 <td width="86">形象照片</td>
                                 <td colspan="3">
-                                    <div class="fl">
-                                        <img id="show_showimg" border=0 src='<?php echo $o['showimg']? '/'.trim($o['showimg'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
-                                    </div>
                                     <div class="f_note">
                                         <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="showimg" id="showimg" value="<?=$o['showimg']?>">
@@ -73,14 +51,17 @@
                                             <input id="showimg_upload" name="showimg_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
                                     </div><br>
+                                    <div id="show_showimg">
+                                        <?php if($o['showimg']):?>
+                                          <a href="<?='/'.$o['showimg']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
                                     
                                 </td>
                               </tr>
                               <tr>
                                 <td></td>
-                                <td colspan="3"><div class="fl">
-                                        <img id="show_showimg2" border=0 src='<?php echo $o['showimg2']? '/'.trim($o['showimg2'],'/') : _get_cfg_path('images').'imghead.jpg';?>'>
-                                    </div>
+                                <td colspan="3">
                                     <div class="f_note">
                                         <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="showimg2" id="showimg2" value="<?=$o['showimg2']?>">
@@ -88,14 +69,18 @@
                                         <div class="file_but">
                                             <input id="showimg2_upload" name="showimg2_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
-                                    </div></td>
+                                    </div>
+                                    <div id="show_showimg2">
+                                        <?php if($o['showimg2']):?>
+                                          <a href="<?='/'.$o['showimg2']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
+                                </td>
                               </tr>
+                              
                                <tr>
                                 <td width="86">模特卡</td>
                                 <td colspan="3">
-                                    <div class="fl">
-                                        <img id="show_card" border=0 src='<?php echo $o['card']? '/'.$o['card'] : _get_cfg_path('images').'imghead.jpg';?>'>
-                                    </div>
                                     <div class="f_note">
                                         <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="card" id="card" value="<?=$o['card']?>">
@@ -104,14 +89,17 @@
                                             <input id="card_upload" name="card_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
                                     </div>
+                                    <div id="show_card">
+                                        <?php if($o['card']):?>
+                                          <a href="<?='/'.$o['card']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
                                 </td>
                               </tr>
+                              <?php endif?>
                               <tr>
                                 <td width="86">主页背景图</td>
                                 <td colspan="3">
-                                    <div class="fl">
-                                        <img id="show_bgimg" border=0 src='<?php echo $o['bgimg']? '/'.$o['bgimg'] : _get_cfg_path('images').'imghead.jpg';?>'>
-                                    </div>
                                     <div class="f_note">
                                         <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
@@ -120,8 +108,14 @@
                                             <input id="bgimg_upload" name="bgimg_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
                                     </div>
+                                    <div id="show_bgimg">
+                                        <?php if($o['bgimg']):?>
+                                          <a href="<?='/'.$o['bgimg']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
                                 </td>
                               </tr>
+                              <?php if($o['usertype']==1):?>
                               <tr>
                                 <td width="86">视频</td>
                                 <td colspan="3">
@@ -135,90 +129,10 @@
                                     </div>
                                 </td>
                               </tr>
-                                <td width="86">真实姓名</td>
-                                <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
-                                <td><span class="tips">*</span>身高</td>
-                                <td><input name="height" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/> cm<?php //echo form_error('height');?></td>
-                              </tr>
-                              <tr>
-                                <td>性别</td>
-                                <td class="reg-sort">
-                                	<p><input type="radio" name="sex" value="1" <?php if($o['sex']==1) echo 'checked';?> id="sort_1"/><label for="sort_1">男</label></p>
-                        			<p><input type="radio" name="sex" value="2" <?php if($o['sex']==2) echo 'checked';?> id="sort_2"/><label for="sort_2">女</label></p>
-                                </td>
-                                <td><span class="tips">*</span>体重</td>
-                                <td><input name="weight" type="text" class="txt" value="<?=$o['weight']?>" placeholder="请输入体重"/> Kg</td>
-                              </tr>
-                              <tr>
-                                <td>所在城市</td>
-                                <td>
-                                  <span id="divCity"></span>
-                                  <input type="hidden" id="init_city_id" name="init_city_id" value="<?=$o['city_id'];?>">
-                                  <input type="hidden" id="city" name="city" value="<?=$o['city'];?>">
-                                </td>
-                                <td><span class="tips">*</span>三围</td>
-                                <td><input name="BWH" type="text" class="txt" value="<?=$o['bust'].'-'.$o['waist'].'-'.$o['hips']?>" placeholder="请输入你的三围"/>以-组合</td>
-                              </tr>
-                              <tr>
-                                <td>罩杯</td>
-                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/>B</td>
-                                <td>鞋码</td>
-                                <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/>码</td>
-                              </tr>
-                               <tr>
-                                <td>QQ</td>
-                                <td><input name="qq" type="text" class="txt" value="<?=$o['qq']?>" placeholder="请输入你的QQ"/></td>
-                                
-                              </tr>
-                               <tr>
-                               	  <td colspan="4">个人说明</td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>平面拍摄</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="planeshot" cols="" rows=""><?=$o['planeshot']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>获得奖项</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="awards" cols="" rows=""><?=$o['awards']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>T台活动</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你获得的奖项" name="tactivity" cols="" rows=""><?=$o['tactivity']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>影视广告</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="telead" cols="" rows=""><?=$o['telead']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>杂志拍摄</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="magazine" cols="" rows=""><?=$o['magazine']?></textarea></td>
-                              </tr>
-                              
-                               <!-- <tr>
-                                <td width="86" valign="top"><font>拍摄经历</font></p></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌"  name="brand" cols="" rows=""><?=$o['brand']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>工作经历</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="请输入你拍摄过的品牌类型"  name="brandtype" cols="" rows=""><?=$o['brandtype']?></textarea></td>
-                              </tr>  -->
-                              
-                              <tr>
-                                  <td colspan="4">工作说明</td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>工作报价</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="fee" cols="" rows=""><?=$o['fee']?></textarea></td>
-                              </tr>
-                              <tr>
-                                <td width="86" valign="top"><font>工作时间</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder=""  name="servicetime" cols="" rows=""><?=$o['servicetime']?></textarea></td>
-                              </tr>
-                              <tr style="border-bottom:none;">
-                                <td width="86" valign="top"><font>注意事项</font></td>
-                                <td colspan="3"><textarea class="txt text" placeholder="" name="takenote" cols="" rows=""><?=$o['takenote']?></textarea></td>
-                              </tr>
-                              <tr style="border-bottom:none;">
+                              <?php endif?>
+                          </table>
+                          <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0" id="tb-XT-info-pic">
+                          <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
                                 <td colspan="3">
                                     <input name="submit" type="submit" class="but" value="提交"/>
@@ -317,7 +231,8 @@ $(function() {
           var imgpath=data[1];
           $('#showimg').val(imgpath);
           $('#showimg').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_showimg').attr('src','/'+imgpath);
+          //$('#show_showimg').html('<a href="/'+imgpath+'" target="_blank">查看</a>');
+          $('#show_showimg').html('保存后可查看');
         }
       }
 
@@ -350,7 +265,8 @@ $(function() {
           var imgpath=data[1];
           $('#showimg2').val(imgpath);
           $('#showimg2').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_showimg2').attr('src','/'+imgpath);
+          //$('#show_showimg2').html('<a href="/'+imgpath+'" target="_blank">查看</a>');
+          $('#show_showimg2').html('保存后可查看');
         }
       }
 
@@ -383,7 +299,8 @@ $(function() {
           var imgpath=data[1];
           $('#card').val(imgpath);
           $('#card').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_card').attr('src','/'+imgpath);
+          //$('#show_card').html('<a href="/'+imgpath+'" target="_blank">查看</a>');
+          $('#show_card').html('保存后可查看');
         }
       }
 
@@ -416,7 +333,8 @@ $(function() {
           var imgpath=data[1];
           $('#bgimg').val(imgpath);
           $('#bgimg').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_bgimg').attr('src','/'+imgpath);
+          //$('#show_bgimg').html('<a href="/'+imgpath+'" target="_blank">查看</a>');
+          $('#show_bgimg').html('保存后可查看');
         }
       }
 
@@ -449,7 +367,7 @@ $(function() {
           var imgpath=data[1];
           $('#video').val(imgpath);
           $('#video').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_video').attr('src','/'+imgpath);
+          //$('#show_video').attr('src','/'+imgpath);
         }
       }
 

@@ -50,7 +50,7 @@ class Cert extends CI_Controller {
 
 	private function save()
 	{
-		$res = array('code'=>0, 'data'=>array());
+		//$res = array('code'=>0, 'data'=>array());
 		$config = array(
            	array(
                  'field'   => 'realname', 
@@ -72,11 +72,11 @@ class Cert extends CI_Controller {
                  'label'   => '身份证照片', 
                  'rules'   => 'trim|required'
             ),
-            array(
-                 'field'   => 'company', 
-                 'label'   => '所属公司', 
-                 'rules'   => 'trim|required'
-            ),
+            // array(
+            //      'field'   => 'company', 
+            //      'label'   => '所属公司', 
+            //      'rules'   => 'trim|required'
+            // ),
         );
 
         $this->form_validation->set_rules($config);
@@ -105,12 +105,27 @@ class Cert extends CI_Controller {
 				);
 
 			$this->Cert_model->insert($o);
-			$res['code'] = 200;
+			//$res['code'] = 200;
 		}
-		else
-		{
-			$res['data']['error_messages'] = $this->form_validation->getErrors();
-		}
+		// else
+		// {
+		// 	$res['data']['error_messages'] = $this->form_validation->getErrors();
+		// }
+	}
+
+	public function gotopay(){
+		// $userid = $this->thatUser['id'];
+
+		// $data = array(
+		// 			'addtime'=>time(),
+		// 			'status'=>2,
+		// 			'op_userid'=>$this->loginID,
+		// 			'op_username'=>$this->loginUserName,
+		// 			'op_time'=>time(),
+		// 		);
+		// $this->Cert_model->update_by_id($userid, $data);
+
+		echo '前往缴费..';
 	}
 
 

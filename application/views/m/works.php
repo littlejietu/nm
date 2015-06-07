@@ -23,7 +23,7 @@
                 
                 <div class="clearfix uitopg">
                     <div class="transa">
-                        <div class="aut_bti"><h3>作品管理</h3></div>
+                        <div class="aut_bti clearfix"><h3 class="fl">作品管理</h3><span class="fr">可自主上传作品，相册</span></div>
                         <div class="works malbums mworks">
                           <div class="aut_bti mw_upload clearfix">
                               <a class="fl addto ato_1" href="/m/works/photo"><i></i>上传照片</a>
@@ -79,7 +79,7 @@
             <tr><td height="10"></td></tr>
             <tr>
               <td>&nbsp;</td>
-               <td><input class="but" name="" id="TX-create" type="button" value="创建"/><span id="T-msg"></span></td>
+               <td><input class="but" name="" id="TX-create" type="button" value="保存"/><span id="T-msg"></span></td>
             </tr>
         </table>
     </div>

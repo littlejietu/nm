@@ -49,7 +49,7 @@
                                         <img id="show_userlogo" border=0 src='<?php echo _get_userlogo_url($o['userlogo']);?>'>
                                     </div>
                                     <div class="f_note">
-                                        <p>尺寸：90×90像数</p>
+                                        <p>尺寸：180×180像数</p>
                                         <input type="hidden"  name="userlogo" id="userlogo" value="<?=$o['userlogo']?>">
                                         <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
                                         <div class="file_but">
@@ -73,6 +73,15 @@
                                         </div>
                                     </div>
                                 </td>
+                              </tr>
+                              <tr>
+                                <td>类型</td>
+                                <td colspan="3">
+                                  <?php foreach ($oSysType as $key => $v):?>
+                                    <input type="checkbox" name="type[]" value="<?=$key?>"<?php if(strpos(','.$o['type'].',',','.$key.',')>-1) echo ' checked';?> /><?=$v?>
+                                  <?php endforeach;?>
+                                </td>
+                                
                               </tr>
                               <tr>
                                 <td width="86"><span class="tips">*</span>联系人姓名</td>

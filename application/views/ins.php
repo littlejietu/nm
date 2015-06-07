@@ -15,6 +15,15 @@
 <body>
 <?php include_once(VIEWPATH."public/header.php");?>
 <div class="mainbody">
+    <div class="container">
+        <div class="m_sort">
+            <ul class="clearfix">
+                <?php foreach ($oSysType as $key => $v):?>
+                    <li><a href="<?=_create_url('ins', array_merge($arrParam, array('type'=>$key)) )?>" title="<?=$v?>"<?php if(!empty($arrParam['type']) && $arrParam['type']==$key) echo ' class="curr"';?>><?=$v?></a></li>
+                <?php endforeach;?>
+            </ul>
+        </div>
+    </div>
     <div class="insti inst_tion">
         <div class="container">
             <div class="our_insti">
@@ -37,10 +46,7 @@
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
 
-
-<div id="share">
-	<a id="totop" title="" href="javascript:void(0);">返回顶部</a>
-</div></body>
+</body>
 <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 </html>

@@ -275,6 +275,21 @@ class User_service
 
 	}
 
+	public function get_user_goodwork($mid){
+		$res = array();
+		$this->ci->load->model('Album_model');
+		$this->ci->load->model('Photo_model');
+
+		$oAlbum = $this->ci->Album_model->get_by_where(array('userid'=>$mid,'status'=>1,'kind'=>1),'id');
+		if($oAlbum)
+		{
+			$albumid = $oAlbum['id'];
+			$res = $this->ci->Photo_model->get_list(array('albumid'=>$albumid,'userid'=>$mid,'status'=>1),'title,img,addtime','addtime desc');
+		}
+
+		return $res;
+	}
+
 	public function visit($mid, $visitid, $type){
 		if($mid==$visitid)
 			return;

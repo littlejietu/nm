@@ -58,14 +58,14 @@ class Login extends CI_Controller {
 
         if (!check_captcha($login_code))
         {
-            $res['code'] = 201;
+            $res['code'] = 202;
             $res['data']['error_messages']['result'] = '验证码输入不正确';
             return $res;
         }
 
         if ($res['error_num'] >=10)
         {
-            $res['code'] = 201;
+            $res['code'] = 203;
             $res['data']['error_messages']['result'] = '输入密码超过10次，您忘记密码了，可以找回~';
             return $res;
         }

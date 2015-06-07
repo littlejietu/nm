@@ -92,7 +92,7 @@ st_select.prototype={
 					        if(res.code ==200 ){
 					        	var html = '';
 					            $.each(res.data.photolist,function(n,item) {
-					            	html += '<li><img src="'+item.img+'"><div class="udl_bti"><p>'+item.title+'</p><a class="delete"></a></div></li>'
+					            	html += '<li><img src="'+item.img+'"><div class="udl_bti"><p>'+item.title+'</p><a _val="'+item.id+'" class="delete"></a></div></li>'
 					            });
 					            $('#X-photo-list').html(html);
 					        }else{
@@ -154,7 +154,7 @@ var TTDiy_select=new st_select({  //参数可选
 $('.upload_list').delegate('.delete','click', function(){
 	var obj = $(this).parent().parent();
 
-	if(!confirm("确定要删除相册吗")){return}
+	if(!confirm("确定要删除作品吗?")){return}
 	$.ajax( {
 	    url:'/m/works/delphoto',
 	    data:{

@@ -9,7 +9,8 @@ class Schedule extends CI_Controller {
         $this->load->model('User_model');
         $this->load->model('Usernum_model');
         $this->load->model('Product_model');
-        $this->load->model('Order_model');
+        //$this->load->model('Order_model');
+        $this->load->model('Schedule_model');
     }
 	
 
@@ -37,16 +38,11 @@ class Schedule extends CI_Controller {
 			$oProductList[ $a['item'] .'_'. $a['scene'] .'_'. $a['time'] ] = $a['price'];
 		}
 
-		$this->load->helper('site');
-		$oDefaultPrice = _get_product_default_price();
+		//默认汇总
+		//$this->load->helper('site');
+		//$oDefaultPrice = _get_product_default_price();
+		//$oProductList = array_merge($oDefaultPrice, $oProductList);
 
-		$oProductList = array_merge($oDefaultPrice, $oProductList);
-
-		$oSysPaystatus = $this->config->item('get_paystatus');
-		$arrWhere = array('a.sellerid'=>$userid,
-				'a.status'=>1,'paystatus'=>"'".$oSysPaystatus[3]."'");
-		$tb = $dbprefix.'order a left join '.$dbprefix.'order_book b on(a.id=b.orderid)';
-		$list_result = $this->Order_model->fetch_page(1, 100, $arrWhere,'a.id,a.title,b.begtime,b.endtime','a.addtime desc',$tb);
 
 		// $list = array(
 		// 	array('id'=>1,'datetime'=>'2015-05-01 8:30:00','title'=>'周末特色文化广场活动吧','yinyueji'=>1,'classid'=>1),
@@ -55,6 +51,14 @@ class Schedule extends CI_Controller {
 		// 	array('id'=>3,'datetime'=>'2015-05-1 18:00:00','title'=>'kk','yinyueji'=>1,'classid'=>12),
 		// 	array('id'=>5,'datetime'=>'2015-05-15 9:20:20','title'=>'测试','yinyueji'=>1,'classid'=>1),
 		// 	);
+
+		/* //订单->档期
+		$oSysPaystatus = $this->config->item('get_paystatus');
+		$arrWhere = array('a.sellerid'=>$userid,
+				'a.status'=>1,'paystatus'=>"'".$oSysPaystatus[3]."'");
+		$tb = $dbprefix.'order a left join '.$dbprefix.'order_book b on(a.id=b.orderid)';
+		$list_result = $this->Order_model->fetch_page(1, 100, $arrWhere,'a.id,a.title,b.begtime,b.endtime','a.addtime desc',$tb);
+
 		$list = array();
 		foreach ($list_result['rows'] as $key => $a) {
 			$list[] = array('id'=>$a['id'],'datetime'=>$a['begtime'],'endtime'=>$a['endtime'],'title'=>$a['title']);
@@ -69,7 +73,12 @@ class Schedule extends CI_Controller {
 			}
 
 		}
+		*/
 
+		//档期
+		$arrWhere = array('userid'=>$userid,
+				'status'=>1);
+		$list = $this->Schedule_model->fetch_page(1, 100, $arrWhere,'id,dodate as datetime,0 as endtime,thing as title','addtime desc');
 		
 		$result = array(
 			//'o' => $o,

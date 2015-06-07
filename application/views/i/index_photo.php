@@ -24,48 +24,22 @@
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
             	<li><span>姓名</span> <?=$oUser['nickname']?></li>
-                <li><span>罩杯</span> <?=$oUser['cup']?>  B</li>
-                <li><span>身高</span> <?=$oUser['height']?>  cm</li>
-                <li><span>体重</span> <?=$oUser['weight']?>  kg</li>
-                <li><span>三围</span> <?=$oUser['bust']?>-<?=$oUser['waist']?>-<?=$oUser['hips']?></li>
-                <li><span>鞋码</span> <?=$oUser['shoes']?>  码</li>
             </ul>
             <br /><br /><br />
             <div class="title">个人说明</div>
             <div class="clearfix">
             	<div class="fl flpet">
-                    
                     <div class="per_con">
-                        <h3 class="p_bti"><i></i>拍摄经历</h3>
-                        <div class="p_wzi"> <?=$oUser['brand']?><br /></div>
+                        <h3 class="p_bti"><i></i>个人介绍</h3>
+                        <div class="p_wzi"> <?=$oUser['memo']?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>工作经历</h3>
                         <div class="p_wzi"> <?=$oUser['brandtype']?><br /></div>
                     </div>
                     <div class="per_con">
-                        <h3 class="p_bti"><i></i>平面拍摄</h3>
-                        <div class="p_wzi"> <?=$oUser['planeshot']?><br /></div>
-                    </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>获得奖项</h3>
-                        <div class="p_wzi"> <?=$oUser['awards']?><br /></div>
-                    </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>T台活动</h3>
-                        <div class="p_wzi"> <?=$oUser['tactivity']?><br /></div>
-                    </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>影视广告</h3>
-                        <div class="p_wzi"> <?=$oUser['telead']?><br /></div>
-                    </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>杂志拍摄</h3>
-                        <div class="p_wzi"> <?=$oUser['magazine']?><br /></div>
-                    </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>视频地址</h3>
-                        <div class="p_wzi"> <?=$oUser['video']?><br /></div>
+                        <h3 class="p_bti"><i></i>拍摄经历</h3>
+                        <div class="p_wzi"> <?=$oUser['brand']?><br /></div>
                     </div>
                 </div>
                 <?php if($oUser['video']):?>
@@ -77,7 +51,7 @@
             <br /><br /><br />
             <div class="title">工作说明</div>
             <div class="per_con">
-                <h3 class="p_bti"><i></i>工作报价</h3>
+                <h3 class="p_bti"><i></i>工作费用</h3>
                 <div class="p_wzi"><?=$oUser['fee']?></div>
             </div>
             <div class="per_con">
@@ -85,17 +59,9 @@
                 <div class="p_wzi"><?=$oUser['servicetime']?></div>
             </div>
             <div class="per_con">
-                <h3 class="p_bti"><i></i>注意事项</h3>
+                <h3 class="p_bti"><i></i>工作说明</h3>
                 <div class="p_wzi"><?=$oUser['takenote']?></div>
             </div>
-            <?php if($oUser['card']):?>
-            <br /><br />
-            <div class="title">模特卡</div>
-            <br />
-            <div class="per_advert">
-                <a href="/<?=$oUser['card']?>" target="_blank"><img style="width:1070px;height:500px;" src="/<?=$oUser['card']?>"/></a>
-            </div>
-            <?php endif?>
             <br /><br />
             <div class="title">精选作品</div>
             <div class="malbumdeta">

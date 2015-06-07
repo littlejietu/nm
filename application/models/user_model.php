@@ -10,8 +10,8 @@ class User_model extends XT_Model {
 	public function get_info_by_id($id, $fields='*')
 	{
 		$aUser = $this->get_by_id($id, $fields);
-		if($aUser['usertype']==1)
-		{
+		// if( in_array($aUser['usertype'],array(1,4,5)) )
+		// {
 
 			$this->set_table($this->tb_userdetail);
 			$aUserDetail = $this->get_by_where("userid=$id",'*');
@@ -23,16 +23,16 @@ class User_model extends XT_Model {
 				$aUser = array_merge($aUserMemo, $aUser);
 			$this->set_table($this->tb_user);
 			return $aUser;
-		}
-		else
-		{
-			$this->set_table($this->tb_usermemo);
-			$aUserMemo = $this->get_by_where("userid=$id",'*');
-			if($aUserMemo)
-				$aUser = array_merge($aUserMemo, $aUser);
-			$this->set_table($this->tb_user);
-			return $aUser;
-		}
+		// }
+		// else
+		// {
+		// 	$this->set_table($this->tb_usermemo);
+		// 	$aUserMemo = $this->get_by_where("userid=$id",'*');
+		// 	if($aUserMemo)
+		// 		$aUser = array_merge($aUserMemo, $aUser);
+		// 	$this->set_table($this->tb_user);
+		// 	return $aUser;
+		// }
 
 		/*$rs = $this->db->select($fields)
 		->from($this->mTable.' a')

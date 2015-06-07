@@ -16,13 +16,13 @@
 <div class="mainbody" id="mainbody">
 	<div class="container">
         <div class="mode_title clearfix">
-            <a class="fl picimg" href="##"><img src="<?=_get_cfg_path('images')?>models_1.jpg"/></a>
-            <a class="fr picimg" href="##"><img src="<?=_get_cfg_path('images')?>models_2.jpg"/></a>
+            <a class="fl picimg" href="<?=_create_url('model', array_merge($arrParam, array('sex'=>1)) )?>"><img src="<?=_get_cfg_path('images')?>models_1.jpg"/></a>
+            <a class="fr picimg" href="<?=_create_url('model', array_merge($arrParam, array('sex'=>2)) )?>"><img src="<?=_get_cfg_path('images')?>models_2.jpg"/></a>
         </div>
         <div class="m_sort">
         	<ul class="clearfix" style="width:100%">
-            	<li style="width:48.5%"><a href="##">亚洲模特</a></li>
-                <li style="width:48.5%;float:right;margin-right:0;"><a href="##">欧美模特</a></li>
+            	<li style="width:48.5%"><a href="<?=_create_url('model', array_merge($arrParam, array('area'=>1)) )?>">亚洲模特</a></li>
+                <li style="width:48.5%;float:right;margin-right:0;"><a href="<?=_create_url('model', array_merge($arrParam, array('area'=>2)) )?>">欧美模特</a></li>
                 <!--<li><a href="##">平面模特</a></li>
                 <li><a href="##">T台模特</a></li>
                 <li><a href="##">影视模特</a></li>
@@ -31,22 +31,36 @@
             </ul>
         </div>
         <div class="m_filter">
-        	<div class="filterBox">
+        	<div class="filterBox" style="display:<?php if(!empty($arrParam)) echo 'block';else echo 'none';?>">
                 <div class="values"><span class="label">类型：</span>
                     <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="韩系名媛">韩系名媛</a><a href="##" title="气场欧美">气场欧美</a><a href="##" title="优雅复古">优雅复古</a><a href="##" title="清新文艺">清新文艺</a><a href="##" title="英伦学院">英伦学院</a><a href="##" title="甜美日系">甜美日系</a><a href="##" title="OL通勤">OL通勤</a><a href="##" title="接头混搭">接头混搭</a><a href="##" title="性感诱惑">性感诱惑</a></p>
                 </div>
                 <div class="values"><span class="label">风格：</span>
-                <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="韩系名媛">韩系名媛</a><a href="##" title="气场欧美">气场欧美</a><a href="##" title="优雅复古">优雅复古</a><a href="##" title="清新文艺">清新文艺</a><a href="##" title="英伦学院">英伦学院</a><a href="##" title="甜美日系">甜美日系</a><a href="##" title="OL通勤">OL通勤</a><a href="##" title="接头混搭">接头混搭</a><a href="##" title="性感诱惑">性感诱惑</a></p>
+                <p class="clearfix">
+                    <a <?php if(empty($arrParam['style'])):?> class="curr"<?php endif?> href="<?php if(!empty($arrParam['style'])){$tmp_arrParam = $arrParam; unset($tmp_arrParam['style']); echo _create_url('model', $tmp_arrParam );}?>" title="不限">不限</a>
+                    <?php foreach ($oSysModelstyle as $key => $v):?>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('style'=>$key)) )?>" title="<?=$v?>"<?php if(!empty($arrParam['style']) && $arrParam['style']==$key) echo ' class="curr"';?>><?=$v?></a>
+                    <?php endforeach;?>
+                </p>
             </div>
                 <div class="values"><span class="label">地区：</span>
-                        <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="160-170cm ">160-170cm</a><a href="##" title="170-180cm">170-180cm</a><a href="##" title="＞180cm">＞180cm</a></p>
-                    </div>
-                <div class="values"><span class="label">身高：</span>
                     <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="160-170cm ">160-170cm</a><a href="##" title="170-180cm">170-180cm</a><a href="##" title="＞180cm">＞180cm</a></p>
+                </div>
+                <div class="values"><span class="label">身高：</span>
+                    <p class="clearfix"><a <?php if(empty($arrParam['height'])):?> class="curr"<?php endif?> href="<?php if(!empty($arrParam['style'])){$tmp_arrParam = $arrParam; unset($tmp_arrParam['height']); echo _create_url('model', $tmp_arrParam );}?>" title="不限">不限</a>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('height'=>'160-170')) )?>" title="160-170cm" <?php if(!empty($arrParam['height']) && $arrParam['height']=='160-170') echo ' class="curr"';?>>160-170cm</a>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('height'=>'170-180')) )?>" title="170-180cm" <?php if(!empty($arrParam['height']) && $arrParam['height']=='170-180') echo ' class="curr"';?>>170-180cm</a>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('height'=>'180')) )?>" title="＞180cm" <?php if(!empty($arrParam['height']) && $arrParam['height']=='180') echo ' class="curr"';?>>＞180cm</a></p>
+                </div>
+                <div class="values"><span class="label">排序：</span>
+                    <p class="clearfix">
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('orderby'=>'1')) )?>" <?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='1') echo ' class="curr"';?>>按时间</a>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('orderby'=>'2')) )?>" <?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='2') echo ' class="curr"';?>>按关注度</a>
+                        <a href="<?=_create_url('model', array_merge($arrParam, array('orderby'=>'3')) )?>" <?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='3') echo ' class="curr"';?>>订单量</a></p>
                 </div>
             </div>
             <div class="control_bar">
-            	<a class="button_less" href="javascript:void(0);">更多选项<span class="ifont"></span></a>
+            	<a class="button_less <?php if(!empty($arrParam)) echo 'spred';?>" href="javascript:void(0);">更多选项<span class="ifont"></span></a>
             </div>
         </div>
     </div>

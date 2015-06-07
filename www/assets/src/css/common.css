@@ -714,6 +714,34 @@ body.resize{-webkit-transition:padding 0.3s ease;-moz-transition:padding 0.3s ea
 
 .main_color {color: #e2235b}
 
+/*6.6*/
+.aut_tab .but_3{height:26px;line-height:26px;border-radius:0;background:#fff;border:1px solid #cecece;color:#666;font-size:12px;padding:0 10px 1px;margin:0 10px;}
+.inst_brok{line-height:26px;color:#888;}
+.ibrok_con ul{width:103%;}
+.ibrok_con li{background:#f5f5f5;width:246px;height:46px;padding:15px;position:relative;float:left;margin:0 9px 10px 0;}
+.ibrok_con li h3{font-size:14px;font-weight:600;color:#666;}
+.ibrok_con li h3 span{font-weight:500;font-size:12px;margin-left:10px;}
+.ibrok_con li p{padding-top:6px;}
+.ibrok_con i.ibrok_con_chua{background-position:-202px -324px;background-color:#fff;display:inline-block;width:23px;height:23px;border:1px solid #e5e5e5;position:absolute;top:10px;right:10px;cursor:pointer;}
+.ibrok_show{position:absolute;padding:2px;border:1px solid #e5e5e5;background:#fff;width:90px;z-index:99;top:42px;right:-60px;display:none;}
+.ibrok_show a{display:block;line-height:26px;height:26px;padding:0 10px;height:30px;line-height:30px;}
+.ibrok_show a:hover{background:#eee;}
+.ibrok_pop p{float:left;margin-right:10px;}
+.ibrok_pop .text{height:70px;}
+
+.i_notice_tab tr{border-bottom:none;}
+
+.ne_con li a.picimg{position:relative;}
+.notl_hover{background:url(../images/women_b.png) repeat center center;position:absolute;bottom:0;left:0;right:0;color:#fff;font-size:13px;padding:15px 20px;line-height:22px;}
+
+/* 报名 */
+.signup_top{font-size:14px;font-weight:600;color:#777;margin-bottom:20px;}
+.signup_top span{padding:0 6px;color:#e2235b;}
+.signup_list ul{width:102%;}
+.signup_list li{float:left;margin:0 26px 26px 0;}
+.signup_list li a{display:block;}
+.signup_list li a img{width:160px;height:160px;}
+
 
 
 

@@ -61,10 +61,15 @@ $('#xtform').submit(function()
 
                     msg +=value+'\n';
                
-                });  
+                });
                 
                 if(msg!='')
                     alert(msg);
+
+                if(res.code=202)
+                {
+                    $('#yzimg').attr('src','/util/captcha?'+Math.random());
+                }
             }
         }
 

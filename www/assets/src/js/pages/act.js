@@ -14,6 +14,8 @@ $('.XT-enter').bind('click',function(){
 	            it.html('已报名');
 	        }
 	        else{
+	        	if(res.code == 202)
+	        		it.html('已报名');
 	        	alert(res.data.msg);
 	        }
 	     }

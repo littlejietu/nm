@@ -27,9 +27,15 @@
             	<ul class="clearfix">
                     <?php foreach ($list['rows'] as $key => $a): ?>
                 	<li>
-                    	<a class="picimg" href="#"><img src="<?=$a['img'];?>"/></a>
+                    	<a class="picimg" href="javascript:;"><img src="<?=$a['img'];?>"/>
+                            <div class="notl_hover">
+                                <p>工作时间： <?=date('Y-m-d',$a['begtime'])?>       工作地点： <?=$a['place']?>        人数： <?=($a['innum']+$a['innumfake']);?>名</p>
+                                <p>面试地点： <?=$a['address']?> </p>
+                                <p>工作内容： <?=$a['summary']?>       报名截止： <?=date('Y-m-d',$a['endtime'])?></p>
+                            </div>
+                        </a>
                         <div class="clearfix">
-                        	<p class="fl nebti"><?=$a['title'];?> <em><?=($a['innum']+$a['innumfake']);?>人 报名</em></p>
+                        	<p class="fl nebti"><?=$a['title'];?> <a href="/act/enterlist?aid=<?=$a['id']?>"><em><?=($a['innum']+$a['innumfake']);?>人 报名</em></a></p>
                             <?php if($a['endtime']>=time()):?>
                                 <a class="fr status XT-enter" _val="<?=_get_key_val($a['id']);?>" title="<?=$a['title'];?>" href="javascript:;">报名</a>
                             <?php else:?>
@@ -51,10 +57,7 @@
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
 
-
-<div id="share">
-	<a id="totop" title="" href="javascript:void(0);">返回顶部</a>
-</div></body>
+</body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/act.js"></script>

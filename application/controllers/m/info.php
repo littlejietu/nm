@@ -19,6 +19,8 @@ class Info extends CI_Controller {
 		{
 			if($that_usertype==1)
 				list($config, $data, $data_detail, $data_memo) = $this->m_model_config();
+			else if( in_array($that_usertype, array(4,5)) )
+				list($config, $data, $data_detail, $data_memo) = $this->m_photo_config();
 			else if($that_usertype==2)
 				list($config, $data, $data_detail, $data_memo) = $this->m_ins_config();
 
@@ -46,9 +48,19 @@ class Info extends CI_Controller {
 		//end:右侧-推荐用户
 
 		$o = $this->User_model->get_info_by_id($userid);
+		$oSysModelstyle = _get_config('modelstyle');
+		$oSysType = array();
+		if(in_array($this->loginUsertype, array(1,2)))
+		{
+			$oSysType = _get_config('type');
+
+			$oSysType = $oSysType[$this->loginUsertype];
+		}
 		$result = array(
 			'o' => $o,
 			'rightlist' => $rightlist,
+			'oSysModelstyle' => $oSysModelstyle,
+			'oSysType' => $oSysType,
 			);
 		$view = 'm/info';
 		if($that_usertype==2)
@@ -92,6 +104,10 @@ class Info extends CI_Controller {
 		if(count($arrBWH)>=3)
 			$hips = $arrBWH[2];
 
+		$style = '';
+		if(is_array($this->input->post('style')))
+			$style = implode(',', $this->input->post('style'));
+
 		$data = array(					
 			'userlogo'=>$this->input->post('userlogo'),
 			'realname'=>$this->input->post('realname'),					
@@ -111,6 +127,7 @@ class Info extends CI_Controller {
 			'hips'=>$hips,
 			'shoes'=>(int)$this->input->post('shoes'),
 			'cup'=>(int)$this->input->post('cup'),
+			'style'=>$style,
 			'province_id'=>(int)$this->input->post('province_id'),
 			'city_id'=>(int)$this->input->post('city_id'),
 			);
@@ -128,6 +145,54 @@ class Info extends CI_Controller {
 			'card'=>$this->input->post('card'),
 			'bgimg'=>$this->input->post('bgimg'),
 			'video'=>$this->input->post('video'),					
+			);
+		if(!$this->thatUser['nickname'])
+			$data['nickname']=$this->input->post('nickname');
+
+		return array($config, $data, $data_detail, $data_memo);
+
+
+	}
+
+	private function m_photo_config(){
+		//验证规则		required必填项
+		$config = array(
+            array(
+                 'field'   => 'sex', 
+                 'label'   => '性别', 
+                 'rules'   => 'trim|required'
+              ),  
+        );
+		if(!$this->thatUser['nickname'])
+			$config[] = array(
+                 'field'   => 'nickname', 
+                 'label'   => '艺名', 
+                 'rules'   => 'trim|required'
+              );
+		//-验证规则
+
+		$data = array(					
+			'userlogo'=>$this->input->post('userlogo'),
+			'realname'=>$this->input->post('realname'),					
+			//'mobile'=>$this->input->post('mobile'),					
+			'sex'=>$this->input->post('sex'),
+			'city'=>$this->input->post('city'),
+			'mobile'=>$this->input->post('mobile'),
+		);
+
+		$data_detail = array(
+			'province_id'=>(int)$this->input->post('province_id'),
+			'city_id'=>(int)$this->input->post('city_id'),
+			);
+		$data_memo = array(
+			'brand'=>$this->input->post('brand'),
+			'brandtype'=>$this->input->post('brandtype'),
+			'memo'=>$this->input->post('memo'),
+			'fee'=>$this->input->post('fee'),
+			'servicetime'=>$this->input->post('servicetime'),
+			'takenote'=>$this->input->post('takenote'),
+			'bgimg'=>$this->input->post('bgimg'),
+			//'video'=>$this->input->post('video'),					
 			);
 		if(!$this->thatUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
@@ -164,6 +229,10 @@ class Info extends CI_Controller {
               );
 		//-验证规则
 
+		$type = '';
+		if(is_array($this->input->post('type')))
+			$type = implode(',', $this->input->post('type'));
+
 		$data = array(					
 			'userlogo'=>$this->input->post('userlogo'),
 			'showimg'=>$this->input->post('showimg'),
@@ -171,13 +240,17 @@ class Info extends CI_Controller {
 			'sex'=>$this->input->post('sex'),
 		);
 
+		$data_detail = array(
+			'type'=>$type,
+			);
+
 		$data_memo = array(
 			'memo'=>$this->input->post('memo'),
 			);
 		if(!$this->thatUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
 				
-		return array($config, $data, array(), $data_memo);
+		return array($config, $data, $data_detail, $data_memo);
 	}
 
 }
