@@ -87,7 +87,7 @@
             <tr><td height="10"></td></tr>
             <tr>
               <td>&nbsp;</td>
-               <td><input class="but" id="TX-create" name="" type="button" value="添加"/></td>
+               <td><input class="but" id="TX-create" name="" type="button" value="保存"/></td>
             </tr>
         </table>
     </div>

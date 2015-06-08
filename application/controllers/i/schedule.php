@@ -32,10 +32,39 @@ class Schedule extends CI_Controller {
 		$this->load->service('User_service');
 		$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
 
+		$oSysItem = _get_config('workitem');
+		$oSysScene = _get_config('workscene');
+		$oSysTime = _get_config('worktime');
 		$oProduList = $this->Product_model->get_product_by_uid($userid);
 		$oProductList = array();
-		foreach ($oProduList as $key => $a) {
-			$oProductList[ $a['item'] .'_'. $a['scene'] .'_'. $a['time'] ] = $a['price'];
+		$oItemList = array();
+		$oItem_Scene_Time = array();
+		$oSceneList = array();
+		$oTimeList = array();
+		if($oProduList)
+		{
+			$oTmpScene = array();
+			$oTmpTime = array();
+			foreach ($oProduList as $key => $a) {
+				$oProductList[ $a['item'] .'_'. $a['scene'] .'_'. $a['time'] ] = $a['price'];
+				$oItemList[$a['item']] = $oSysItem[$a['item']];
+				if(key($oItemList)==$a['item'])
+				{
+					$oSceneList[$a['scene']] = $oSysScene[$a['scene']];
+					$oTimeList[$a['time']] = $oSysTime[$a['time']];
+				}
+				$oTmpScene[$a['scene']] = $oSysScene[$a['scene']];
+				$oTmpTime[$a['time']] = $oSysTime[$a['time']];
+			}
+
+			$oItem_Scene_Time[$a['item']] = array('scene'=>$oTmpScene, 'time'=>$oTmpTime);
+		}
+		else
+		{
+			$oItemList = $oSysItem;
+			$oSceneList = $oSysScene;
+			$oTimeList = $oSysTime;
+
 		}
 
 		//默认汇总
@@ -82,9 +111,9 @@ class Schedule extends CI_Controller {
 		
 		$result = array(
 			//'o' => $o,
-			'workitem'=> $this->config->item('workitem'),
-			'workscene'=> $this->config->item('workscene'),
-			'worktime'=> $this->config->item('worktime'),
+			'oItemList'=> $oItemList,
+			'oSceneList'=> $oSceneList,
+			'oTimeList'=> $oTimeList,
 			
 			'oProductList' => $oProductList,
 			'oUser' => $oUser,

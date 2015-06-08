@@ -4,7 +4,7 @@
             <img src="<?php echo _get_userlogo_url($this->thatUser['userlogo'])?>"/>
             <div class="head_bj"></div>
         </a>
-        <h3 class="m_name"><a href="/m/"><?=$this->thatUser['nickname']?></a></h3>
+        <h3 class="m_name"><a href="/i/index/<?=$this->thatUser['id']?>" target="_blank"><?=$this->thatUser['nickname']?></a></h3>
         <p class="m_prompt">
             <?php $agentUser = $this->cache->get('agentUser');
                 if(!empty($agentUser)):?>
