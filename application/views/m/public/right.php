@@ -1,7 +1,7 @@
 <div class="uw_help">
                           <div class="uwh_title"><h3></h3><span><i></i>我的档期</span></div>
                             <div class="u_circle">
-                              <a href="/i/schedule/<?=$this->loginID?>"><h3>档期小助手</h3><p>方便 快捷 明确</p></a>
+                              <a href="/m/schedule/"><h3>档期小助手</h3><p>方便 快捷 明确</p></a>
                             </div>
                         </div>
                         <div class="uw_help">

@@ -64,22 +64,22 @@
                             <?php if($o && $o['status']==-1):?>
                               认证失败
                             <?php endif?>
-                          <form method="post">
+                          <form method="post" action="" id="xtform">
                             <table class="aut_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody><tr>
-                                  <td width="86">真实姓名</td>
+                                  <td width="86"><span class="tips">*</span>真实姓名</td>
                                   <td><input name="realname" type="text" class="txt" value="<?php echo !empty($o['realname'])?$o['realname']:$this->loginUser['realname']; ?>" placeholder="请输入姓名"></td>
                                 </tr>
                                 <tr>
-                                  <td>身份证号</td>
+                                  <td><span class="tips">*</span>身份证号</td>
                                   <td><input name="idno" type="text" class="txt" placeholder="请输入身份证号" value="<?php if(!empty($o['idno'])) echo $o['idno']?>"></td>
                                 </tr>
                                 <tr>
-                                  <td>手机号码</td>
+                                  <td><span class="tips">*</span>手机号码</td>
                                   <td><input name="mobile" type="text" class="txt" placeholder="请输入手机号码" value="<?php echo !empty($o['mobile'])?$o['mobile']:$this->loginUser['mobile']; ?>"></td>
                                 </tr>
                                 <tr>
-                                  <td>身份证照片</td>
+                                  <td><span class="tips">*</span>身份证照片</td>
                                   <td>
                                       
                                           <div id="previews" class="drsMoveHandle">
@@ -131,10 +131,12 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/cert.js"></script>
 <script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 <?php $timestamp = $this->timestamp;?>
 $(function() {
+  setTimeout(function(){
     $('#idnoimg_upload').uploadify({
       'formData'     : {
         'timestamp' : '<?php echo $timestamp;?>',
@@ -167,6 +169,7 @@ $(function() {
       }
 
     });
+  },10);
 });
 </script>
 

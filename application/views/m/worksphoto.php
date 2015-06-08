@@ -75,6 +75,7 @@
 <script type="text/javascript">
 <?php $timestamp = $this->timestamp;?>
 $(function() {
+  setTimeout(function(){
     $('#photo_upload').uploadify({
       'formData'     : {
         'timestamp' : '<?php echo $timestamp;?>',
@@ -112,6 +113,7 @@ $(function() {
       }
 
     });
+  },10);
 });
 </script>
 </html>
