@@ -180,7 +180,7 @@
                   <td><font>工作内容：</font></td>
                   <td>
                     <select name="item" id="item" class="txt sele" onchange="getPrice()">
-                        <?php foreach ($workitem as $k => $v):?>
+                        <?php foreach ($oItemList as $k => $v):?>
                         <option value="<?=$k?>"><?=$v?></option>
                         <?php endforeach;?>
                     </select>
@@ -190,7 +190,7 @@
                   <td><font>工作场景：</font></td>
                   <td>
                      <div class="clearfix scene">
-                        <?php foreach ($workscene as $k => $v):?>
+                        <?php foreach ($oSceneList as $k => $v):?>
                          <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
                         <?php endforeach;?>
                         <input name="scene" id="scene" value="0" type="hidden">
@@ -201,7 +201,7 @@
                   <td><font>计价方式：</font></td>
                   <td>
                       <div class="clearfix scene">
-                        <?php foreach ($worktime as $k => $v):?>
+                        <?php foreach ($oTimeList as $k => $v):?>
                           <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
                         <?php endforeach;?>
                         <input name="time" id="time" value="0" type="hidden">
