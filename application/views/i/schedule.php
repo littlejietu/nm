@@ -179,7 +179,7 @@
                 <tr>
                   <td><font>工作内容：</font></td>
                   <td>
-                    <select name="item" id="item" class="txt sele" onchange="getPrice()">
+                    <select name="item" id="item" class="txt sele">
                         <?php foreach ($oItemList as $k => $v):?>
                         <option value="<?=$k?>"><?=$v?></option>
                         <?php endforeach;?>
@@ -189,7 +189,7 @@
                 <tr>
                   <td><font>工作场景：</font></td>
                   <td>
-                     <div class="clearfix scene">
+                     <div class="clearfix scene XT-Scene">
                         <?php foreach ($oSceneList as $k => $v):?>
                          <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
                         <?php endforeach;?>
@@ -200,7 +200,7 @@
                 <tr>
                   <td><font>计价方式：</font></td>
                   <td>
-                      <div class="clearfix scene">
+                      <div class="clearfix scene XT-Time">
                         <?php foreach ($oTimeList as $k => $v):?>
                           <a href="javascript:;" onclick="filt(this)" name="<?=$k?>"><?=$v?></a>
                         <?php endforeach;?>
@@ -250,6 +250,11 @@
    foreach ($oProductList as $k => $v):
       $i++;?>
     arrProduct[<?=$i?>]=["<?=$k?>","<?=$v?>"];
+  <?php endforeach;?>
+
+  var arrIST = new Array();
+  <?php foreach ($oItem_Scene_Time as $k => $a):?>
+    arrIST[<?=$k?>]=[[<? $tmp=''; foreach($a['scene'] as $k=>$v){$tmp.="[$k,\"$v\"],";}echo trim($tmp,',');?>],[<? $tmp='';foreach($a['time'] as $k=>$v){$tmp.="[$k,\"$v\"],";}echo trim($tmp,',');?>]];
   <?php endforeach;?>
   </script>
 </div>

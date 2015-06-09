@@ -43,21 +43,28 @@ class Schedule extends CI_Controller {
 		$oTimeList = array();
 		if($oProduList)
 		{
-			$oTmpScene = array();
-			$oTmpTime = array();
 			foreach ($oProduList as $key => $a) {
+
 				$oProductList[ $a['item'] .'_'. $a['scene'] .'_'. $a['time'] ] = $a['price'];
 				$oItemList[$a['item']] = $oSysItem[$a['item']];
+
+				$thatScene = $oSysScene[$a['scene']];
+				$thatTime = $oSysTime[$a['time']];
 				if(key($oItemList)==$a['item'])
 				{
-					$oSceneList[$a['scene']] = $oSysScene[$a['scene']];
-					$oTimeList[$a['time']] = $oSysTime[$a['time']];
+					$oSceneList[$a['scene']] = $thatScene;
+					$oTimeList[$a['time']] = $thatTime;
 				}
-				$oTmpScene[$a['scene']] = $oSysScene[$a['scene']];
-				$oTmpTime[$a['time']] = $oSysTime[$a['time']];
-			}
 
-			$oItem_Scene_Time[$a['item']] = array('scene'=>$oTmpScene, 'time'=>$oTmpTime);
+				if(!array_key_exists($a['item'], $oItem_Scene_Time))
+					$oItem_Scene_Time[$a['item']] = array('scene'=>array($a['scene']=>$thatScene), 'time'=>array($a['time']=>$thatTime));
+				else{
+					if(!in_array($thatScene, $oItem_Scene_Time[$a['item']]['scene']))
+						$oItem_Scene_Time[$a['item']]['scene'][$a['scene']]=$thatScene;
+					if(!in_array($thatTime, $oItem_Scene_Time[$a['item']]['time']))
+						$oItem_Scene_Time[$a['item']]['time'][$a['time']]=$thatTime;
+				}
+			}
 		}
 		else
 		{
@@ -66,7 +73,6 @@ class Schedule extends CI_Controller {
 			$oTimeList = $oSysTime;
 
 		}
-
 		//默认汇总
 		//$this->load->helper('site');
 		//$oDefaultPrice = _get_product_default_price();
@@ -114,8 +120,12 @@ class Schedule extends CI_Controller {
 			'oItemList'=> $oItemList,
 			'oSceneList'=> $oSceneList,
 			'oTimeList'=> $oTimeList,
+
+			'oSysScene'=>$oSysScene,
+			'oSysTime'=>$oSysTime,
 			
 			'oProductList' => $oProductList,
+			'oItem_Scene_Time' => $oItem_Scene_Time,
 			'oUser' => $oUser,
 			'list' => $list,
 			'YM'=>array('y'=>$y,'m'=>$m),

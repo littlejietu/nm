@@ -31,6 +31,22 @@ $().ready(function(){
 	});
 	
 	$(".piao_con .day:odd").addClass('bg_day');
+
+	$("#item").bind("change",function(){
+
+		var selectedId = $('#item').val();
+		$('.XT-Scene a').remove();
+
+		if($.inArray( selectedId,arrIST) )
+		{
+			$('.XT-Scene').append('<a></a>');
+
+			console.log(arrIST[selectedId][0]);
+			console.log(arrIST[selectedId][1]);
+		}
+
+		console.log('ddddd');
+	});
 });
 
 
