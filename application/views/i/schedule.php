@@ -253,8 +253,20 @@
   <?php endforeach;?>
 
   var arrIST = new Array();
-  <?php foreach ($oItem_Scene_Time as $k => $a):?>
-    arrIST[<?=$k?>]=[[<? $tmp=''; foreach($a['scene'] as $k=>$v){$tmp.="[$k,\"$v\"],";}echo trim($tmp,',');?>],[<? $tmp='';foreach($a['time'] as $k=>$v){$tmp.="[$k,\"$v\"],";}echo trim($tmp,',');?>]];
+  <?php foreach ($oItem_Scene_Time as $k => $a):
+
+          $tmp=''; 
+          foreach($a as $kk=>$aa){
+            $time_list='';
+            foreach ($aa['time_list'] as $kkk => $aaa) {
+              $time_list.='{k:'.$kkk.',name:"'.$aaa.'"},';
+            }
+            $time_list=trim($time_list,',');
+            $tmp.='{k:'.$aa['scene_key'].',name:"'.$aa['scene_name'].'",tim:['.$time_list.']},';
+          }
+          $tmp=trim($tmp,',');
+    ?>
+    arrIST[<?=$k?>]=[<?=$tmp;?>];
   <?php endforeach;?>
   </script>
 </div>

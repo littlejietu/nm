@@ -57,14 +57,38 @@ class Schedule extends CI_Controller {
 				}
 
 				if(!array_key_exists($a['item'], $oItem_Scene_Time))
-					$oItem_Scene_Time[$a['item']] = array('scene'=>array($a['scene']=>$thatScene), 'time'=>array($a['time']=>$thatTime));
+					$oItem_Scene_Time[$a['item']] = array( array('scene_key'=>$a['scene'],'scene_name'=>$thatScene,'time_list'=>array($a['time']=>$thatTime)) );
 				else{
-					if(!in_array($thatScene, $oItem_Scene_Time[$a['item']]['scene']))
-						$oItem_Scene_Time[$a['item']]['scene'][$a['scene']]=$thatScene;
-					if(!in_array($thatTime, $oItem_Scene_Time[$a['item']]['time']))
-						$oItem_Scene_Time[$a['item']]['time'][$a['time']]=$thatTime;
+					/*
+
+					if(!in_array($a['scene'], $oItem_Scene_Time[$a['item']]['scene_key']))
+					{
+						array_push($oItem_Scene_Time[$a['item']], array('scene_key'=>$a['scene'],'scene_name'=>$thatScene,'time_list'=>array($a['time']=>$thatTime)) );
+					}
+					else
+					{
+						$oItem_Scene_Time[$a['item']]['time_list'][$a['time']]=$thatTime;
+					}
+					*/
+
+					
+					$bExist = false;
+					foreach ($oItem_Scene_Time[$a['item']] as $key => $av) {
+						if($av['scene_key']==$a['scene'])
+						{
+							$oItem_Scene_Time[$a['item']][$key]['time_list'][$a['time']] = $thatTime;
+							$bExist = true;
+							break;
+						}
+					}
+					if(!$bExist)
+					{
+						array_push($oItem_Scene_Time[$a['item']], array('scene_key'=>$a['scene'],'scene_name'=>$thatScene,'time_list'=>array($a['time']=>$thatTime)) );
+					}
+					
 				}
 			}
+
 		}
 		else
 		{
