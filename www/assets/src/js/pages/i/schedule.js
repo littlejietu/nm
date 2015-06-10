@@ -50,6 +50,11 @@ $().ready(function(){
 					$('.XT-Scene').append('<a href="javascript:;" onclick="filt(this)" name="'+obj[i].k+'" class="XT-Scene-itm">'+obj[i].name+'</a>');
 				}
 			}
+
+			$('#scene').val(obj[0].k);
+			$('.XT-Scene a:first').click();
+			//$('.XT-Scene a:first').addClass('licur');
+
 			
 		}
 
@@ -78,9 +83,14 @@ $().ready(function(){
 					
 				}
 			}
+
+			$('#time').val(obj[0].tim[0].k);
+			$('.XT-Time a:first').click();
 			
 		}
 	});
+
+	$('#item').trigger('change');
 });
 
 

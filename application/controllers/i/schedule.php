@@ -43,6 +43,7 @@ class Schedule extends CI_Controller {
 		$oTimeList = array();
 		if($oProduList)
 		{
+			
 			foreach ($oProduList as $key => $a) {
 
 				$oProductList[ $a['item'] .'_'. $a['scene'] .'_'. $a['time'] ] = $a['price'];
@@ -50,10 +51,11 @@ class Schedule extends CI_Controller {
 
 				$thatScene = $oSysScene[$a['scene']];
 				$thatTime = $oSysTime[$a['time']];
-				if(key($oItemList)==$a['item'])
+				if(key($oItemList)==$a['item'] )
 				{
 					$oSceneList[$a['scene']] = $thatScene;
-					$oTimeList[$a['time']] = $thatTime;
+					if(key($oSceneList)==$a['scene'])
+						$oTimeList[$a['time']] = $thatTime;
 				}
 
 				if(!array_key_exists($a['item'], $oItem_Scene_Time))
