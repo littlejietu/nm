@@ -34,6 +34,7 @@
             <li<?php if( strtolower(uri_string())=='m/comment' ) echo ' class="current"';?>><a href="/m/comment">评论管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/client' ) echo ' class="current"';?>><a href="/m/client">客户管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/message' ) echo ' class="current"';?>><a href="/m/message">系统消息<i></i></a></li>
+            <li<?php if( strtolower(uri_string())=='m/activity' ) echo ' class="current"';?>><a href="/m/activity">机构通告<i></i></a></li>
         <?php endif?>
         </ul>
     </div>

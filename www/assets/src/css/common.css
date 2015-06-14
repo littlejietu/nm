@@ -742,6 +742,12 @@ body.resize{-webkit-transition:padding 0.3s ease;-moz-transition:padding 0.3s ea
 .signup_list li a{display:block;}
 .signup_list li a img{width:160px;height:160px;}
 
+.advert_stb .bd,.advert_stb .bd ul>li.recom_te{height:auto;}
+.advert_stb .bd ul>li.recom_te{padding:24px 0 10px 24px;}
+.ne_con li{height:335px !important;}
+.ne_con li a.picimg{position:relative;}.notl_hover{background:url(../images/women_b.png) repeat center center;position:absolute;bottom:0;left:0;right:0;color:#fff;font-size:13px;padding:15px 20px;line-height:22px;}
+
+
 
 
 

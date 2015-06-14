@@ -51,28 +51,12 @@
 	            	</td>
 		        </tr>
 		        <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 活动图片2：</td>
-		            <td align="left" class="padL10">
-		            	<div id="previews" class="drsMoveHandle">
-	                        <img id="show_img2" border=0 src='<?php if( !empty($info['img2']) ) echo  _get_image_url($info['img2']);?>'>
-	                    </div>
-	                    <div class="f_note">
-	                        <p>尺寸：269×304像数</p>
-	                        <input type="hidden"  name="img2" id="img2" value="<?php if( !empty($info['img2']) ) echo $info['img2']; else echo 'http://'; ?>">
-	                        <em><i class="icoPro16"></i>仅支持JPEG，上传图片大小不能超过1M</em>
-	                        <div class="file_but">
-	                            <input id="img2_upload" name="img2_upload" value="选择照片" class="inp_file" type="file">
-	                        </div>
-	                    </div>
-	            	</td>
+		            <td height="25" align="right"> 工作简介：</td>
+		            <td align="left" class="padL10"><input type="text" name="summary" value="<?php if( !empty($info['summary']) ) echo $info['summary']; ?>" style="width:300px" maxlength="200" /></td>
 		        </tr>
 		        <tr>
-		            <td height="25" align="right"> 简介：</td>
-		            <td align="left" class="padL10"><textarea type="text" name="summary" cols="40" rows="10"><?php if( !empty($info['summary']) ) echo $info['summary']; ?></textarea></td>
-		        </tr>
-		         <tr>
-		            <td height="25" align="right"> 内容：</td>
-		            <td align="left" class="padL10"><textarea type="text" name="intro" cols="40" rows="10"><?php if( !empty($info['intro']) ) echo $info['intro']; ?></textarea></td>
+		            <td height="25" align="right"> 工作费用：</td>
+		            <td align="left" class="padL10"><input type="text" name="workfee" value="<?php if( !empty($info['workfee']) ) echo $info['workfee']; ?>" style="width:300px" maxlength="200" /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 开始时间：</td>
@@ -82,6 +66,10 @@
 		            <td height="25" align="right"><span class="tips">*</span> 结束时间：</td>
 		            <td align="left" class="padL10"><input type="text" name="endtime" value="<?php if( !empty($info['endtime']) ) echo date('Y-m-d',$info['endtime']); ?>" readonly="readonly" onclick="WdatePicker()" /></td>
 		        </tr>
+		        <tr>
+		            <td height="25" align="right"><span class="tips">*</span> 报名截止时间：</td>
+		            <td align="left" class="padL10"><input type="text" name="inendtime" value="<?php if( !empty($info['inendtime']) ) echo date('Y-m-d',$info['inendtime']); ?>" readonly="readonly" onclick="WdatePicker()" /></td>
+		        </tr>
 		         <tr>
 		            <td height="25" align="right"><span class="tips">*</span> 地点：</td>
 		            <td align="left" class="padL10"><input type="text" name="place" value="<?php if( !empty($info['place']) ) echo $info['place']; ?>" /></td>
@@ -89,6 +77,10 @@
 		         <tr>
 		            <td height="25" align="right">具体地址：</td>
 		            <td align="left" class="padL10"><input type="text" name="address" value="<?php if( !empty($info['address']) ) echo $info['address']; ?>" /></td>
+		        </tr>
+		        <tr>
+		            <td height="25" align="right">参与名额：</td>
+		            <td align="left" class="padL10"><input type="text" name="actnum" value="<?php if( !empty($info['actnum']) ) echo $info['actnum']; ?>" /></td>
 		        </tr>
 		         <tr>
 		            <td height="25" align="right">假报名人数：</td>
@@ -120,70 +112,42 @@
 <script type="text/javascript">
 <?php $timestamp = $this->timestamp;?>
 $(function() {
-    $('#img_upload').uploadify({
-      'formData'     : {
-        'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
-        'type' : 'img',
-        'uid' : 0
-      },
-      'auto':true,
-      //'buttonClass':'inp_btn',
-      'fileSizeLimit' : '1024KB',
-      'buttonText':'选择照片',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
-      //'buttonImage' : '{$js_url}uploadify/button.png',
-      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
-      'onUploadSuccess' : function(file, data, response) {
-        if (!data){
-         alert('上传失败');
-         return;
-        }
-        data = data.split('|');
-        if (data[0] == 100){
-          $('#img').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
-        }else if(data[0] == 200 && data[1]!=''){
-          var imgpath=data[1];
-          $('#img').val(imgpath);
-          $('#img').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_img').attr('src','/'+imgpath);
-        }
-      }
+	setTimeout(function(){
+	    $('#img_upload').uploadify({
+	      'formData'     : {
+	        'timestamp' : '<?php echo $timestamp;?>',
+	        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+	        'type' : 'img',
+	        'uid' : 0
+	      },
+	      'auto':true,
+	      //'buttonClass':'inp_btn',
+	      'fileSizeLimit' : '1024KB',
+	      'buttonText':'选择照片',
+	      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+	      //'buttonImage' : '{$js_url}uploadify/button.png',
+	      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+	      'uploader' : '/public/upload/uploadimg',
+	      'onUploadSuccess' : function(file, data, response) {
+	        if (!data){
+	         alert('上传失败');
+	         return;
+	        }
+	        data = data.split('|');
+	        if (data[0] == 100){
+	          $('#img').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+	        }else if(data[0] == 200 && data[1]!=''){
+	          var imgpath=data[1];
+	          $('#img').val(imgpath);
+	          $('#img').nextAll('em').html('<i class="icoCor16"></i>');
+	          $('#show_img').attr('src','/'+imgpath);
+	        }
+	      }
 
-    });
-$('#img2_upload').uploadify({
-      'formData'     : {
-        'timestamp' : '<?php echo $timestamp;?>',
-        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
-        'type' : 'img',
-        'uid' : 0
-      },
-      'auto':true,
-      //'buttonClass':'inp_btn',
-      'fileSizeLimit' : '1024KB',
-      'buttonText':'选择照片',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
-      //'buttonImage' : '{$js_url}uploadify/button.png',
-      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
-      'onUploadSuccess' : function(file, data, response) {
-        if (!data){
-         alert('上传失败');
-         return;
-        }
-        data = data.split('|');
-        if (data[0] == 100){
-          $('#img2').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
-        }else if(data[0] == 200 && data[1]!=''){
-          var imgpath=data[1];
-          $('#img2').val(imgpath);
-          $('#img2').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_img2').attr('src','/'+imgpath);
-        }
-      }
+	    });
 
-    });
+		
+	});
 });
 </script>
 </body>

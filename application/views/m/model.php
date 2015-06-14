@@ -65,30 +65,12 @@
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
 <div class="popover-mask"></div>
-<div class="popover complaint addcust">
-  <div class="compl_top"><span class="fl">添加客户</span><input type="hidden" name="clientid" id="clientid" value=""><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
-  <div class="compl_con">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td width="80"><font>联 系 人：</font></td>
-              <td><input name="linkman" id="linkman" type="text" class="txt"/></td>
-            </tr>
-            <tr><td height="10"></td></tr>
-            <tr>
-              <td width="80"><font>联系方式：</font></td>
-              <td><input name="contact" id="contact" type="text" class="txt"/></td>
-            </tr>
-            <tr><td height="10"></td></tr>
-            <tr>
-              <td valign="top"><font>备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</font></td>
-              <td><textarea class="txt text" name="memo" id="memo" cols="" rows=""></textarea></td>
-            </tr>
-            <tr><td height="10"></td></tr>
-            <tr>
-              <td>&nbsp;</td>
-               <td><input class="but" id="TX-create" name="" type="button" value="添加"/></td>
-            </tr>
-        </table>
+<div class="popover complaint addcust" style="display: none;">
+    <div class="compl_top"><span class="fl">添加艺人</span><a href="javascript:;" onclick="closeWin(this)" title="关闭" class="close fr">×</a></div>
+    <div class="poptab">
+      <p><input class="but" name="" type="button" value="添加模特" onclick="window.location.href='##'"></p>
+        <p><input class="but" name="" type="button" value="   添加摄影师" onclick="window.location.href='inst_profile.php'"></p>
+        <p><input class="but" name="" type="button" value="   添加化妆师" onclick="window.location.href='inst_profile.php'"></p>
     </div>
 </div>
 </body>

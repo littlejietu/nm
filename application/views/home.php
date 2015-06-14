@@ -107,24 +107,95 @@
         </div>
     </div>
     <div class="advert">
-    	<div class="container">
+        <div class="container">
           <div class="slideTxtBox advert_stb">
                 <div class="hd">
-                    <ul>
-                        <?php foreach ($oSysAct as $k => $v):?>
+                    <ul><?php foreach ($oSysAct as $k => $v):?>
                            <li value="/home/model?type=<?=$k?>"><?=$v?></li>
-                        <?php endforeach;?>
-                    </ul>
+                        <?php endforeach;?></ul>
+
                 </div>
                 <div class="bd">
-                    <ul>
-                      <li><iframe width="100%" height="304" frameborder="0" scrolling="no" allowtransparency="true" src=""></iframe></li>
+                    <ul style="display: block;">
+                        <li class="recom_te ne_con">
+                            <ul class="clearfix">
+                                <?php foreach ($actlist1 as $key => $a): ?>
+                                <li>
+                                    <a class="picimg" href="javascript:void(0);">
+                                        <img src="<?=$a['img'];?>"/>
+                                        <div class="notl_hover">
+                                            <p>工作时间： <?=date('Y-m-d',$a['begtime'])?>       工作地点： <?=$a['place']?>     <?php if($a['actnum']):?>名额： <?=$a['actnum']?>名<?php endif?>   人数： <?=($a['innum']+$a['innumfake']);?>名</p>
+                                            <p>面试地点： <?=$a['address']?> </p>
+                                            <p>工作内容： <?=$a['summary']?> </p>
+                                            <p><?php if($a['workfee']):?>工作费用： <?=$a['workfee']?><?php endif;?>      报名截止： <?=date('Y-m-d',$a['endtime'])?></p>
+                                        </div>
+                                    </a>
+                                    <div class="clearfix">
+                                        <p class="fl nebti"><?=$a['title'];?> <a href="/act/enterlist?aid=<?=$a['id']?>"><em><?=($a['innum']+$a['innumfake']);?>人 报名</em></a></p>
+                                        <?php if($a['inendtime']>=time()):?>
+                                            <a class="fr status XT-enter" _val="<?=_get_key_val($a['id']);?>" title="<?=$a['title'];?>" href="javascript:;">报名</a>
+                                        <?php else:?>
+                                            <span class="fr status">已结束</span>
+                                        <?php endif?>
+                                    </div>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </li>
                     </ul>
-                  <ul>
-                        <li><iframe width="100%" height="304" frameborder="0" scrolling="no" allowtransparency="true" src=""></iframe></li>
+                    <ul style="display: none;">
+                        <li class="recom_te ne_con">
+                            <ul class="clearfix">
+                                <?php foreach ($actlist2 as $key => $a): ?>
+                                <li>
+                                    <a class="picimg" href="javascript:void(0);">
+                                        <img src="<?=$a['img'];?>"/>
+                                        <div class="notl_hover">
+                                            <p>工作时间： <?=date('Y-m-d',$a['begtime'])?>       工作地点： <?=$a['place']?>    <?php if($a['actnum']):?>名额： <?=$a['actnum']?>名<?php endif?>    人数： <?=($a['innum']+$a['innumfake']);?>名</p>
+                                            <p>面试地点： <?=$a['address']?> </p>
+                                            <p>工作内容： <?=$a['summary']?> </p>
+                                            <p><?php if($a['workfee']):?>工作费用： <?=$a['workfee']?><?php endif;?>       报名截止： <?=date('Y-m-d',$a['endtime'])?></p>
+                                        </div>
+                                    </a>
+                                    <div class="clearfix">
+                                        <p class="fl nebti"><?=$a['title'];?> <a href="/act/enterlist?aid=<?=$a['id']?>"><em><?=($a['innum']+$a['innumfake']);?>人 报名</em></a></p>
+                                        <?php if($a['inendtime']>=time()):?>
+                                            <a class="fr status XT-enter" _val="<?=_get_key_val($a['id']);?>" title="<?=$a['title'];?>" href="javascript:;">报名</a>
+                                        <?php else:?>
+                                            <span class="fr status">已结束</span>
+                                        <?php endif?>
+                                    </div>
+                                </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </li>
                     </ul>
-                    <ul>
-                        <li><iframe width="100%" height="304" frameborder="0" scrolling="no" allowtransparency="true" src=""></iframe></li>
+                    <ul style="display: none;">
+                        <li class="recom_te ne_con">
+                            <ul class="clearfix">
+                                <?php foreach ($actlist3 as $key => $a): ?>
+                                <li>
+                                    <a class="picimg" href="javascript:void(0);">
+                                        <img src="<?=$a['img'];?>"/>
+                                        <div class="notl_hover">
+                                            <p>工作时间： <?=date('Y-m-d',$a['begtime'])?>       工作地点： <?=$a['place']?>    <?php if($a['actnum']):?>名额： <?=$a['actnum']?>名<?php endif?>    人数： <?=($a['innum']+$a['innumfake']);?>名</p>
+                                            <p>面试地点： <?=$a['address']?> </p>
+                                            <p>工作内容： <?=$a['summary']?> </p>
+                                            <p><?php if($a['workfee']):?>工作费用： <?=$a['workfee']?><?php endif;?>       报名截止： <?=date('Y-m-d',$a['endtime'])?></p>
+                                        </div>
+                                    </a>
+                                    <div class="clearfix">
+                                        <p class="fl nebti"><?=$a['title'];?> <a href="/act/enterlist?aid=<?=$a['id']?>"><em><?=($a['innum']+$a['innumfake']);?>人 报名</em></a></p>
+                                        <?php if($a['inendtime']>=time()):?>
+                                            <a class="fr status XT-enter" _val="<?=_get_key_val($a['id']);?>" title="<?=$a['title'];?>" href="javascript:;">报名</a>
+                                        <?php else:?>
+                                            <span class="fr status">已结束</span>
+                                        <?php endif?>
+                                    </div>
+                                </li>
+                                <?php endforeach;?>             
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -138,6 +209,7 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/act.js"></script>
 <script type="text/javascript">
 /* banner */
 $(document).ready(function(){

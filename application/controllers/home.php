@@ -45,6 +45,14 @@ class Home extends CI_Controller {
 		$arrWhere = array('usertype'=>2,'status'=>1,'userlevel'=>0);
 		$rmdlist5 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
 
+		$this->load->model('Recommend_model');
+		$fields = 'activity.id,title,img,summary,workfee,activity.addtime,begtime,endtime,inendtime,img,place,address,actnum,innum,innumfake';
+		$arrWhere = array('type'=>1,'status'=>1,'display'=>1);
+		$actlist1 = $this->Recommend_model->get_act_list($arrWhere, $fields, 4);
+		$arrWhere = array('type'=>2,'status'=>1,'display'=>1);
+		$actlist2 = $this->Recommend_model->get_act_list($arrWhere, $fields, 4);
+		$arrWhere = array('type'=>3,'status'=>1,'display'=>1);
+		$actlist3 = $this->Recommend_model->get_act_list($arrWhere, $fields, 4);
 		$oSysAct = _get_config('activity');
 
 		$result = array(
@@ -54,11 +62,15 @@ class Home extends CI_Controller {
 			'rmdlist3' => $rmdlist3,
 			'rmdlist4' => $rmdlist4,
 			'rmdlist5' => $rmdlist5,
+			'actlist1' => $actlist1,
+			'actlist2' => $actlist2,
+			'actlist3' => $actlist3,
 			'oSysAct' => $oSysAct,
 			);
 		$this->load->view('home',$result);
 	}
 
+/*
 	public function model(){
 		$type = $this->input->get('type');
 		$type = $type==0?1:$type;
@@ -78,4 +90,5 @@ class Home extends CI_Controller {
 			);
 		$this->load->view('homemodel',$result);
 	}
+*/
 }
