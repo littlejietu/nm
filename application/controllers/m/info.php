@@ -12,8 +12,13 @@ class Info extends CI_Controller {
 
 	public function index()
 	{
-		$userid = $this->thatUser['id'];
-		$that_usertype = $this->thatUser['usertype'];
+		$that_userid = (int)$this->input->get('agid');
+		$that_usertype = (int)$this->input->get('agusertype');
+		if(!$that_userid || !$that_usertype)
+		{
+			$that_userid = $this->thatUser['id'];
+			$that_usertype = $this->thatUser['usertype'];
+		}
 		//is_post()
 		if ($this->input->is_post())
 		{
@@ -29,7 +34,7 @@ class Info extends CI_Controller {
 			{
 				
 				//保存数据库
-				$this->User_model->update_info_by_id($userid, $data, $data_detail, $data_memo);
+				$this->User_model->update_info_by_id($that_userid, $data, $data_detail, $data_memo);
 			}
 
 		}//-is_post()
@@ -47,7 +52,7 @@ class Info extends CI_Controller {
 		$rightlist = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
 		//end:右侧-推荐用户
 
-		$o = $this->User_model->get_info_by_id($userid);
+		$o = $this->User_model->get_info_by_id($that_userid);
 		$oSysModelstyle = _get_config('modelstyle');
 		$oSysType = array();
 		if(in_array($this->loginUsertype, array(1,2)))
@@ -87,12 +92,12 @@ class Info extends CI_Controller {
                  'rules'   => 'trim|required'
               ),
         );
-		if(!$this->thatUser['nickname'])
-			$config[] = array(
-                 'field'   => 'nickname', 
-                 'label'   => '昵称', 
-                 'rules'   => 'trim|required'
-              );
+		// if(!$this->thatUser['nickname'])
+		// 	$config[] = array(
+  //                'field'   => 'nickname', 
+  //                'label'   => '昵称', 
+  //                'rules'   => 'trim|required'
+  //             );
 		//-验证规则
         
 		$bust=$waist=$hips=0;
@@ -251,6 +256,24 @@ class Info extends CI_Controller {
 			$data['nickname']=$this->input->post('nickname');
 				
 		return array($config, $data, $data_detail, $data_memo);
+	}
+
+	public function add()
+	{
+		$insid = $this->loginID;
+		$usertype = $this->input->get('usertype');
+		if(!in_array($usertype, array(1,4,5)))
+		{
+			echo 'error';
+			exit;
+		}
+
+		$id = $this->User_model->add_user_by_ins($insid, $usertype);
+
+		redirect(base_url('/m/info?agid='.$id.'&agusertype='.$usertype));
+
+
+
 	}
 
 }

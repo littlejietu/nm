@@ -26,16 +26,17 @@
               <a class="fr addto TX-win-open" href="javascript:;"><i></i>添加艺人</a>
                         </div>
                         <div class="works malbums mworks inst_arti">
-                          <!--<div class="aut_bti mw_upload">摄影师</div>-->
+                            <div class="aut_bti mw_upload">摄影师</div>
                             <ul class="clearfix">
                                 <?php foreach ($list['rows'] as $key => $a): ?>
                                 <li>
                                     <a href="javascript:;">
                                         <img src="<?=base_url($a['showimg'])?>">
-                                        <div class="mwk_hover">
+                                        <div class="mwk_hover mwk_hover2">
                                           <p>
-                                                <span class="mh_1 XT-modify" _val="<?=_get_key_val($a['id'])?>"></span>
-                                                <span class="mh_2 XT-del" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_1 XT-modify" title="编辑" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_2 XT-album-create" title="添加相册" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_3 XT-del" title="删除" _val="<?=_get_key_val($a['id'])?>"></span>
                                             </p>
                                         </div>
                                     </a>

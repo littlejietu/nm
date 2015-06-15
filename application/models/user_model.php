@@ -185,4 +185,29 @@ class User_model extends XT_Model {
 		return $db_temp['num'];
 	}
 
+	public function add_user_by_ins($insid,$usertype)
+	{
+		$data = array('username'=>time(),
+			'nickname'=>time(),
+			'usertype'=>$usertype,
+			'insid'=>$insid,
+			'status'=>0,
+			'addtime'=>time(),
+			'lastip'=>_ip_long(),
+			);
+		$userid = $this->insert_string( $data );
+
+		$data_detail = array('userid'=>$userid,
+			);
+		$data_memo = array('userid'=>$userid,
+			);
+		$this->set_table($this->tb_userdetail);
+        $this->insert($data_detail);
+        $this->set_table($this->tb_usermemo);
+        $this->insert($data_memo);
+        $this->set_table($this->tb_user);
+
+        return $userid;
+	}
+
 }

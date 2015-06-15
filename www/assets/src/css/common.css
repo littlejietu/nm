@@ -466,9 +466,10 @@
 .mworks li{margin:0 27px 20px 0;}
 .mworks li a{position:relative;}
 .mwk_hover{position:absolute;top:0;left:0;width:100%;height:256px;background:url(../images/mwk_hover.png) repeat center center;display:none;}
-.mwk_hover p{height:50px;width:116px;margin:100px auto 0;}
-.mwk_hover span{display:block;float:left;width:50px;height:50px;background-position:-2px -249px;}
-.mwk_hover span.mh_2{background-position:-56px -249px;margin-left:15px;}
+.mwk_hover p{height:50px;width:180px;margin:100px auto 0;}
+.mwk_hover.mwk_hover2 span{display:block;float:left;width:50px;height:50px;background:url(../images/manage-span.png) no-repeat 0 0;}
+.mwk_hover.mwk_hover2 span.mh_2{background:url(../images/manage-span.png) no-repeat -72px 0;margin-left:15px;}
+.mwk_hover.mwk_hover2 span.mh_3{background:url(../images/manage-span.png) no-repeat -142px 0;margin-left:15px;}
 .mworks li a:hover .mwk_hover {display:block;}
 /* profile */
 #previews{width:100px;height:100px;text-align:center;float:left;margin:15px 0;}
