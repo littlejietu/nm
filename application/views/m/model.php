@@ -66,11 +66,11 @@
 <?php include_once(VIEWPATH."public/footer.php");?>
 <div class="popover-mask"></div>
 <div class="popover complaint addcust" style="display: none;">
-    <div class="compl_top"><span class="fl">添加艺人</span><a href="javascript:;" onclick="closeWin(this)" title="关闭" class="close fr">×</a></div>
+    <div class="compl_top"><span class="fl">添加艺人</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
     <div class="poptab">
-      <p><input class="but" name="" type="button" value="添加模特" onclick="window.location.href='##'"></p>
-        <p><input class="but" name="" type="button" value="   添加摄影师" onclick="window.location.href='inst_profile.php'"></p>
-        <p><input class="but" name="" type="button" value="   添加化妆师" onclick="window.location.href='inst_profile.php'"></p>
+        <p><a class="but" name="" href="/m/info/add?usertype=1">添加模特</a></p>
+        <p><a class="but" name="" href="/m/info/add?usertype=4">添加摄影师</a></p>
+        <p><a class="but" name="" href="/m/info/add?usertype=5">添加化妆师</a></p>
     </div>
 </div>
 </body>
