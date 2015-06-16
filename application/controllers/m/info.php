@@ -12,13 +12,15 @@ class Info extends CI_Controller {
 
 	public function index()
 	{
-		$that_userid = (int)$this->input->get('agid');
-		$that_usertype = (int)$this->input->get('agusertype');
+		$that_userid = _get_key_val($this->input->get('agid'), true);
+		$that_usertype = $this->input->get('agusertype');
+		
 		if(!$that_userid || !$that_usertype)
 		{
 			$that_userid = $this->thatUser['id'];
 			$that_usertype = $this->thatUser['usertype'];
 		}
+
 		//is_post()
 		if ($this->input->is_post())
 		{
@@ -32,7 +34,6 @@ class Info extends CI_Controller {
 			$this->form_validation->set_rules($config);
 			if ($this->form_validation->run() === TRUE)
 			{
-				
 				//保存数据库
 				$this->User_model->update_info_by_id($that_userid, $data, $data_detail, $data_memo);
 			}
@@ -92,12 +93,12 @@ class Info extends CI_Controller {
                  'rules'   => 'trim|required'
               ),
         );
-		// if(!$this->thatUser['nickname'])
-		// 	$config[] = array(
-  //                'field'   => 'nickname', 
-  //                'label'   => '昵称', 
-  //                'rules'   => 'trim|required'
-  //             );
+		if(!$this->thatUser['nickname'])
+			$config[] = array(
+                 'field'   => 'nickname', 
+                 'label'   => '昵称', 
+                 'rules'   => 'trim|required'
+              );
 		//-验证规则
         
 		$bust=$waist=$hips=0;
@@ -151,7 +152,7 @@ class Info extends CI_Controller {
 			'bgimg'=>$this->input->post('bgimg'),
 			'video'=>$this->input->post('video'),					
 			);
-		if(!$this->thatUser['nickname'])
+		if($this->input->post('nickname'))
 			$data['nickname']=$this->input->post('nickname');
 
 		return array($config, $data, $data_detail, $data_memo);
@@ -199,7 +200,7 @@ class Info extends CI_Controller {
 			'bgimg'=>$this->input->post('bgimg'),
 			//'video'=>$this->input->post('video'),					
 			);
-		if(!$this->thatUser['nickname'])
+		if($this->input->post('nickname'))
 			$data['nickname']=$this->input->post('nickname');
 
 		return array($config, $data, $data_detail, $data_memo);
@@ -270,7 +271,7 @@ class Info extends CI_Controller {
 
 		$id = $this->User_model->add_user_by_ins($insid, $usertype);
 
-		redirect(base_url('/m/info?agid='.$id.'&agusertype='.$usertype));
+		redirect(base_url('/m/info?agid='._get_key_val($id).'&agusertype='.$usertype));
 
 
 

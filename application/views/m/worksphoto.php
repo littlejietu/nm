@@ -37,7 +37,7 @@
                                         <?php endforeach;?>
                                     </ul>
                                 </div>
-                                <p class="fr"><a href="##">反馈问题</a><a href="##">使用帮助</a></p>
+                                <!--<p class="fr"><a href="##">反馈问题</a><a href="##">使用帮助</a></p>-->
                             </div>
                             <div class="upload_list">
                               <ul class="clearfix" id="X-photo-list">
@@ -81,7 +81,7 @@ $(function() {
         'timestamp' : '<?php echo $timestamp;?>',
         'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
         'type' : 'photo',
-        'uid' : <?php echo $this->loginID;?>,
+        'uid' : "<?php if($this->input->get('agid')) echo $this->input->get('agid'); else echo $this->thatUser['id'];?>",
         'albumid' : 0
       },
       'auto':true,

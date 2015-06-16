@@ -18,10 +18,13 @@ class Works extends CI_Controller {
 		// $result = array(
 		// 	'o' => $o,
 		// 	);
+		$agid = _get_key_val($this->input->get('agid'),true);
+		if(!$agid)
+			$agid = $this->thatUser['id'];
 		$page     = _get_page();
-		$pagesize = 3;
+		$pagesize = 9;
 		$arrParam = array();
-		$arrWhere = array('userid'=>$this->thatUser['id']);
+		$arrWhere = array('userid'=>$agid);
 
 		$list = $this->Album_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -84,9 +87,23 @@ class Works extends CI_Controller {
   				}
   				else
   				{
+  					$agid	= _get_key_val($this->input->post('agid'), TRUE);
+  					if($agid)
+  					{
+  						$agUser = $this->User_model->fetch_row(array('id'=>$agid), 'nickname');
+  						if($agUser)
+  							$agnickname = $agUser['nickname'];
+
+  					}
+  					else
+  					{
+  						$agid = $this->thatUser['id'];
+  						$agnickname = $this->thatUser['nickname'];
+  					}
+
 	  				$data = array(
-	  					'userid'=>$this->thatUser['id'],
-	  					'nickname'=>$this->thatUser['nickname'],
+	  					'userid'=>$agid,
+	  					'nickname'=>$agnickname,
 	  					'insid'=>$this->loginInsID,
 						'title'=>$this->input->post('title'),
 						'memo'=>$this->input->post('memo'),
@@ -134,8 +151,16 @@ class Works extends CI_Controller {
 	}
 
 	public function photo(){
+
+		$agid	= _get_key_val($this->input->get('agid'), TRUE);
+		if(!$agid)
+		{
+			$agid = $this->thatUser['id'];
+		}
+
 		$id = _get_key_val($this->input->get('id'), TRUE);
-		$arrWhere = array('userid'=>$this->thatUser['id'],'status'=>1);
+		$arrWhere = array('userid'=>$agid,'status'=>1);
+
 
 		$list = $this->Album_model->get_list($arrWhere,'id,title');
 		$photolist = $this->Photo_model->get_list($arrWhere,'id,img,title');
@@ -165,7 +190,7 @@ class Works extends CI_Controller {
 	public function getphoto(){
 		$res = array('code'=>0,'data'=>array());
 		$id = _get_key_val($this->input->post('albumid'), TRUE);
-		$arrWhere = array('albumid'=>$id,'userid'=>$this->thatUser['id'],'status'=>1);
+		$arrWhere = array('albumid'=>$id,'status'=>1);	//'userid'=>$this->thatUser['id']
 
 		$photolist = $this->Photo_model->get_list($arrWhere,'id,img,title');
 		$res['code'] = 200;

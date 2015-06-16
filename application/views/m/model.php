@@ -23,18 +23,54 @@
                     <div class="transa">
                         <div class="aut_bti clearfix">
                           <h3 class="fl">艺人管理</h3>
-              <a class="fr addto TX-win-open" href="javascript:;"><i></i>添加艺人</a>
+                          <a class="fr addto TX-win-open" href="javascript:;"><i></i>添加艺人</a>
                         </div>
                         <div class="works malbums mworks inst_arti">
-                            <div class="aut_bti mw_upload">摄影师</div>
+                            <div class="aut_bti mw_upload">模特</div>
                             <ul class="clearfix">
-                                <?php foreach ($list['rows'] as $key => $a): ?>
+                                <?php foreach ($list as $key => $a): ?>
                                 <li>
                                     <a href="javascript:;">
-                                        <img src="<?=base_url($a['showimg'])?>">
+                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
                                         <div class="mwk_hover mwk_hover2">
                                           <p>
-                                                <span class="mh_1 XT-modify" title="编辑" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_2 XT-album-create" title="添加相册" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_3 XT-del" title="删除" _val="<?=_get_key_val($a['id'])?>"></span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                              <?php endforeach;?>
+                            </ul>
+
+                            <div class="aut_bti mw_upload">摄影</div>
+                            <ul class="clearfix">
+                                <?php foreach ($list2 as $key => $a): ?>
+                                <li>
+                                    <a href="javascript:;">
+                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
+                                        <div class="mwk_hover mwk_hover2">
+                                          <p>
+                                                <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_2 XT-album-create" title="添加相册" _val="<?=_get_key_val($a['id'])?>"></span>
+                                                <span class="mh_3 XT-del" title="删除" _val="<?=_get_key_val($a['id'])?>"></span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                              <?php endforeach;?>
+                            </ul>
+
+                            <div class="aut_bti mw_upload">化妆</div>
+                            <ul class="clearfix">
+                                <?php foreach ($list3 as $key => $a): ?>
+                                <li>
+                                    <a href="javascript:;">
+                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
+                                        <div class="mwk_hover mwk_hover2">
+                                          <p>
+                                                <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
                                                 <span class="mh_2 XT-album-create" title="添加相册" _val="<?=_get_key_val($a['id'])?>"></span>
                                                 <span class="mh_3 XT-del" title="删除" _val="<?=_get_key_val($a['id'])?>"></span>
                                             </p>
@@ -46,15 +82,6 @@
                             
                         </div>
 
-                        <table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
-                        <tr>
-                                <td colspan="2" height="32" align="right">
-                                    <div class="page">
-                                      <?=$list['pages']?>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
 
@@ -69,9 +96,9 @@
 <div class="popover complaint addcust" style="display: none;">
     <div class="compl_top"><span class="fl">添加艺人</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
     <div class="poptab">
-        <p><a class="but" name="" href="/m/info/add?usertype=1">添加模特</a></p>
-        <p><a class="but" name="" href="/m/info/add?usertype=4">添加摄影师</a></p>
-        <p><a class="but" name="" href="/m/info/add?usertype=5">添加化妆师</a></p>
+        <p><input class="but" name="" type="button" value="添加模特" onclick="window.location.href='/m/info/add?usertype=1'"></p>
+        <p><input class="but" name="" type="button" value="添加摄影师" onclick="window.location.href='/m/info/add?usertype=4'"></p>
+        <p><input class="but" name="" type="button" value="添加化妆师" onclick="window.location.href='/m/info/add?usertype=5'"></p>
     </div>
 </div>
 </body>
@@ -80,4 +107,6 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/model.js"></script>
+<style>.poptab{width:auto;text-align:center;}.poptab p{margin-bottom:25px;}</style>
+
 </html>

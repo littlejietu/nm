@@ -59,6 +59,8 @@ class My_XTcl{
 				$CI->loginUserName      = $CI->loginUser['username'];
 				$CI->loginNickName      = empty($CI->loginUser['nickname']) ? $CI->loginUser['username'] : $CI->loginUser['nickname'];
 				$CI->loginUsertype = (int)$CI->loginUser['usertype'];
+				if($CI->loginUsertype==2)	//机构
+					$CI->loginInsID = $CI->loginID;
 
 				$CI->loginUserNum = array();
 				if($CI->loginUsertype==1)

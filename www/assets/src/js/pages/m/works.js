@@ -17,6 +17,7 @@ $('#TX-create').bind('click',function(){
 	$.ajax( {
 	    url:'/m/works/addalbum',
 	    data:{
+	    		agid : $('#agid').val(),
 	    		id : $('#albumid').val(), 
 	            title : $('#title').val(),
 	            memo : $('#memo').val()

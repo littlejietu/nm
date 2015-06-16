@@ -667,7 +667,7 @@ body.resize{-webkit-transition:padding 0.3s ease;-moz-transition:padding 0.3s ea
 .addcust{height:290px;margin-top:-145px;}
 .addcust .txt{width:300px;}
 .inst_arti ul{width:103%;}
-.inst_arti li,.inst_arti li a img{width:190px;height:248px;}
+.inst_arti li,.inst_arti li a img{width:180px;height:180px;}
 
 /* 2015.5.8 */
 .fund_brot{border-bottom:1px solid #ddd;}

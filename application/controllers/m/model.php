@@ -13,30 +13,21 @@ class Model extends CI_Controller {
 	public function index()
 	{
 		$userid = $this->loginID;
-		$page     = _get_page();
-		$pagesize = 10;
-		$arrParam = array();
-		$arrWhere = array('insid'=>$userid,'status'=>1);		//条件
+		$arrWhere1 = array('insid'=>$userid,'status'=>2,'usertype'=>1);
+		$list = $this->User_model->get_list($arrWhere1);
 
-		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere);
-		//echo $this->db->last_query();die;
-		
+		$arrWhere2 = array('insid'=>$userid,'status'=>2,'usertype'=>4);
+		$list2 = $this->User_model->get_list($arrWhere2);
 
-		//分页
-		$pagecfg = array();
-		$pagecfg['base_url']     = _create_url('m/model', $arrParam);
-		$pagecfg['total_rows']   = $list['count'];
-		$pagecfg['cur_page'] = $page;
-		$pagecfg['per_page'] = $pagesize;
-		//$this->load->library('pagination');
-		$this->pagination->initialize($pagecfg);
-		$list['pages'] = $this->pagination->create_links();
-
+		$arrWhere3 = array('insid'=>$userid,'status'=>2,'usertype'=>5);
+		$list3 = $this->User_model->get_list($arrWhere3);
+	
 		$result = array(
 			'list' => $list,
+			'list2' => $list2,
+			'list3' => $list3,
 			);
 
-		//print_r($list);
 		$this->load->view('m/model',$result);
 	}
 
@@ -60,13 +51,25 @@ class Model extends CI_Controller {
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
 		
-		$this->User_model->update_by_where(array('id'=>$id, 'insid'=>$this->loginID),array('insid'=>0));
+		$this->User_model->update_by_where(array('id'=>$id, 'insid'=>$this->loginID),array('status'=>-1));
 		$res['code'] = 200;
 
 		$this->view->json($res);
 	}
 
 	public function set(){
+		$agid = $this->input->get('modelid');
+		$modelid = _get_key_val( $agid, TRUE);
+		$agUser = $this->User_model->fetch_row(array('id'=>$modelid), 'usertype');
+		if($agUser)
+			redirect('/m/info?agid='.$agid.'&agusertype='.$agUser['usertype']);
+		else
+		{
+			echo 'err';
+			exit;
+		}
+
+		/*//原代理模式
 		$modelid = _get_key_val( $this->input->get('modelid'), TRUE);
 		$this->load->driver('cache', array('adapter' => 'apc', 'backup' => 'file'));
 		$this->cache->delete('agentUser');
@@ -79,6 +82,7 @@ class Model extends CI_Controller {
 		}
 
 		redirect('/m/info');
+		*/
 	}
 
 	public function exitagt(){

@@ -188,10 +188,9 @@ class User_model extends XT_Model {
 	public function add_user_by_ins($insid,$usertype)
 	{
 		$data = array('username'=>time(),
-			'nickname'=>time(),
 			'usertype'=>$usertype,
 			'insid'=>$insid,
-			'status'=>0,
+			'status'=>2,		//无登录功能
 			'addtime'=>time(),
 			'lastip'=>_ip_long(),
 			);

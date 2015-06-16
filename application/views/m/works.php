@@ -26,7 +26,7 @@
                         <div class="aut_bti clearfix"><h3 class="fl">作品管理</h3><span class="fr">可自主上传作品，相册</span></div>
                         <div class="works malbums mworks">
                           <div class="aut_bti mw_upload clearfix">
-                              <a class="fl addto ato_1" href="/m/works/photo"><i></i>上传照片</a>
+                              <a class="fl addto ato_1" href="/m/works/photo<?php if($this->input->get('agid')) echo '?agid='.$this->input->get('agid');?>"><i></i>上传照片</a>
                                 <a class="fl addto" id="TX-create-album" href="javascript:;"><i></i>创建相册</a>
                             </div>
                             <ul class="clearfix">
@@ -64,7 +64,7 @@
 
 <div class="popover-mask"></div>
 <div class="popover complaint">
-  <div class="compl_top"><span class="fl" id="X-title">创建相册</span><input type="hidden" name="albumid" id="albumid" value=""><a href="javascript:;" id="TX-win-close" title="关闭" class="close fr">×</a></div>
+  <div class="compl_top"><span class="fl" id="X-title">创建相册</span><input type="hidden" name="albumid" id="albumid" value=""><input type="hidden" name="agid" id="agid" value="<?=$this->input->get('agid')?>"><a href="javascript:;" id="TX-win-close" title="关闭" class="close fr">×</a></div>
   <div class="compl_con">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>

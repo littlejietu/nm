@@ -26,9 +26,9 @@
             <li<?php if( strtolower(uri_string())=='m/client' ) echo ' class="current"';?>><a href="/m/client">客户管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/message' ) echo ' class="current"';?>><a href="/m/message">系统消息<i></i></a></li>
         <?php else:?>
-            <li<?php if( strtolower(uri_string())=='m/model' ) echo ' class="current"';?>><a href="/m/model">艺人管理<i></i></a></li>
+            <li<?php if( strtolower(uri_string())=='m/model' || $this->input->get('agid') ) echo ' class="current"';?>><a href="/m/model">艺人管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/fans' ) echo ' class="current"';?>><a href="/m/fans">互动总览<i></i></a></li>
-            <li<?php if( strtolower(uri_string())=='m/info' ) echo ' class="current"';?>><a href="/m/info">机构资料<i></i></a></li>
+            <li<?php if( strtolower(uri_string())=='m/info' && !$this->input->get('agid') ) echo ' class="current"';?>><a href="/m/info">机构资料<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/cert' ) echo ' class="current"';?>><a href="/m/cert">机构认证<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/order' ) echo ' class="current"';?>><a href="/m/order">交易管理<?php if($this->loginUserNum):?><span class="o_mete"><?php echo $this->loginUserNum['be_ordernum_new'];?></span><?php endif?><i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/comment' ) echo ' class="current"';?>><a href="/m/comment">评论管理<i></i></a></li>

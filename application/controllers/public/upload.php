@@ -65,7 +65,9 @@ class Upload extends CI_Controller {
 
     public function uploadphotoimg(){
         $timestamp = $_POST['timestamp'];
-        $uid = (int)$_POST['uid'];
+        $uid = _get_key_val( $_POST['uid'] ,true);
+        if(!$uid)
+            $uid = (int)$_POST['uid'];
         $type = $_POST['type'];
         $albumid = isset($_POST['albumid'])?_get_key_val($_POST['albumid'],true):0;
         $uploadName = $type."_upload";
@@ -93,7 +95,7 @@ class Upload extends CI_Controller {
                 
                 $map = array(
                     'albumid'=>$albumid,
-                  'userid'=>$this->loginID,
+                  'userid'=>$uid,
                   'insid'=>$this->loginInsID,
                   'addtime'=>$this->timestamp,
                   'title'=>$upload_data['client_name'],
