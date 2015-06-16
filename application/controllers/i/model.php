@@ -13,6 +13,7 @@ class Model extends CI_Controller {
 
 	public function index($userid)
 	{
+		$usertype = (int)$this->input->get('t');
 		//浏览
 		$sysVisittype = _get_config('visittype');
 		$this->load->service('User_service');
@@ -27,7 +28,9 @@ class Model extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
-		$arrWhere = array('insid'=>$userid, 'status'=>1,'showimg<>'=>"''",'showimg2<>'=>"''");
+		$arrWhere = array('insid'=>$userid, 'status'=>2);	//,'showimg<>'=>"''",'showimg2<>'=>"''"
+		if($usertype)
+			$arrWhere['usertype'] = $usertype;
 
 		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere,'id,nickname,showimg,showimg2','addtime desc');
 

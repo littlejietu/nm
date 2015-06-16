@@ -22,7 +22,7 @@
       <?php include_once(VIEWPATH."i/public/top_ins.php");?>
         
        <div class="introdcon">
-        	<img src="<?php echo _get_cfg_path('images')?>int_3.jpg" />
+        	<?=html_entity_decode(stripslashes($oUser['memo']));?>
         </div>
     </div>
 </div>

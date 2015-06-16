@@ -24,25 +24,36 @@
         include_once(VIEWPATH."i/public/top.php");
       if($oUser['usertype']==2)
         include_once(VIEWPATH."i/public/top_ins.php");?>
-        <div class="women artistes">
-            <ul class="clearfix">
-                <?php foreach ($list['rows'] as $key => $a):?>
-                <li>
-                    <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
-                        <div class="mtimg">
-                            <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
-                            <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
-                        </div>
-                        <span class="womzi"><?=$a['nickname']?></span>
-                    </a>
-                </li>
-                <?php endforeach;?>
-            </ul>
 
-            <div class="page">
-              <?=$list['pages']?>
+        <div class="clearfix">
+            <div class="fl wsti">
+                <ul>
+                    <li class="cur"><a href="?t=1">模特</a></li>
+                    <li><a href="?t=4">摄影师</a></li>
+                    <li><a href="?t=5">化妆师</a></li>
+                </ul>
+            </div>
+            <div class="women artiste fr">
+                <ul class="clearfix">
+                    <?php foreach ($list['rows'] as $key => $a):?>
+                    <li>
+                        <a href="/i/index/<?=$a['id']?>" target="_blank" title="<?=$a['nickname']?>">
+                            <div class="mtimg">
+                                <img class="show" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg']?>"/>
+                                <img class="hide" alt="<?=$a['nickname']?>" originalsrc="<?=$a['showimg2']?>"/>
+                            </div>
+                            <span class="womzi"><?=$a['nickname']?></span>
+                        </a>
+                    </li>
+                    <?php endforeach;?>
+                </ul>
+
+                <div class="page">
+                  <?=$list['pages']?>
+                </div>
             </div>
         </div>
+
 
     </div>
 </div>
@@ -52,4 +63,6 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>main.js"></script>
+<style>.artiste{width:1020px;background:#fff;min-height:500px;padding:15px;width:1030px;margin:0 0 30px;}.artiste li{margin:0 14px 14px 0}</style>
+
 </html>

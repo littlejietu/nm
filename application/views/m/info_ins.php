@@ -7,8 +7,9 @@
 <link href="<?php echo _get_cfg_path('css')?>base.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('css')?>common.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo _get_cfg_path('lib')?>uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="<?php echo _get_cfg_path('lib')?>kindeditor/themes/default/default.css" />
 <!--[if IE 6]>
-<script src="js/DD_belatedPNG.js" type="text/javascript" ></script>
+<script src="<?php echo _get_cfg_path('js')?>DD_belatedPNG.js" type="text/javascript" ></script>
 <script>DD_belatedPNG.fix('a,img');</script>
 <![endif]-->
 </head>
@@ -104,7 +105,7 @@
                                   <td colspan="4">公司简介</td>
                               </tr>
                               <tr>
-                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=$o['memo']?></textarea></td>
+                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=htmlspecialchars($o['memo']);?></textarea></td>
                               </tr>
                               
                               <tr style="border-bottom:none;">
@@ -137,6 +138,9 @@
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/info.js"></script>
 <script src="<?php echo _get_cfg_path('lib')?>uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<script charset="utf-8" src="<?php echo _get_cfg_path('lib')?>kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="<?php echo _get_cfg_path('lib')?>kindeditor/lang/zh_CN.js"></script>
+
 <script type="text/javascript">
 <?php $timestamp = $this->timestamp;?>
 $(function() {
@@ -208,5 +212,20 @@ $(function() {
     });
   },10);
 });
+
+
+  var editor;
+  KindEditor.ready(function(K) {
+    editor = K.create('textarea[name="memo"]', {
+      resizeType : 1,
+      allowPreviewEmoticons : false,
+      allowImageUpload : true,
+      items : [
+        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+    });
+  });
+
 </script>
 </html>
