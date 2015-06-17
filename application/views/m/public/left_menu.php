@@ -10,6 +10,7 @@
                 if(!empty($agentUser)):?>
                 <a href="/m/model/exitagt?modelid=<?=_get_key_val($agentUser['id'])?>">退出代理</a>
             <?php endif?>
+            <?=_get_timehello();?>
         </p>
     </div>
     <div class="menu_box">

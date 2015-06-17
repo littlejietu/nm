@@ -42,6 +42,23 @@ function _check_password_safe($pwd){
 	return $res;
 }
 
+function _get_timehello()
+{
+	$res = '';
+	$arrHello = _get_config('timehello');
+	$h = date('h',time());
+	if($h>=6 && $h< 12)
+		$res = $arrHello[1];
+	else if($h>=12 && $h< 2)
+		$res = $arrHello[2];
+	else if($h>=2 && $h< 6)
+		$res = $arrHello[3];
+	else
+		$res = $arrHello[4];
+
+	return $res;
+}
+
 
 
 ?>

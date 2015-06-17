@@ -28,7 +28,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td width="86">真实姓名</td>
+                                <td width="86"><span class="tips">*</span>真实姓名</td>
                                 <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/></td>
                                 <td></td>
                                 <td></td>

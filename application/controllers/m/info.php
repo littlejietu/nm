@@ -62,11 +62,14 @@ class Info extends CI_Controller {
 
 			$oSysType = $oSysType[$this->loginUsertype];
 		}
+		$this->load->model('Userbody_model');
+		$oBody = $this->Userbody_model->get_by_id($that_userid);
 		$result = array(
 			'o' => $o,
 			'rightlist' => $rightlist,
 			'oSysModelstyle' => $oSysModelstyle,
 			'oSysType' => $oSysType,
+			'oBody' => $oBody,
 			);
 		$view = 'm/info';
 		if($that_usertype==2)
@@ -276,6 +279,57 @@ class Info extends CI_Controller {
 		redirect(base_url('/m/info?agid='._get_key_val($id).'&agusertype='.$usertype));
 
 
+
+	}
+
+	public function setbody(){
+
+		if($this->input->is_post())
+		{
+			$id = $this->input->post('id');
+			$userid = _get_key_val($id,true);
+			$usertype = $this->input->post('t');
+
+			if($userid)
+			{
+				$data_detail = array(
+					'height'=>(int)$this->input->post('bd_height'),
+					'bust'=>(int)$this->input->post('bd_bust'),
+					'waist'=>(int)$this->input->post('bd_waist'),
+					'hips'=>(int)$this->input->post('bd_hips'),
+					);
+				$this->load->model('Userdetail_model');
+				$this->Userdetail_model->update_by_where(array('userid'=>$userid),$data_detail);
+
+				$data_body = array(
+					'userid'=>$userid,
+					'hipd'=>(int)$this->input->post('bd_hipd'),
+					'hipe'=>(int)$this->input->post('bd_hipe'),
+					'collarf'=>(int)$this->input->post('bd_collarf'),
+					'shoulderg'=>(int)$this->input->post('bd_shoulderg'),
+					'sleeveh'=>(int)$this->input->post('bd_sleeveh'),
+					'sleevefull'=>(int)$this->input->post('bd_sleevefull'),
+					'outseam'=>(int)$this->input->post('bd_outseam'),
+					'inseamj'=>(int)$this->input->post('bd_inseamj'),
+					'hatk'=>(int)$this->input->post('bd_hatk'),
+					'wristl'=>(int)$this->input->post('bd_wristl'),
+					'thighm'=>(int)$this->input->post('bd_thighm'),
+					'calfn'=>(int)$this->input->post('bd_calfn'),
+					'hair'=>$this->input->post('bd_hair'),
+					'eye'=>$this->input->post('bd_eye'),
+				);
+
+				$this->load->model('Userbody_model');
+				$this->Userbody_model->insert($data_body);
+			}
+
+			if($userid != $this->thatUser['id'])
+				redirect('/m/info?agid='.$id.'&agusertype='.$usertype);
+			else
+				redirect('/m/info');
+
+
+		}
 
 	}
 

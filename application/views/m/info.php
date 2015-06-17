@@ -153,6 +153,89 @@
 </div>
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
+
+<?php if($o['usertype']==1):?>
+<div class="popover-mask"></div>
+<div class="popover">
+  <div class="compl_top"><span class="fl">完善个人信息</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
+  <div class="popbod pp_mtzl">
+      <div class="fl pobimg"><img src="<?php echo _get_cfg_path('images')?>mt_zl.png" style="height:380px;"/></div>
+        <div class="fr poptab">
+          <form action="/m/info/setbody" method="post">
+            <input type="hidden" name="id" value="<?=_get_key_val($o['id']);?>">
+            <input type="hidden" name="t" value="<?=$o['usertype'];?>">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="95"><font>身高(A)：</font></td>
+                    <td width="150"><input name="bd_height" type="text" class="txt" placeholder="Height (A)" value="<?=$o['height']?>"/></td>
+                    <td width="95"><font>胸围(B)：</font></td>
+                    <td><input name="bd_bust" type="text" class="txt" placeholder="Bust / Chest (B)" value="<?=$o['bust']?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>腰围(C)：</font></td>
+                    <td><input name="bd_waist" type="text" class="txt" placeholder="Waist (C)" value="<?=$o['waist']?>"/></td>
+                    <td><font>下臀围(D)：</font></td>
+                    <td><input name="bd_hipd" type="text" class="txt" placeholder="Hip (D)" value="<?=!empty($oBody['hipd'])?$oBody['hipd']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>上臀围(E)：</font></td>
+                    <td><input name="bd_hipe" type="text" class="txt" placeholder="High Hip (E)" value="<?=!empty($oBody['hipe'])?$oBody['hipe']:'';?>"/></td>
+                    <td><font>领围(F)：</font></td>
+                    <td><input name="bd_collarf" type="text" class="txt" placeholder="Collar (F)" value="<?=!empty($oBody['collarf'])?$oBody['collarf']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>肩宽(G)：</font></td>
+                    <td><input name="bd_shoulderg" type="text" class="txt" placeholder="Shoulder(G)" value="<?=!empty($oBody['shoulderg'])?$oBody['shoulderg']:'';?>"/></td>
+                    <td><font>臂长(H)：</font></td>
+                    <td><input name="bd_sleeveh" type="text" class="txt" placeholder="Sleeve Length(H)" value="<?=!empty($oBody['sleeveh'])?$oBody['sleeveh']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>袖长：</font></td>
+                    <td><input name="bd_sleevefull" type="text" class="txt" placeholder="Sleeve Full Length" value="<?=!empty($oBody['sleevefull'])?$oBody['sleevefull']:'';?>"/></td>
+                    <td><font>外侧裤长：</font></td>
+                    <td><input name="bd_outseam" type="text" class="txt" placeholder="Outseam (I)" value="<?=!empty($oBody['outseam'])?$oBody['outseam']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>内侧裤长：</font></td>
+                    <td><input name="bd_inseamj" type="text" class="txt" placeholder="Inseam (J)" value="<?=!empty($oBody['inseamj'])?$oBody['inseamj']:'';?>"/></td>
+                    <td><font>头围(K)：</font></td>
+                    <td><input name="bd_hatk" type="text" class="txt" placeholder="Hat Size (K)" value="<?=!empty($oBody['hatk'])?$oBody['hatk']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>腕围(L)：</font></td>
+                    <td><input name="bd_wristl" type="text" class="txt" placeholder="Wrist (L)" value="<?=!empty($oBody['wristl'])?$oBody['wristl']:'';?>"/></td>
+                    <td><font>大腿围(M)：</font></td>
+                    <td><input name="bd_thighm" type="text" class="txt" placeholder="Thigh (M)" value="<?=!empty($oBody['thighm'])?$oBody['thighm']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>小腿围(N)：</font></td>
+                    <td><input name="bd_calfn" type="text" class="txt" placeholder="Calf (N)" value="<?=!empty($oBody['calfn'])?$oBody['calfn']:'';?>"/></td>
+                    <td><font>鞋码：</font></td>
+                    <td><input name="bd_shoes" type="text" class="txt" placeholder="Shoes" value="<?=$o['shoes']?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>头发：</font></td>
+                    <td><input name="bd_hair" type="text" class="txt" placeholder="Hair Color" value="<?=!empty($oBody['hair'])?$oBody['hair']:'';?>"/></td>
+                    <td><font>眼睛：</font></td>
+                    <td><input name="bd_eye" type="text" class="txt" placeholder="Eye Color" value="<?=!empty($oBody['eye'])?$oBody['eye']:'';?>"/></td>
+                </tr>
+                <tr>
+                    <td><font>臂围：</font></td>
+                    <td><input name="bd_hips" type="text" class="txt" placeholder="" value="<?=$o['hips']?>"/></td>
+                </tr>
+                <tr><td height="20"></td></tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td colspan="3"><input class="but" name="" type="submit" value="添加"/></td>
+                </tr>
+            </table>
+          </form>
+        </div>
+    </div>
+</div>
+<?php endif?>
+
+
 </body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>

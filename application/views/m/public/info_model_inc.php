@@ -28,7 +28,7 @@
                                 </td>
                               </tr>
                               <tr>
-                                <td width="86">真实姓名</td>
+                                <td width="86"><span class="tips">*</span>真实姓名</td>
                                 <td><input name="realname" type="text" value="<?=$o['realname']?>" class="txt" placeholder="请输入姓名"/><?php //echo form_error('realname');?></td>
                                 <td><span class="tips">*</span>身高</td>
                                 <td><input name="height" type="text" class="txt" value="<?=$o['height']?>" placeholder="请输入身高"/> cm<?php //echo form_error('height');?></td>
@@ -71,6 +71,10 @@
                                   <?php endforeach;?>
                                 </td>
                                 
+                              </tr>
+                              <tr>
+                                <td>&nbsp;</td>
+                                <td colspan="3"><a href="javascript:;" class="TX-win-open" style="color:#f00;">完善个人信息</a></td>
                               </tr>
                                <tr>
                                	  <td colspan="4">个人说明</td>

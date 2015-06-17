@@ -75,10 +75,11 @@ $(function() {
         if(initId=='' || initId==0)
             initId = chinese_id;
         multiSelect.select(initId);
-        // $("#divCity select").each(function(){
-        //     $(this).addClass("select-style");
-        //     //$(this).wrap('<span class="standard_select"><span class="select_shelter"></span></span></div>');
-        // });
+        $("#divCity select").each(function(){
+            $(this).addClass("txt");
+            $(this).attr('style','width:100px;margin-right:10px;');
+            //$(this).wrap('<span class="standard_select"><span class="select_shelter"></span></span></div>');
+        });
     }
     //地区--end
 
