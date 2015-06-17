@@ -183,6 +183,8 @@ class Info extends CI_Controller {
 			//'mobile'=>$this->input->post('mobile'),					
 			'sex'=>$this->input->post('sex'),
 			'city'=>$this->input->post('city'),
+			'showimg'=>$this->input->post('showimg'),
+			'showimg2'=>$this->input->post('showimg2'),
 			'mobile'=>$this->input->post('mobile'),
 		);
 

@@ -38,7 +38,6 @@
                             include_once(VIEWPATH."m/public/info_photo_inc.php");
                           ?>
                             <table class="aut_tab profile" width="100%" border="0" cellspacing="0" cellpadding="0" id="tb-XT-info-pic" style="display:none">
-                              <?php if($o['usertype']==1):?>
                               <tr>
                                 <tr>
                                 <td width="86">形象照片</td>
@@ -77,7 +76,7 @@
                                     </div>
                                 </td>
                               </tr>
-                              
+                              <?php if($o['usertype']==1):?>
                                <tr>
                                 <td width="86">模特卡</td>
                                 <td colspan="3">

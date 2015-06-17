@@ -28,9 +28,9 @@
         <div class="clearfix">
             <div class="fl wsti">
                 <ul>
-                    <li class="cur"><a href="?t=1">模特</a></li>
-                    <li><a href="?t=4">摄影师</a></li>
-                    <li><a href="?t=5">化妆师</a></li>
+                    <li<?php if(!$arrParam['t'] || $arrParam['t']==1) echo ' class="cur"';?>><a href="?t=1">模特</a></li>
+                    <li<?php if($arrParam['t']==4) echo ' class="cur"';?>><a href="?t=4">摄影师</a></li>
+                    <li<?php if($arrParam['t']==5) echo ' class="cur"';?>><a href="?t=5">化妆师</a></li>
                 </ul>
             </div>
             <div class="women artiste fr">

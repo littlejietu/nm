@@ -31,7 +31,7 @@
                                 <?php foreach ($list as $key => $a): ?>
                                 <li>
                                     <a href="javascript:;">
-                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
+                                        <img src="<?=_get_userlogo_url($a['showimg'])?>">
                                         <div class="mwk_hover mwk_hover2">
                                           <p>
                                                 <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
@@ -49,7 +49,7 @@
                                 <?php foreach ($list2 as $key => $a): ?>
                                 <li>
                                     <a href="javascript:;">
-                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
+                                        <img src="<?=_get_userlogo_url($a['showimg'])?>">
                                         <div class="mwk_hover mwk_hover2">
                                           <p>
                                                 <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
@@ -67,7 +67,7 @@
                                 <?php foreach ($list3 as $key => $a): ?>
                                 <li>
                                     <a href="javascript:;">
-                                        <img src="<?=_get_userlogo_url($a['userlogo'])?>">
+                                        <img src="<?=_get_userlogo_url($a['showimg'])?>">
                                         <div class="mwk_hover mwk_hover2">
                                           <p>
                                                 <span class="mh_1 XT-modify" title="编辑资料" _val="<?=_get_key_val($a['id'])?>"></span>
