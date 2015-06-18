@@ -27,7 +27,8 @@
             	<ul class="clearfix">
                     <?php foreach ($list['rows'] as $key => $a): ?>
                 	<li>
-                    	<a class="picimg" href="javascript:;"><img src="<?=$a['img'];?>"/>
+                    	<a class="picimg" href="javascript:;">
+                            <img src="<?=$a['img'];?>"/>
                             <div class="notl_hover">
                                 <p>工作时间： <?=date('Y-m-d',$a['begtime'])?>       工作地点： <?=$a['place']?>        名额：<?=$a['actnum']?>名  人数： <?=($a['innum']+$a['innumfake']);?>名</p>
                                 <p>面试地点： <?=$a['address']?> </p>
