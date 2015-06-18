@@ -96,6 +96,7 @@
                                 </td>
                               </tr>
                               <?php endif?>
+                              <?php if(!$o['insid']):?>
                               <tr>
                                 <td width="86">主页背景图</td>
                                 <td colspan="3">
@@ -114,6 +115,7 @@
                                     </div>
                                 </td>
                               </tr>
+                              <?php endif?>
                               <?php if($o['usertype']==1):?>
                               <tr>
                                 <td width="86">视频</td>
