@@ -32,9 +32,9 @@
         </div>
         <div class="m_filter">
         	<div class="filterBox" style="display:<?php if(!empty($arrParam)) echo 'block';else echo 'none';?>">
-                <div class="values"><span class="label">类型：</span>
+                <!--<div class="values"><span class="label">类型：</span>
                     <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="韩系名媛">韩系名媛</a><a href="##" title="气场欧美">气场欧美</a><a href="##" title="优雅复古">优雅复古</a><a href="##" title="清新文艺">清新文艺</a><a href="##" title="英伦学院">英伦学院</a><a href="##" title="甜美日系">甜美日系</a><a href="##" title="OL通勤">OL通勤</a><a href="##" title="接头混搭">接头混搭</a><a href="##" title="性感诱惑">性感诱惑</a></p>
-                </div>
+                </div>-->
                 <div class="values"><span class="label">风格：</span>
                 <p class="clearfix">
                     <a <?php if(empty($arrParam['style'])):?> class="curr"<?php endif?> href="<?php if(!empty($arrParam['style'])){$tmp_arrParam = $arrParam; unset($tmp_arrParam['style']); echo _create_url('model', $tmp_arrParam );}?>" title="不限">不限</a>
@@ -43,9 +43,10 @@
                     <?php endforeach;?>
                 </p>
             </div>
+            <!--
                 <div class="values"><span class="label">地区：</span>
                     <p class="clearfix"><a href="##" class="curr" title="不限">不限</a><a href="##" title="160-170cm ">160-170cm</a><a href="##" title="170-180cm">170-180cm</a><a href="##" title="＞180cm">＞180cm</a></p>
-                </div>
+                </div>-->
                 <div class="values"><span class="label">身高：</span>
                     <p class="clearfix"><a <?php if(empty($arrParam['height'])):?> class="curr"<?php endif?> href="<?php if(!empty($arrParam['style'])){$tmp_arrParam = $arrParam; unset($tmp_arrParam['height']); echo _create_url('model', $tmp_arrParam );}?>" title="不限">不限</a>
                         <a href="<?=_create_url('model', array_merge($arrParam, array('height'=>'160-170')) )?>" title="160-170cm" <?php if(!empty($arrParam['height']) && $arrParam['height']=='160-170') echo ' class="curr"';?>>160-170cm</a>

@@ -56,6 +56,23 @@ class Model extends CI_Controller {
 			);
 		$this->load->view('i/model',$result);
 	}
+
+	public function info($id)
+	{
+		$this->load->service('user_service');
+		$oIns = $this->user_service->get_ins_homeinfo($id, $this->loginID);
+		$oInfo = $oIns['modelinfo'];
+		unset($oIns['modelinfo']);
+
+		$result = array(
+			'oUser' => $oIns,
+			'oInfo' => $oInfo,
+			);
+		$view = 'i/modelinfo';
+		if(in_array($oInfo['usertype'],array(4,5)))
+			$view = 'i/modelinfo_photo';
+		$this->load->view($view,$result);
+	}
 	
 
 }

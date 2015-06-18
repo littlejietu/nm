@@ -275,6 +275,39 @@ class User_service
 
 	}
 
+	public function get_ins_homeinfo($userid, $loginID){
+		$this->ci->load->model('Usernum_model');
+		$this->ci->load->model('Fans_model');
+
+		$oUser = $this->ci->User_model->get_info_by_id($userid);
+		if($oUser)
+		{
+			$insid = $oUser['insid'];
+			$oIns = $this->ci->User_model->get_info_by_id($insid);
+
+			$oInsnum = $this->ci->Usernum_model->get_by_id($insid, 'fansnum,concernnum,photonum,visitnum,be_commentnum');
+			if($oInsnum)
+				$oIns = array_merge($oInsnum, $oIns);
+
+			$o['concernstatus'] = 0;
+			if($loginID)
+			{
+				$o = $this->ci->Fans_model->get_by_where(array('userid'=>$insid,'fansuserid'=>$loginID,'status<>'=>-1),'status as concernstatus');
+				if(!$o)
+				{
+					$o['concernstatus'] = 0;
+				}
+			}
+
+			$oIns['modelinfo'] = $oUser;
+				
+			$oIns = array_merge($o, $oIns);
+		}
+
+		return $oIns;
+
+	}
+
 	public function get_user_goodwork($mid){
 		$res = array();
 		$this->ci->load->model('Album_model');
