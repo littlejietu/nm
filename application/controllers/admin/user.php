@@ -12,15 +12,62 @@ class User extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$usertype = $this->input->get_post('usertype');
+		$userlevel = $this->input->get_post('userlevel');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begdate = $this->input->get_post('begdate');
+		$enddate = $this->input->get_post('enddate');
+		$orderby = $this->input->get_post('orderby');
+
+
 		$dbprefix = $this->User_model->db->dbprefix;
 		$page     = _get_page();
 		$pagesize = 20;
 		$arrParam = array();
-		$arrWhere = array();
+		$arrWhere = array('a.status !='=>2);
+
+		if($usertype)
+		{
+			$arrParam['usertype'] = $usertype;
+			$arrWhere['usertype'] = $usertype;
+		}
+		if($userlevel)
+		{
+			$arrParam['userlevel'] = $userlevel;
+			$arrWhere['userlevel'] = $userlevel;
+		}
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+		if($begdate)
+		{
+			$arrParam['begdate'] = $begdate;
+			$arrWhere["a.$fieldDate >="] = strtotime($begdate);
+		}
+		if($enddate)
+		{
+			$arrParam['enddate'] = $enddate;
+			$arrWhere["a.$fieldDate <="] = strtotime("$enddate 23:59:59");
+		}
+		$strOrder = 'a.id desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
+
 		//$tb = $dbprefix.'user a left join '.$dbprefix.'user_detail b on(a.id=b.userid) left join '.$dbprefix.'recommend c on(c.outerid=a.id and c.kind=1)';
 		$tb = $dbprefix.'user a left join '.$dbprefix.'recommend b on(b.outerid=a.id and b.kind=1)';
-		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend ','a.id', $tb);
+		$list = $this->User_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend ',$strOrder, $tb);
 		//echo $this->db->last_query();die;
+
 		
 
 		//分页
@@ -40,6 +87,7 @@ class User extends MY_Admin_Controller {
 			'list' => $list,
 			'oSysUsertype' => $oSysUsertype,
 			'oSysUserlevel' => $oSysUserlevel,
+			'arrParam' => $arrParam,
 			);
 
 

@@ -50,15 +50,16 @@ document.onkeydown=function(event){
                             <input class="pass" type="password" id="loginPassword"  placeholder="密码" />
                         </p>
                         
-                        <p class="field" style="width:150px;float:left;">
+                        <p class="field fl" style="width:150px;float:left;">
                             <label><img src="<?php echo _get_cfg_path('admin_images')?>field_3.jpg"/></label>
                             <input class="code" type="text" id="loginCode" placeholder="验证码" style="width:85px;"/>
                             
+                            <div id="codeimg" class="codeimg" onClick="javascript:;">
+                                <img class="xtml-15" id="yzimg" src="/util/captcha_admin?<?php echo rand(10000,9999);?>" onclick="this.src='/util/captcha_admin?'+Math.random()" alt="验证码" >
+                            </div><span id="error_code"></span>
                         </p>
 
-                        <div id="codeimg" class="codeimg fl" onClick="javascript:;">
-                            <img class="xtml-15" id="yzimg" src="/util/captcha_admin?<?php echo rand(10000,9999);?>" onclick="this.src='/util/captcha_admin?'+Math.random()" alt="验证码" >
-                        </div><span id="error_code"></span>
+                       
     
                         <div class="but fl" onClick="javascript:ajaxLogin('<?php echo base_url()?>');">登&nbsp;录</div>
                 </div>
