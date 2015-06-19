@@ -72,8 +72,8 @@
                         <div id="ID_FundLoanAmount" class="jsq_uet" style="display:block">
                            <table class="aut_tab i_notice_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody><tr>
-                                  <td width="86">人数</td>
-                                  <td><input type="text" class="txt" placeholder="人数" name="actnum" value="<?php if( !empty($info['actnum']) ) echo $info['actnum']; ?>" /></td>
+                                  <td width="86">名额</td>
+                                  <td><input type="text" class="txt" placeholder="名额" name="actnum" value="<?php if( !empty($info['actnum']) ) echo $info['actnum']; ?>" /></td>
                                 </tr>
                                 <tr>
                                   <td>工作费用</td>

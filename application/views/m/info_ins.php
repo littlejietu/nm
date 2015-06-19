@@ -76,6 +76,24 @@
                                 </td>
                               </tr>
                               <tr>
+                                <td width="86">主页背景图</td>
+                                <td colspan="3">
+                                    <div class="f_note">
+                                        <p>尺寸：248×324像数</p>
+                                        <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
+                                        <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
+                                        <div class="file_but">
+                                            <input id="bgimg_upload" name="bgimg_upload" value="选择照片" class="inp_file" type="file">
+                                        </div>
+                                    </div>
+                                    <div id="show_bgimg">
+                                        <?php if($o['bgimg']):?>
+                                          <a href="<?='/'.$o['bgimg']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
+                                </td>
+                              </tr>
+                              <tr>
                                 <td>类型</td>
                                 <td colspan="3">
                                   <?php foreach ($oSysType as $key => $v):?>
@@ -105,7 +123,7 @@
                                   <td colspan="4">公司简介</td>
                               </tr>
                               <tr>
-                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=htmlspecialchars($o['memo']);?></textarea></td>
+                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=$o['memo'];?></textarea></td>
                               </tr>
                               
                               <tr style="border-bottom:none;">
@@ -210,6 +228,40 @@ $(function() {
       }
 
     });
+
+    $('#bgimg_upload').uploadify({
+      'formData'     : {
+        'timestamp' : '<?php echo $timestamp;?>',
+        'token'     : '<?php echo md5($this->config->item('encryption_key') . $timestamp );?>',
+        'type' : 'bgimg',
+        'uid' : <?php echo $this->loginID;?>
+      },
+      'auto':true,
+      //'buttonClass':'inp_btn',
+      'fileSizeLimit' : '1024KB',
+      'buttonText':'选择展示图',
+      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      //'buttonImage' : '{$js_url}uploadify/button.png',
+      'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
+      'uploader' : '/public/upload/uploadimg',
+      'onUploadSuccess' : function(file, data, response) {
+        if (!data){
+         alert('上传失败');
+         return;
+        }
+        data = data.split('|');
+        if (data[0] == 100){
+          $('#bgimg').nextAll('em').html('<i class="icoErr16"></i>'+data[1]);
+        }else if(data[0] == 200 && data[1]!=''){
+          var imgpath=data[1];
+          $('#bgimg').val(imgpath);
+          $('#bgimg').nextAll('em').html('<i class="icoCor16"></i>');
+          $('#show_bgimg').attr('src','/'+imgpath);
+        }
+      }
+
+    });
+
   },10);
 });
 

@@ -12,11 +12,11 @@
         </div>
         <div class="fl info_wrap">
         	<div class="clearfix">
-                <div class="namebox fl"><span><?=$oUser['company']?></span></div>
+                <div class="namebox fl"><span><?=$oUser['nickname']?><?php if($oUser['company']):?>-<?=$oUser['company']?><?php endif?></span></div>
                 <?php if(!empty($oUser['qq'])):?>
                 <div class="contact fl"><a href="##"><i class="qq"></i>联系我</a></div>
                 <?php endif?>
-                <div class="tips piccon fl"><a href="##" rel="牛模网签约经纪公司" class="preview"></a></div>
+                <div class="tips piccon fl"><?php if($oUser['userlevel']):?><a href="##" rel="牛模网签约经纪公司" class="preview"></a><?php endif?></div>
             </div>
             <div class="namebox"><p> &nbsp;&nbsp; <?=$oUser['city']?> &nbsp;&nbsp;</div>
         </div>

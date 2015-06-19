@@ -50,7 +50,7 @@
             <div class="reg-right fr">
             	<div class="reg_top">
                 	<a href="javascript:void(0);" id="xt_reg1" class="reg_tel curr"><i></i>手机注册</a>
-                    <a href="javascript:void(0);" id="xt_reg2" class="reg_mail"><i></i>邮箱注册</a>
+                    <!--<a href="javascript:void(0);" id="xt_reg2" class="reg_mail"><i></i>邮箱注册</a>-->
                 </div>
                 <ul class="reg_con">
                 	<li class="reg-sort">

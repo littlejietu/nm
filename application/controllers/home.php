@@ -30,7 +30,7 @@ class Home extends CI_Controller {
 		$this->load->model('Recommend_model');
 		
 		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>1,'sex'=>2);
-		$feild = 'user.id,nickname,userlogo,company,showimg';
+		$feild = 'user.id,nickname,userlogo,company,showimg,showimg2';
 		$rmdlist1 = $this->Recommend_model->get_user_list($arrWhere, $feild, 10);
 
 		$arrWhere = array('usertype'=>1,'status'=>1,'userlevel'=>0,'sex'=>2);

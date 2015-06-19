@@ -257,6 +257,7 @@ class Info extends CI_Controller {
 
 		$data_memo = array(
 			'memo'=>$this->input->post('memo'),
+			'bgimg'=>$this->input->post('bgimg'),
 			);
 		if(!$this->thatUser['nickname'])
 			$data['nickname']=$this->input->post('nickname');
