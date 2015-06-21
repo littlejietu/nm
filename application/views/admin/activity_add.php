@@ -91,9 +91,9 @@
 		            <td align="left" class="padL10"><input type="text" name="innum" value="<?php if( !empty($info['innum']) ) echo $info['innum']; ?>" /></td>
 		        </tr>
 		         <tr>
-		            <td height="25" align="right"><span class="tips">*</span> 显示：</td>
+		            <td height="25" align="right"><span class="tips">*</span> 审核/显示：</td>
 		            <td align="left" class="padL10">
-		            	<input type="radio" name="display" value="1" <?php if( !empty($info['display']) && $info['display']==1 ) echo ' checked' ?> />显示
+		            	<input type="radio" name="display" value="1" <?php if( !empty($info['display']) && $info['display']==1 ) echo ' checked' ?> />审核显示
 		            		<input type="radio" name="display" value="2" <?php if( !empty($info['display']) && $info['display']==2 ) echo ' checked' ?> />不显示
 		            </td>
 		        </tr>

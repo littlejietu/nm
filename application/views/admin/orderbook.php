@@ -32,7 +32,7 @@
 			<tr>
 				<td height="30"><?php echo $a['sellerid'];?></td>
 				<td><?php echo $a['no'];?></td>
-				<td><?php echo $a['work'];?></td>
+				<td><?php echo $a['item'];?></td>
 				<td><?php echo $a['scene'];?></td>
 				<td><?php echo $a['pertime'];?></td>
 				<td><?php echo $a['price'];?></td>

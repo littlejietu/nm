@@ -54,7 +54,7 @@
                               </tr>
                               <tr>
                                 <td>罩杯</td>
-                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/>B</td>
+                                <td><input name="cup" type="text" class="txt" value="<?=$o['cup']?>" placeholder="请输入你的罩杯"/></td>
                                 <td>鞋码</td>
                                 <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/>码</td>
                               </tr>

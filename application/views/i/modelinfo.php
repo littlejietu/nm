@@ -24,7 +24,7 @@
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
             	<li><span>姓名</span> <?=$oInfo['nickname']?></li>
-                <li><span>罩杯</span> <?=$oInfo['cup']?>  B</li>
+                <li><span>罩杯</span> <?=$oInfo['cup']?></li>
                 <li><span>身高</span> <?=$oInfo['height']?>  cm</li>
                 <li><span>体重</span> <?=$oInfo['weight']?>  kg</li>
                 <li><span>三围</span> <?=$oInfo['bust']?>-<?=$oInfo['waist']?>-<?=$oInfo['hips']?></li>
@@ -69,8 +69,12 @@
                     </div>
                 </div>
                 <?php if($oInfo['video']):?>
-                <div class="fr p_video">
-                    <iframe width="400px" height="260px" src="$oInfo['video']" frameborder=0 allowfullscreen></iframe>
+                <div class="fr p_video" style="width:400px;height:300px">
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="400" height="300">
+                        <param name="movie" value="<?php echo _get_cfg_path('lib')?>player.swf?videoPath=<?=_get_image_url($oInfo['video'])?>"/>
+                        <param name="quality" value="high" />
+                        <embed src="<?php echo _get_cfg_path('lib')?>player.swf?videoPath=<?=_get_image_url($oInfo['video'])?>" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="400" height="300" ></embed>
+                    </object>
                 </div>
                 <?php endif?>
             </div>

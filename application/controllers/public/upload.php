@@ -63,6 +63,36 @@ class Upload extends CI_Controller {
         }   
     }
 
+    public function uploadvideo() 
+    {
+        $timestamp = $_POST['timestamp'];
+        $uid = (int)$_POST['uid'];
+        $type = $_POST['type'];
+        $uploadName = $type."_upload";
+        if (isset($_FILES['Filedata']) && $_FILES['Filedata']['name'] && $this->check_token($timestamp))
+        {
+            $config = array();
+            $config['upload_path'] = "upload/$type/".date('Ym');
+            $config['allowed_types']= '*';  //flv
+            $config['max_size']     = 1500;
+            $config['overwrite']    = true;
+            $config['file_name']    = $type.'_'.$uid.'_'.time();
+            mkpath($config['upload_path']);
+            $this->load->library('upload', $config);
+            if ( ! $this->upload->do_upload('Filedata')){
+                $error = $this->upload->display_errors();
+                echo '100|'.strip_tags($error);exit;
+            }
+            else{
+                $upload_data = $this->upload->data();
+                $pic  = $config['upload_path'].'/'.$upload_data['file_name'];
+            }
+            if ($pic){
+                   echo '200|'.$pic;exit;
+            }
+        }   
+    }
+
     public function uploadphotoimg(){
         $timestamp = $_POST['timestamp'];
         $uid = _get_key_val( $_POST['uid'] ,true);

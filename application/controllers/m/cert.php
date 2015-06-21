@@ -16,8 +16,11 @@ class Cert extends CI_Controller {
 		$that_usertype = $this->thatUser['usertype'];
 		if ($this->input->is_post())
 		{
-			$this->save();
-			redirect(base_url('/m/cert'));
+			$res = $this->save();
+			$msg = '保存失败';
+			if($res==200)
+				$msg = '保存成功';
+			redirect(base_url('/m/cert?msg='.$msg));
 			exit;
 		}
 
@@ -50,7 +53,7 @@ class Cert extends CI_Controller {
 
 	private function save()
 	{
-		//$res = array('code'=>0, 'data'=>array());
+		$res = 0;
 		$config = array(
            	array(
                  'field'   => 'realname', 
@@ -105,12 +108,10 @@ class Cert extends CI_Controller {
 				);
 
 			$this->Cert_model->insert($o);
-			//$res['code'] = 200;
+			$res = 200;
 		}
-		// else
-		// {
-		// 	$res['data']['error_messages'] = $this->form_validation->getErrors();
-		// }
+		
+		return $res;
 	}
 
 	public function gotopay(){

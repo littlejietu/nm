@@ -140,7 +140,7 @@ class Schedule extends CI_Controller {
 		$arrWhere = array('userid'=>$userid,
 				'status'=>1);
 		$list = $this->Schedule_model->fetch_page(1, 100, $arrWhere,'id,dodate as datetime,0 as endtime,thing as title','addtime desc');
-		
+
 		$result = array(
 			//'o' => $o,
 			'oItemList'=> $oItemList,

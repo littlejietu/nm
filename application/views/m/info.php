@@ -81,7 +81,7 @@
                                 <td width="86">模特卡</td>
                                 <td colspan="3">
                                     <div class="f_note">
-                                        <p>尺寸：248×324像数</p>
+                                        <p>尺寸：1070×500像数</p>
                                         <input type="hidden"  name="card" id="card" value="<?=$o['card']?>">
                                         <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
@@ -96,12 +96,12 @@
                                 </td>
                               </tr>
                               <?php endif?>
-                              <?php if(!$o['insid']):?>
+                              <?php if($o['status']==1):?>
                               <tr>
                                 <td width="86">主页背景图</td>
                                 <td colspan="3">
                                     <div class="f_note">
-                                        <p>尺寸：248×324像数</p>
+                                        <p>尺寸：1100×430像数</p>
                                         <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
                                         <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
@@ -121,12 +121,16 @@
                                 <td width="86">视频</td>
                                 <td colspan="3">
                                     <div class="f_note">
-                                        <p>尺寸：248×324像数</p>
                                         <input type="hidden"  name="video" id="video" value="<?=$o['video']?>">
                                         <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
-                                            <input id="video_upload" name="video_upload" value="选择照片" class="inp_file" type="file">
+                                            <input id="video_upload" name="video_upload" value="选择视频" class="inp_file" type="file">
                                         </div>
+                                    </div>
+                                    <div id="show_video">
+                                        <?php if($o['video']):?>
+                                          <a href="<?='/'.$o['video']?>" target="_blank">下载查看</a>
+                                        <?php endif?>
                                     </div>
                                 </td>
                               </tr>
@@ -435,10 +439,10 @@ $(function() {
       //'buttonClass':'inp_btn',
       'fileSizeLimit' : '1024KB',
       'buttonText':'选择视频',
-      'fileTypeExts': '*.jpg;*.png;*.jpeg',
+      'fileTypeExts': '*.flv',
       //'buttonImage' : '{$js_url}uploadify/button.png',
       'swf'      : '<?php echo _get_cfg_path("lib")?>uploadify/uploadify.swf',
-      'uploader' : '/public/upload/uploadimg',
+      'uploader' : '/public/upload/uploadvideo',
       'multi':false,
       'onUploadSuccess' : function(file, data, response) {
         if (!data){
@@ -451,8 +455,8 @@ $(function() {
         }else if(data[0] == 200 && data[1]!=''){
           var imgpath=data[1];
           $('#video').val(imgpath);
-          $('#video').nextAll('em').html('<i class="icoCor16"></i>');
-          //$('#show_video').attr('src','/'+imgpath);
+          $('#video').nextAll('em').html('<i class="icoCor16"></i>上传成功');
+          $('#show_video').html('保存后可下载查看');
         }
       }
 

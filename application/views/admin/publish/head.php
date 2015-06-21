@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>乐儿-商城管理系统</title>
+	<title>牛模网平台管理系统</title>
     <link href="<?php echo _get_cfg_path('admin_css')?>base.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo _get_cfg_path('admin_css')?>common.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="<?php echo _get_cfg_path('admin_js')?>jquery-1.8.0.min.js"></script>

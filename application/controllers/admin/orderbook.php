@@ -65,7 +65,7 @@ class Orderbook extends MY_Admin_Controller {
 			//验证规则
 			$config = array(
                array(
-                     'field'   => 'work', 
+                     'field'   => 'item', 
                      'label'   => '工作内容', 
                      'rules'   => 'trim|required'
                   ),
@@ -111,7 +111,7 @@ class Orderbook extends MY_Admin_Controller {
 			if ($this->form_validation->run() === TRUE)
   			{
   				$data = array(
-					'work'=>$this->input->post('work'),
+					'item'=>$this->input->post('item'),
 					'scene'=>$this->input->post('scene'),
 					'pertime'=>$this->input->post('pertime'),
 					'price'=>$this->input->post('price'),					

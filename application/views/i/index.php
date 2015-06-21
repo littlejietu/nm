@@ -24,7 +24,7 @@
             <div class="title">基本信息</div>
             <ul class="clearfix bainfo">
             	<li><span>姓名</span> <?=$oUser['nickname']?></li>
-                <li><span>罩杯</span> <?=$oUser['cup']?>  B</li>
+                <li><span>罩杯</span> <?=$oUser['cup']?></li>
                 <li><span>身高</span> <?=$oUser['height']?>  cm</li>
                 <li><span>体重</span> <?=$oUser['weight']?>  kg</li>
                 <li><span>三围</span> <?=$oUser['bust']?>-<?=$oUser['waist']?>-<?=$oUser['hips']?></li>
@@ -63,14 +63,14 @@
                         <h3 class="p_bti"><i></i>杂志拍摄</h3>
                         <div class="p_wzi"> <?=$oUser['magazine']?><br /></div>
                     </div>
-                    <div class="per_con">
-                        <h3 class="p_bti"><i></i>视频地址</h3>
-                        <div class="p_wzi"> <?=$oUser['video']?><br /></div>
-                    </div>
                 </div>
                 <?php if($oUser['video']):?>
-                <div class="fr p_video">
-                    <iframe width="400px" height="260px" src="$oUser['video']" frameborder=0 allowfullscreen></iframe>
+                <div class="fr p_video" style="width:400px;height:300px">
+                    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="400" height="300">
+                        <param name="movie" value="<?php echo _get_cfg_path('lib')?>player.swf?videoPath=<?=_get_image_url($oUser['video'])?>"/>
+                        <param name="quality" value="high" />
+                        <embed src="<?php echo _get_cfg_path('lib')?>player.swf?videoPath=<?=_get_image_url($oUser['video'])?>" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="400" height="300" ></embed>
+                    </object>
                 </div>
                 <?php endif?>
             </div>

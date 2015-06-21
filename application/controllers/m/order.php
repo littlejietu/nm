@@ -22,6 +22,9 @@ class Order extends CI_Controller {
 			$this->num_service->clear_user_num($userid, 'be_ordernum_new');
 		}
 
+		//超过一小时的，自动关闭订单
+		$this->Order_model->update_by_where(array('sellerid'=>$userid,'addtime <'=>(time()-60*60),'paystatus'=>'waitpay','status'=>1,'reject'=>0 ),array('reject'=>-1) );
+
 		$page     = _get_page();
 		$pagesize = 10;
 		$arrParam = array();

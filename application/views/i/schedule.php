@@ -15,7 +15,6 @@
 </head>
 <body>
 <?php include_once(VIEWPATH."public/header.php");?>
-
 <div class="mainbody" id="mainbody">
 	<div class="introd container">
         
@@ -34,7 +33,8 @@
                             <div class="time_select_click"><i></i></div>
                             <div class="select" id="nianfen" style="display: none;">
                                 <ul>
-                                  <?php for($i=(date("Y")+1);$i>(date("Y")-9);$i--){?>
+                                  <?php $thatY = date("Y",$oUser['addtime']);
+                                   for($i=(date("Y")+1);$i>( $thatY>(date("Y")-9)?$thatY:(date("Y")-9) );$i--){?>
                                   <li><?=$i?>年</li>
                                   <?php }?>
                                 </ul>

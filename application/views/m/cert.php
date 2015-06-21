@@ -24,6 +24,7 @@
                   <div class="fl um_uitop">
                       <div class="authent">
                           <div class="aut_bti">我的认证</div>
+                          <?php if($this->input->get('msg')) echo '<div style="color:red">'.$this->input->get('msg').'</div>';?>
                           <?php if($o && ($o['status']==1 || $o['status']==2) ):?>
                             <?php if($o['status']==1):?>
                               认证成功

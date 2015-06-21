@@ -69,11 +69,10 @@
 	        </tr>
 	        <?php foreach ($list['rows'] as $key => $a): ?>
 			<tr>
-				<td height="30"><?php echo $a['username'];?></td>
+				<td height="30"><a href="/i/index/<?=$a['id']?>" target="_blank"><?php echo $a['username'];?></a></td>
 				<td><?php echo $a['nickname'];?></td>
 				<td><?php if(!empty($oSysUsertype[$a['usertype']])) echo $oSysUsertype[$a['usertype']];?></td>
 				<td><?php if(!empty($oSysUserlevel[$a['userlevel']])) echo $oSysUserlevel[$a['userlevel']];?></td>
-			
 				<td><?php echo $a['realname'];?></td>
 				<td><?php echo $a['mobile'];?></td>
 				<td><?php if($a['sex']==1) echo '男'; else if($a['sex']==2) echo '女';  else echo '';?></td>

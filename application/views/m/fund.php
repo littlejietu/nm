@@ -34,6 +34,7 @@
                         <div class="brotop clearfix fund_brot">
                             <div class="fl broad"><p class="b_pti">本月总订单数</p><span class="b_num"><em><?=$o['be_ordernum_m']?></em> <a href="/m/order">查看</a></span></div>
                             <div class="fl broad b_gain"><p class="b_pti">本月收益总额</p><span class="b_num"><em><?=$o['be_fund_m']?></em> </span></div>
+                            <div class="fl aut_tab"><form action="?" method="post"><input name="account" type="text" class="txt fl" value="<?php echo $o['account'];?>" placeholder="请输入银行/支付宝帐户"><input type="submit" class="but" value="提交"></form></div>
                         </div>
                         <div class="fund_list">
                             <div class="dl_title">正在交易中 （<?=count($list['rows'])?>）</div>

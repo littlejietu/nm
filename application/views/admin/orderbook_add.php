@@ -20,9 +20,7 @@
 			<tbody>
 				 <td height="25" align="right"><span class="tips">*</span> 工作内容；</td>
 		            <td align="left" class="padL10">
-		            	<input type="radio" name="work" value="1" <?php if( !empty($info['work']) && $info['work']==1 ) echo ' checked' ?> />人物景色
-		            		<input type="radio" name="work" value="2" <?php if( !empty($info['work']) && $info['work']==2 ) echo ' checked' ?> />景色取点
-		            		<input type="radio" name="work" value="3" <?php if( !empty($info['work']) && $info['work']==3 ) echo ' checked' ?> />人物广告
+		            	
 		            </td>
 		        </tr>
 		        <tr>

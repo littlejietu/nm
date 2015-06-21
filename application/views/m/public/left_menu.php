@@ -16,6 +16,7 @@
     <div class="menu_box">
         <ul>
         <?php if(in_array($this->thatUser['usertype'],array(1,4,5)) ):?>
+            <li<?php if( strtolower(uri_string())=='m/schedule' ) echo ' class="current"';?>><a href="/m/schedule">档期管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/fans' ) echo ' class="current"';?>><a href="/m/fans">互动总览<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/info' ) echo ' class="current"';?>><a href="/m/info">个人资料<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/product' ) echo ' class="current"';?>><a href="/m/product">工作价格<i></i></a></li>
@@ -26,6 +27,7 @@
             <li<?php if( strtolower(uri_string())=='m/comment' ) echo ' class="current"';?>><a href="/m/comment">评论管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/client' ) echo ' class="current"';?>><a href="/m/client">客户管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/message' ) echo ' class="current"';?>><a href="/m/message">系统消息<i></i></a></li>
+
         <?php else:?>
             <li<?php if( strtolower(uri_string())=='m/model' || $this->input->get('agid') ) echo ' class="current"';?>><a href="/m/model">艺人管理<i></i></a></li>
             <li<?php if( strtolower(uri_string())=='m/fans' ) echo ' class="current"';?>><a href="/m/fans">互动总览<i></i></a></li>
