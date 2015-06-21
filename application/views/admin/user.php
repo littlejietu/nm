@@ -44,7 +44,7 @@
                     <input type="text" name="begdate" value="<?php if( !empty($arrParam['begdate']) ) echo $arrParam['begdate']; ?>" readonly="readonly" onclick="WdatePicker()" placeholder="请选择日期">
                     <input type="text" name="enddate" value="<?php if( !empty($arrParam['enddate']) ) echo $arrParam['enddate']; ?>" readonly="readonly" onclick="WdatePicker()" placeholder="请选择日期">
                     <select name="orderby">
-                      <option value="addtime desc"<?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='created desc') echo ' selected';?>>创建倒序</option>
+                      <option value="addtime desc"<?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='addtime desc') echo ' selected';?>>创建倒序</option>
                       <option value="lastlogintime desc"<?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='lastlogintime desc') echo ' selected';?>>登录倒序</option>
                     </select>
                     <button type="submit" class="btn">

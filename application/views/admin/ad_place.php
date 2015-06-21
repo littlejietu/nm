@@ -12,7 +12,27 @@
 <div class="right_con common">
 
 	<h1>广告位管理</h1>
-	<div><a href='/admin/ad_place/add' class="sub">添加</a></div>
+	<table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
+		<tr>
+            <td height="32">
+                <form class="form-horizontal" role="form" method="post">
+                    
+                    
+                    <select name="field">
+                      <option value="title"<?php if(!empty($arrParam['field']) && $arrParam['field']=='title') echo ' selected';?>>广告位名称</option>
+                      <option value="adcode"<?php if(!empty($arrParam['field']) && $arrParam['field']=='adcode') echo ' selected';?>>广告代码</option>
+                    </select>
+
+                    <input type="text" name="txtKey" value="<?=!empty($arrParam['key']) ? $arrParam['key']:'';?>" class="w150">
+                   
+                   
+                    <button type="submit" class="btn">查  询</button>
+                  	
+                  </form>
+            </td>
+            <td><a href='/admin/ad_place/add' class="sub">添加</a></td>
+        </tr>
+    </table>
 	<table cellpadding="0" cellspacing="0" align="center" bordercolor="#eee" border="1" width="100%" class="listTab">
 		<tbody>
 			<tr height="39" style="font-size:13px;">

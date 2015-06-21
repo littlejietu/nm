@@ -12,6 +12,45 @@
 <div class="right_con common">
 
 	<h1>订单管理</h1>
+	<table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
+		<tr>
+            <td height="32">
+                <form class="form-horizontal" role="form" method="post">
+                    <select name="paystatus">
+                        <option value="">支付状态</option>
+                        <?php foreach ($oSysPaystatus as $k=>$v):?>
+                        <option value="<?=$k?>"<?php if(!empty($arrParam['paystatus']) && $arrParam['paystatus']==$k) echo ' selected'; ?>><?=$v?></option>
+                        <?php endforeach?>
+                    </select>
+                    
+                    <select name="field">
+                      <option value="no"<?php if(!empty($arrParam['field']) && $arrParam['field']=='no') echo ' selected';?>>订单编号</option>
+                      <option value="title"<?php if(!empty($arrParam['field']) && $arrParam['field']=='title') echo ' selected';?>>订单标题</option>
+                      <option value="seller_nickname"<?php if(!empty($arrParam['field']) && $arrParam['field']=='seller_nickname') echo ' selected';?>>卖家昵称</option>
+                      <option value="sellerid"<?php if(!empty($arrParam['field']) && $arrParam['field']=='sellerid') echo ' selected';?>>卖家id</option>
+                      <option value="buyer_nickname"<?php if(!empty($arrParam['field']) && $arrParam['field']=='buyer_nickname') echo ' selected';?>>买家昵称</option>
+                      <option value="buyerid"<?php if(!empty($arrParam['field']) && $arrParam['field']=='buyerid') echo ' selected';?>>买家id</option>
+                      
+                    </select>
+                    <input type="text" name="txtKey" value="<?=!empty($arrParam['key']) ? $arrParam['key']:'';?>" class="w150">
+                    <select name="fieldDate">
+                      <option value="addtime"<?php if(!empty($arrParam['fieldDate']) && $arrParam['fieldDate']=='addtime') echo ' selected';?>>下单时间</option>
+                      <option value="paytime"<?php if(!empty($arrParam['fieldDate']) && $arrParam['fieldDate']=='paytime') echo ' selected';?>>支付时间</option>
+
+                    </select>
+                    <input type="text" name="begdate" class="w100" value="<?php if( !empty($arrParam['begdate']) ) echo $arrParam['begdate']; ?>"  readonly="readonly" onclick="WdatePicker()" placeholder="请选择日期">
+                    <input type="text" name="enddate" class="w100" value="<?php if( !empty($arrParam['enddate']) ) echo $arrParam['enddate']; ?>" readonly="readonly" onclick="WdatePicker()" placeholder="请选择日期">
+                    <select name="orderby">
+                      <option value="addtime desc"<?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='addtime desc') echo ' selected';?>>下单时间倒序</option>
+                      <option value="paytime desc"<?php if(!empty($arrParam['orderby']) && $arrParam['orderby']=='paytime desc') echo ' selected';?>>支付时间倒序</option>
+                      
+                    </select>
+                    <button type="submit" class="btn">查  询</button>
+                  	
+                  </form>
+            </td>
+        </tr>
+    </table>
 	<table cellpadding="0" cellspacing="0" align="center" bordercolor="#eee" border="1" width="100%" class="listTab">
 		<tbody>
 			<tr height="39" style="font-size:13px;">
@@ -60,6 +99,6 @@
         </tr>
     </table>
 </div>
-
+<script type="text/javascript" src="<?php echo _get_cfg_path('lib')?>My97DatePicker/WdatePicker.js"></script>
 </body>
 </html>

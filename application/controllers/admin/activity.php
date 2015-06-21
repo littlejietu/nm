@@ -12,14 +12,59 @@ class Activity extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$type = $this->input->get_post('type');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begtime = $this->input->get_post('begtime');
+		$endtime = $this->input->get_post('endtime');
+		$orderby = $this->input->get_post('orderby');
+
+		if($field=='ti_tle')
+			$field = 'title';
+
 		$dbprefix = $this->Activity_model->db->dbprefix;
 		$page     = _get_page();
 		$pagesize = 10;
 		$arrParam = array();
 		$arrWhere = array();
 
+		if($type)
+		{
+			$arrParam['type'] = $type;
+			$arrWhere['type'] = $type;
+		}
+		
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='userid')
+				$arrWhere[$field] = $cKey;
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+
+		if($begtime)
+		{
+			$arrParam['begtime'] = $begtime;
+			$arrWhere["a.$fieldDate >="] = strtotime($begtime);
+		}
+		if($endtime)
+		{
+			$arrParam['endtime'] = $endtime;
+			$arrWhere["a.$fieldDate <="] = strtotime("$endtime 23:59:59");
+		}
+		$strOrder = 'a.id desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
 		$tb = $dbprefix.'activity a left join '.$dbprefix.'recommend b on(b.outerid=a.id and b.kind=2)';
-		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend','a.id desc',$tb);
+		$list = $this->Activity_model->fetch_page($page, $pagesize, $arrWhere, 'a.*,(b.id is not null) as isrecommend', $strOrder,$tb);
 		//echo $this->db->last_query();die;
 		$oSysActType = _get_config('activity');
 
@@ -36,6 +81,7 @@ class Activity extends MY_Admin_Controller {
 		$result = array(
 			'list' => $list,
 			'oSysActType' => $oSysActType,
+			'arrParam' => $arrParam,
 			);
 
 

@@ -12,12 +12,57 @@ class Link extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$display = $this->input->get_post('display');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begdate = $this->input->get_post('begdate');
+		$enddate = $this->input->get_post('enddate');
+		$orderby = $this->input->get_post('orderby');
+		
+		if($field=='ti_tle')
+			$field = 'title';
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Link_model->fetch_page($page, $pagesize, $arrWhere);
+		if($display)
+		{
+			$arrParam['display'] = $display;
+			$arrWhere['display'] = $display;
+		}
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='sellerid' || $field=='buyerid')
+				$arrWhere[$field] = $cKey;
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+
+		if($begdate)
+		{
+			$arrParam['begdate'] = $begdate;
+			$arrWhere["$fieldDate >="] = strtotime($begdate);
+		}
+		
+		if($enddate)
+		{
+			$arrParam['enddate'] = $enddate;
+			$arrWhere["$fieldDate <="] = strtotime("$enddate 23:59:59");
+		}
+		$strOrder = 'id desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
+		$list = $this->Link_model->fetch_page($page, $pagesize, $arrWhere,'*', $strOrder);
 		//echo $this->db->last_query();die;
 		
 
@@ -33,6 +78,7 @@ class Link extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'arrParam' => $arrParam,
 			);
 
 

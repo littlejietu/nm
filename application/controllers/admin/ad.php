@@ -12,13 +12,60 @@ class Ad extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$ad_place = $this->input->get_post('ad_place');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begtime = $this->input->get_post('begtime');
+		$endtime = $this->input->get_post('endtime');
+		$orderby = $this->input->get_post('orderby');
+		
+		if($field=='ti_tle')
+			$field = 'title';
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
 
+		if($ad_place)
+		{
+			$arrParam['ad_place'] = $ad_place;
+			$arrWhere['ad_place'] = $ad_place;
+		}
+		
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='adcode')
+				$arrWhere[$field] = "'$cKey'";
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+
+		if($begtime)
+		{
+			$arrParam['begtime'] = $begtime;
+			$arrWhere["$fieldDate >="] = strtotime($begtime);
+		}
+		if($endtime)
+		{
+			$arrParam['endtime'] = $endtime;
+			$arrWhere["$fieldDate <="] = strtotime("$endtime 23:59:59");
+		}
+		$strOrder = 'id desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
 		$list = $this->Ad_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
+		$this->load->model('Ad_place_model');
+		$ad_placeList = $this->Ad_place_model->get_list(array('status'=>1));
 		
 
 		//分页
@@ -33,6 +80,8 @@ class Ad extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'arrParam' => $arrParam,
+			'ad_placeList'=>$ad_placeList,
 			);
 
 

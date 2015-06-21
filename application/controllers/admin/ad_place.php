@@ -12,10 +12,33 @@ class Ad_place extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+
+		if($field=='ti_tle')
+			$field = 'title';
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
+
+		
+		
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='userid')
+				$arrWhere[$field] = $cKey;
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		
+
+		
+		
 
 		$list = $this->Ad_place_model->fetch_page($page, $pagesize, $arrWhere);
 		//echo $this->db->last_query();die;
@@ -33,6 +56,7 @@ class Ad_place extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'arrParam' => $arrParam,
 			);
 
 
