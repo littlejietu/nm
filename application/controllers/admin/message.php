@@ -12,12 +12,60 @@ class Message extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$type = $this->input->get_post('type');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begtime = $this->input->get_post('begtime');
+		$endtime = $this->input->get_post('endtime');
+		$orderby = $this->input->get_post('orderby');
+
+		if($field=='ti_tle')
+			$field = 'title';
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Message_model->fetch_page($page, $pagesize, $arrWhere);
+		if($type)
+		{
+			$arrParam['type'] = $type;
+			if($type==1)
+				$arrWhere['touserid'] = 0;
+			else
+				$arrWhere['touserid >'] = 0;
+		}
+		
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='touserid')
+				$arrWhere[$field] = $cKey;
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+
+		if($begtime)
+		{
+			$arrParam['begtime'] = $begtime;
+			$arrWhere["$fieldDate >="] = strtotime($begtime);
+		}
+		if($endtime)
+		{
+			$arrParam['endtime'] = $endtime;
+			$arrWhere["$fieldDate <="] = strtotime("$endtime 23:59:59");
+		}
+		$strOrder = 'id desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
+		$list = $this->Message_model->fetch_page($page, $pagesize, $arrWhere, '*', $strOrder);
 		//echo $this->db->last_query();die;
 		
 
@@ -33,6 +81,7 @@ class Message extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'arrParam' => $arrParam,
 			);
 
 
