@@ -12,12 +12,54 @@ class Fans extends MY_Admin_Controller {
     //默认执行index
 	public function index()
 	{
+		$status = $this->input->get_post('status');
+		$field = $this->input->get_post('field');
+		$cKey = $this->input->get_post('txtKey');
+		$fieldDate = $this->input->get_post('fieldDate');
+		$begtime = $this->input->get_post('begtime');
+		$endtime = $this->input->get_post('endtime');
+		$orderby = $this->input->get_post('orderby');
+
 		$page     = _get_page();
 		$pagesize = 3;
 		$arrParam = array();
 		$arrWhere = array();
 
-		$list = $this->Fans_model->fetch_page($page, $pagesize, $arrWhere);
+		if($status)
+		{
+			$arrParam['status'] = $status;
+			$arrWhere['status'] = $status;
+		}
+		
+		if($cKey)
+		{
+			$arrParam['key'] = $cKey;
+			if($field=='userid')
+				$arrWhere[$field] = $cKey;
+			else
+				$arrWhere[$field.' like '] = "'%$cKey%'";
+		}
+		$arrParam['field'] = $field;
+		$arrParam['fieldDate'] = $fieldDate;
+
+		if($begtime)
+		{
+			$arrParam['begtime'] = $begtime;
+			$arrWhere["$fieldDate >="] = strtotime($begtime);
+		}
+		if($endtime)
+		{
+			$arrParam['endtime'] = $endtime;
+			$arrWhere["$fieldDate <="] = strtotime("$endtime 23:59:59");
+		}
+		$strOrder = 'addtime desc';
+		if($orderby)
+		{
+			$arrParam['orderby'] = $orderby;
+			$strOrder = $orderby;
+		}
+
+		$list = $this->Fans_model->fetch_page($page, $pagesize, $arrWhere,'*', $strOrder);
 		//echo $this->db->last_query();die;
 		
 
@@ -33,6 +75,7 @@ class Fans extends MY_Admin_Controller {
 
 		$result = array(
 			'list' => $list,
+			'arrParam' => $arrParam,
 			);
 
 
