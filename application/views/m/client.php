@@ -30,14 +30,12 @@
                             <tr>
                               <th width="250">联系人</th>
                               <th width="110">联系方式</th>
-                              <th>备注</th>
                               <th width="120">操作</th>
                             </tr>
                             <?php foreach ($list['rows'] as $key => $a): ?>
                             <tr>
                               <td><?php echo $a['linkman'];?></td>
-                              <td><?php echo $a['contact'];?></td>
-                              <td><?php echo $a['memo'];?></td>
+                              <td title="<?=$a['memo']?>"><?php echo $a['contact'];?></td>
                               <td class="operat">
                                 <a href="javascript:;" class="t_delete XT-del" _val="<?=_get_key_val($a['id'])?>"><i></i>删除</a>
                                 <a href="javascript:;" class="t_editor XT-modify" _val="<?=_get_key_val($a['id'])?>"><i></i>编辑</a>
