@@ -91,4 +91,10 @@ class Home extends CI_Controller {
 		$this->load->view('homemodel',$result);
 	}
 */
+
+
+	public function expired(){
+		$this->load->view('homeexpired');
+	}
 }
+

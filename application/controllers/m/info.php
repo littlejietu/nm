@@ -298,6 +298,7 @@ class Info extends CI_Controller {
 					'bust'=>(int)$this->input->post('bd_bust'),
 					'waist'=>(int)$this->input->post('bd_waist'),
 					'hips'=>(int)$this->input->post('bd_hips'),
+					'shoes'=>(int)$this->input->post('bd_shoes'),
 					);
 				$this->load->model('Userdetail_model');
 				$this->Userdetail_model->update_by_where(array('userid'=>$userid),$data_detail);

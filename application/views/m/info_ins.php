@@ -62,9 +62,6 @@
                               <tr>
                                 <td width="86">展示图</td>
                                 <td colspan="3">
-                                    <div id="previews" class="drsMoveHandle">
-                                        <img id="show_showimg" border=0 src='<?php echo _get_userlogo_url($o['showimg']);?>'>
-                                    </div>
                                     <div class="f_note">
                                         <p>尺寸：345×209像数</p>
                                         <input type="hidden"  name="showimg" id="showimg" value="<?=$o['showimg']?>">
@@ -73,13 +70,18 @@
                                             <input id="showimg_upload" name="showimg_upload" value="选择展示图" class="inp_file" type="file">
                                         </div>
                                     </div>
+                                    <div id="show_showimg">
+                                        <?php if($o['showimg']):?>
+                                          <a href="<?='/'.$o['showimg']?>" target="_blank">查看</a>
+                                        <?php endif?>
+                                    </div>
                                 </td>
                               </tr>
                               <tr>
                                 <td width="86">主页背景图</td>
                                 <td colspan="3">
                                     <div class="f_note">
-                                        <p>尺寸：248×324像数</p>
+                                        <p>尺寸：1100×430像数</p>
                                         <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
                                         <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
@@ -223,7 +225,8 @@ $(function() {
           var imgpath=data[1];
           $('#showimg').val(imgpath);
           $('#showimg').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_showimg').attr('src','/'+imgpath);
+          $('#show_showimg').html('保存后可查看');
+          //$('#show_showimg').attr('src','/'+imgpath);
         }
       }
 
@@ -256,7 +259,8 @@ $(function() {
           var imgpath=data[1];
           $('#bgimg').val(imgpath);
           $('#bgimg').nextAll('em').html('<i class="icoCor16"></i>');
-          $('#show_bgimg').attr('src','/'+imgpath);
+          //$('#show_bgimg').attr('src','/'+imgpath);
+          $('#show_bgimg').html('保存后可查看');
         }
       }
 

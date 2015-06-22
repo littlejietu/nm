@@ -30,6 +30,26 @@
                 <li><span>三围</span> <?=$oUser['bust']?>-<?=$oUser['waist']?>-<?=$oUser['hips']?></li>
                 <li><span>鞋码</span> <?=$oUser['shoes']?>  码</li>
             </ul>
+
+            <?php if($oBody):?>
+                <ul class="clearfix bainfo">
+                <?php if($oBody['hipe']):?><li><span>上臀围</span> <?=$oBody['hipe']?></li><?php endif?>
+                <?php if($oBody['hipd']):?><li><span>下臀围</span> <?=$oBody['hipd']?></li><?php endif?>
+                <?php if($oBody['collarf']):?><li><span>领围</span> <?=$oBody['collarf']?></li><?php endif?>
+                <?php if($oBody['shoulderg']):?><li><span>肩宽</span> <?=$oBody['shoulderg']?></li><?php endif?>
+                <?php if($oBody['sleeveh']):?><li><span>臂长</span> <?=$oBody['sleeveh']?></li><?php endif?>
+                <?php if($oBody['sleevefull']):?><li><span>袖长</span> <?=$oBody['sleevefull']?></li><?php endif?>
+                <?php if($oBody['outseam']):?><li><span>外侧裤长</span> <?=$oBody['outseam']?></li><?php endif?>
+                <?php if($oBody['inseamj']):?><li><span>内侧裤长</span> <?=$oBody['inseamj']?></li><?php endif?>
+                <?php if($oBody['hatk']):?><li><span>头围</span> <?=$oBody['hatk']?></li><?php endif?>
+                <?php if($oBody['wristl']):?><li><span>腕围</span> <?=$oBody['wristl']?></li><?php endif?>
+                <?php if($oBody['thighm']):?><li><span>大腿围</span> <?=$oBody['thighm']?></li><?php endif?>
+                <?php if($oBody['calfn']):?><li><span>小腿围</span> <?=$oBody['calfn']?></li><?php endif?>
+                <?php if($oBody['hair']):?><li><span>头发</span> <?=$oBody['hair']?></li><?php endif?>
+                <?php if($oBody['eye']):?><li><span>眼睛</span> <?=$oBody['eye']?></li><?php endif?>
+                </ul>
+            <?php endif?>
+            
             <br /><br /><br />
             <div class="title">个人说明</div>
             <div class="clearfix">

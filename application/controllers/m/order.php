@@ -82,7 +82,8 @@ class Order extends CI_Controller {
 		$this->load->model('Orderbook_model');
 		$oBook = $this->Orderbook_model->get_by_where(array('orderid'=>$id));
 
-		$o = array_merge($oBook, $o);
+		if($oBook)
+			$o = array_merge($oBook, $o);
 
 		$result = array(
 			'o' => $o,

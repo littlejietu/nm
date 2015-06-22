@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+$config['encrypt_open'] = true;
 $config['md5_prefix']                       = 'myxt';
 $config['sitename'] = '牛模网';
 $config['bail']	= array(
