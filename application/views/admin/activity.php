@@ -11,7 +11,7 @@
 
 <div class="right_con common">
 
-	<h1>活动管理</h1>
+	<h1>通告管理</h1>
 	<table cellpadding="0" cellspacing="0" bordercolor="#eee" border="0" width="100%">
 		<tr>
             <td height="32">

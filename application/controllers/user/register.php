@@ -59,6 +59,7 @@ class Register extends CI_Controller {
                 $data_init = array(
                         'addtime'=>time(),
                         'status'=>1,
+                        'validmobile'=>1,
                         'lastip'=>_ip_long(),
                     );
                 $userid = $this->User_model->insert_string( array_merge($data_main,$data_init) );
