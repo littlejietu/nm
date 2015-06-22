@@ -31,15 +31,15 @@
                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody><tr>
                                   <td width="100">拍摄内容：</td>
-                                  <td class="cont"><?=$this->config->item('workitem')[$o['item']]?></td>
+                                  <td class="cont"><?=!empty($o['item'])?$this->config->item('workitem')[$o['item']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>拍摄场景：</td>
-                                  <td class="cont"><?=$this->config->item('workscene')[$o['scene']]?></td>
+                                  <td class="cont"><?=!empty($o['workscene'])?$this->config->item('workscene')[$o['scene']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>计价方式：</td>
-                                  <td class="cont"><?=$this->config->item('worktime')[$o['time']]?></td>
+                                  <td class="cont"><?=!empty($o['worktime'])?$this->config->item('worktime')[$o['time']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>总  价：</td>
@@ -47,19 +47,19 @@
                                 </tr>
                                 <tr>
                                   <td>备  注：</td>
-                                  <td class="cont"><?=$o['memo']?></td>
+                                  <td class="cont"><?=!empty($o['memo'])?$o['memo']:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>期望拍片日期：</td>
-                                  <td class="cont"><?=date('Y-m-d', $o['begtime'])?> - <?=date('Y-m-d', $o['endtime'])?></td>
+                                  <td class="cont"><?=!empty($o['begtime'])&&!empty($o['endtime']) ? (date('Y-m-d', $o['begtime'])?> 至 <?=date('Y-m-d', $o['endtime']) ): '';?></td>
                                 </tr>
                                 <tr>
                                   <td>联  系 人：</td>
-                                  <td class="cont"><?=$o['linkman']?></td>
+                                  <td class="cont"><?=!empty($o['linkman'])?$o['linkman']:''?></td>
                                 </tr>
                                 <tr>
                                   <td>联系方式：</td>
-                                  <td class="cont"><?=$o['linkway']?></td>
+                                  <td class="cont"><?=!empty($o['linkway'])?$o['linkway']:''?></td>
                                 </tr>
                             </tbody></table>
                             <div class="back"><a onclick="javascript:history.back(-1);" href="javascript:;" title="返回">返回</a></div>

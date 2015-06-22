@@ -64,9 +64,17 @@ class Model extends CI_Controller {
 		$oInfo = $oIns['modelinfo'];
 		unset($oIns['modelinfo']);
 
+		$oBody = array();
+		if($oUser['usertype']==1)
+		{
+			$this->load->model('Userbody_model');
+			$oBody = $this->Userbody_model->get_by_id($userid);
+		}
+
 		$result = array(
 			'oUser' => $oIns,
 			'oInfo' => $oInfo,
+			'oBody' => $oBody,
 			);
 		$view = 'i/modelinfo';
 		if(in_array($oInfo['usertype'],array(4,5)))

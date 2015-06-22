@@ -124,7 +124,7 @@ class Activity extends CI_Controller {
   				}
 
   				$this->Activity_model->insert($data);
-  				redirect('/m/activity/add');
+  				redirect('/m/activity');
   				exit;
   			}
 

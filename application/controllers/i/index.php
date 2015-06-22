@@ -18,7 +18,16 @@ class Index extends CI_Controller {
 		$this->load->service('User_service');
 		$this->user_service->visit($userid, $this->loginID, $sysVisittype['home']);
 		//-浏览
+
 		$oUser = $this->user_service->get_user_homeinfo($userid, $this->loginID);
+
+		$oBody = array();
+		if($oUser['usertype']==1)
+		{
+			$this->load->model('Userbody_model');
+			$oBody = $this->Userbody_model->get_by_id($userid);
+		}
+
 
 		//精选作品
 		$oGood = $this->user_service->get_user_goodwork($userid);
@@ -26,6 +35,7 @@ class Index extends CI_Controller {
 		$result = array(
 			'oUser' => $oUser,
 			'oGood' => $oGood,
+			'oBody' => $oBody,
 			);
 		$view = 'i/index';
 		if($oUser['usertype']==2)

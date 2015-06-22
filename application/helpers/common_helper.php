@@ -45,6 +45,12 @@ function _get_db($group='xt')
 	return $db[$group];
 }
 
+function _get_config($key)
+{
+	$CI     =& get_instance();
+	return $CI->config->item($key);
+}
+
 /**
  * 返回加密串
  * @param $val
@@ -58,14 +64,19 @@ function _get_key_val($val, $flag=FALSE)
 	{
 		$md5 = substr($val, -32);
 		$str = substr($val,0,-32);
-		if ($md5 == md5(session_id().'!#%&)'.$str))
+		if(_get_config('encrypt_open'))
 		{
-			return $str;
+			if ( $md5 == md5(session_id().'!#%&)'.$str))
+				return $str;
+			else
+			{
+				redirect('/home/expired');
+				return '';
+			}
+			
 		}
 		else
-		{
-			return '';
-		}
+			return $str;
 
 	}
 	else
@@ -74,11 +85,7 @@ function _get_key_val($val, $flag=FALSE)
 	}
 }
 
-function _get_config($key)
-{
-	$CI     =& get_instance();
-	return $CI->config->item($key);
-}
+
 
 function _get_cfg_path($key)
 {
