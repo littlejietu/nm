@@ -47,7 +47,7 @@
                                    </div>
                                 </div>
                                 <div class="fl operat"><a class="t_delete" href="/m/comment/add?commentid=<?=_get_key_val($a['id'])?>&orderid=<?=_get_key_val($a['orderid'])?>"><i></i>回复</a></div>
-                                <a class="t_editor fr" href="javascript:;" onclick="alertWin(this)"><i></i>投诉</a>
+                               <!--  <a class="t_editor fr" href="javascript:;" onclick="alertWin(this)"><i></i>投诉</a> -->
                                 <div style="clear:both"></div>
                                 <div class="fabiao reply">
                                   <textarea id="starcontent" name="content" cols="" class="texta" placeholder="谢谢哦，下次有机会继续合作哦~~"></textarea>

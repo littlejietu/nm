@@ -17,10 +17,7 @@ class Cert extends CI_Controller {
 		if ($this->input->is_post())
 		{
 			$res = $this->save();
-			$msg = '保存失败';
-			if($res==200)
-				$msg = '保存成功';
-			redirect(base_url('/m/cert?msg='.$msg));
+			redirect(base_url('/m/cert?res='.$res));
 			exit;
 		}
 
