@@ -57,7 +57,7 @@ function _get_config($key)
  * @param $flag
  * @return unknown_type
  */
-function _get_key_val($val, $flag=FALSE)
+function _get_key_val($val, $flag=FALSE, $redirct=TRUE)
 {
 	if (!$val)return '';
 	if ($flag)
@@ -68,11 +68,13 @@ function _get_key_val($val, $flag=FALSE)
 		{
 			if ( $md5 == md5(session_id().'!#%&)'.$str))
 				return $str;
-			else
+			else if($redirct)
 			{
 				redirect('/home/expired');
 				return '';
 			}
+			else
+				return '';
 			
 		}
 		else
