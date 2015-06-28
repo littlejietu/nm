@@ -123,13 +123,16 @@ function getPrice(){
 			if(arrProduct[i][0]==selectedId)
 			{
 
-				$('.price').html(arrProduct[i][1]);
+				$('#price').val(arrProduct[i][1]);
+				
 				break;
 			}
 		}
 	}
 
+	$('.price').html( $('#price').val() * $('#num').val() );
 }
+
 
 $('#XT-Book').bind('click',function() {
 	$('#err-message').html('');

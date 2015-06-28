@@ -7,6 +7,7 @@ $.fn.iVaryVal=function(iSet,CallBack){
 	 * Max:表单的最大值，正整数
 	 */
 	iSet=$.extend({Minus:$('.J_minus'),Add:$('.J_add'),Input:$('.J_input'),Min:0,Max:100},iSet);
+
 	var C=null,O=null;
 	//插件返回值
 	var $CB={};
@@ -97,7 +98,11 @@ $.fn.iVaryVal=function(iSet,CallBack){
 $( function() {
 	
 	$('.i_box').iVaryVal({},function(value,index){
-		$('.i_tips').html('你点击的表单索引是：'+index+'；改变后的表单值是：'+value);
+		//$('.i_tips').html('你点击的表单索引是：'+index+'；改变后的表单值是：'+value);
+		var price = parseInt(value) * $('#price').val();
+
+		$('.price').html(price);
+
 	});
 	
 });

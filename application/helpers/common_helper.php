@@ -64,8 +64,8 @@ function _get_key_val($val, $flag=FALSE, $redirct=TRUE)
 	{
 		$md5 = substr($val, -32);
 		$str = substr($val,0,-32);
-		if(_get_config('encrypt_open'))
-		{
+		// if(_get_config('encrypt_open'))
+		// {
 			if ( $md5 == md5(session_id().'!#%&)'.$str))
 				return $str;
 			else if($redirct)
@@ -76,9 +76,9 @@ function _get_key_val($val, $flag=FALSE, $redirct=TRUE)
 			else
 				return '';
 			
-		}
-		else
-			return $str;
+		// }
+		// else
+		// 	return $str;
 
 	}
 	else

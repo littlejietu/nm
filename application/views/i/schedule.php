@@ -171,6 +171,7 @@
         <form id="xtform" method="post" action="/i/schedule/book">
           <input type="hidden" name="booked_userid" value="<?=_get_key_val($oUser['id'])?>" />
           <input type="hidden" name="begtime" id="begtime" value=""/>
+          <input type="hidden" name="price" id="price" value=""/>
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="80"><font>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 格：</font></td>
@@ -214,7 +215,7 @@
                     <div class="i_tips" style="display:none"></div>
                     <div class="i_box">
                         <a href="javascript:;" class="J_minus">-</a>
-                        <input type="text" value="0" class="J_input" name="num" id="num" />
+                        <input type="text" value="1" class="J_input" name="num" id="num" />
                         <a href="javascript:;" class="J_add">+</a>
                     </div>
                   </td>
