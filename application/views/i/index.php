@@ -33,8 +33,7 @@
 
             <?php if($oBody):?>
                 <ul class="clearfix bainfo">
-                <?php if($oBody['hipe']):?><li><span>上臀围</span> <?=$oBody['hipe']?></li><?php endif?>
-                <?php if($oBody['hipd']):?><li><span>下臀围</span> <?=$oBody['hipd']?></li><?php endif?>
+                <?php if($oBody['hipd']):?><li><span>臂围</span> <?=$oBody['hipd']?></li><?php endif?>
                 <?php if($oBody['collarf']):?><li><span>领围</span> <?=$oBody['collarf']?></li><?php endif?>
                 <?php if($oBody['shoulderg']):?><li><span>肩宽</span> <?=$oBody['shoulderg']?></li><?php endif?>
                 <?php if($oBody['sleeveh']):?><li><span>臂长</span> <?=$oBody['sleeveh']?></li><?php endif?>
@@ -57,34 +56,34 @@
                     
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>拍摄经历</h3>
-                        <div class="p_wzi"> <?=$oUser['brand']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['brand'])?$oUser['brand']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>工作经历</h3>
-                        <div class="p_wzi"> <?=$oUser['brandtype']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['brandtype'])?$oUser['brandtype']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>平面拍摄</h3>
-                        <div class="p_wzi"> <?=$oUser['planeshot']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['planeshot'])?$oUser['planeshot']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>获得奖项</h3>
-                        <div class="p_wzi"> <?=$oUser['awards']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['awards'])?$oUser['awards']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>T台活动</h3>
-                        <div class="p_wzi"> <?=$oUser['tactivity']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['tactivity'])?$oUser['tactivity']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>影视广告</h3>
-                        <div class="p_wzi"> <?=$oUser['telead']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['telead'])?$oUser['telead']:''?><br /></div>
                     </div>
                     <div class="per_con">
                         <h3 class="p_bti"><i></i>杂志拍摄</h3>
-                        <div class="p_wzi"> <?=$oUser['magazine']?><br /></div>
+                        <div class="p_wzi"> <?=!empty($oUser['magazine'])?$oUser['magazine']:''?><br /></div>
                     </div>
                 </div>
-                <?php if($oUser['video']):?>
+                <?php if(!empty($oUser['video'])):?>
                 <div class="fr p_video" style="width:400px;height:300px">
                     <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="400" height="300">
                         <param name="movie" value="<?php echo _get_cfg_path('lib')?>player.swf?videoPath=<?=_get_image_url($oUser['video'])?>"/>
@@ -98,17 +97,17 @@
             <div class="title">工作说明</div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>工作报价</h3>
-                <div class="p_wzi"><?=$oUser['fee']?></div>
+                <div class="p_wzi"><?=!empty($oUser['fee'])?$oUser['fee']:''?></div>
             </div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>工作时间</h3>
-                <div class="p_wzi"><?=$oUser['servicetime']?></div>
+                <div class="p_wzi"><?=!empty($oUser['servicetime'])?$oUser['servicetime']:''?></div>
             </div>
             <div class="per_con">
                 <h3 class="p_bti"><i></i>注意事项</h3>
-                <div class="p_wzi"><?=$oUser['takenote']?></div>
+                <div class="p_wzi"><?=!empty($oUser['takenote'])?$oUser['takenote']:''?></div>
             </div>
-            <?php if($oUser['card']):?>
+            <?php if(!empty($oUser['card'])):?>
             <br /><br />
             <div class="title">模特卡</div>
             <br />

@@ -80,7 +80,7 @@ class Model extends CI_Controller {
 			
 			$arrParam['height']=$get_height;
 		}
-		$orderby = 'addtime desc';
+		$orderby = 'visitnum desc,addtime desc';
 		if($get_orderby)
 		{
 			$arrParam['orderby']=$get_orderby;

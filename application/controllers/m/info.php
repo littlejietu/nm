@@ -90,8 +90,23 @@ class Info extends CI_Controller {
                  'label'   => '体重', 
                  'rules'   => 'trim|required'
               ),
+            // array(
+            //      'field'   => 'BWH', 
+            //      'label'   => '三围', 
+            //      'rules'   => 'trim|required'
+            //   ),
             array(
-                 'field'   => 'BWH', 
+                 'field'   => 'bust', 
+                 'label'   => '三围', 
+                 'rules'   => 'trim|required'
+              ),
+            array(
+                 'field'   => 'waist', 
+                 'label'   => '三围', 
+                 'rules'   => 'trim|required'
+              ),
+            array(
+                 'field'   => 'hips', 
                  'label'   => '三围', 
                  'rules'   => 'trim|required'
               ),
@@ -104,14 +119,14 @@ class Info extends CI_Controller {
               );
 		//-验证规则
         
-		$bust=$waist=$hips=0;
-		$arrBWH = explode('-', $this->input->post('BWH')) ;
-		if(count($arrBWH)>=1)
-			$bust = $arrBWH[0];
-		if(count($arrBWH)>=2)
-			$waist = $arrBWH[1];
-		if(count($arrBWH)>=3)
-			$hips = $arrBWH[2];
+		// $bust=$waist=$hips=0;
+		// $arrBWH = explode('-', $this->input->post('BWH')) ;
+		// if(count($arrBWH)>=1)
+		// 	$bust = $arrBWH[0];
+		// if(count($arrBWH)>=2)
+		// 	$waist = $arrBWH[1];
+		// if(count($arrBWH)>=3)
+		// 	$hips = $arrBWH[2];
 
 		$style = '';
 		if(is_array($this->input->post('style')))
@@ -131,9 +146,9 @@ class Info extends CI_Controller {
 		$data_detail = array(
 			'height'=>$this->input->post('height'),
 			'weight'=>$this->input->post('weight'),
-			'bust'=>$bust,
-			'waist'=>$waist,
-			'hips'=>$hips,
+			'bust'=>$this->input->post('bust'),
+			'waist'=>$this->input->post('waist'),
+			'hips'=>$this->input->post('hips'),
 			'shoes'=>(int)$this->input->post('shoes'),
 			'cup'=>(int)$this->input->post('cup'),
 			'style'=>$style,

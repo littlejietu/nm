@@ -140,7 +140,7 @@
                           <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
                                 <td colspan="3">
-                                    <input name="submit" type="submit" class="but" value="提交"/>
+                                    <input name="submit" type="submit" class="but" value="保存"/>
                                     <input name="" type="button" class="but but_reset" value="重置"/>
                                 </td>
                               </tr>
@@ -163,7 +163,7 @@
 <?php if($o['usertype']==1):?>
 <div class="popover-mask"></div>
 <div class="popover">
-  <div class="compl_top"><span class="fl">完善个人信息</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
+  <div class="compl_top"><span class="fl">详细个人尺寸数据</span><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
   <div class="popbod pp_mtzl">
       <div class="fl pobimg"><img src="<?php echo _get_cfg_path('images')?>mt_zl.png" style="height:380px;"/></div>
         <div class="fr poptab">
@@ -180,24 +180,18 @@
                 <tr>
                     <td><font>腰围(C)：</font></td>
                     <td><input name="bd_waist" type="text" class="txt" placeholder="Waist (C)" value="<?=$o['waist']?>"/></td>
-                    <td><font>下臀围(D)：</font></td>
-                    <td><input name="bd_hipd" type="text" class="txt" placeholder="Hip (D)" value="<?=!empty($oBody['hipd'])?$oBody['hipd']:'';?>"/></td>
+                    <td><font>臂围：</font></td>
+                    <td><input name="bd_hipd" type="text" class="txt" placeholder="" value="<?=$oBody['hipd']?>"/></td>
                 </tr>
                 <tr>
-                    <td><font>上臀围(E)：</font></td>
-                    <td><input name="bd_hipe" type="text" class="txt" placeholder="High Hip (E)" value="<?=!empty($oBody['hipe'])?$oBody['hipe']:'';?>"/></td>
                     <td><font>领围(F)：</font></td>
                     <td><input name="bd_collarf" type="text" class="txt" placeholder="Collar (F)" value="<?=!empty($oBody['collarf'])?$oBody['collarf']:'';?>"/></td>
-                </tr>
-                <tr>
                     <td><font>肩宽(G)：</font></td>
                     <td><input name="bd_shoulderg" type="text" class="txt" placeholder="Shoulder(G)" value="<?=!empty($oBody['shoulderg'])?$oBody['shoulderg']:'';?>"/></td>
-                    <td><font>臂长(H)：</font></td>
-                    <td><input name="bd_sleeveh" type="text" class="txt" placeholder="Sleeve Length(H)" value="<?=!empty($oBody['sleeveh'])?$oBody['sleeveh']:'';?>"/></td>
                 </tr>
                 <tr>
-                    <td><font>袖长：</font></td>
-                    <td><input name="bd_sleevefull" type="text" class="txt" placeholder="Sleeve Full Length" value="<?=!empty($oBody['sleevefull'])?$oBody['sleevefull']:'';?>"/></td>
+                    <td><font>臂长(H)：</font></td>
+                    <td><input name="bd_sleeveh" type="text" class="txt" placeholder="Sleeve Length(H)" value="<?=!empty($oBody['sleeveh'])?$oBody['sleeveh']:'';?>"/></td>
                     <td><font>外侧裤长：</font></td>
                     <td><input name="bd_outseam" type="text" class="txt" placeholder="Outseam (I)" value="<?=!empty($oBody['outseam'])?$oBody['outseam']:'';?>"/></td>
                 </tr>
@@ -225,14 +219,10 @@
                     <td><font>眼睛：</font></td>
                     <td><input name="bd_eye" type="text" class="txt" placeholder="Eye Color" value="<?=!empty($oBody['eye'])?$oBody['eye']:'';?>"/></td>
                 </tr>
-                <tr>
-                    <td><font>臂围：</font></td>
-                    <td><input name="bd_hips" type="text" class="txt" placeholder="" value="<?=$o['hips']?>"/></td>
-                </tr>
                 <tr><td height="20"></td></tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td colspan="3"><input class="but" name="" type="submit" value="添加"/></td>
+                    <td colspan="3"><input class="but" name="" type="submit" value="保存"/></td>
                 </tr>
             </table>
           </form>

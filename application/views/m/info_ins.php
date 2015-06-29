@@ -131,7 +131,7 @@
                               <tr style="border-bottom:none;">
                                 <td style="height:80px">&nbsp;</td>
                                 <td colspan="3">
-                                    <input name="submit" type="submit" class="but" value="提交"/>
+                                    <input name="submit" type="submit" class="but" value="保存"/>
                                     <input name="" type="button" class="but but_reset" value="重置"/>
                                 </td>
                               </tr>

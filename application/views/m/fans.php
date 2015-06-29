@@ -26,7 +26,7 @@
                         <div class="brotop inter_top">
                           <div class="fl broad"><span class="b_num"><em><?=$oUsernum['concernnum']?></em> <a href="/m/fans">关注</a></span></div>
                             <div class="fl broad"><span class="b_num"><em><?=$oUsernum['fansnum']?></em> <a href="/m/fans?havefans=1">粉丝</a></span></div>
-                            <div class="fl broad b_gain"><span class="b_num"><em><?=$oUsernum['photonum']?></em> <a href="/m/works">拍片次数</a></span></div>
+                            <div class="fl broad b_gain"><span class="b_num"><em><?=$oUsernum['be_ordernum']?></em> <a href="/m/order">拍片次数</a></span></div>
                         </div>
                         <div class="inter_con">
                           <div class="clearfix">
@@ -43,7 +43,7 @@
                                   
                                   <li>
                                       
-                                      <div class="intimg fl"><img src="<?=_get_userlogo_url($a['userlogo']);?>"></div>
+                                      <div class="intimg fl"><a href="/i/index/<?=$a['userid']?>" target="_blank"><img src="<?=_get_userlogo_url($a['userlogo']);?>"></a></div>
                                         <div class="imtcon fr">
                                           <h3><span><?=$a['nickname'];?></span><em>√已关注</em></h3>
                                            

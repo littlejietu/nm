@@ -50,7 +50,9 @@
                                   <input type="hidden" id="city" name="city" value="<?=$o['city'];?>">
                                 </td>
                                 <td><span class="tips">*</span>三围</td>
-                                <td><input name="BWH" type="text" class="txt" value="<?=$o['bust'].'-'.$o['waist'].'-'.$o['hips']?>" placeholder="请输入你的三围"/>以-组合</td>
+                                <td><input name="bust" type="text" class="txt" style="width:30px" value="<?=$o['bust']?>" placeholder="胸围"/>-
+                                <input name="waist" type="text" class="txt" style="width:30px" value="<?=$o['waist']?>" placeholder="腰围"/>-
+                                <input name="hips" type="text" class="txt" style="width:30px" value="<?=$o['hips']?>" placeholder="臀围"/></td>
                               </tr>
                               <tr>
                                 <td>罩杯</td>
@@ -59,8 +61,8 @@
                                 <td><input name="shoes" type="text" class="txt" value="<?=$o['shoes']?>" placeholder="请输入你的鞋码"/>码</td>
                               </tr>
                                <tr>
-                                <td>QQ</td>
-                                <td colspan="3"><input name="qq" type="text" class="txt" value="<?=$o['qq']?>" placeholder="请输入你的QQ"/></td>
+                                <td>联系</td>
+                                <td colspan="3"><input name="qq" type="text" class="txt" value="<?=$o['qq']?>" placeholder="请输入你的联系方式"/></td>
                                 
                               </tr>
                               <tr>
@@ -74,7 +76,7 @@
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
-                                <td colspan="3"><a href="javascript:;" class="TX-win-open" style="color:#f00;">完善个人信息</a></td>
+                                <td colspan="3"><a href="javascript:;" class="TX-win-open" style="color:#f00;">详细个人尺寸数据</a></td>
                               </tr>
                                <tr>
                                	  <td colspan="4">个人说明</td>

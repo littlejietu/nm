@@ -36,6 +36,7 @@
                             <tbody><tr>
                               <th width="120">订单编号</th>
                               <th>工作内容</th>
+                              <?php if($this->loginInsID):?><th width="90">所属艺人</th><?php endif?>
                               <th width="90">总价</th>
                               <th width="90">预约时间</th>
                               <th width="90">下单时间</th>
@@ -46,6 +47,7 @@
                             <tr>
                               <td><a href="/m/order/detail?id=<?=_get_key_val($a['id'])?>"><?php echo $a['no'];?></a></td>
                               <td><div class="t_cont"><a href="/m/order/detail?id=<?=_get_key_val($a['id'])?>"><?php echo $a['title'];?></a></div></td>
+                              <?php if($this->loginInsID):?><td><?php echo $a['seller_nickname'];?></td><?php endif?>
                               <td><?php echo $a['totalprice'];?></td>
                               <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'-'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
                               <td><?php echo date('m-d H:i:s',$a['addtime']);?></td>

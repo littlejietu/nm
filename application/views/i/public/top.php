@@ -6,7 +6,7 @@
             <ul class="cs_number clearfix">
                 <li><strong><?=empty($oUser['concernnum'])?0:$oUser['concernnum'];?></strong><span>关注</span></li>
                 <li><strong><?=empty($oUser['fansnum'])?0:$oUser['fansnum'];?></strong> <span>粉丝</span></li>
-                <li><strong><?=empty($oUser['photonum'])?0:$oUser['photonum'];?></strong> <span>拍片次数</span></li>
+                <li><strong><?=empty($oUser['be_ordernum'])?0:$oUser['be_ordernum'];?></strong> <span>拍片次数</span></li>
             </ul>
             <div class="cs_popul"><strong><?=empty($oUser['visitnum'])?0:$oUser['visitnum'];?></strong>人气</div>
         </div>

@@ -14,7 +14,7 @@ class Fans extends CI_Controller {
 	{
 		$userid = $this->thatUser['id'];
 		$this->load->model('Usernum_model');
-		$oUsernum = $this->Usernum_model->get_by_id($userid, 'fansnum,concernnum,photonum');
+		$oUsernum = $this->Usernum_model->get_by_id($userid, 'fansnum,concernnum,be_ordernum');
 
 		$keyword = $this->input->get('keyword');
 
@@ -22,7 +22,7 @@ class Fans extends CI_Controller {
 		$page     = _get_page();
 		$pagesize = 9;
 		$arrParam = array();
-		$arrWhere = array('fansuserid'=>$userid);		//条件
+		$arrWhere = array('fansuserid'=>$userid,'status >'=>0);		//条件
 		$cField = 'userid,nickname,userlogo,type';
 		if($keyword)
 		{
@@ -33,7 +33,7 @@ class Fans extends CI_Controller {
 		if($this->input->get('havefans'))
 		{
 			$arrParam = array('havefans'=>(int)$this->input->get('havefans'));
-			$arrWhere = array('userid'=>$userid);
+			$arrWhere = array('userid'=>$userid,'status >'=>0);
 			$cField = 'fansuserid as userid,fansnickname as nickname,fanslogo as userlogo,type';
 
 			if($keyword)

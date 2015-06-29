@@ -255,7 +255,7 @@ class User_service
 		$this->ci->load->model('Fans_model');
 
 		$oUser = $this->ci->User_model->get_info_by_id($mid);
-		$oUsernum = $this->ci->Usernum_model->get_by_id($mid, 'fansnum,concernnum,photonum,visitnum,be_commentnum');
+		$oUsernum = $this->ci->Usernum_model->get_by_id($mid, 'fansnum,concernnum,visitnum,be_commentnum,be_ordernum');
 		if($oUsernum)
 			$oUser = array_merge($oUsernum, $oUser);
 
@@ -285,7 +285,7 @@ class User_service
 			$insid = $oUser['insid'];
 			$oIns = $this->ci->User_model->get_info_by_id($insid);
 
-			$oInsnum = $this->ci->Usernum_model->get_by_id($insid, 'fansnum,concernnum,photonum,visitnum,be_commentnum');
+			$oInsnum = $this->ci->Usernum_model->get_by_id($insid, 'fansnum,concernnum,visitnum,be_commentnum,be_ordernum');
 			if($oInsnum)
 				$oIns = array_merge($oInsnum, $oIns);
 
