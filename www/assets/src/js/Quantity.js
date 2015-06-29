@@ -99,9 +99,10 @@ $( function() {
 	
 	$('.i_box').iVaryVal({},function(value,index){
 		//$('.i_tips').html('你点击的表单索引是：'+index+'；改变后的表单值是：'+value);
-		var price = parseInt(value) * $('#price').val();
+		var totalPrice = parseInt(value) * $('#price').val();
 
-		$('.price').html(price);
+		if(totalPrice>0)
+			$('.price').html(totalPrice);
 
 	});
 	

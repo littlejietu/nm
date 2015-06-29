@@ -175,7 +175,7 @@
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <td width="80"><font>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 格：</font></td>
-                  <td>¥ <em class="money price">150.00</em></td>
+                  <td><span class="moneysign"></span> <em class="money price">面议</em></td>
                 </tr>
                 <tr>
                   <td><font>工作内容：</font></td>

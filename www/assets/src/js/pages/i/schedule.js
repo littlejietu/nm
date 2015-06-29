@@ -34,28 +34,29 @@ $().ready(function(){
 
 	$("#item").bind("change",function(){
 
-		var selectedId = $('#item').val();
-		$('.XT-Scene a').remove();
-		$('.XT-Time a').remove();
-
-		if($.inArray( selectedId,arrIST) )
+		if(arrIST.length>0)
 		{
-			var obj = arrIST[selectedId];
-			var arrS = Array();
-			for(var i=0;i<obj.length;i++)
+			var selectedId = $('#item').val();
+			$('.XT-Scene a').remove();
+			$('.XT-Time a').remove();
+
+			if($.inArray( selectedId,arrIST) )
 			{
-				if($.inArray(obj[i].k, arrS))
+				var obj = arrIST[selectedId];
+				var arrS = Array();
+				for(var i=0;i<obj.length;i++)
 				{
-					arrS.push(obj[i].k);
-					$('.XT-Scene').append('<a href="javascript:;" onclick="filt(this)" name="'+obj[i].k+'" class="XT-Scene-itm">'+obj[i].name+'</a>');
+					if($.inArray(obj[i].k, arrS))
+					{
+						arrS.push(obj[i].k);
+						$('.XT-Scene').append('<a href="javascript:;" onclick="filt(this)" name="'+obj[i].k+'" class="XT-Scene-itm">'+obj[i].name+'</a>');
+					}
 				}
+
+				$('#scene').val(obj[0].k);
+				$('.XT-Scene a:first').click();
+				//$('.XT-Scene a:first').addClass('licur');
 			}
-
-			$('#scene').val(obj[0].k);
-			$('.XT-Scene a:first').click();
-			//$('.XT-Scene a:first').addClass('licur');
-
-			
 		}
 
 	});
@@ -130,7 +131,13 @@ function getPrice(){
 		}
 	}
 
-	$('.price').html( $('#price').val() * $('#num').val() );
+	var totalPrice = $('#price').val() * $('#num').val();
+	if(totalPrice>0)
+		$('.price').html( totalPrice );
+	if($('.price').html()!='面议')
+		$('.moneysign').html('¥');
+	else
+		$('.moneysign').html('');
 }
 
 

@@ -31,15 +31,15 @@
                           <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tbody><tr>
                                   <td width="100">拍摄内容：</td>
-                                  <td class="cont"><?=!empty($o['item'])?$this->config->item('workitem')[$o['item']]:'';?></td>
+                                  <td class="cont"><?=!empty($o['item'])?$oSysItem[$o['item']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>拍摄场景：</td>
-                                  <td class="cont"><?=!empty($o['workscene'])?$this->config->item('workscene')[$o['scene']]:'';?></td>
+                                  <td class="cont"><?=!empty($o['scene'])?$oSysScene[$o['scene']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>计价方式：</td>
-                                  <td class="cont"><?=!empty($o['worktime'])?$this->config->item('worktime')[$o['time']]:'';?></td>
+                                  <td class="cont"><?=!empty($o['time'])?$oSysTime[$o['time']]:'';?></td>
                                 </tr>
                                 <tr>
                                   <td>总  价：</td>
@@ -51,7 +51,7 @@
                                 </tr>
                                 <tr>
                                   <td>期望拍片日期：</td>
-                                  <td class="cont"><?=!empty($o['begtime'])&&!empty($o['endtime']) ? (date('Y-m-d', $o['begtime'])?> 至 <?=date('Y-m-d', $o['endtime']) ): '';?></td>
+                                  <td class="cont"><?=!empty($o['begtime'])&&!empty($o['endtime']) ? (date('Y-m-d', $o['begtime']).' 至 '.date('Y-m-d', $o['endtime']) ): '';?></td>
                                 </tr>
                                 <tr>
                                   <td>联  系 人：</td>

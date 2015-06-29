@@ -49,7 +49,7 @@
                               <td><div class="t_cont"><a href="/m/order/detail?id=<?=_get_key_val($a['id'])?>"><?php echo $a['title'];?></a></div></td>
                               <?php if($this->loginInsID):?><td><?php echo $a['seller_nickname'];?></td><?php endif?>
                               <td><?php echo $a['totalprice'];?></td>
-                              <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'-'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
+                              <td><?php if($a['endtime']>$a['begtime']) echo date('m-d',$a['begtime']).'至'.date('m-d',$a['endtime']); else echo date('Y-m-d',$a['begtime']);?></td>
                               <td><?php echo date('m-d H:i:s',$a['addtime']);?></td>
                               <td><?php if($a['paystatus']=='waitpay'):?>
                                     <?php if( $a['reject']==1 ):?>
@@ -71,9 +71,9 @@
                                   <?php echo $oSysPaystatus[$a['paystatus']];?>
                                 <?php endif?>
                               </td>
-                              <td><?php if($a['sellerid']==$this->thatUser['id']):?>
+                              <td><?php if($a['sellerid']==$this->thatUser['id'] || ($this->loginInsID>0 && $a['sellerid']<>$this->loginID && $a['buyerid']<>$this->loginID ) ):?>
                                   <?php if($a['reject']==-1):?>已过期<?php elseif($a['reject']==1):?>已确认<?php else:?><a class="t_delete" href="/m/order/agree?id=<?=_get_key_val($a['id'])?>">确认</a><?php endif?>
-                                  <a class="t_delete" href="javascript:;">编辑</a><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
+                                  <?php if(empty($a['reject'])):?><a class="XT-modify" href="javascript:;" _val="<?=_get_key_val($a['id'])?>">编辑</a><?php endif?><a class="t_delete" href="/m/order/del?id=<?=_get_key_val($a['id'])?>">删除</a>
                                 <?php endif?>
                               </td>
                             </tr>
@@ -98,10 +98,37 @@
 </div>
 <!--mainbody-->
 <?php include_once(VIEWPATH."public/footer.php");?>
+<div class="popover-mask"></div>
+<div class="popover complaint addcust">
+  <div class="compl_top"><span class="fl">编辑价格</span><input type="hidden" name="orderid" id="orderid" value=""><a href="javascript:;" title="关闭" class="close fr TX-win-close">×</a></div>
+  <div class="compl_con">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="80"><font>订单号：</font></td>
+              <td><span id="spanOrderId"></span></td>
+            </tr>
+            <tr><td height="10"></td></tr>
+            <tr>
+              <td width="80"><font>工作内容：</font></td>
+              <td><span id="spanTitle"></span></td>
+            </tr>
+            <tr><td height="10"></td></tr>
+            <tr>
+              <td width="80"><font>价格：</font></td>
+              <td><input name="price" id="price" type="text" class="txt"/></td>
+            </tr>
+            <tr><td height="10"></td></tr>
+            <tr>
+              <td>&nbsp;</td>
+               <td><input class="but" id="TX-save" name="" type="button" value="保存"/></td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>common.js"></script>
 <script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.SuperSlide.2.1.1.js"></script>
 <script>jQuery(".txtScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true});</script>
-<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo _get_cfg_path('js')?>pages/m/order.js"></script>
 </html>

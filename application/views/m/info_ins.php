@@ -82,14 +82,14 @@
                                 <td colspan="3">
                                     <div class="f_note">
                                         <p>尺寸：1100×430像数</p>
-                                        <input type="hidden"  name="bgimg" id="bgimg" value="<?=$o['bgimg']?>">
+                                        <input type="hidden"  name="bgimg" id="bgimg" value="<?=!empty($o['bgimg'])?$o['bgimg']:''?>">
                                         <em><i class="icoPro16"></i>在个人主页上显示, 上传图片大小不能超过1M</em>
                                         <div class="file_but">
                                             <input id="bgimg_upload" name="bgimg_upload" value="选择照片" class="inp_file" type="file">
                                         </div>
                                     </div>
                                     <div id="show_bgimg">
-                                        <?php if($o['bgimg']):?>
+                                        <?php if(!empty($o['bgimg'])):?>
                                           <a href="<?='/'.$o['bgimg']?>" target="_blank">查看</a>
                                         <?php endif?>
                                     </div>
@@ -125,7 +125,7 @@
                                   <td colspan="4">公司简介</td>
                               </tr>
                               <tr>
-                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=$o['memo'];?></textarea></td>
+                                <td colspan="4"><textarea class="txt text" placeholder="请输入公司简介"  name="memo" cols="" rows=""><?=!empty($o['memo'])?$o['memo']:'';?></textarea></td>
                               </tr>
                               
                               <tr style="border-bottom:none;">
