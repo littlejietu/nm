@@ -112,7 +112,7 @@ class Upload extends CI_Controller {
             $config['allowed_types']= '*';	//jpg|png|jpeg
             $config['max_size']     = 1500;
             $config['overwrite']    = true;
-            $config['file_name']    = $type.'_'.$uid.'_'.time();
+            $config['file_name']    = $type.'_'.$uid.'_'.time().'_'.rand(0,1000);
             mkpath($config['upload_path']);
             $this->load->library('upload', $config);
             if ( ! $this->upload->do_upload('Filedata')){
@@ -136,7 +136,7 @@ class Upload extends CI_Controller {
                   'ip'=>$this->input->ip_address(),
                 );
                 $this->load->model('Photo_model');
-                $aid = $this->Photo_model->insert($map);
+                $aid = $this->Photo_model->insert_ignore($map);
                 $this->load->service('Num_service');
                 $this->num_service->set_album_photo_num($this->loginID, 'photonum', $albumid);
                 $this->load->model('Album_model');
@@ -145,7 +145,7 @@ class Upload extends CI_Controller {
                 $name = $map['title'];
             }
             if ($pic){
-                   echo '200|'.$pic.'|'.$name;exit;
+                   echo '200|'.$pic.'|'.$name.'|'.$aid;exit;
             }
         }   
     }

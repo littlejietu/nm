@@ -57,7 +57,7 @@ function _get_config($key)
  * @param $flag
  * @return unknown_type
  */
-function _get_key_val($val, $flag=FALSE, $redirct=TRUE)
+function _get_key_val($val, $flag=FALSE, $redirct=FALSE)
 {
 	if (!$val)return '';
 	if ($flag)

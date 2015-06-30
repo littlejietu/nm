@@ -107,7 +107,8 @@ $(function() {
         }else if(data[0] == 200 && data[1]!=''){
           var imgpath=data[1];
           var imgname=data[2];
-          var html = '<img src="'+imgpath+'"><div class="udl_bti"><p>'+imgname+'</p><a class="delete"></a></div>'
+          var imgid=data[3];
+          var html = '<img src="'+imgpath+'"><div class="udl_bti"><p>'+imgname+'</p><a _val="'+imgid+'" class="delete"></a></div>'
           $('#X-photo-list').append('<li>'+html+'</li>');
         }
       }

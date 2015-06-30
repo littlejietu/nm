@@ -143,8 +143,12 @@ class Works extends CI_Controller {
 	public function delalbum(){
 		$res = array('code'=>0,'data'=>array());
 		$id	= _get_key_val($this->input->post('id'), TRUE);
+
+		$userid = $this->thatUser['id'];
 		
-		$this->Album_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
+		$this->Album_model->update_by_where(array('id'=>$id, 'userid'=>$userid),array('status'=>0));
+		$this->load->service('Num_service');
+		$this->num_service->set_album_photo_num($userid, 'photonum', $id);
 		$res['code'] = 200;
 
 		$this->view->json($res);
@@ -178,10 +182,24 @@ class Works extends CI_Controller {
 		$id	= _get_key_val($this->input->post('id'), TRUE);
 		if(!$id)
 			$id = $this->input->post('id');
+		
 		if($id)
 		{
-			$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$this->thatUser['id']),array('status'=>0));
-			$res['code'] = 200;
+			$userid = $this->thatUser['id'];
+			$aPhoto = $this->Photo_model->get_by_id($id);
+			if($aPhoto)
+			{
+				$albumid = $aPhoto['albumid'];
+				$this->Photo_model->update_by_where(array('id'=>$id, 'userid'=>$userid),array('status'=>0));
+				$this->load->service('Num_service');
+
+				if($albumid)
+					$this->num_service->set_album_photo_num($userid, 'photonum', $albumid);
+
+				$res['code'] = 200;
+			}
+			else
+				$res['code'] = 201;
 		}
 
 		$this->view->json($res);
